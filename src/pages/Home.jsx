@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
 import "./Home.css";
+import profile from "../assets/profile.jpg";  // one level up from pages
 import {
   FaGithub,
   FaDatabase,
@@ -1039,7 +1040,7 @@ const Home = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          <ProfileImage src="/src/assets/profile.jpg" alt="Siva Satya Sai Bhagavan Gopalajosyula" />
+          <ProfileImage src={profile} alt="Siva Satya Sai Bhagavan Gopalajosyula" />
           <HeaderContainer>
             <Title
               initial={{ opacity: 0, x: -100 }}
@@ -1195,13 +1196,7 @@ const Home = () => {
 
 
 
-            {
-              title: "Data Science Projects",
-              desc: "Multiple end-to-end ML/DL projects in healthcare, agriculture, and career guidance.",
-              tags: ["ML", "TensorFlow", "Scikit-learn", "Visualization"],
-              link: "https://github.com/bhagavan444/data-science-projects",
-              demo: "https://bhagavan.netlify.app/ds-projects-demo",
-            },
+            
           ].map((project, i) => {
             const ProjectCard = project.featured ? FeaturedCard : Card;
             return (
@@ -1447,6 +1442,20 @@ const Home = () => {
     tags: ["Full Stack", "MERN", "Web Development"],
     year: "2022",
   },
+  {
+    title: "Artificial Intelligence & Data Science Workshop",
+    desc: "Hands-on workshop covering fundamentals of AI, Machine Learning, and Data Science, including practical applications and projects.",
+    tags: ["AI", "Data Science", "Workshop"],
+    year: "2022",
+},
+{
+    title: "Web Development Workshop",
+    desc: "Hands-on workshop covering frontend development with HTML, CSS, and JavaScript, including practical projects and real-world applications.",
+    tags: ["Web Development", "Frontend", "JavaScript"],
+    year: "2022",
+},
+
+
           ].map((workshop, i) => (
             <Card
               key={i}
