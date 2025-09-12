@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
 import "./Home.css";
-import profile from "../assets/profile.jpg";  // one level up from pages
+import profile from "../assets/profile.jpg"; // one level up from pages
 import {
   FaGithub,
   FaDatabase,
@@ -38,8 +38,8 @@ const Container = styled.div`
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  background: radial-gradient(circle at 20% 30%, #1e3a8a, #0a0f2a);
-  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
   isolation: isolate;
 `;
@@ -48,47 +48,46 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(17, 24, 39, 0.95);
-  backdrop-filter: blur(15px);
-  padding: 1.5rem 3rem;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
   display: flex;
-  height:60px;
+  height: 70px;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   transition: all 0.3s ease;
 
   @media (max-width: 768px) {
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1rem;
   }
 `;
 
 const NavBrand = styled.a`
-  font-size: 2.2rem;
-  font-weight: 1000;
-  color: #00ffcc;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a855f7;
   text-decoration: none;
-  letter-spacing: 2px;
-  transform: rotate(-3deg);
+  letter-spacing: 1px;
   transition: all 0.3s ease;
-  text-shadow: 0 0 15px #00ffcc, 0 0 30px rgba(0, 255, 204, 0.5);
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 
   &:hover {
-    color: #ff00ff;
-    text-shadow: 0 0 20px #ff00ff, 0 0 40px rgba(255, 0, 255, 0.5);
-    transform: rotate(0deg) scale(1.1);
+    color: #e9d5ff;
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+    transform: scale(1.05);
   }
 
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `;
 
 const NavLinks = styled.div`
   display: flex;
-  margin-right:60px;
-  gap: 1.5rem;
+  margin-right: 40px;
+  gap: 1.2rem;
   align-items: center;
 
   @media (max-width: 768px) {
@@ -97,22 +96,22 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled.a`
-  color:#00ffcc;
+  color: #d8b4fe;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1.3rem;
+  font-weight: 600;
+  font-size: 1.1rem;
   position: relative;
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgba(224, 231, 255, 0.4);
+  text-shadow: 0 0 8px rgba(216, 180, 254, 0.3);
 
   &:after {
     content: "";
     position: absolute;
     width: 0;
-    height: 4px;
-    bottom: -8px;
+    height: 3px;
+    bottom: -6px;
     left: 0;
-    background: linear-gradient(90deg, #00ffcc, #ff00ff);
+    background: linear-gradient(90deg, #a855f7, #e9d5ff);
     transition: width 0.3s ease;
   }
 
@@ -121,12 +120,12 @@ const NavLink = styled.a`
   }
 
   &:hover {
-    color: #00ffcc;
-    transform: translateY(-4px);
+    color: #e9d5ff;
+    transform: translateY(-2px);
   }
 
   @media (max-width: 480px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -135,10 +134,10 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
-  color: #f3f4f6;
+  padding: 3rem 1.5rem;
+  color: #f1f5f9;
   position: relative;
-  background: radial-gradient(circle at 20% 30%, #1e3a8a, #0a0f2a);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   overflow: hidden;
 
   &:before {
@@ -148,18 +147,18 @@ const HeroSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 70% 70%, rgba(0, 255, 204, 0.2), transparent 60%);
+    background: radial-gradient(circle at 60% 60%, rgba(168, 85, 247, 0.15), transparent 70%);
     z-index: 0;
-    animation: pulse 8s infinite ease-in-out;
+    animation: pulse 6s infinite ease-in-out;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
   }
 
   @media (max-width: 768px) {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
   }
 `;
 
@@ -168,44 +167,44 @@ const HeroContent = styled(motion.div)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   z-index: 1;
-  max-width: 1300px;
+  max-width: 1200px;
   width: 100%;
-  padding: 2rem;
+  padding: 1.5rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 1rem;
   }
 `;
 
 const ProfileImage = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   object-fit: cover;
-  border: 12px solid rgba(0, 255, 204, 0.2);
-  box-shadow: 0 0 50px #00ffcc;
-  transition: all 0.5s ease;
-  transform: perspective(1200px) rotateY(0deg);
+  border: 8px solid rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+  transition: all 0.4s ease;
+  transform: perspective(1000px) rotateY(0deg);
   position: relative;
   z-index: 2;
 
   &:hover {
-    transform: perspective(1200px) rotateY(15deg) scale(1.15);
-    box-shadow: 0 0 70px #ff00ff;
+    transform: perspective(1000px) rotateY(10deg) scale(1.1);
+    box-shadow: 0 0 60px rgba(168, 85, 247, 0.6);
   }
 
   @media (max-width: 768px) {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
   }
 
   @media (max-width: 480px) {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 `;
 
@@ -213,7 +212,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 900px;
+  max-width: 800px;
 
   @media (max-width: 768px) {
     align-items: center;
@@ -222,45 +221,45 @@ const HeaderContainer = styled.div`
 `;
 
 const Title = styled(motion.h1)`
-  font-size:3rem;
-  font-weight: 1000;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: transparent;
-  background: linear-gradient(45deg, #00ffcc, #ff00ff);
+  background: linear-gradient(45deg, #a855f7, #e9d5ff);
   -webkit-background-clip: text;
-  text-shadow: 0 0 20px #00ffcc, 0 0 40px rgba(0, 255, 204, 0.5);
-  line-height: 1.1;
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  line-height: 1.2;
 
   @media (max-width: 480px) {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-size: clamp(2.2rem, 5.5vw, 3.2rem);
   }
 `;
 
 const Subtitle = styled(motion.p)`
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
-  color:lightblue;
-  margin: 1.5rem 0;
-  line-height: 1.7;
-  font-weight: 500;
-  text-shadow: 0 0 10px rgba(224, 231, 255, 0.4);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: #e2e8f0;
+  margin: 1.2rem 0;
+  line-height: 1.6;
+  font-weight: 400;
+  text-shadow: 0 0 8px rgba(226, 232, 240, 0.3);
 
   @media (max-width: 768px) {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1rem, 2vw, 1.3rem);
   }
 `;
 
 const CTAButton = styled(motion.a)`
-  padding: 1.2rem 3rem;
-  border-radius: 50px;
-  font-weight: 800;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  font-weight: 700;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 1.4rem;
-  background: linear-gradient(45deg, #00ffcc, #ff00ff);
-  color: #0a0f2a;
-  box-shadow: 0 6px 25px rgba(0, 255, 204, 0.5);
-  transition: all 0.4s ease;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  background: linear-gradient(45deg, #a855f7, #d8b4fe);
+  color: #0f172a;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 
@@ -271,59 +270,59 @@ const CTAButton = styled(motion.a)`
     left: 50%;
     width: 0;
     height: 0;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    transition: width 0.5s ease, height 0.5s ease;
   }
 
   &:hover:before {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
   }
 
   &:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 35px rgba(255, 0, 255, 0.7);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6);
   }
 
   @media (max-width: 480px) {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
   }
 `;
 
 const Socials = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  font-size: 2.5rem;
-  margin-top: 2rem;
+  gap: 1.2rem;
+  font-size: 2.2rem;
+  margin-top: 1.5rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
-    gap: 1rem;
+    font-size: 1.8rem;
+    gap: 0.8rem;
   }
 `;
 
 const SocialLink = styled.a`
-  color: #e0e7ff;
+  color: #e2e8f0;
   transition: all 0.3s ease;
-  text-shadow: 0 0 15px rgba(224, 231, 255, 0.4);
+  text-shadow: 0 0 10px rgba(226, 232, 240, 0.3);
 
   &:hover {
-    color: #00ffcc;
-    transform: scale(1.4);
-    text-shadow: 0 0 25px #00ffcc, 0 0 50px rgba(0, 255, 204, 0.5);
+    color: #a855f7;
+    transform: scale(1.3);
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
   }
 `;
 
 const Section = styled.section`
-  padding: 6rem 2rem;
-  background: linear-gradient(135deg, #1e3a8a, #0a0f2a);
-  margin: 3rem 0;
-  border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  margin: 2rem 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 
@@ -333,9 +332,9 @@ const Section = styled.section`
     top: 0;
     left: 0;
     width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, #00ffcc, #ff00ff);
-    animation: gradientShift 6s infinite linear;
+    height: 4px;
+    background: linear-gradient(90deg, #a855f7, #e9d5ff);
+    animation: gradientShift 5s infinite linear;
   }
 
   @keyframes gradientShift {
@@ -344,341 +343,341 @@ const Section = styled.section`
   }
 
   @media (max-width: 768px) {
-    padding: 4rem 1rem;
-    margin: 2rem 0;
+    padding: 3rem 1rem;
+    margin: 1.5rem 0;
   }
 `;
 
 const SectionTitle = styled(motion.h2)`
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  font-weight: 900;
+  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-weight: 800;
   color: transparent;
-  background: linear-gradient(45deg, #00ffcc, #ff00ff);
+  background: linear-gradient(45deg, #a855f7, #e9d5ff);
   -webkit-background-clip: text;
-  text-shadow: 0 0 20px #00ffcc, 0 0 40px rgba(0, 255, 204, 0.5);
-  margin-bottom: 2rem;
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  margin-bottom: 1.5rem;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 
   @media (max-width: 480px) {
-    font-size: clamp(2.2rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
   }
 `;
 
 const Card = styled(motion.div)`
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 255, 204, 0.2);
-  transition: all 0.5s ease;
-  backdrop-filter: blur(10px);
+  padding: 1.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  min-height: 300px;
+  gap: 0.8rem;
+  min-height: 280px;
   box-sizing: border-box;
 
   &:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0, 255, 204, 0.3);
-    border-color: #ff00ff;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.25);
+    border-color: #a855f7;
   }
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
-    min-height: 250px;
+    padding: 1.3rem;
+    min-height: 240px;
   }
 `;
 
 const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin: 1rem 0;
+  gap: 0.6rem;
+  margin: 0.8rem 0;
 
   @media (max-width: 480px) {
-    gap: 0.6rem;
+    gap: 0.5rem;
   }
 `;
 
 const Tag = styled.span`
-  padding: 0.5rem 1.2rem;
-  background: rgba(0, 255, 204, 0.15);
-  color: #e0e7ff;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.4rem 1rem;
+  background: rgba(168, 85, 247, 0.1);
+  color: #e2e8f0;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
   transition: all 0.3s ease;
 
   &:hover {
-    background: #00ffcc;
-    color: #0a0f2a;
-    box-shadow: 0 0 15px #00ffcc;
+    background: #a855f7;
+    color: #0f172a;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
   }
 
   &.concept {
-    background: rgba(255, 0, 255, 0.15);
+    background: rgba(236, 72, 153, 0.1);
     color: #fce7f3;
 
     &:hover {
-      background: #ff00ff;
-      color: #ffffff;
-      box-shadow: 0 0 15px #ff00ff;
+      background: #ec4899;
+      color: #0f172a;
+      box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
     }
   }
 
   @media (max-width: 480px) {
-    padding: 0.4rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
   }
 `;
 
 const Links = styled.div`
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   margin-top: auto;
 
   @media (max-width: 480px) {
-    gap: 1rem;
+    gap: 0.8rem;
     flex-direction: column;
   }
 `;
 
 const Link = styled.a`
-  color: #00ffcc;
-  font-weight: 700;
-  font-size: 1.1rem;
+  color: #d8b4fe;
+  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   transition: all 0.3s ease;
 
   &:hover {
-    color: #ff00ff;
+    color: #a855f7;
     text-decoration: underline;
-    transform: translateX(10px);
+    transform: translateX(8px);
   }
 
   @media (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 0.8rem;
   align-items: stretch;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
 `;
 
 const FeaturedCard = styled(Card)`
-  border: 2px solid #ff00ff;
-  background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 2px solid #a855f7;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(255, 255, 255, 0.03));
 
   &:before {
     content: "Featured";
     position: absolute;
-    top: -12px;
-    left: 20px;
-    background: #ff00ff;
-    color: #ffffff;
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-shadow: 0 0 10px #ff00ff;
+    top: -10px;
+    left: 15px;
+    background: #a855f7;
+    color: #0f172a;
+    padding: 0.2rem 0.8rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
   }
 `;
 
 const ContactSection = styled(Section)`
-  background: linear-gradient(135deg, #1e3a8a, #0a0f2a);
-  color: #f3f4f6;
-  padding: 6rem 2rem;
-  min-height: 70vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f1f5f9;
+  padding: 5rem 1.5rem;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   &:before {
-    background: linear-gradient(90deg, #00ffcc, #ff00ff);
+    background: linear-gradient(90deg, #a855f7, #e9d5ff);
   }
 
   @media (max-width: 768px) {
-    padding: 4rem 1rem;
-    min-height: 60vh;
+    padding: 3rem 1rem;
+    min-height: 50vh;
   }
 `;
 
 const ContactIntro = styled(motion.p)`
-  font-size: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto 2rem;
-  color: #e0e7ff;
-  line-height: 1.6;
-  text-shadow: 0 0 12px rgba(224, 231, 255, 0.4);
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  text-shadow: 0 0 10px rgba(226, 232, 240, 0.3);
   text-align: center;
 
   @media (max-width: 480px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 `;
 
 const Form = styled(motion.form)`
-  max-width: 700px;
+  max-width: 650px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   width: 100%;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 255, 204, 0.2);
-  backdrop-filter: blur(10px);
+  padding: 1.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  backdrop-filter: blur(12px);
   z-index: 10;
 
   @media (max-width: 480px) {
-    padding: 1.5rem;
-    gap: 1.2rem;
+    padding: 1.3rem;
+    gap: 1rem;
   }
 `;
 
 const Input = styled.input`
-  padding: 1.2rem;
-  border: 2px solid rgba(0, 255, 204, 0.3);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #e0e7ff;
-  font-size: 1.1rem;
+  padding: 1rem;
+  border: 2px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e2e8f0;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 
   &:focus {
-    border-color: #ff00ff;
-    box-shadow: 0 0 15px #ff00ff;
+    border-color: #a855f7;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
   }
 
   &::placeholder {
-    color: #93c5fd;
+    color: #94a3b8;
   }
 
   @media (max-width: 480px) {
-    padding: 1rem;
-    font-size: 1rem;
+    padding: 0.8rem;
+    font-size: 0.9rem;
   }
 `;
 
 const Textarea = styled.textarea`
-  min-height: 150px;
-  padding: 1.2rem;
-  border: 2px solid rgba(0, 255, 204, 0.3);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #e0e7ff;
-  font-size: 1.1rem;
+  min-height: 140px;
+  padding: 1rem;
+  border: 2px solid rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e2e8f0;
+  font-size: 1rem;
   resize: vertical;
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 
   &:focus {
-    border-color: #ff00ff;
-    box-shadow: 0 0 15px #ff00ff;
+    border-color: #a855f7;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
   }
 
   &::placeholder {
-    color: #93c5fd;
+    color: #94a3b8;
   }
 
   @media (max-width: 480px) {
-    padding: 1rem;
-    font-size: 1rem;
-    min-height: 120px;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    min-height: 100px;
   }
 `;
 
 const CharCount = styled.p`
-  font-size: 1rem;
-  color: #e0e7ff;
+  font-size: 0.9rem;
+  color: #e2e8f0;
   text-align: right;
-  text-shadow: 0 0 10px rgba(224, 231, 255, 0.4);
+  text-shadow: 0 0 8px rgba(226, 232, 240, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 `;
 
 const ErrorMessage = styled.p`
-  color: #ff5555;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  font-weight: 600;
-  text-shadow: 0 0 10px rgba(255, 85, 85, 0.4);
+  color: #f87171;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 `;
 
 const SuccessMessage = styled.p`
-  color: #00ff99;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  font-weight: 600;
-  text-shadow: 0 0 10px rgba(0, 255, 153, 0.4);
+  color: #34d399;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 `;
 
 const SubmitButton = styled.button`
-  padding: 1.2rem 3rem;
-  border-radius: 50px;
-  font-weight: 700;
-  background: linear-gradient(45deg, #00ffcc, #ff00ff);
-  color: #0a0f2a;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #a855f7, #d8b4fe);
+  color: #0f172a;
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 25px rgba(0, 255, 204, 0.5);
-  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+  transition: all 0.3s ease;
   align-self: center;
 
   &:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 35px rgba(255, 0, 255, 0.7);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6);
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
     transform: none;
   }
 
   @media (max-width: 480px) {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
   }
 `;
 
 const Footer = styled.footer`
-  background: linear-gradient(180deg, #0a0f2a, #1a2a44);
-  color: #e0e7ff;
-  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+  padding: 4rem 1.5rem;
   text-align: center;
-  border-top: 1px solid rgba(0, 255, 204, 0.2);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
   position: relative;
   overflow: hidden;
 
@@ -689,98 +688,98 @@ const Footer = styled.footer`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 20%, rgba(0, 255, 204, 0.1), transparent 70%);
+    background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.1), transparent 70%);
     z-index: 0;
   }
 
   @media (max-width: 480px) {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
 `;
 
 const FooterContent = styled.div`
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 1;
 `;
 
 const FooterTitle = styled.h3`
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: #00ffcc;
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px #00ffcc, 0 0 30px rgba(0, 255, 204, 0.5);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #a855f7;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
 
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `;
 
 const FooterText = styled.p`
-  font-size: 1.3rem;
-  color: #e0e7ff;
-  font-weight: 500;
-  text-shadow: 0 0 10px rgba(224, 231, 255, 0.4);
+  font-size: 1.2rem;
+  color: #e2e8f0;
+  font-weight: 400;
+  text-shadow: 0 0 8px rgba(226, 232, 240, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 `;
 
 const FooterLinks = styled.div`
   display: flex;
-  gap: 2rem;
-  font-size: 1.2rem;
+  gap: 1.5rem;
+  font-size: 1.1rem;
 
   @media (max-width: 480px) {
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
   }
 `;
 
 const FooterLink = styled.a`
-  color: #e0e7ff;
+  color: #e2e8f0;
   text-decoration: none;
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgba(224, 231, 255, 0.4);
+  text-shadow: 0 0 8px rgba(226, 232, 240, 0.3);
 
   &:hover {
-    color: #ff00ff;
+    color: #a855f7;
     text-decoration: underline;
-    text-shadow: 0 0 20px #ff00ff;
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
   }
 `;
 
 const ScrollTop = styled.button`
   position: fixed;
-  bottom: 2.5rem;
-  right: 2.5rem;
-  background: linear-gradient(45deg, #00ffcc, #ff00ff);
-  color: #0a0f2a;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(45deg, #a855f7, #d8b4fe);
+  color: #0f172a;
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  font-size: 1.6rem;
   cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 6px 25px rgba(0, 255, 204, 0.5);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
   z-index: 1000;
 
   &:hover {
-    transform: scale(1.2);
-    box-shadow: 0 10px 35px rgba(255, 0, 255, 0.7);
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6);
   }
 
   @media (max-width: 480px) {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
   }
 `;
 
@@ -790,7 +789,7 @@ const ResumeModal = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -798,78 +797,78 @@ const ResumeModal = styled(motion.div)`
 `;
 
 const ModalContent = styled.div`
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2.5rem;
-  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
   position: relative;
   width: 90%;
-  max-width: 650px;
+  max-width: 600px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 255, 204, 0.3);
-  backdrop-filter: blur(15px);
-  border: 1px solid #00ffcc;
+  box-shadow: 0 12px 35px rgba(168, 85, 247, 0.25);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
 
   @media (max-width: 480px) {
-    padding: 2rem;
-    max-width: 90%;
+    padding: 1.5rem;
+    max-width: 95%;
   }
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  font-size: 2.2rem;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
   background: none;
   border: none;
-  color: #e0e7ff;
+  color: #e2e8f0;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    color: #ff00ff;
+    color: #a855f7;
     transform: rotate(90deg);
-    text-shadow: 0 0 20px #ff00ff;
+    text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
   }
 
   @media (max-width: 480px) {
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.8rem;
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 1.6rem;
   }
 `;
 
 const ModalButton = styled.button`
-  padding: 1.2rem 3rem;
-  border-radius: 50px;
-  font-weight: 700;
-  background: linear-gradient(45deg, #00ffcc, #ff00ff);
-  color: #0a0f2a;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  background: linear-gradient(45deg, #a855f7, #d8b4fe);
+  color: #0f172a;
   border: none;
   cursor: pointer;
-  transition: all 0.4s ease;
-  margin: 0.8rem;
+  transition: all 0.3s ease;
+  margin: 0.6rem;
 
   &:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 35px rgba(255, 0, 255, 0.7);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6);
   }
 
   @media (max-width: 480px) {
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
   }
 `;
 
 const AboutText = styled(motion.p)`
-  font-size: 1.4rem;
-  line-height: 1.8;
-  color: skyblue;
-  text-shadow: 0 0 12px rgba(224, 231, 255, 0.4);
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  text-shadow: 0 0 10px rgba(226, 232, 240, 0.3);
   text-align: justify;
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -880,7 +879,7 @@ const ParticleBackground = styled.canvas`
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.4;
 `;
 
 const BackgroundAnimation = () => {
@@ -895,16 +894,16 @@ const BackgroundAnimation = () => {
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const particleCount = 150;
+    const particleCount = 120;
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 4 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 0.8 - 0.4;
+        this.speedY = Math.random() * 0.8 - 0.4;
+        this.color = `hsl(${Math.random() * 360}, 80%, 70%)`;
       }
 
       update() {
@@ -927,7 +926,16 @@ const BackgroundAnimation = () => {
       particles.push(new Particle());
     }
 
-   
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((particle) => {
+        particle.update();
+        particle.draw();
+      });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
 
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
@@ -936,8 +944,8 @@ const BackgroundAnimation = () => {
 };
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
 };
 
 const Home = () => {
@@ -965,19 +973,19 @@ const Home = () => {
   const contactRef = useRef(null);
   const resumeRef = useRef(null);
 
-  const isAboutInView = useInView(aboutRef, { once: true, margin: "-100px" });
-  const isEducationInView = useInView(educationRef, { once: true, margin: "-100px" });
-  const isProjectsInView = useInView(projectsRef, { once: true, margin: "-100px" });
-  const isSkillsInView = useInView(skillsRef, { once: true, margin: "-100px" });
-  const isInternshipsInView = useInView(internshipsRef, { once: true, margin: "-100px" });
-  const isCertificationsInView = useInView(certificationsRef, { once: true, margin: "-100px" });
-  const isWorkshopsInView = useInView(workshopsRef, { once: true, margin: "-100px" });
-  const isHackathonsInView = useInView(hackathonsRef, { once: true, margin: "-100px" });
-  const isCodingInView = useInView(codingRef, { once: true, margin: "-100px" });
-  const isHobbiesInView = useInView(hobbiesRef, { once: true, margin: "-100px" });
-  const isExtracurricularInView = useInView(extracurricularRef, { once: true, margin: "-100px" });
-  const isContactInView = useInView(contactRef, { once: true, margin: "-100px" });
-  const isResumeInView = useInView(resumeRef, { once: true, margin: "-100px" });
+  const isAboutInView = useInView(aboutRef, { once: true, margin: "-80px" });
+  const isEducationInView = useInView(educationRef, { once: true, margin: "-80px" });
+  const isProjectsInView = useInView(projectsRef, { once: true, margin: "-80px" });
+  const isSkillsInView = useInView(skillsRef, { once: true, margin: "-80px" });
+  const isInternshipsInView = useInView(internshipsRef, { once: true, margin: "-80px" });
+  const isCertificationsInView = useInView(certificationsRef, { once: true, margin: "-80px" });
+  const isWorkshopsInView = useInView(workshopsRef, { once: true, margin: "-80px" });
+  const isHackathonsInView = useInView(hackathonsRef, { once: true, margin: "-80px" });
+  const isCodingInView = useInView(codingRef, { once: true, margin: "-80px" });
+  const isHobbiesInView = useInView(hobbiesRef, { once: true, margin: "-80px" });
+  const isExtracurricularInView = useInView(extracurricularRef, { once: true, margin: "-80px" });
+  const isContactInView = useInView(contactRef, { once: true, margin: "-80px" });
+  const isResumeInView = useInView(resumeRef, { once: true, margin: "-80px" });
 
   useEffect(() => {
     const handleScroll = () => setShowTopBtn(window.scrollY > 300);
@@ -1062,10 +1070,10 @@ const Home = () => {
               transition={{ delay: 0.8, duration: 0.7 }}
               style={{ display: "flex", gap: "1rem", justifyContent: "center" }}
             >
-              <CTAButton whileHover={{ scale: 1.1 }} href="#projects">
+              <CTAButton whileHover={{ scale: 1.05 }} href="#projects">
                 <FaProjectDiagram /> Projects
               </CTAButton>
-              <CTAButton whileHover={{ scale: 1.1 }} href="#contact">
+              <CTAButton whileHover={{ scale: 1.05 }} href="#contact">
                 <FiSend /> Contact
               </CTAButton>
             </motion.div>
@@ -1117,16 +1125,16 @@ const Home = () => {
             animate={isEducationInView ? "visible" : "hidden"}
             variants={fadeInUp}
           >
-            <h3 style={{ fontSize: "1.8rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+            <h3 style={{ fontSize: "1.7rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
               Ramachandra College of Engineering, Eluru (JNTUK)
             </h3>
-            <p style={{ fontSize: "1.3rem", color: "#00ffcc" }}>
+            <p style={{ fontSize: "1.2rem", color: "#d8b4fe" }}>
               B.Tech in Artificial Intelligence and Data Science
             </p>
-            <p style={{ fontSize: "1.3rem", color: "#00ffcc" }}>
+            <p style={{ fontSize: "1.2rem", color: "#d8b4fe" }}>
               2022 – 2026
             </p>
-            <p style={{ fontSize: "1.3rem", color: "skyblue", lineHeight: "1.6" }}>
+            <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
               Current Aggregate: 70%
             </p>
             <Tags>
@@ -1162,7 +1170,7 @@ const Home = () => {
               tags: ["React.js", "OpenAI API", "Vite"],
               link: "https://github.com/bhagavan444/ai-chatbot",
               demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
-               featured: true,
+              featured: true,
             },
             {
               title: "Career Path Recommendation System",
@@ -1170,33 +1178,29 @@ const Home = () => {
               tags: ["Python", "ML", "Streamlit"],
               link: "https://github.com/bhagavan444/carrerrecomendation",
               demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
-               featured: true,
+              featured: true,
             },
             {
-  title: "Heart Disease Prediction System",
-  desc: "A Flask-based web application leveraging ML/DL models to predict the likelihood of heart disease from medical data.",
-  tags: ["Python", "ML/DL", "Flask", "HTML/CSS"],
-  link: "https://github.com/bhagavan444/heart-disease-predictor",
-  demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
-},
-{
-  title: "Fake News Detection System",
-  desc: "ML/DL-powered web application for detecting and classifying news articles as real or fake.",
-  tags: ["Python", "ML/DL", "Flask", "NLP"],
-  link: "https://github.com/bhagavan444/fake-news-detector",
-  demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
-},
-{
-  title: "Personal Portfolio Website",
-  desc: "A responsive portfolio website showcasing projects, skills, and certifications with modern UI/UX design.",
-  tags: ["React", "JavaScript", "CSS", "Framer Motion"],
-  link: "https://github.com/bhagavan444/portfolio",
-  demo: "https://bhagavan.netlify.app",
-},
-
-
-
-            
+              title: "Heart Disease Prediction System",
+              desc: "A Flask-based web application leveraging ML/DL models to predict the likelihood of heart disease from medical data.",
+              tags: ["Python", "ML/DL", "Flask", "HTML/CSS"],
+              link: "https://github.com/bhagavan444/heart-disease-predictor",
+              demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
+            },
+            {
+              title: "Fake News Detection System",
+              desc: "ML/DL-powered web application for detecting and classifying news articles as real or fake.",
+              tags: ["Python", "ML/DL", "Flask", "NLP"],
+              link: "https://github.com/bhagavan444/fake-news-detector",
+              demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
+            },
+            {
+              title: "Personal Portfolio Website",
+              desc: "A responsive portfolio website showcasing projects, skills, and certifications with modern UI/UX design.",
+              tags: ["React", "JavaScript", "CSS", "Framer Motion"],
+              link: "https://github.com/bhagavan444/portfolio",
+              demo: "https://bhagavan.netlify.app",
+            },
           ].map((project, i) => {
             const ProjectCard = project.featured ? FeaturedCard : Card;
             return (
@@ -1206,10 +1210,10 @@ const Home = () => {
                 animate={isProjectsInView ? "visible" : "hidden"}
                 variants={fadeInUp}
               >
-                <h3 style={{ fontSize: "1.7rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+                <h3 style={{ fontSize: "1.6rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                   {project.title}
                 </h3>
-                <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+                <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
                   {project.desc}
                 </p>
                 <Tags>
@@ -1247,11 +1251,8 @@ const Home = () => {
             { icon: <FaBrain />, title: "ML/DL", skills: ["TensorFlow", "Keras", "PyTorch", "Scikit-learn", "OpenCV", "Pandas", "NumPy", "Matplotlib", "Seaborn", "NLTK", "spaCy", "Hugging Face Transformers"] },
             { icon: <FaCloud />, title: "Cloud & DevOps", skills: ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Git", "GitHub Actions", "Jenkins", "Heroku", "Netlify", "Vercel"] },
             { icon: <FaDatabase />, title: "Data", skills: ["Pandas", "NumPy", "SQL", "MySQL", "MongoDB", "PostgreSQL", "Tableau", "Power BI", "Excel"] },
-            //{ icon: <FaMobileAlt />, title: "Mobile Dev", skills: ["React Native", "Flutter"] },
             { icon: <FaTools />, title: "Tools", skills: ["Git & GitHub", "GitHub Actions", "Postman", "VS Code", "Jupyter Notebook", "Anaconda", "Google Colab", "Netlify", "Vercel", "Render", "Heroku", "MongoDB Atlas", "Docker Desktop"] },
-
             { icon: <FaRobot />, title: "AI & NLP", skills: ["Hugging Face", "NLTK", "spaCy", "Transformers", "BERT", "GPT Models", "OpenAI API", "LSTM", "RNN", "Word2Vec"] },
-
             { icon: <FaUsers />, title: "Soft Skills", skills: ["Problem-Solving", "Analytical Thinking", "Communication", "Collaboration", "Leadership", "Teamwork", "Time Management", "Adaptability", "Creativity", "Critical Thinking"] },
           ].map((category, i) => (
             <Card
@@ -1260,7 +1261,7 @@ const Home = () => {
               animate={isSkillsInView ? "visible" : "hidden"}
               variants={fadeInUp}
             >
-              <h3 style={{ display: "flex", alignItems: "center", gap: "0.6rem", fontSize: "1.8rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 1)" }}>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "1.7rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {category.icon} {category.title}
               </h3>
               <Tags>
@@ -1285,27 +1286,25 @@ const Home = () => {
         <Grid>
           {[
             {
-  title: "AI/ML Intern – Smart Sorting Project",
-  company: "SmartBridge (Remote)",
-  duration: "May 2025 – June 2025",
-  desc: "Developed and deployed a CNN-based deep learning model for detecting fruit and vegetable diseases in real time using Flask.",
-  tech: ["Python", "CNN", "Flask", "TensorFlow/Keras"],
-  concepts: ["Deep Learning", "Computer Vision", "Model Deployment", "Real-time Inference"],
-  gitLink: "https://github.com/bhagavan444/smartbridge-internship",
-  certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
-},
-
+              title: "AI/ML Intern – Smart Sorting Project",
+              company: "SmartBridge (Remote)",
+              duration: "May 2025 – June 2025",
+              desc: "Developed and deployed a CNN-based deep learning model for detecting fruit and vegetable diseases in real time using Flask.",
+              tech: ["Python", "CNN", "Flask", "TensorFlow/Keras"],
+              concepts: ["Deep Learning", "Computer Vision", "Model Deployment", "Real-time Inference"],
+              gitLink: "https://github.com/bhagavan444/smartbridge-internship",
+              certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
+            },
             {
-  title: "Machine Learning & Data Science Intern",
-  company: "Blackbucks (Remote)",
-  duration: "May 2024 – June 2024",
-  desc: "Built and optimized regression models for house price prediction using Scikit-learn. Applied feature engineering, data preprocessing, and hyperparameter tuning to improve model accuracy.",
-  tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
-  concepts: ["Regression Analysis", "Feature Engineering", "Data Preprocessing", "Model Optimization"],
-  gitLink: "https://github.com/bhagavan444/blackbucks-internship",
-  certLink: "https://drive.google.com/file/d/1yQQqBf32o8d3sYlheDCdaLTKj5_hepfY/view",
-},
-
+              title: "Machine Learning & Data Science Intern",
+              company: "Blackbucks (Remote)",
+              duration: "May 2024 – June 2024",
+              desc: "Built and optimized regression models for house price prediction using Scikit-learn. Applied feature engineering, data preprocessing, and hyperparameter tuning to improve model accuracy.",
+              tech: ["Python", "Scikit-learn", "Pandas", "NumPy", "Matplotlib"],
+              concepts: ["Regression Analysis", "Feature Engineering", "Data Preprocessing", "Model Optimization"],
+              gitLink: "https://github.com/bhagavan444/blackbucks-internship",
+              certLink: "https://drive.google.com/file/d/1yQQqBf32o8d3sYlheDCdaLTKj5_hepfY/view",
+            },
           ].map((intern, i) => (
             <Card
               key={i}
@@ -1313,13 +1312,13 @@ const Home = () => {
               animate={isInternshipsInView ? "visible" : "hidden"}
               variants={fadeInUp}
             >
-              <h3 style={{ fontSize: "1.7rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+              <h3 style={{ fontSize: "1.6rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {intern.title} – {intern.company}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#00ffcc" }}>
+              <p style={{ fontSize: "1.2rem", color: "#d8b4fe" }}>
                 {intern.duration}
               </p>
-              <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
                 {intern.desc}
               </p>
               <Tags>
@@ -1355,56 +1354,54 @@ const Home = () => {
           <FaAward /> Certifications
         </SectionTitle>
         <div>
-  <p style={{ color: "#cbd5e1", fontSize: "1.7rem", marginBottom: "1.5rem", textAlign: "center" }}>
-    These certifications showcase my expertise in programming, full-stack development, cloud technologies, machine learning, AI, and modern development tools. Each credential demonstrates hands-on experience and practical knowledge gained through projects and training.
-  </p>
-
-  <Grid>
-    {[
-      "Java",
-      "Python",
-      "React",
-      "MERN Stack",
-      "Flask",
-      "Django",
-      "ServiceNow",
-      "ML",
-      "Cloud",
-      "MySQL",
-      "DSA",
-      "C Programming",
-      "Large Language Models",
-      "Chatbot Development",
-      "Generative AI: Beyond the Chatbot",
-    ].map((cert, i) => (
-      <Card
-        key={i}
-        initial="hidden"
-        animate={isCertificationsInView ? "visible" : "hidden"}
-        variants={fadeInUp}
-      >
-        <h3
-          style={{
-            fontSize: "1.4rem",
-            color: "#e0e7ff",
-            textShadow: "0 0 10px rgba(224, 231, 255, 0.4)",
-          }}
-        >
-          {cert}
-        </h3>
-        <ModalButton
-          as="a"
-          href={`https://drive.google.com/drive/folders/1QhkuBUMKwIXQPSsh-9z98ra80BtUc_WS`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FiEye /> View
-        </ModalButton>
-      </Card>
-    ))}
-  </Grid>
-</div>
-
+          <p style={{ color: "#e2e8f0", fontSize: "1.6rem", marginBottom: "1.2rem", textAlign: "center" }}>
+            These certifications showcase my expertise in programming, full-stack development, cloud technologies, machine learning, AI, and modern development tools. Each credential demonstrates hands-on experience and practical knowledge gained through projects and training.
+          </p>
+          <Grid>
+            {[
+              "Java",
+              "Python",
+              "React",
+              "MERN Stack",
+              "Flask",
+              "Django",
+              "ServiceNow",
+              "ML",
+              "Cloud",
+              "MySQL",
+              "DSA",
+              "C Programming",
+              "Large Language Models",
+              "Chatbot Development",
+              "Generative AI: Beyond the Chatbot",
+            ].map((cert, i) => (
+              <Card
+                key={i}
+                initial="hidden"
+                animate={isCertificationsInView ? "visible" : "hidden"}
+                variants={fadeInUp}
+              >
+                <h3
+                  style={{
+                    fontSize: "1.3rem",
+                    color: "#e2e8f0",
+                    textShadow: "0 0 8px rgba(226, 232, 240, 0.3)",
+                  }}
+                >
+                  {cert}
+                </h3>
+                <ModalButton
+                  as="a"
+                  href={`https://drive.google.com/drive/folders/1QhkuBUMKwIXQPSsh-9z98ra80BtUc_WS`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FiEye /> View
+                </ModalButton>
+              </Card>
+            ))}
+          </Grid>
+        </div>
       </Section>
 
       {/* Workshops Section */}
@@ -1419,43 +1416,41 @@ const Home = () => {
         <Grid>
           {[
             {
-    title: "Machine Learning with Python",
-    desc: "Comprehensive hands-on workshop on machine learning fundamentals, including data preprocessing, model building, and evaluation using Python.",
-    tags: ["Python", "Machine Learning", "Data Science"],
-    year: "2024",
-  },
-  {
-    title: "Deep Learning with TensorFlow",
-    desc: "In-depth exploration of deep learning concepts, neural network architectures, and practical implementations using TensorFlow and Keras.",
-    tags: ["TensorFlow", "Keras", "Deep Learning"],
-    year: "2025",
-  },
-  {
-    title: "Mobile App Development",
-    desc: "Workshop on building responsive and feature-rich mobile applications using modern frameworks like React Native.",
-    tags: ["Mobile Development", "React Native", "Frontend"],
-    year: "2023",
-  },
-  {
-    title: "Full-Stack Web Development",
-    desc: "End-to-end web development training covering frontend (React), backend (Node.js, Express), and database integration (MongoDB) using the MERN stack.",
-    tags: ["Full Stack", "MERN", "Web Development"],
-    year: "2022",
-  },
-  {
-    title: "Artificial Intelligence & Data Science Workshop",
-    desc: "Hands-on workshop covering fundamentals of AI, Machine Learning, and Data Science, including practical applications and projects.",
-    tags: ["AI", "Data Science", "Workshop"],
-    year: "2022",
-},
-{
-    title: "Web Development Workshop",
-    desc: "Hands-on workshop covering frontend development with HTML, CSS, and JavaScript, including practical projects and real-world applications.",
-    tags: ["Web Development", "Frontend", "JavaScript"],
-    year: "2022",
-},
-
-
+              title: "Machine Learning with Python",
+              desc: "Comprehensive hands-on workshop on machine learning fundamentals, including data preprocessing, model building, and evaluation using Python.",
+              tags: ["Python", "Machine Learning", "Data Science"],
+              year: "2024",
+            },
+            {
+              title: "Deep Learning with TensorFlow",
+              desc: "In-depth exploration of deep learning concepts, neural network architectures, and practical implementations using TensorFlow and Keras.",
+              tags: ["TensorFlow", "Keras", "Deep Learning"],
+              year: "2025",
+            },
+            {
+              title: "Mobile App Development",
+              desc: "Workshop on building responsive and feature-rich mobile applications using modern frameworks like React Native.",
+              tags: ["Mobile Development", "React Native", "Frontend"],
+              year: "2023",
+            },
+            {
+              title: "Full-Stack Web Development",
+              desc: "End-to-end web development training covering frontend (React), backend (Node.js, Express), and database integration (MongoDB) using the MERN stack.",
+              tags: ["Full Stack", "MERN", "Web Development"],
+              year: "2022",
+            },
+            {
+              title: "Artificial Intelligence & Data Science Workshop",
+              desc: "Hands-on workshop covering fundamentals of AI, Machine Learning, and Data Science, including practical applications and projects.",
+              tags: ["AI", "Data Science", "Workshop"],
+              year: "2022",
+            },
+            {
+              title: "Web Development Workshop",
+              desc: "Hands-on workshop covering frontend development with HTML, CSS, and JavaScript, including practical projects and real-world applications.",
+              tags: ["Web Development", "Frontend", "JavaScript"],
+              year: "2022",
+            },
           ].map((workshop, i) => (
             <Card
               key={i}
@@ -1463,13 +1458,13 @@ const Home = () => {
               animate={isWorkshopsInView ? "visible" : "hidden"}
               variants={fadeInUp}
             >
-              <h3 style={{ fontSize: "1.7rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+              <h3 style={{ fontSize: "1.6rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {workshop.title}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#00ffcc" }}>
+              <p style={{ fontSize: "1.2rem", color: "#d8b4fe" }}>
                 {workshop.year}
               </p>
-              <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
                 {workshop.desc}
               </p>
               <Tags>
@@ -1492,57 +1487,56 @@ const Home = () => {
           <FaTrophy /> Hackathons
         </SectionTitle>
         <Grid>
-  <Card
-    initial="hidden"
-    animate={isHackathonsInView ? "visible" : "hidden"}
-    variants={fadeInUp}
-  >
-    <h3
-      style={{
-        fontSize: "1.7rem",
-        color: "#e0e7ff",
-        textShadow: "0 0 10px rgba(224, 231, 255, 0.4)",
-      }}
-    >
-      24-Hour Hackathon – Brainovision, RCE Eluru
-    </h3>
-    <p style={{ fontSize: "1.4rem", color: "#00ffcc" }}>2025</p>
-    <p
-      style={{
-        fontSize: "1.2rem",
-        color: "#e0e7ff",
-        lineHeight: "1.6",
-      }}
-    >
-      Developed a full-stack web platform for buying and selling second-hand electronics, implementing user authentication, product listing, and real-time transactions within 24 hours.
-    </p>
-    <Tags>
-      <Tag>Hackathon</Tag>
-      <Tag>Full Stack</Tag>
-      <Tag>E-Commerce</Tag>
-      <Tag>React</Tag>
-      <Tag>Node.js</Tag>
-      <Tag>MongoDB</Tag>
-    </Tags>
-    <Links>
-      <Link
-        href="https://github.com/bhagavan444/hacakthon-project"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FaGithub /> Code
-      </Link>
-       <Link
-        href="https://drive.google.com/file/d/1CQaoA9V93Lg4XS1FmcG-0gVUaKvw2zUq/view"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <FaGithub /> Certificate
-      </Link>
-    </Links>
-  </Card>
-</Grid>
-
+          <Card
+            initial="hidden"
+            animate={isHackathonsInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+          >
+            <h3
+              style={{
+                fontSize: "1.6rem",
+                color: "#e2e8f0",
+                textShadow: "0 0 8px rgba(226, 232, 240, 0.3)",
+              }}
+            >
+              24-Hour Hackathon – Brainovision, RCE Eluru
+            </h3>
+            <p style={{ fontSize: "1.3rem", color: "#d8b4fe" }}>2025</p>
+            <p
+              style={{
+                fontSize: "1.1rem",
+                color: "#e2e8f0",
+                lineHeight: "1.5",
+              }}
+            >
+              Developed a full-stack web platform for buying and selling second-hand electronics, implementing user authentication, product listing, and real-time transactions within 24 hours.
+            </p>
+            <Tags>
+              <Tag>Hackathon</Tag>
+              <Tag>Full Stack</Tag>
+              <Tag>E-Commerce</Tag>
+              <Tag>React</Tag>
+              <Tag>Node.js</Tag>
+              <Tag>MongoDB</Tag>
+            </Tags>
+            <Links>
+              <Link
+                href="https://github.com/bhagavan444/hacakthon-project"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaGithub /> Code
+              </Link>
+              <Link
+                href="https://drive.google.com/file/d/1CQaoA9V93Lg4XS1FmcG-0gVUaKvw2zUq/view"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaGithub /> Certificate
+              </Link>
+            </Links>
+          </Card>
+        </Grid>
       </Section>
 
       {/* Coding Platforms Section */}
@@ -1581,10 +1575,10 @@ const Home = () => {
               animate={isCodingInView ? "visible" : "hidden"}
               variants={fadeInUp}
             >
-              <h3 style={{ fontSize: "1.6rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+              <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {platform.title}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
                 {platform.desc}
               </p>
               <Tags>
@@ -1635,10 +1629,10 @@ const Home = () => {
               animate={isHobbiesInView ? "visible" : "hidden"}
               variants={fadeInUp}
             >
-              <h3 style={{ fontSize: "1.6rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+              <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {hobby.title}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
                 {hobby.desc}
               </p>
               <Tags>
@@ -1679,10 +1673,10 @@ const Home = () => {
               animate={isExtracurricularInView ? "visible" : "hidden"}
               variants={fadeInUp}
             >
-              <h3 style={{ fontSize: "1.6rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+              <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {activity.title}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
                 {activity.desc}
               </p>
               <Tags>
@@ -1746,10 +1740,10 @@ const Home = () => {
             animate={isResumeInView ? "visible" : "hidden"}
             variants={fadeInUp}
           >
-            <h3 style={{ fontSize: "1.6rem", color: "#e0e7ff", textShadow: "0 0 10px rgba(224, 231, 255, 0.4)" }}>
+            <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
               My Professional Resume
             </h3>
-            <p style={{ fontSize: "1.3rem", color: "#e0e7ff", lineHeight: "1.6" }}>
+            <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
               Explore my detailed resume showcasing my journey as a Full-Stack Developer and AI & Data Science enthusiast. It includes my education, projects, skills, internships, certifications, and more, highlighting my expertise in MERN stack, Python, machine learning, and cloud technologies.
             </p>
             <Links>
@@ -1809,7 +1803,7 @@ const Home = () => {
             <iframe
               src={resumePdf}
               title="Resume"
-              style={{ width: "100%", height: "80vh", border: "none", borderRadius: "15px" }}
+              style={{ width: "100%", height: "80vh", border: "none", borderRadius: "12px" }}
             />
             <ModalButton as="a" href={resumePdf} download="Siva_Bhagavan_Resume.pdf" target="_blank" rel="noopener noreferrer">
               <FiDownload /> Download
