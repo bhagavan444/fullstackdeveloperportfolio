@@ -1,0 +1,353 @@
+/* Resume.css */
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Resume Container */
+.resume-container {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a001a, #1a0040, #2a0060);
+  padding: 5rem 3rem;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Resume Card */
+.resume-card {
+  background: rgba(20, 10, 40, 0.95);
+  border: 3px solid rgba(0, 191, 255, 0.6);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  animation: cardPulse 5s ease-in-out infinite;
+  transition: box-shadow 0.6s ease, transform 0.6s ease;
+}
+
+/* Card Pulse Animation */
+@keyframes cardPulse {
+  0%, 100% {
+    box-shadow: 0 20px 50px rgba(0, 191, 255, 0.4), 0 0 30px rgba(255, 105, 180, 0.3);
+  }
+  50% {
+    box-shadow: 0 30px 70px rgba(0, 191, 255, 0.6), 0 0 50px rgba(255, 105, 180, 0.5);
+  }
+}
+
+/* Resume Title */
+.resume-title {
+  font-size: 3rem;
+  color: #00bfff;
+  text-shadow: 0 0 25px rgba(0, 191, 255, 0.9), 0 0 40px rgba(255, 105, 180, 0.7);
+  font-weight: 900;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, #00bfff, #ff69b4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradientFlow 6s linear infinite;
+}
+
+/* Gradient Flow Animation */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Resume Description */
+.resume-description {
+  font-size: 1.3rem;
+  color: #d0d8e8;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
+  line-height: 1.7;
+  background: linear-gradient(90deg, #d0d8e8, #a3bffa);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Resume Button Group */
+.resume-btn-group {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+/* Resume Buttons */
+.resume-btn {
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.preview-btn {
+  background: linear-gradient(90deg, #0ea5e9, #1d4ed8);
+}
+
+.download-btn {
+  background: linear-gradient(90deg, #10b981, #047857);
+}
+
+/* Modal Overlay */
+.resume-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  will-change: opacity, backdrop-filter;
+}
+
+/* Modal Content */
+.resume-modal-content {
+  background: rgba(20, 10, 40, 0.98);
+  border: 3px solid rgba(0, 191, 255, 0.7);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 95vw;
+  max-height: 95vh;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 191, 255, 0.6), 0 0 40px rgba(255, 105, 180, 0.5);
+  backdrop-filter: blur(8px);
+  transform-style: preserve-3d;
+}
+
+/* Close Button */
+.resume-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #00bfff;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+/* Zoom Indicator */
+.resume-modal-content > div {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: #d0d8e8;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+}
+
+/* Loading Spinner Animation */
+@keyframes loadingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.resume-loading {
+  font-size: 1.8rem;
+  color: #00bfff;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 191, 255, 0.7);
+  animation: loadingSpin 1.5s linear infinite;
+}
+
+/* Iframe */
+.resume-iframe {
+  width: 100%;
+  height: 75vh;
+  border: none;
+  border-radius: 12px;
+  box-shadow: inset 0 0 25px rgba(0, 191, 255, 0.4);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Responsive Design */
+
+/* Large Screens (Desktops) */
+@media (max-width: 1200px) {
+  .resume-card {
+    padding: 2.5rem;
+    max-width: 800px;
+  }
+
+  .resume-title {
+    font-size: 2.8rem;
+  }
+
+  .resume-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+  }
+
+  .resume-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .resume-container {
+    padding: 4rem 2rem;
+  }
+
+  .resume-card {
+    padding: 2rem;
+    max-width: 700px;
+  }
+
+  .resume-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .resume-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .resume-btn-group {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .resume-modal-content {
+    padding: 2rem;
+    max-width: 90vw;
+  }
+
+  .resume-iframe {
+    height: 70vh;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  .resume-container {
+    padding: 3rem 1rem;
+  }
+
+  .resume-card {
+    padding: 1.5rem;
+    max-width: 100%;
+    border-radius: 15px;
+  }
+
+  .resume-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .resume-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .resume-btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .resume-modal-content {
+    padding: 1.5rem;
+    max-width: 85vw;
+  }
+
+  .resume-iframe {
+    height: 60vh;
+  }
+
+  .resume-close-btn {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* Accessibility Enhancements */
+.resume-card:focus-within {
+  outline: 3px solid #00bfff;
+  outline-offset: 5px;
+}
+
+.resume-btn:focus {
+  outline: 3px solid #00bfff;
+  outline-offset: 2px;
+}
+
+.resume-close-btn:focus {
+  outline: 2px solid #ff69b4;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .resume-card {
+    background: #000;
+    border: 3px solid #fff;
+  }
+
+  .resume-title,
+  .resume-description,
+  .resume-btn,
+  .resume-close-btn,
+  .resume-modal-content > div,
+  .resume-loading {
+    color: #fff;
+    text-shadow: none;
+  }
+
+  .resume-btn {
+    background: #000;
+    border: 2px solid #fff;
+  }
+
+  .resume-iframe {
+    box-shadow: none;
+  }
+}
+
+/* Reduced Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .resume-card,
+  .resume-btn,
+  .resume-title,
+  .resume-description,
+  .resume-modal-overlay,
+  .resume-modal-content,
+  .resume-loading,
+  .resume-iframe,
+  .resume-container > div {
+    animation: none;
+    transition: none;
+  }
+}
