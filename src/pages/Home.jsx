@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import "./Home.css";
 import profile from "../assets/profile.jpg"; // one level up from pages
@@ -33,7 +33,7 @@ import { FiX, FiSend, FiDownload, FiEye } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 import resumePdf from "../assets/bhagavanresume.pdf";
 
-// Enhanced Styled Components
+// Enhanced Styled Components (unchanged)
 const Container = styled.div`
   position: relative;
   min-height: 100vh;
@@ -382,11 +382,7 @@ const Card = styled(motion.div)`
   min-height: 280px;
   box-sizing: border-box;
 
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.25);
-    border-color: #a855f7;
-  }
+ 
 
   @media (max-width: 768px) {
     padding: 1.3rem;
@@ -825,11 +821,7 @@ const CloseButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
 
-  &:hover {
-    color: #a855f7;
-    transform: rotate(90deg);
-    text-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
-  }
+ 
 
   @media (max-width: 480px) {
     top: 0.8rem;
@@ -838,7 +830,7 @@ const CloseButton = styled.button`
   }
 `;
 
-const ModalButton = styled.button`
+const ModalButton = styled(motion.button)`
   padding: 1rem 2.5rem;
   border-radius: 12px;
   font-weight: 600;
@@ -943,9 +935,47 @@ const BackgroundAnimation = () => {
   return <ParticleBackground ref={canvasRef} />;
 };
 
+// Animation Variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const cardHover = {
+  hover: {
+    scale: 1.05,
+    //rotate: 2,
+    boxShadow: "0 15px 35px rgba(168, 85, 247, 0.4)",
+    transition: { duration: 0.3 },
+  },
+};
+
+const skillCard = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut", type: "spring", stiffness: 100 },
+  },
+};
+
+const buttonPulse = {
+  hover: {
+    scale: 1.1,
+    boxShadow: "0 0 15px rgba(168, 85, 247, 0.6)",
+    transition: { duration: 0.3, yoyo: Infinity },
+  },
 };
 
 const Home = () => {
@@ -1030,69 +1060,78 @@ const Home = () => {
     <Container>
       <BackgroundAnimation />
 
-      {/* Navigation */}
+      {/* Navigation (unchanged) */}
       <Nav>
         <NavBrand href="#home">Bhagavan</NavBrand>
         <NavLinks>
           <NavLink href="#home">Home</NavLink>
           <NavLink href="#about">About</NavLink>
+          <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#resume">Resume</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </NavLinks>
       </Nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Staggered Animations */}
       <HeroSection id="home">
         <HeroContent
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
         >
-          <ProfileImage src={profile} alt="Siva Satya Sai Bhagavan Gopalajosyula" />
+          <motion.div variants={fadeInUp}>
+            <ProfileImage src={profile} alt="Siva Satya Sai Bhagavan Gopalajosyula" />
+          </motion.div>
           <HeaderContainer>
-            <Title
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              Siva Satya Sai Bhagavan
-            </Title>
-            <Subtitle
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-            >
+            <Title variants={fadeInUp}>Siva Satya Sai Bhagavan</Title>
+            <Subtitle variants={fadeInUp}>
               Full-Stack Developer | AI & Data Science Enthusiast | Crafting scalable solutions with MERN, Python, Java, and Cloud technologies.
             </Subtitle>
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.7 }}
+              variants={fadeInUp}
               style={{ display: "flex", gap: "1rem", justifyContent: "center" }}
             >
-              <CTAButton whileHover={{ scale: 1.05 }} href="#projects">
+              <CTAButton
+                href="#projects"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <FaProjectDiagram /> Projects
               </CTAButton>
-              <CTAButton whileHover={{ scale: 1.05 }} href="#contact">
+              <CTAButton
+                href="#contact"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <FiSend /> Contact
               </CTAButton>
             </motion.div>
+            <motion.div variants={fadeInUp}>
+              <Socials>
+                <SocialLink href="mailto:g.sivasatyasaibhagavan@gmail.com">
+                  <FaEnvelope />
+                </SocialLink>
+                <SocialLink
+                  href="https://www.linkedin.com/in/siva-satya-sai-bhagavan-gopalajosyula-1624a027b/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaLinkedin />
+                </SocialLink>
+                <SocialLink
+                  href="https://github.com/bhagavan444"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FaGithub />
+                </SocialLink>
+              </Socials>
+            </motion.div>
           </HeaderContainer>
-          <Socials>
-            <SocialLink href="mailto:g.sivasatyasaibhagavan@gmail.com">
-              <FaEnvelope />
-            </SocialLink>
-            <SocialLink href="https://www.linkedin.com/in/siva-satya-sai-bhagavan-gopalajosyula-1624a027b/" target="_blank" rel="noreferrer">
-              <FaLinkedin />
-            </SocialLink>
-            <SocialLink href="https://github.com/bhagavan444" target="_blank" rel="noreferrer">
-              <FaGithub />
-            </SocialLink>
-          </Socials>
         </HeroContent>
       </HeroSection>
 
-      {/* About Section */}
+      {/* About Section (unchanged animation) */}
       <Section id="about" ref={aboutRef}>
         <SectionTitle
           initial="hidden"
@@ -1110,7 +1149,7 @@ const Home = () => {
         </AboutText>
       </Section>
 
-      {/* Education Section */}
+      {/* Education Section (unchanged animation) */}
       <Section id="education" ref={educationRef}>
         <SectionTitle
           initial="hidden"
@@ -1145,7 +1184,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Projects Section */}
+      {/* Projects Section with Hover Animations */}
       <Section id="projects" ref={projectsRef}>
         <SectionTitle
           initial="hidden"
@@ -1209,6 +1248,8 @@ const Home = () => {
                 initial="hidden"
                 animate={isProjectsInView ? "visible" : "hidden"}
                 variants={fadeInUp}
+                whileHover="hover"
+                variants={cardHover}
               >
                 <h3 style={{ fontSize: "1.6rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                   {project.title}
@@ -1235,7 +1276,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Skills Section */}
+      {/* Skills Section with Bounce Animation */}
       <Section id="skills" ref={skillsRef}>
         <SectionTitle
           initial="hidden"
@@ -1259,7 +1300,9 @@ const Home = () => {
               key={i}
               initial="hidden"
               animate={isSkillsInView ? "visible" : "hidden"}
-              variants={fadeInUp}
+              variants={skillCard}
+              whileHover="hover"
+              variants={cardHover}
             >
               <h3 style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "1.7rem", color: "#e2e8f0", textShadow: "0 0 8px rgba(226, 232, 240, 0.3)" }}>
                 {category.icon} {category.title}
@@ -1274,7 +1317,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Internships Section */}
+      {/* Internships Section (unchanged animation) */}
       <Section id="internships" ref={internshipsRef}>
         <SectionTitle
           initial="hidden"
@@ -1344,7 +1387,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Certifications Section */}
+      {/* Certifications Section with Concepts and View Certificate Button */}
       <Section id="certifications" ref={certificationsRef}>
         <SectionTitle
           initial="hidden"
@@ -1359,27 +1402,114 @@ const Home = () => {
           </p>
           <Grid>
             {[
-              "Java",
-              "Python",
-              "React",
-              "MERN Stack",
-              "Flask",
-              "Django",
-              "ServiceNow",
-              "ML",
-              "Cloud",
-              "MySQL",
-              "DSA",
-              "C Programming",
-              "Large Language Models",
-              "Chatbot Development",
-              "Generative AI: Beyond the Chatbot",
+              {
+                title: "Java",
+                concepts: ["OOP", "Data Structures", "Concurrency", "Java APIs"],
+                certLink: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "C for Everyone – Coursera",
+                concepts: ["C Syntax, Pointers, Memory Management, Data Structures, File I/O"],
+                certLink: "https://drive.google.com/file/d/1_icpofMdYi5iGjbELOY0VHMBloGJDhAA/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "Python",
+                concepts: ["Scripting", "Data Analysis", "OOP", "File Handling"],
+                certLink: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "React",
+                concepts: ["Component-Based Architecture", "State Management", "Hooks", "React Router"],
+                certLink: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "AWS Certified",
+                concepts: ["EC2, S3, Lambda, CloudFormation, VPC"],
+                certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "R Programming",
+                concepts: ["R Syntax, Data Visualization, Statistical Analysis, Data Frames, Packages"],
+                certLink: "https://drive.google.com/file/d/14MnNRgQKwmCXCeZIr1QG0Q9-GhE1jVJJ/view?usp=sharing", // Replace with actual link
+              },
+              {
+                title: "Django",
+                concepts: ["MVC Architecture", "ORM", "Authentication", "API Development"],
+                certLink: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view", // Replace with actual link
+              },
+              {
+                title: "ServiceNow",
+                concepts: ["ITSM", "Workflow Automation", "Service Management", "Scripting"],
+                certLink: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view", // Replace with actual link
+              },
+              {
+                title: "ML Using Python",
+                concepts: ["Supervised Learning", "Unsupervised Learning", "Model Evaluation", "Feature Engineering"],
+                certLink: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view", // Replace with actual link
+              },
+              {
+                title: "AWS",
+                concepts: ["Cloud Computing", "IaaS", "PaaS", "Serverless Architecture"],
+                certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view", // Replace with actual link
+              },
+              {
+                title: "Mastering the Art of Programming - IBM Skills",
+                concepts: ["Algorithm Design, Problem Solving, Code Optimization, Debugging, Best Practices"],
+                certLink: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing", // Replace with actual link
+              },
+              {
+                title: "Software Engineering",
+                concepts: ["SDLC, Agile, Design Patterns, Testing, UML"],
+                certLink: "https://drive.google.com/file/d/1siy3p3J8Y9yr8oSzrXMjf0fZ7V7iNKcl/view?usp=sharing", // Replace with actual link
+              },
+              {
+                title: "Continuous Integration and Continuous Delivery",
+                concepts: ["CI/CD Pipelines, Jenkins, Git, Docker, Automation"],
+                certLink: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing", // Replace with actual link
+              },
+              {
+                title: "Large Language Models",
+                concepts: ["LLMs, Transformers, Fine-Tuning, NLP, Prompt Engineering"],
+                certLink: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing", // Replace with actual link
+              },
+              {
+                title: "Chatbot Development",
+                concepts: ["NLP", "Dialog Management", "API Integration", "Conversational AI"],
+                certLink: "https://drive.google.com/file/d/1HOr1qGDbIZ_t-Uw3KJU9PGYk65xCW41R/view?usp=sharing", // Replace with actual link
+              },
+              {
+                title: "HTML ",
+                concepts: ["HTML5, Semantic Tags, Forms, Accessibility, DOM Structure"],
+                certLink: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link", // Replace with actual link
+              },
+               {
+                title: "CSS",
+                concepts: ["CSS3, Flexbox, Grid, Animations, Responsive Design"],
+                certLink: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link", // Replace with actual link
+              },
+               {
+                title: "Mastering Python",
+                concepts: ["Advanced Python, Decorators, Generators, Modules, Concurrency"],
+                certLink: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "MLOps",
+                concepts: ["Model Deployment, CI/CD for ML, Monitoring, Data Pipelines, Scalability"],
+                certLink: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link", // Replace with actual link
+              },
+              {
+                title: "JavaScript",
+                concepts: ["JavaScript ES6, DOM Manipulation, Async Programming, Events, APIs"],
+                certLink: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link", // Replace with actual link
+              },
             ].map((cert, i) => (
               <Card
                 key={i}
                 initial="hidden"
                 animate={isCertificationsInView ? "visible" : "hidden"}
                 variants={fadeInUp}
+                whileHover="hover"
+                variants={cardHover}
               >
                 <h3
                   style={{
@@ -1388,23 +1518,34 @@ const Home = () => {
                     textShadow: "0 0 8px rgba(226, 232, 240, 0.3)",
                   }}
                 >
-                  {cert}
+                  {cert.title}
                 </h3>
-                <ModalButton
-                  as="a"
-                  href={`https://drive.google.com/drive/folders/1QhkuBUMKwIXQPSsh-9z98ra80BtUc_WS`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FiEye /> View
-                </ModalButton>
+                <Tags>
+                  {cert.concepts.map((concept) => (
+                    <Tag key={concept} className="concept">
+                      {concept}
+                    </Tag>
+                  ))}
+                </Tags>
+                <Links>
+                  <ModalButton
+                    as="a"
+                    href={cert.certLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    whileHover="hover"
+                    variants={buttonPulse}
+                  >
+                    <FiEye /> View Certificate
+                  </ModalButton>
+                </Links>
               </Card>
             ))}
           </Grid>
         </div>
       </Section>
 
-      {/* Workshops Section */}
+      {/* Workshops Section (unchanged animation) */}
       <Section id="workshops" ref={workshopsRef}>
         <SectionTitle
           initial="hidden"
@@ -1477,7 +1618,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Hackathons Section */}
+      {/* Hackathons Section (unchanged animation) */}
       <Section id="hackathons" ref={hackathonsRef}>
         <SectionTitle
           initial="hidden"
@@ -1532,14 +1673,14 @@ const Home = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaGithub /> Certificate
+                <FaCertificate /> Certificate
               </Link>
             </Links>
           </Card>
         </Grid>
       </Section>
 
-      {/* Coding Platforms Section */}
+      {/* Coding Platforms Section (unchanged animation) */}
       <Section id="coding" ref={codingRef}>
         <SectionTitle
           initial="hidden"
@@ -1596,7 +1737,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Hobbies Section */}
+      {/* Hobbies Section (unchanged animation) */}
       <Section id="hobbies" ref={hobbiesRef}>
         <SectionTitle
           initial="hidden"
@@ -1645,7 +1786,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Extracurricular Activities Section */}
+      {/* Extracurricular Activities Section (unchanged animation) */}
       <Section id="extracurricular" ref={extracurricularRef}>
         <SectionTitle
           initial="hidden"
@@ -1689,7 +1830,7 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Contact Section */}
+      {/* Contact Section (unchanged animation) */}
       <ContactSection id="contact" ref={contactRef}>
         <SectionTitle
           initial="hidden"
@@ -1714,7 +1855,12 @@ const Home = () => {
         >
           <Input type="text" name="user_name" placeholder="Name" required />
           <Input type="email" name="user_email" placeholder="Email" required />
-          <Textarea name="message" placeholder="Message" required onChange={(e) => setMessageLength(e.target.value.length)} />
+          <Textarea
+            name="message"
+            placeholder="Message"
+            required
+            onChange={(e) => setMessageLength(e.target.value.length)}
+          />
           <CharCount>{messageLength}/{maxMessageLength}</CharCount>
           {emailError && <ErrorMessage>{emailError}</ErrorMessage>}
           {formError && <ErrorMessage>{formError}</ErrorMessage>}
@@ -1725,7 +1871,7 @@ const Home = () => {
         </Form>
       </ContactSection>
 
-      {/* Resume Section */}
+      {/* Resume Section (unchanged animation) */}
       <Section id="resume" ref={resumeRef}>
         <SectionTitle
           initial="hidden"
@@ -1744,8 +1890,7 @@ const Home = () => {
               My Professional Resume
             </h3>
             <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.5" }}>
-              Explore my detailed resume showcasing my journey as a Full-Stack Developer and AI & Data Science enthusiast. It includes my education, projects, skills, internships, certifications, and more, highlighting my expertise in MERN stack, Python, machine learning, and cloud technologies.
-            </p>
+              Explore my detailed resume showcasing my journey as a Full-Stack Developer and AI & Data Science enthusiast. It includes my education, projects, skills, internships, certifications, and more, highlighting my expertise in MERN stack, Python, machine learning, and cloud technologies.</p>
             <Links>
               <Link href={resumePdf} target="_blank" rel="noopener noreferrer">
                 <FiEye /> View
