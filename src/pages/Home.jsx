@@ -1379,7 +1379,6 @@ const Home = () => {
         <NavLinks>
           <NavLink href="#home">Home</NavLink>
           <NavLink href="#about">About</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#resume">Resume</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </NavLinks>
@@ -2562,7 +2561,7 @@ const Home = () => {
           animate={isContactInView ? "visible" : "hidden"}
           variants={fadeInUp}
         >
-          Ready to build scalable MERN solutions for your MNC? Let's collaborate on innovative projects.
+          Open to delivering impactful solutions in Full-Stack Development, AI, Data Science, and Cloud — let’s work together to drive innovation
         </ContactIntro>
         <AnimatePresence>
           {isSent && (
@@ -2586,7 +2585,7 @@ const Home = () => {
           <Input type="email" name="user_email" placeholder="Your Gmail" required />
           <Textarea
             name="message"
-            placeholder="Tell me about your project—let's make it MERN-powered!"
+            placeholder="Share your project idea — together we can craft scalable, future-ready solutions!"
             required
             onChange={(e) => setMessageLength(e.target.value.length)}
           />
@@ -2623,7 +2622,7 @@ const Home = () => {
               My Professional Resume
             </h3>
             <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
-              Comprehensive overview of my MERN expertise, AI projects, and MNC-ready skills. Tailored for full-stack roles. View in-app for seamless experience.
+               Versatile Full-Stack Developer with expertise in the MERN stack (MongoDB, Express.js, React, Node.js), Artificial Intelligence, and Data Science. Experienced in building scalable web applications, developing intelligent AI/ML models, and deploying cloud-based solutions. Skilled at integrating frontend and backend systems, optimizing performance, and delivering secure, user-friendly applications. Demonstrated ability to innovate through hackathons, research-based projects, and real-world applications across domains including web development, AI, and cloud technologies. Equipped with strong problem-solving, collaboration, and adaptability skills, making me well-prepared for impactful roles in product-based and service-based MNCs
             </p>
             <Links style={{ justifyContent: 'center', gap: '2rem' }}>
               <ModalButton
@@ -2648,7 +2647,10 @@ const Home = () => {
           variants={staggerContainer}
         >
           <FooterTitle variants={fadeInUp}>Siva Satya Sai Bhagavan <FaBolt style={{ fontSize: '1.2rem', marginLeft: '0.3rem' }} /></FooterTitle>
-          <FooterText variants={fadeInUp}>© 2025 | Crafting the Future of MERN Development | Full-Stack Innovator</FooterText>
+          <FooterText variants={fadeInUp}>
+  © 2025 | MERN Stack | AI & Data Science | Cloud Computing | Scalable Solutions
+</FooterText>
+
           <FooterLinks>
             <FooterLink href="#home" variants={fadeInUp}>Home</FooterLink>
             <FooterLink href="#about" variants={fadeInUp}>About</FooterLink>
