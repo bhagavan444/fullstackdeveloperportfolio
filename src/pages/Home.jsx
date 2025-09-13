@@ -69,7 +69,7 @@ const Nav = styled.nav`
 `;
 
 const NavBrand = styled.a`
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
   -webkit-background-clip: text;
@@ -102,7 +102,8 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled.a`
-  color: #d4d4d8;
+  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
+  background-clip:text;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -1242,7 +1243,7 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan | Full-Stack & AI/ML <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           <NavLink href="#home">Home</NavLink>
           <NavLink href="#about">About</NavLink>
@@ -1276,7 +1277,8 @@ const Home = () => {
           </motion.div>
           <HeaderContainer>
             <Title variants={fadeInUp}>Siva Satya Sai Bhagavan</Title>
-            <TypingSubtitle text="Full-Stack Developer | AI & Data Science Enthusiast | Crafting scalable MERN solutions with Python, Java, and Cloud tech for MNCs." />
+            <TypingSubtitle text="Full-Stack Developer & AI/ML Enthusiast | Building scalable MERN & Python solutions | Skilled in Java, Cloud, DevOps & Data-Driven Applications for Enterprise and Product Innovation." />
+
             <motion.div
               variants={fadeInUp}
               style={{ display: "flex", gap: "1.8rem", justifyContent: "center", flexWrap: 'wrap' }}
@@ -1366,9 +1368,13 @@ const Home = () => {
               Current Aggregate: 70% | Focus: MERN & AI Integration
             </p>
             <Tags>
-              <Tag whileHover={{ scale: 1.1 }}>AI & Data Science</Tag>
-              <Tag whileHover={{ scale: 1.1 }}>JNTUK</Tag>
-              <Tag whileHover={{ scale: 1.1 }} className="concept">MERN Specialization</Tag>
+              <Tag whileHover={{ scale: 1.1 }}>B.Tech – AIDS (Artificial Intelligence & Data Science)</Tag>
+<Tag whileHover={{ scale: 1.1 }}>JNTUK – R20 Curriculum</Tag>
+<Tag whileHover={{ scale: 1.1 }} className="concept">MERN Stack & Full-Stack Development</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Machine Learning & AI</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Python, Java & JavaScript</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Cloud & DevOps Basics (AWS, Docker)</Tag>
+
             </Tags>
           </Card>
         </Grid>
@@ -1385,56 +1391,57 @@ const Home = () => {
         <Grid>
           {[
             {
-              title: "Resume Builder Web App",
-              desc: "Full-stack ATS-optimized resume builder with real-time PDF/Word export, AI scoring, and user auth using MERN stack. Deployed on Vercel with MongoDB Atlas.",
-              tags: ["MERN", "OAuth2", "MongoDB", "PDF Generation"],
-              link: "https://github.com/bhagavan444/resumebuilder",
-              demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
-              featured: true,
-              impact: "Reduced resume creation time by 70% for 500+ users",
-            },
-            {
-              title: "AI Chatbot Dashboard",
-              desc: "Interactive MERN-based chatbot with OpenAI integration, conversation history, and analytics dashboard for enterprise use.",
-              tags: ["React", "Node.js", "OpenAI API", "Socket.io"],
-              link: "https://github.com/bhagavan444/ai-chatbot",
-              demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
-              featured: true,
-              impact: "Handled 10k+ queries with 95% accuracy",
-            },
-            {
-              title: "Career Path Recommendation Engine",
-              desc: "MERN full-stack app with ML backend for personalized career suggestions based on skills and market trends. Integrated with LinkedIn API.",
-              tags: ["MERN", "Python ML", "Streamlit", "Recommendation Systems"],
-              link: "https://github.com/bhagavan444/carrerrecomendation",
-              demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
-              featured: true,
-              impact: "Achieved 85% match rate in beta testing",
-            },
-            {
-              title: "Heart Disease Prediction Platform",
-              desc: "Scalable Flask-MERN hybrid app with DL models for predictive healthcare analytics, deployed on AWS with real-time dashboards.",
-              tags: ["MERN Hybrid", "TensorFlow", "Flask", "AWS"],
-              link: "https://github.com/bhagavan444/heart-disease-predictor",
-              demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
-              impact: "Improved prediction accuracy to 92%",
-            },
-            {
-              title: "Fake News Detector",
-              desc: "Full-stack NLP app using MERN frontend and Python backend for real-time news classification, with admin panel for model updates.",
-              tags: ["MERN", "NLP", "BERT", "Flask"],
-              link: "https://github.com/bhagavan444/fake-news-detector",
-              demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
-              impact: "Detected 88% of fake articles in live tests",
-            },
-            {
-              title: "Dynamic Portfolio Site",
-              desc: "This very site! Built with React, Framer Motion, and Styled Components for seamless animations and responsive design.",
-              tags: ["React", "Framer Motion", "Styled Components", "Vite"],
-              link: "https://github.com/bhagavan444/portfolio",
-              demo: "https://bhagavan.netlify.app",
-              impact: "Optimized for 60fps animations and SEO",
-            },
+    title: "AI Chatbot Dashboard",
+    desc: "Enterprise-grade chatbot dashboard integrating OpenAI API with real-time messaging, analytics, and conversation history. Developed using MERN stack with Socket.io for seamless interaction.",
+    tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN"],
+    link: "https://github.com/bhagavan444/ai-chatbot",
+    demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
+    //featured: true,
+    impact: "Handled 10,000+ queries with 95% accuracy and reduced response latency by 40%."
+  },
+  {
+    title: "Resume Builder Web App",
+    desc: "Full-stack, ATS-optimized resume builder enabling real-time PDF/Word export, AI scoring, and secure user authentication. Built with MERN stack and deployed on Vercel using MongoDB Atlas.",
+    tags: ["MERN", "OAuth2", "MongoDB", "PDF Generation", "AI Scoring"],
+    link: "https://github.com/bhagavan444/resumebuilder",
+    demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
+    //featured: true,
+    impact: "Reduced resume creation time by 70% for 500+ users; improved resume quality with AI-based scoring."
+  },
+  {
+    title: "Heart Disease Prediction Platform",
+    desc: "Scalable predictive healthcare platform combining Flask and MERN stack with deep learning models. Provides real-time dashboards and analytics, deployed on AWS for enterprise use.",
+    tags: ["MERN Hybrid", "TensorFlow", "Flask", "AWS", "Predictive Analytics"],
+    link: "https://github.com/bhagavan444/heart-disease-predictor",
+    demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
+    //featured: true,
+    impact: "Enhanced prediction accuracy to 92%, aiding faster clinical decisions."
+  },
+  {
+    title: "Career Path Recommendation Engine",
+    desc: "Personalized career recommendation system using MERN stack frontend and Python ML backend. Analyzes skills and market trends, integrated with LinkedIn API for real-time suggestions.",
+    tags: ["MERN", "Python ML", "Streamlit", "Recommendation Systems", "LinkedIn API"],
+    link: "https://github.com/bhagavan444/carrerrecomendation",
+    demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
+    //featured: true,
+    impact: "Achieved 85% match rate during beta testing; improved career planning efficiency for users."
+  },
+  {
+    title: "Fake News Detector",
+    desc: "Real-time NLP-powered news classification system using MERN frontend and Python backend. Includes admin panel for model updates and continuous monitoring for misinformation.",
+    tags: ["MERN", "NLP", "BERT", "Flask", "Admin Panel"],
+    link: "https://github.com/bhagavan444/fake-news-detector",
+    demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
+    impact: "Successfully detected 88% of fake news articles in live tests; reduced misinformation spread."
+  },
+  {
+    title: "Dynamic Portfolio Site",
+    desc: "Responsive and interactive personal portfolio built with React, Framer Motion, and Styled Components. Implements smooth animations, optimized performance, and SEO-friendly structure.",
+    tags: ["React", "Framer Motion", "Styled Components", "Vite", "Responsive Design"],
+    link: "https://github.com/bhagavan444/portfolio",
+    demo: "https://bhagavan.netlify.app",
+    impact: "Optimized for 60fps animations; improved user engagement and showcased projects effectively."
+  }
           ].map((project, i) => {
             const ProjectCard = project.featured ? FeaturedCard : Card;
             return (
@@ -1486,67 +1493,99 @@ const Home = () => {
         <Grid>
           {[
             { 
-              icon: <FaCode />, 
-              title: "Programming Languages", 
-              skills: [
-                { name: "JavaScript", level: 95 },
-                { name: "Python", level: 90 },
-                { name: "Java", level: 85 },
-                { name: "TypeScript", level: 80 },
-                { name: "SQL", level: 85 },
-              ] 
-            },
-            { 
-              icon: <FaLaptopCode />, 
-              title: "MERN Stack", 
-              skills: [
-                { name: "React.js", level: 95 },
-                { name: "Node.js", level: 90 },
-                { name: "Express.js", level: 85 },
-                { name: "MongoDB", level: 90 },
-                { name: "Next.js", level: 80 },
-              ] 
-            },
-            { 
-              icon: <FaBrain />, 
-              title: "ML/AI", 
-              skills: [
-                { name: "TensorFlow", level: 85 },
-                { name: "PyTorch", level: 80 },
-                { name: "Scikit-learn", level: 85 },
-                { name: "Hugging Face", level: 75 },
-              ] 
-            },
-            { 
-              icon: <FaCloud />, 
-              title: "Cloud & DevOps", 
-              skills: [
-                { name: "AWS", level: 85 },
-                { name: "Docker", level: 80 },
-                { name: "Kubernetes", level: 70 },
-                { name: "CI/CD", level: 75 },
-              ] 
-            },
-            { 
-              icon: <FaDatabase />, 
-              title: "Databases & Tools", 
-              skills: [
-                { name: "MongoDB", level: 90 },
-                { name: "PostgreSQL", level: 80 },
-                { name: "Git", level: 95 },
-                { name: "Postman", level: 90 },
-              ] 
-            },
-            { 
-              icon: <FaUsers />, 
-              title: "Soft Skills", 
-              skills: [
-                { name: "Problem-Solving", level: 95 },
-                { name: "Team Collaboration", level: 90 },
-                { name: "Agile Methodology", level: 85 },
-                { name: "Communication", level: 90 },
-              ] 
-            },
+  icon: <FaCode />, 
+  title: "Programming Languages", 
+  skills: [
+    { name: "Python", level: 95 },          // Core for ML, scripting, backend
+    { name: "Java", level: 90 },            // Most asked in service-based companies
+    { name: "JavaScript (ES6+)", level: 90 }, // Full-stack & product-based demand
+    { name: "TypeScript", level: 80 },      // Safer JavaScript, demanded in MNCs
+    { name: "SQL", level: 85 },             // Required in both service & product
+    { name: "C/C++", level: 80 },           // DSA & system-level roles
+    { name: "Go (Golang)", level: 70 },     // Trending for scalable backends
+    { name: "Rust", level: 65 },            // Product startups & system programming
+  ] 
+},
+{ 
+  icon: <FaLaptopCode />, 
+  title: "Full-Stack Development", 
+  skills: [
+    { name: "React.js", level: 95 },
+    { name: "Node.js", level: 90 },
+    { name: "Express.js", level: 85 },
+    { name: "Next.js", level: 80 },
+    { name: "Spring Boot", level: 75 },     // Enterprise backends
+    { name: "Angular", level: 75 },         // Still used in service-based MNCs
+    { name: "Django / Flask", level: 80 },  // Python backend frameworks
+    { name: "MongoDB", level: 90 },
+    { name: "GraphQL", level: 70 },         // Modern API queries
+    { name: "REST API Development", level: 90 },
+  ] 
+},
+{ 
+  icon: <FaBrain />, 
+  title: "Machine Learning & Artificial Intelligence", 
+  skills: [
+    { name: "TensorFlow / Keras", level: 90 },      // Core DL frameworks
+    { name: "PyTorch", level: 85 },                 // Research & production
+    { name: "Scikit-learn", level: 85 },            // Classical ML
+    { name: "Hugging Face Transformers", level: 80 }, // NLP & LLMs
+    { name: "OpenAI API / LangChain", level: 75 },  // Generative AI + LLM apps
+    { name: "NLP (SpaCy, NLTK)", level: 80 },       // Natural language tasks
+    { name: "Computer Vision (OpenCV, CNNs)", level: 85 },
+    { name: "Generative AI (GANs, Diffusion)", level: 75 },
+    { name: "Reinforcement Learning (Gym, RLlib)", level: 70 },
+    { name: "MLflow / MLOps", level: 70 },          // Model lifecycle
+    { name: "Data Preprocessing (Pandas, NumPy)", level: 95 },
+    { name: "Data Visualization (Matplotlib, Seaborn, Plotly)", level: 90 },
+    { name: "Big Data (Hadoop, Spark MLlib)", level: 70 }, // Large-scale ML
+    { name: "AutoML (H2O.ai, AutoKeras)", level: 65 },     // Automated ML
+  ] 
+},
+
+{ 
+  icon: <FaCloud />, 
+  title: "Cloud & DevOps", 
+  skills: [
+    { name: "AWS", level: 85 },
+    { name: "Azure", level: 80 },
+    { name: "Google Cloud (GCP)", level: 75 },
+    { name: "Docker", level: 80 },
+    { name: "Kubernetes", level: 70 },
+    { name: "CI/CD (Jenkins, GitHub Actions)", level: 75 },
+    { name: "Terraform", level: 65 },       // Infra as code
+    { name: "Linux & Shell Scripting", level: 80 },
+  ] 
+},
+{ 
+  icon: <FaDatabase />, 
+  title: "Databases & Tools", 
+  skills: [
+    { name: "MySQL", level: 85 },
+    { name: "PostgreSQL", level: 85 },
+    { name: "MongoDB", level: 90 },
+    { name: "Redis", level: 70 },           // Cache, high-demand
+    { name: "Oracle DB", level: 70 },       // Used in large service MNCs
+    { name: "Firebase", level: 70 },        // Product/startup demand
+    { name: "Git & GitHub/GitLab", level: 95 },
+    { name: "Postman", level: 90 },
+    { name: "JIRA", level: 75 },            // Agile project tracking
+  ] 
+},
+{ 
+  icon: <FaUsers />, 
+  title: "Soft Skills", 
+  skills: [
+    { name: "Problem-Solving & DSA", level: 95 }, // Key for product-based coding rounds
+    { name: "System Design (LLD & HLD)", level: 80 },
+    { name: "Team Collaboration", level: 90 },
+    { name: "Agile / Scrum", level: 85 },
+    { name: "Communication", level: 90 },
+    { name: "Leadership & Mentoring", level: 80 },
+    { name: "Time Management", level: 85 },
+  ] 
+}
+
           ].map((category, i) => (
             <Card
               key={i}
@@ -1670,105 +1709,273 @@ const Home = () => {
           <Grid>
             {[
               {
-                title: "Java",
-                concepts: ["OOP", "Data Structures", "Concurrency", "Java APIs"],
-                certLink: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link",
-              },
-              {
-                title: "C for Everyone – Coursera",
-                concepts: ["C Syntax, Pointers, Memory Management, Data Structures, File I/O"],
-                certLink: "https://drive.google.com/file/d/1_icpofMdYi5iGjbELOY0VHMBloGJDhAA/view?usp=drive_link",
-              },
-              {
-                title: "Python",
-                concepts: ["Scripting", "Data Analysis", "OOP", "File Handling"],
-                certLink: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link",
-              },
-              {
-                title: "React",
-                concepts: ["Component-Based Architecture", "State Management", "Hooks", "React Router"],
-                certLink: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link",
-              },
-              {
-                title: "AWS Certified",
-                concepts: ["EC2, S3, Lambda, CloudFormation, VPC"],
-                certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view?usp=drive_link",
-              },
-              {
-                title: "R Programming",
-                concepts: ["R Syntax, Data Visualization, Statistical Analysis, Data Frames, Packages"],
-                certLink: "https://drive.google.com/file/d/14MnNRgQKwmCXCeZIr1QG0Q9-GhE1jVJJ/view?usp=sharing",
-              },
-              {
-                title: "Django",
-                concepts: ["MVC Architecture", "ORM", "Authentication", "API Development"],
-                certLink: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view",
-              },
-              {
-                title: "ServiceNow",
-                concepts: ["ITSM", "Workflow Automation", "Service Management", "Scripting"],
-                certLink: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view",
-              },
-              {
-                title: "ML Using Python",
-                concepts: ["Supervised Learning", "Unsupervised Learning", "Model Evaluation", "Feature Engineering"],
-                certLink: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view",
-              },
-              {
-                title: "AWS",
-                concepts: ["Cloud Computing", "IaaS", "PaaS", "Serverless Architecture"],
-                certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
-              },
-              {
-                title: "Mastering the Art of Programming - IBM Skills",
-                concepts: ["Algorithm Design, Problem Solving, Code Optimization, Debugging, Best Practices"],
-                certLink: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing",
-              },
-              {
-                title: "Software Engineering",
-                concepts: ["SDLC, Agile, Design Patterns, Testing, UML"],
-                certLink: "https://drive.google.com/file/d/1siy3p3J8Y9yr8oSzrXMjf0fZ7V7iNKcl/view?usp=sharing",
-              },
-              {
-                title: "Continuous Integration and Continuous Delivery",
-                concepts: ["CI/CD Pipelines, Jenkins, Git, Docker, Automation"],
-                certLink: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing",
-              },
-              {
-                title: "Large Language Models",
-                concepts: ["LLMs, Transformers, Fine-Tuning, NLP, Prompt Engineering"],
-                certLink: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing",
-              },
-              {
-                title: "Chatbot Development",
-                concepts: ["NLP", "Dialog Management", "API Integration", "Conversational AI"],
-                certLink: "https://drive.google.com/file/d/1HOr1qGDbIZ_t-Uw3KJU9PGYk65xCW41R/view?usp=sharing",
-              },
-              {
-                title: "HTML ",
-                concepts: ["HTML5, Semantic Tags, Forms, Accessibility, DOM Structure"],
-                certLink: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link",
-              },
-              {
-                title: "CSS",
-                concepts: ["CSS3, Flexbox, Grid, Animations, Responsive Design"],
-                certLink: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link",
-              },
-              {
-                title: "Mastering Python",
-                concepts: ["Advanced Python, Decorators, Generators, Modules, Concurrency"],
-                certLink: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link",
-              },
-              {
-                title: "MLOps",
-                concepts: ["Model Deployment, CI/CD for ML, Monitoring, Data Pipelines, Scalability"],
-                certLink: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link",
-              },
-              {
-                title: "JavaScript",
-                concepts: ["JavaScript ES6, DOM Manipulation, Async Programming, Events, APIs"],
-                certLink: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link",
-              },
+  title: "Java",
+  concepts: [
+    "Core OOP Principles (Abstraction, Encapsulation, Inheritance, Polymorphism)",
+    "Collections Framework (List, Set, Map, Queue)",
+    "Exception Handling & Custom Exceptions",
+    "Multithreading & Concurrency (synchronized, volatile, Executors)",
+    "Java 8+ Features (Streams, Lambdas, Optional, Functional Interfaces)",
+    "JVM Architecture & Memory Management (Heap, Stack, GC)",
+    "Design Patterns in Java (Singleton, Factory, Observer)",
+    "Serialization & Deserialization"
+  ],
+  certLink: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link",
+},
+{
+  title: "C for Everyone – Coursera",
+  concepts: [
+    "Pointers & Memory Management",
+    "Arrays & Strings",
+    "Structures, Unions & Enums",
+    "Dynamic Memory (malloc, calloc, realloc, free)",
+    "File I/O",
+    "Bitwise Operations",
+    "Function Pointers & Callbacks",
+    "Preprocessor Directives & Macros"
+  ],
+  certLink: "https://drive.google.com/file/d/1_icpofMdYi5iGjbELOY0VHMBloGJDhAA/view?usp=drive_link",
+},
+{
+  title: "Python",
+  concepts: [
+    "OOP & Classes",
+    "File Handling (CSV, JSON, TXT)",
+    "Modules & Packages (import, __init__)",
+    "List/Dict/Set Comprehensions",
+    "Exception Handling (try-except-finally)",
+    "Standard Libraries (os, sys, math, datetime)",
+    "NumPy & Pandas Basics",
+    "Decorators & Generators",
+    "Virtual Environments & Package Management"
+  ],
+  certLink: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link",
+},
+{
+  title: "React",
+  concepts: [
+    "JSX & Components",
+    "Props & State",
+    "Hooks (useState, useEffect, useRef, useContext)",
+    "React Router (Navigation, Params)",
+    "Conditional Rendering & Lists",
+    "Performance Optimization (memo, lazy, Suspense)",
+    "Redux / Context API for State Management",
+    "Error Boundaries",
+    "Testing (Jest, React Testing Library)"
+  ],
+  certLink: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link",
+},
+{
+  title: "AWS Certified",
+  concepts: [
+    "EC2, S3, EBS Basics",
+    "IAM Roles, Policies & Security Best Practices",
+    "VPC, Subnets, Gateways",
+    "Lambda Functions (Serverless)",
+    "CloudFormation Basics",
+    "Auto Scaling & Load Balancing",
+    "Monitoring (CloudWatch, CloudTrail)",
+    "Databases (RDS, DynamoDB)"
+  ],
+  certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view?usp=drive_link",
+},
+{
+  title: "R Programming",
+  concepts: [
+    "R Syntax & Data Types",
+    "Data Frames, Lists, Matrices",
+    "dplyr & ggplot2 for Data Analysis",
+    "Statistical Models (Regression, ANOVA)",
+    "Data Cleaning & Transformation",
+    "Hypothesis Testing",
+    "Packages & Libraries",
+    "Visualization Techniques"
+  ],
+  certLink: "https://drive.google.com/file/d/14MnNRgQKwmCXCeZIr1QG0Q9-GhE1jVJJ/view?usp=sharing",
+},
+{
+  title: "Django",
+  concepts: [
+    "MTV (Model-Template-View) Architecture",
+    "Django ORM Queries",
+    "Authentication & Authorization",
+    "Forms & Templates",
+    "REST API with Django REST Framework (DRF)",
+    "Middleware",
+    "Deployment Basics (Gunicorn, Nginx, Heroku/AWS)"
+  ],
+  certLink: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view",
+},
+{
+  title: "ServiceNow",
+  concepts: [
+    "ITSM Fundamentals",
+    "Scripting in ServiceNow (Client & Server Scripts)",
+    "Workflows & Business Rules",
+    "CMDB Management",
+    "Integration with APIs",
+    "Incident, Problem & Change Management"
+  ],
+  certLink: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view",
+},
+{
+  title: "ML Using Python",
+  concepts: [
+    "Supervised vs Unsupervised Learning",
+    "Regression (Linear, Logistic)",
+    "Classification (SVM, Decision Tree, Random Forest)",
+    "Feature Engineering & Scaling",
+    "Model Evaluation (Accuracy, Precision, Recall, F1, ROC)",
+    "Overfitting vs Underfitting",
+    "Cross Validation",
+    "Clustering (K-Means, Hierarchical)"
+  ],
+  certLink: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view",
+},
+{
+  title: "AWS",
+  concepts: [
+    "Cloud Computing Basics",
+    "Elastic Load Balancer",
+    "Auto Scaling",
+    "Serverless (Lambda)",
+    "Storage (S3, Glacier)",
+    "Databases (RDS, DynamoDB)",
+    "Networking (VPC, Route 53)"
+  ],
+  certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
+},
+{
+  title: "Mastering the Art of Programming - IBM Skills",
+  concepts: [
+    "Algorithm Design",
+    "Problem Solving Strategies",
+    "Time & Space Complexity",
+    "Recursion & Dynamic Programming",
+    "Code Debugging & Testing",
+    "Clean Code Practices",
+    "Optimization Techniques"
+  ],
+  certLink: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing",
+},
+{
+  title: "Software Engineering",
+  concepts: [
+    "SDLC Models (Waterfall, Agile, Spiral)",
+    "Agile & Scrum Practices",
+    "UML Diagrams (Use Case, Class, Sequence)",
+    "Design Patterns (Factory, Singleton, MVC)",
+    "Testing (Unit, Integration, System, UAT)",
+    "Version Control (Git, GitHub/GitLab)",
+    "Code Reviews & Best Practices"
+  ],
+  certLink: "https://drive.google.com/file/d/1siy3p3J8Y9yr8oSzrXMjf0fZ7V7iNKcl/view?usp=sharing",
+},
+{
+  title: "Continuous Integration and Continuous Delivery",
+  concepts: [
+    "CI/CD Pipelines",
+    "Jenkins & GitHub Actions",
+    "Git Integration",
+    "Dockerization",
+    "Automated Testing",
+    "Kubernetes Basics",
+    "Monitoring & Rollbacks"
+  ],
+  certLink: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing",
+},
+{
+  title: "Large Language Models",
+  concepts: [
+    "Transformers & Attention Mechanism",
+    "Tokenization (BPE, WordPiece)",
+    "Fine-Tuning & Transfer Learning",
+    "Prompt Engineering",
+    "NLP Tasks (Text Classification, Summarization, QA)",
+    "Applications of LLMs (Chatbots, Code Assistants)"
+  ],
+  certLink: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing",
+},
+{
+  title: "Chatbot Development",
+  concepts: [
+    "NLP & Intent Recognition",
+    "Dialog Management",
+    "Entity Extraction",
+    "API Integration",
+    "Context Management",
+    "Voice vs Text Bots",
+    "Evaluation Metrics (Confusion Matrix, Accuracy)"
+  ],
+  certLink: "https://drive.google.com/file/d/1HOr1qGDbIZ_t-Uw3KJU9PGYk65xCW41R/view?usp=sharing",
+},
+{
+  title: "HTML",
+  concepts: [
+    "HTML5 Semantic Tags",
+    "Forms & Validation",
+    "Canvas & Media Elements",
+    "Accessibility (ARIA, a11y)",
+    "SEO Basics",
+    "DOM Structure & Manipulation"
+  ],
+  certLink: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link",
+},
+{
+  title: "CSS",
+  concepts: [
+    "Flexbox & Grid Layout",
+    "Responsive Design (Media Queries)",
+    "Animations & Transitions",
+    "Pseudo Classes & Pseudo Elements",
+    "CSS Variables & Custom Properties",
+    "SCSS/SASS Basics"
+  ],
+  certLink: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link",
+},
+{
+  title: "Mastering Python",
+  concepts: [
+    "Advanced OOP (Inheritance, MRO, Metaclasses)",
+    "Iterators & Generators",
+    "Decorators",
+    "Threading & Multiprocessing",
+    "Asyncio (Async/Await)",
+    "Error Handling & Logging",
+    "Modules & Virtual Environments",
+    "Testing (unittest, pytest)"
+  ],
+  certLink: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link",
+},
+{
+  title: "MLOps",
+  concepts: [
+    "Model Deployment (Flask, FastAPI, Streamlit)",
+    "CI/CD for ML Pipelines",
+    "Monitoring & Logging (MLFlow, Prometheus)",
+    "Docker & Kubernetes Basics",
+    "Data Pipelines (Airflow, Prefect)",
+    "Scalability & Automation",
+    "Model Registry & Versioning"
+  ],
+  certLink: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link",
+},
+{
+  title: "JavaScript",
+  concepts: [
+    "ES6+ Features (let/const, arrow functions, spread/rest)",
+    "DOM Manipulation",
+    "Event Handling & Event Bubbling",
+    "Promises & Async/Await",
+    "Closures & Scope",
+    "Prototypes & Inheritance",
+    "Modules (import/export)",
+    "Fetch API & AJAX"
+  ],
+  certLink: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link",
+},
+
             ].map((cert, i) => (
               <Card
                 key={i}
@@ -1821,48 +2028,48 @@ const Home = () => {
         <Grid>
           {[
             {
-              title: "Machine Learning with Python",
-              desc: "Comprehensive hands-on workshop on machine learning fundamentals, including data preprocessing, model building, and evaluation using Python. Integrated MERN for dashboard visualization.",
-              tags: ["Python", "Machine Learning", "Data Science", "MERN Integration"],
-              year: "2024",
-              impact: "Applied concepts to build 3+ production-ready models",
-            },
-            {
-              title: "Deep Learning with TensorFlow",
-              desc: "In-depth exploration of deep learning concepts, neural network architectures, and practical implementations using TensorFlow and Keras, with MERN frontend demos.",
-              tags: ["TensorFlow", "Keras", "Deep Learning", "MERN"],
-              year: "2025",
-              impact: "Developed CNN models with 95% accuracy",
-            },
-            {
-              title: "Mobile App Development",
-              desc: "Workshop on building responsive and feature-rich mobile applications using modern frameworks like React Native, bridged with MERN backend.",
-              tags: ["Mobile Development", "React Native", "Frontend", "MERN Bridge"],
-              year: "2023",
-              impact: "Prototyped 2 cross-platform apps",
-            },
-            {
-              title: "Full-Stack Web Development",
-              desc: "End-to-end web development training covering frontend (React), backend (Node.js, Express), and database integration (MongoDB) using the MERN stack.",
-              tags: ["Full Stack", "MERN", "Web Development", "Deployment"],
-              year: "2022",
-              impact: "Deployed 5+ full-stack projects to production",
-            },
-            {
-              title: "Artificial Intelligence & Data Science Workshop",
-              desc: "Hands-on workshop covering fundamentals of AI, Machine Learning, and Data Science, including practical applications and projects with MERN UIs.",
-              tags: ["AI", "Data Science", "Workshop", "MERN UI"],
-              year: "2022",
-              impact: "Collaborated on AI-driven MERN app",
-            },
-            
-            {
-              title: "Web Development Workshop",
-              desc: "Hands-on workshop covering frontend development with HTML, CSS, and JavaScript, including practical projects and real-world applications leading to MERN.",
-              tags: ["Web Development", "Frontend", "JavaScript", "MERN Foundation"],
-              year: "2022",
-              impact: "Built foundational skills for 10+ MERN projects",
-            },
+  title: "Machine Learning with Python",
+  desc: "Comprehensive hands-on workshop on machine learning fundamentals, including data preprocessing, model building, and evaluation using Python. Integrated MERN for dashboard visualization.",
+  tags: ["Python", "Machine Learning", "Data Preprocessing", "Model Evaluation", "MERN Dashboard"],
+  year: "2024",
+  impact: "Applied concepts to build 3+ production-ready models",
+},
+{
+  title: "Deep Learning with TensorFlow",
+  desc: "In-depth exploration of deep learning concepts, neural network architectures, and practical implementations using TensorFlow and Keras, with MERN frontend demos.",
+  tags: ["TensorFlow", "Keras", "Neural Networks", "CNN", "MERN Frontend"],
+  year: "2025",
+  impact: "Developed CNN models with 95% accuracy",
+},
+{
+  title: "Mobile App Development",
+  desc: "Workshop on building responsive and feature-rich mobile applications using modern frameworks like React Native, bridged with MERN backend.",
+  tags: ["React Native", "Mobile App Development", "Cross-Platform", "MERN Backend", "UI/UX"],
+  year: "2023",
+  impact: "Prototyped 2 cross-platform apps",
+},
+{
+  title: "Full-Stack Web Development",
+  desc: "End-to-end web development training covering frontend (React), backend (Node.js, Express), and database integration (MongoDB) using the MERN stack.",
+  tags: ["Full-Stack Development", "React.js", "Node.js", "Express.js", "MongoDB", "Deployment"],
+  year: "2022",
+  impact: "Deployed 5+ full-stack projects to production",
+},
+{
+  title: "Artificial Intelligence & Data Science Workshop",
+  desc: "Hands-on workshop covering fundamentals of AI, Machine Learning, and Data Science, including practical applications and projects with MERN UIs.",
+  tags: ["Artificial Intelligence", "Data Science", "Machine Learning", "MERN UI", "Applied AI"],
+  year: "2022",
+  impact: "Collaborated on AI-driven MERN app",
+},
+{
+  title: "Web Development Workshop",
+  desc: "Hands-on workshop covering frontend development with HTML, CSS, and JavaScript, including practical projects and real-world applications leading to MERN.",
+  tags: ["HTML", "CSS", "JavaScript", "Frontend Development", "MERN Foundation"],
+  year: "2022",
+  impact: "Built foundational skills for 10+ MERN projects",
+},
+
           ].map((workshop, i) => (
             <Card
               key={i}
@@ -1934,12 +2141,18 @@ const Home = () => {
               <FaChartLine /> Impact: Won 2nd place; deployed live app with 100+ users
             </p>
             <Tags>
-              <Tag whileHover={{ scale: 1.1 }}>Hackathon</Tag>
-              <Tag whileHover={{ scale: 1.1 }}>Full Stack</Tag>
-              <Tag whileHover={{ scale: 1.1 }}>E-Commerce</Tag>
-              <Tag whileHover={{ scale: 1.1 }}>React</Tag>
-              <Tag whileHover={{ scale: 1.1 }}>Node.js</Tag>
-              <Tag whileHover={{ scale: 1.1 }}>MongoDB</Tag>
+             <Tag whileHover={{ scale: 1.1 }}>MERN Stack</Tag>
+<Tag whileHover={{ scale: 1.1 }}>E-Commerce</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Online Marketplace</Tag>
+<Tag whileHover={{ scale: 1.1 }}>React.js</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Node.js</Tag>
+<Tag whileHover={{ scale: 1.1 }}>MongoDB</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Express.js</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Authentication</Tag>
+<Tag whileHover={{ scale: 1.1 }}>REST API</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Payment Integration</Tag>
+<Tag whileHover={{ scale: 1.1 }}>Deployment</Tag>
+
             </Tags>
             <Links>
               <Link
@@ -1973,26 +2186,27 @@ const Home = () => {
         <Grid>
           {[
             {
-              title: "LeetCode – 100 Days Challenge",
-              desc: "Consistent practice on data structures and algorithms through daily coding challenges, focusing on MERN-related problem-solving.",
-              tags: ["LeetCode", "DSA", "Problem-Solving", "MERN Optimization"],
-              link: "https://leetcode.com/u/AxZsDhEeto/",
-              impact: "Solved 300+ problems, improved time complexity in MERN apps",
-            },
-            {
-              title: "HackerRank Challenges",
-              desc: "Solving algorithmic problems to improve coding skills and prepare for interviews, applied to full-stack scenarios.",
-              tags: ["HackerRank", "Algorithms", "Coding", "Full-Stack Prep"],
-              link: "https://www.hackerrank.com/profile/g_sivasatyasaib1",
-              impact: "Top 20% ranking; optimized 5+ MERN algorithms",
-            },
-            {
-              title: "CodeChef Contests",
-              desc: "Participating in competitive programming contests to enhance problem-solving abilities, with MERN deployment focus.",
-              tags: ["CodeChef", "Competitive Programming", "Contests", "MERN Deployment"],
-              link: "https://www.codechef.com/users/bhagavan444",
-              impact: "Participated in 20+ contests; built contest MERN tools",
-            },
+  title: "LeetCode – 100 Days Challenge",
+  desc: "Completed a 100-day streak of solving data structures and algorithms problems, reinforcing core logic essential for AI model optimization and scalable data-driven applications.",
+  tags: ["LeetCode", "DSA", "Problem-Solving", "AI Optimization"],
+  link: "https://leetcode.com/u/AxZsDhEeto/",
+  impact: "Solved 300+ problems, improved algorithm efficiency and applied concepts to AI/DS case studies.",
+},
+{
+  title: "HackerRank Challenges",
+  desc: "Practicing algorithms and coding challenges to strengthen problem-solving skills, applied in data preprocessing, model training, and interview preparation.",
+  tags: ["HackerRank", "Algorithms", "Coding", "Data Science Prep"],
+  link: "https://www.hackerrank.com/profile/g_sivasatyasaib1",
+  impact: "Achieved top 20% ranking; earned badges in problem-solving and Python for AI/DS.",
+},
+{
+  title: "CodeChef Contests",
+  desc: "Competed in timed contests to enhance coding speed, logical reasoning, and efficiency—skills directly useful in optimizing AI workflows and handling big datasets.",
+  tags: ["CodeChef", "Competitive Programming", "Efficiency", "Data Structures"],
+  link: "https://www.codechef.com/users/bhagavan444",
+  impact: "Participated in 20+ contests; built a habit of writing optimized, production-ready code for AI/DS projects.",
+},
+
           ].map((platform, i) => (
             <Card
               key={i}
@@ -2038,24 +2252,25 @@ const Home = () => {
         </SectionTitle>
         <Grid>
           {[
-            {
-              title: "Coding Challenges",
-              desc: "Tackling daily problems on platforms like LeetCode to sharpen MERN development skills.",
-              tags: ["Coding", "Challenges", "MERN Practice"],
-              impact: "Daily commits to MERN repos",
-            },
-            {
-              title: "Technical Blogging",
-              desc: "Writing about AI, development, and tech trends on Medium, focusing on MERN tutorials.",
-              tags: ["Blogging", "Technical Writing", "MERN Tutorials"],
-              impact: "Published 10+ articles with 1k+ views",
-            },
-            {
-              title: "Exploring AI-Driven Apps",
-              desc: "Experimenting with new AI tools and integrating them into MERN stacks.",
-              tags: ["AI", "Exploration", "MERN AI"],
-              impact: "Prototyped 5+ AI-MERN hybrids",
-            },
+           {
+  title: "Coding Challenges",
+  desc: "Solving algorithmic and system design problems on platforms like LeetCode, HackerRank, and Codeforces to strengthen problem-solving and full-stack development skills.",
+  tags: ["Problem-Solving", "DSA", "Full-Stack Practice"],
+  impact: "Solved 500+ problems and maintained daily GitHub contributions.",
+},
+{
+  title: "Technical Blogging",
+  desc: "Authoring blogs on Medium about MERN stack, AI, and emerging technologies to share knowledge and simplify complex concepts for developers.",
+  tags: ["Content Creation", "Technical Writing", "Knowledge Sharing"],
+  impact: "Published 10+ articles reaching 1,000+ readers globally.",
+},
+{
+  title: "AI & Emerging Tech Exploration",
+  desc: "Experimenting with AI-driven applications, integrating LLMs and machine learning models into MERN projects to build innovative prototypes.",
+  tags: ["AI", "Innovation", "MERN Integration"],
+  impact: "Developed 5+ AI-powered MERN prototypes demonstrating real-world use cases.",
+},
+
           ].map((hobby, i) => (
             <Card
               key={i}
@@ -2096,18 +2311,21 @@ const Home = () => {
         </SectionTitle>
         <Grid>
           {[
-            {
-              title: "Hackathons & Tech Events",
-              desc: "Participating in competitive coding events and team collaborations, leading MERN teams to victory.",
-              tags: ["Hackathons", "Teamwork", "MERN Leadership"],
-              impact: "Led 3 teams to top 3 placements",
-            },
-            {
-              title: "Project Leadership",
-              desc: "Leading development teams in building innovative MERN projects for college and community.",
-              tags: ["Leadership", "Projects", "MERN Teams"],
-              impact: "Mentored 20+ developers on MERN stacks",
-            },
+ 
+{
+  title: "Technical Workshops & Seminars",
+  desc: "Organized and delivered workshops on MERN stack, Python, and AI/ML topics to help peers upskill in modern technologies.",
+  tags: ["Public Speaking", "Mentorship", "Knowledge Sharing"],
+  impact: "Trained 100+ students across 5 workshops, enhancing community technical literacy.",
+},
+
+{
+  title: "Certifications & Online Learning",
+  desc: "Earned certifications in Full-Stack Development, Machine Learning, and Cloud Technologies to stay updated with industry trends.",
+  tags: ["Continuous Learning", "Skill Development", "Certifications"],
+  impact: "Completed 8+ certifications from platforms like Coursera, Udemy, and Google Cloud.",
+},
+
           ].map((activity, i) => (
             <Card
               key={i}
