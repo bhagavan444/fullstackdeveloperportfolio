@@ -36,92 +36,123 @@ import { FiX, FiSend, FiDownload, FiEye, FiCode } from "react-icons/fi";
 import emailjs from "@emailjs/browser";
 import resumePdf from "../assets/bhagavanresume.pdf";
 
-// Enhanced Styled Components with refined, professional, and innovative UI
+// New UI Theme: Futuristic AI-Inspired Design
+// Color Scheme: Neon Cyan, Deep Space Black, Electric Blue, Glowing Purple Accents
+// Fonts: 'Orbitron' for titles (futuristic), 'Source Code Pro' for body (code-like)
+// Layout: More immersive with floating elements, holographic effects, subtle glows
+// Animations: Enhanced with scale pulses, light trails, and AI-like scanning effects
+// Unique Talent Showcase: Integrated AI-themed particles, holographic cards, and interactive glow on hover
+
 const Container = styled.div`
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(145deg, #0a1020, #1a2338, #2e374d);
-  font-family: "Inter", sans-serif;
-  color: #f1f5f9;
-  transition: all 0.4s ease;
+  background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
+  font-family: "Source Code Pro", monospace;
+  color: #e0fbfc;
+  transition: all 0.3s ease-out;
   isolation: isolate;
+
+  @media (max-width: 480px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const Nav = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(10, 16, 32, 0.95);
-  backdrop-filter: blur(24px);
-  padding: 1.2rem 3rem;
+  background: rgba(2, 12, 27, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
   display: flex;
-  height: 60px;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.3);
+  height: 40px;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
   z-index: 1000;
-  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
 
+  @media (max-width: 1024px) {
+    padding: 0.8rem 1.5rem;
+    height: 60px;
+  }
   @media (max-width: 768px) {
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 480px) {
+    padding: 0.6rem 0.8rem;
+    height: 50px;
   }
 `;
 
 const NavBrand = styled.a`
-  font-size: 1.5rem;
-  font-weight: 800;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  font-weight: 700;
+  background: linear-gradient(90deg, #00ffff, #7fffd4, #00bfff);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
-  transition: all 0.4s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.7));
+    filter: glow(0 0 20px rgba(0, 255, 255, 0.5));
   }
 
+  @media (max-width: 768px) {
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  }
   @media (max-width: 480px) {
-    font-size: 1.8rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
   }
 `;
 
 const NavLinks = styled.div`
+
   display: flex;
-  margin-right: 50px;
-  gap: 1.5rem;
+  margin-right:50px;
+  gap: clamp(1rem, 2vw, 1.5rem);
   align-items: center;
 
   @media (max-width: 768px) {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
   }
 `;
 
 const NavLink = styled.a`
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
-  background-clip:text;
+font-family: "Orbitron", sans-serif;
+font-size: clamp(1.1rem, 3vw, 1rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #00ffff, #7fffd4, #00bfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  position: relative;
-  transition: all 0.4s ease;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  position: relative;
+  transition: all 0.3s ease;
 
   &:after {
     content: "";
     position: absolute;
     width: 0;
-    height: 3px;
-    bottom: -8px;
+    height: 2px;
+    bottom: -6px;
     left: 0;
-    background: linear-gradient(90deg, #8b5cf6, #d8b4fe);
-    transition: width 0.4s ease;
-    border-radius: 3px;
+    background: linear-gradient(90deg, #00ffff, #00bfff);
+    transition: width 0.3s ease;
+    border-radius: 2px;
   }
 
   &:hover:after {
@@ -129,13 +160,13 @@ const NavLink = styled.a`
   }
 
   &:hover {
-    color: #e9d5ff;
+    color: #00ffff;
     transform: translateY(-2px);
-    filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
   }
 
   @media (max-width: 480px) {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
   }
 `;
 
@@ -144,10 +175,9 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
-  color: #f1f5f9;
+  padding: clamp(1rem, 5vw, 2rem) 0; /* Reduced top/bottom padding, kept sides */
   position: relative;
-  background: linear-gradient(145deg, #0a1020, #1a2338, #2e374d);
+  background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
   overflow: hidden;
 
   &:before {
@@ -157,19 +187,24 @@ const HeroSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 70%, rgba(139, 92, 246, 0.25), transparent 60%),
-                radial-gradient(circle at 70% 30%, rgba(216, 180, 254, 0.2), transparent 60%);
+    background: radial-gradient(
+      circle at 30% 70%, rgba(0, 255, 255, 0.2), transparent 50%
+    ),
+    radial-gradient(circle at 70% 30%, rgba(127, 255, 212, 0.15), transparent 50%);
     z-index: 0;
-    animation: pulse 10s infinite ease-in-out;
+    animation: aiPulse 10s infinite ease-in-out;
   }
 
-  @keyframes pulse {
+  @keyframes aiPulse {
     0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.15); }
+    50% { opacity: 0.8; transform: scale(1.05); }
   }
 
-  @media (max-width: 768px) {
-    padding: 3rem 1.5rem;
+  @media (max-width: 1024px) {
+    padding: clamp(1rem, 2vw, 1.5rem) 0;
+  }
+  @media (max-width: 480px) {
+    padding: clamp(0.5rem, 1.5vw, 1rem) 0;
   }
 `;
 
@@ -178,205 +213,227 @@ const HeroContent = styled(motion.div)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
-  z-index: 1;
-  max-width: 1300px;
+  gap: clamp(2rem, 4vw, 3rem);
+  max-width: 1400px;
   width: 100%;
-  padding: 2rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  z-index: 1;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
     padding: 1.5rem;
+  }
+  @media (max-width: 480px) {
+    gap: 1rem;
+    padding: 1rem;
   }
 `;
 
 const ProfileImageContainer = styled(motion.div)`
   position: relative;
   perspective: 1200px;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.3));
 `;
 
 const ProfileImage = styled(motion.img)`
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
+  width: clamp(220px, 25vw, 300px);
+  height: clamp(220px, 25vw, 300px);
+  border-radius: 20px;
   object-fit: cover;
-  border: 10px solid rgba(139, 92, 246, 0.4);
-  box-shadow: 0 0 50px rgba(139, 92, 246, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.15);
-  transition: all 0.5s ease;
-  position: relative;
-  z-index: 2;
+  border: 4px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
 
   &:hover {
-    box-shadow: 0 0 70px rgba(139, 92, 246, 0.8), inset 0 0 35px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
   }
 
   @media (max-width: 768px) {
-    width: 240px;
-    height: 240px;
+    width: clamp(180px, 20vw, 220px);
+    height: clamp(180px, 20vw, 220px);
   }
-
   @media (max-width: 480px) {
-    width: 200px;
-    height: 200px;
+    width: clamp(150px, 18vw, 180px);
+    height: clamp(150px, 18vw, 180px);
   }
 `;
 
 const ProfileRing = styled(motion.div)`
   position: absolute;
-  top: -25px;
-  left: -25px;
-  width: 360px;
-  height: 360px;
-  border: 3px dashed rgba(139, 92, 246, 0.4);
-  border-radius: 50%;
+  top: -15px;
+  left: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  border: 2px dotted rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
   z-index: 1;
-  animation: spin 25s linear infinite;
+  animation: aiScan 20s linear infinite;
 
-  @keyframes spin {
+  @keyframes aiScan {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
 
   @media (max-width: 768px) {
-    width: 280px;
-    height: 280px;
-    top: -20px;
-    left: -20px;
+    top: -12px;
+    left: -12px;
+  }
+  @media (max-width: 480px) {
+    top: -10px;
+    left: -10px;
   }
 `;
 
 const HeaderContainer = styled.div`
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 850px;
+  max-width: 900px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     align-items: center;
     text-align: center;
+  }
+  @media (max-width: 480px) {
+    max-width: 100%;
   }
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 4rem;
-  font-weight: 900;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa, #8b5cf6);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 6vw,3rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #00ffff, #00bfff, #7fffd4, #00ffff);
+  background-size: 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
-  line-height: 1.2;
-  letter-spacing: -0.5px;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  line-height: 1.3;
+  animation: neonFlow 6s ease infinite;
 
-  @media (max-width: 768px) {
-    font-size: 3rem;
+  @keyframes neonFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
+  @media (max-width: 768px) {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+  }
   @media (max-width: 480px) {
-    font-size: clamp(2.4rem, 7vw, 3rem);
+    font-size: clamp(1.5rem, 4.5vw, 2.5rem);
   }
 `;
 
 const Subtitle = styled(motion.div)`
-  font-size: clamp(1.3rem, 2.8vw, 1.7rem);
-  color: #e4e7eb;
-  margin: 1.5rem 0;
-  line-height: 1.7;
+  font-size: clamp(1rem, 2.5vw, 1.7rem);
+  color: #a8d0e6;
+  margin: 1rem 0;
+  line-height: 1.6;
   font-weight: 400;
-  text-shadow: 0 0 10px rgba(228, 231, 235, 0.4);
+  text-shadow: 0 0 8px rgba(168, 208, 230, 0.3);
   span {
-    color: #8b5cf6;
+    color: #00ffff;
     font-weight: 700;
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  }
+  @media (max-width: 480px) {
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
   }
 `;
 
 const CTAButton = styled(motion.a)`
-  padding: 1.3rem 3rem;
-  border-radius: 60px;
-  font-weight: 700;
+  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 8px;
+  font-weight: 800;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
-  font-size: 1.3rem;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
-  color: #0a1020;
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
-  transition: all 0.4s ease;
+  gap: 0.8rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  background: linear-gradient(90deg, #00ffff, #00bfff);
+  color: #020c1b;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
 
   &:before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.7s ease, height 0.7s ease;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
   }
 
   &:hover:before {
-    width: 350px;
-    height: 350px;
+    left: 100%;
   }
 
   &:hover {
-    transform: translateY(-5px) scale(1.06);
-    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.7);
-    border-color: rgba(139, 92, 246, 0.6);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
   }
 
+  @media (max-width: 768px) {
+    padding: 0.8rem 2rem;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+  }
   @media (max-width: 480px) {
-    padding: 1.1rem 2.5rem;
-    font-size: 1.2rem;
+    padding: 0.6rem 1.5rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   }
 `;
 
 const Socials = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1.8rem;
-  font-size: 2.4rem;
-  margin-top: 2.5rem;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  margin-top: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
-    gap: 1.2rem;
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+    gap: 1rem;
+  }
+  @media (max-width: 480px) {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    gap: 0.8rem;
   }
 `;
 
 const SocialLink = styled.a`
-  color: #e4e7eb;
-  transition: all 0.4s ease;
-  text-shadow: 0 0 12px rgba(228, 231, 235, 0.4);
+  color: #a8d0e6;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px rgba(168, 208, 230, 0.3);
 
   &:hover {
-    color: #8b5cf6;
-    transform: scale(1.3) rotate(8deg);
-    text-shadow: 0 0 30px rgba(139, 92, 246, 0.8);
-    filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
+    color: #00ffff;
+    transform: scale(1.15) rotate(360deg);
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
   }
 `;
 
 const Section = styled.section`
-  padding: 7rem 2rem;
-  background: linear-gradient(145deg, #0a1020, #1a2338, #2e374d);
-  margin: 3.5rem 0;
-  border-radius: 28px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 3vw, 2rem);
+  background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
+  margin: clamp(2rem, 4vw, 3rem) 0;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(0, 255, 255, 0.05);
 
   &:before {
     content: "";
@@ -384,61 +441,78 @@ const Section = styled.section`
     top: 0;
     left: 0;
     width: 100%;
-    height: 8px;
-    background: linear-gradient(90deg, #8b5cf6, #d8b4fe, #a78bfa, #8b5cf6);
-    background-size: 400% 100%;
-    animation: gradientShift 5s infinite linear;
+    height: 4px;
+    background: linear-gradient(90deg, #00ffff, #00bfff, #7fffd4);
+    background-size: 300%;
+    animation: neonShift 5s infinite linear;
   }
 
-  @keyframes gradientShift {
+  @keyframes neonShift {
     0% { background-position: 0% 50%; }
-    100% { background-position: 400% 50%; }
+    100% { background-position: 300% 50%; }
   }
 
   @media (max-width: 768px) {
-    padding: 5rem 1.5rem;
-    margin: 2.5rem 0;
-    border-radius: 20px;
+    padding: clamp(3rem, 6vw, 4rem) 1.5rem;
+    margin: 2rem 0;
+    border-radius: 12px;
+  }
+  @media (max-width: 480px) {
+    padding: clamp(2rem, 4vw, 3rem) 1rem;
+    margin: 1.5rem 0;
+    border-radius: 10px;
   }
 `;
 
 const SectionTitle = styled(motion.h2)`
-  font-size: clamp(3rem, 5.5vw, 4.2rem);
-  font-weight: 900;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #00ffff, #00bfff, #7fffd4);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
-  margin-bottom: 2.5rem;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  margin-bottom: 2rem;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 4px;
 
+  @media (max-width: 768px) {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    gap: 0.5rem;
+  }
   @media (max-width: 480px) {
-    font-size: clamp(2.4rem, 4.5vw, 3rem);
-    gap: 0.6rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    letter-spacing: 2px;
+    gap: 0.4rem;
   }
 `;
 
 const Card = styled(motion.div)`
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  transition: all 0.5s ease;
-  backdrop-filter: blur(18px);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  min-height: 320px;
+  gap: 1rem;
+  min-height: 280px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+
+  &:hover {
+    border-color: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  }
 
   &:before {
     content: "";
@@ -446,298 +520,335 @@ const Card = styled(motion.div)`
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, #8b5cf6, #d8b4fe);
+    height: 3px;
+    background: linear-gradient(90deg, #00ffff, #00bfff);
   }
 
   @media (max-width: 768px) {
-    padding: 2rem;
-    min-height: 280px;
+    padding: 1.5rem;
+    min-height: 240px;
+  }
+  @media (max-width: 480px) {
+    padding: 1rem;
+    min-height: 200px;
+    gap: 0.8rem;
   }
 `;
 
 const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1.2rem 0;
+  gap: clamp(0.6rem, 1.5vw, 0.8rem);
+  margin: 1rem 0;
 
+  @media (max-width: 768px) {
+    gap: 0.6rem;
+  }
   @media (max-width: 480px) {
-    gap: 0.8rem;
+    gap: 0.4rem;
   }
 `;
 
 const Tag = styled(motion.span)`
-  padding: 0.6rem 1.4rem;
-  background: rgba(139, 92, 246, 0.2);
-  color: #e4e7eb;
-  border-radius: 30px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: all 0.4s ease;
-  cursor: pointer;
+  padding: 0.5rem clamp(0.8rem, 1.5vw, 1.2rem);
+  background: rgba(0, 255, 255, 0.1);
+  color: #e0fbfc;
+  border-radius: 8px;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+  border: 1px solid rgba(0, 255, 255, 0.2);
 
   &:hover {
-    background: linear-gradient(45deg, #8b5cf6, #d8b4fe);
-    color: #0a1020;
-    box-shadow: 0 0 18px rgba(139, 92, 246, 0.7);
-    transform: scale(1.06);
+    background: linear-gradient(90deg, #00ffff, #00bfff);
+    color: #020c1b;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
   }
 
   &.concept {
-    background: rgba(236, 72, 153, 0.2);
-    color: #fce7f3;
+    background: rgba(127, 255, 212, 0.1);
+    color: #e0fbfc;
 
     &:hover {
-      background: linear-gradient(45deg, #ec4899, #f472b6);
-      color: #0a1020;
-      box-shadow: 0 0 18px rgba(236, 72, 153, 0.7);
+      background: linear-gradient(90deg, #7fffd4, #00ffff);
+      color: #020c1b;
+      box-shadow: 0 0 12px rgba(127, 255, 212, 0.5);
     }
   }
 
   @media (max-width: 480px) {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
+    padding: 0.4rem clamp(0.6rem, 1.2vw, 1rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
   }
 `;
 
 const Links = styled.div`
   display: flex;
-  gap: 1.8rem;
+  gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: auto;
 
-  @media (max-width: 480px) {
-    gap: 1.2rem;
+  @media (max-width: 768px) {
+    gap: 1rem;
     flex-direction: column;
+    align-items: flex-start;
+  }
+  @media (max-width: 480px) {
+    gap: 0.8rem;
   }
 `;
 
 const Link = styled.a`
-  color: #d8b4fe;
-  font-weight: 600;
-  font-size: 1.1rem;
+  color: #00bfff;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  transition: all 0.4s ease;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: #8b5cf6;
-    text-decoration: underline;
-    transform: translateX(12px) scale(1.06);
-    filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
+    color: #00ffff;
+    transform: translateX(5px);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
   }
 
   @media (max-width: 480px) {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    gap: 0.4rem;
   }
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 2.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-top: 1.5rem;
   align-items: stretch;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+  @media (max-width: 480px) {
+    gap: 1rem;
   }
 `;
 
 const FeaturedCard = styled(Card)`
-  border: 2px solid #8b5cf6;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(255, 255, 255, 0.06));
+  border: 2px solid #00ffff;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
 
   &:before {
-    content: "Featured 🌟";
+    content: "Featured ⚡";
     position: absolute;
-    top: -14px;
-    left: 24px;
-    background: linear-gradient(45deg, #8b5cf6, #d8b4fe);
-    color: #0a1020;
-    padding: 0.4rem 1.2rem;
-    border-radius: 24px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    box-shadow: 0 5px 20px rgba(139, 92, 246, 0.5);
+    top: -10px;
+    left: 15px;
+    background: linear-gradient(90deg, #00ffff, #00bfff);
+    color: #020c1b;
+    padding: 0.3rem 1rem;
+    border-radius: 8px;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  }
+
+  @media (max-width: 480px) {
+    &:before {
+      top: -8px;
+      left: 10px;
+      padding: 0.2rem 0.8rem;
+      font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+    }
   }
 `;
 
 const ProgressBar = styled.div`
   width: 100%;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 5px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
   overflow: hidden;
-  margin: 0.6rem 0;
+  margin: 0.5rem 0;
+
+  @media (max-width: 480px) {
+    height: 5px;
+    margin: 0.4rem 0;
+  }
 `;
 
 const ProgressFill = styled(motion.div)`
   height: 100%;
-  background: linear-gradient(90deg, #8b5cf6, #d8b4fe);
-  border-radius: 5px;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+  background: linear-gradient(90deg, #00ffff, #00bfff);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
 `;
 
 const ContactSection = styled(Section)`
-  background: linear-gradient(145deg, #0a1020, #1a2338, #2e374d);
-  color: #f1f5f9;
-  padding: 7rem 2rem;
+  background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 3vw, 2rem);
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: 768px) {
-    padding: 5rem 1.5rem;
-    min-height: 70vh;
-  }
 `;
 
 const ContactIntro = styled(motion.p)`
-  font-size: 1.6rem;
-  max-width: 950px;
-  margin: 0 auto 2.5rem;
-  color: #e4e7eb;
-  line-height: 1.7;
-  text-shadow: 0 0 12px rgba(228, 231, 235, 0.4);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #a8d0e6;
+  line-height: 1.6;
+  text-shadow: 0 0 8px rgba(168, 208, 230, 0.3);
   text-align: center;
 
+  @media (max-width: 768px) {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
   @media (max-width: 480px) {
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    max-width: 100%;
   }
 `;
 
 const Form = styled(motion.form)`
-  max-width: 750px;
+  max-width: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.5rem;
   width: 100%;
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 24px;
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  backdrop-filter: blur(18px);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
   z-index: 10;
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    gap: 1.2rem;
+  }
   @media (max-width: 480px) {
-    padding: 2rem;
-    gap: 1.5rem;
+    padding: 1rem;
+    gap: 1rem;
   }
 `;
 
 const Input = styled.input`
-  padding: 1.3rem;
-  border: 2px solid rgba(139, 92, 246, 0.3);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #e4e7eb;
-  font-size: 1.1rem;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(12px);
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e0fbfc;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 
   &:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 18px rgba(139, 92, 246, 0.6);
-    transform: scale(1.03);
+    border-color: #00ffff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    transform: scale(1.01);
+    outline: none;
   }
 
   &::placeholder {
-    color: #9ca3af;
+    color: #a8d0e6;
   }
 
   @media (max-width: 480px) {
-    padding: 1.1rem;
-    font-size: 1rem;
+    padding: clamp(0.6rem, 1.5vw, 1rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   }
 `;
 
 const Textarea = styled.textarea`
-  min-height: 180px;
-  padding: 1.3rem;
-  border: 2px solid rgba(139, 92, 246, 0.3);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #e4e7eb;
-  font-size: 1.1rem;
+  min-height: 160px;
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #e0fbfc;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   resize: vertical;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 
   &:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 18px rgba(139, 92, 246, 0.6);
-    transform: scale(1.03);
+    border-color: #00ffff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    transform: scale(1.01);
+    outline: none;
   }
 
   &::placeholder {
-    color: #9ca3af;
+    color: #a8d0e6;
   }
 
+  @media (max-width: 768px) {
+    min-height: 120px;
+  }
   @media (max-width: 480px) {
-    padding: 1.1rem;
-    font-size: 1rem;
-    min-height: 140px;
+    min-height: 100px;
+    padding: clamp(0.6rem, 1.5vw, 1rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   }
 `;
 
 const CharCount = styled.p`
-  font-size: 0.95rem;
-  color: #e4e7eb;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  color: #a8d0e6;
   text-align: right;
-  text-shadow: 0 0 10px rgba(228, 231, 235, 0.4);
+  text-shadow: 0 0 6px rgba(168, 208, 230, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 0.85rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
   }
 `;
 
 const ErrorMessage = styled.p`
-  color: #ef4444;
-  font-size: 0.95rem;
-  margin-top: 0.6rem;
+  color: #ff4d4d;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  margin-top: 0.5rem;
   font-weight: 500;
-  text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+  text-shadow: 0 0 6px rgba(255, 77, 77, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 0.85rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
   }
 `;
 
 const SuccessMessage = styled(motion.p)`
-  color: #10b981;
-  font-size: 0.95rem;
-  margin-top: 0.6rem;
+  color: #00ff00;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  margin-top: 0.5rem;
   font-weight: 500;
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  text-shadow: 0 0 6px rgba(0, 255, 0, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 0.85rem;
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
   }
 `;
 
 const SubmitButton = styled(motion.button)`
-  padding: 1.3rem 3rem;
-  border-radius: 60px;
-  font-weight: 700;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe, #a78bfa);
-  color: #0a1020;
+  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 8px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00ffff, #00bfff);
+  color: #020c1b;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
-  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
   align-self: center;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
 
   &:hover:not(:disabled) {
-    transform: translateY(-5px) scale(1.06);
-    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.7);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
   }
 
   &:disabled {
@@ -747,17 +858,17 @@ const SubmitButton = styled(motion.button)`
   }
 
   @media (max-width: 480px) {
-    padding: 1.1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   }
 `;
 
 const Footer = styled.footer`
-  background: linear-gradient(180deg, #0a1020, #1a2338, #2e374d);
-  color: #e4e7eb;
-  padding: 6rem 2rem 4rem;
+  background: linear-gradient(180deg, #020c1b, #0a192f, #112240);
+  color: #a8d0e6;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2rem);
   text-align: center;
-  border-top: 2px solid rgba(139, 92, 246, 0.4);
+  border-top: 1px solid rgba(0, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 
@@ -768,109 +879,121 @@ const Footer = styled.footer`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.2), transparent 75%);
+    background: radial-gradient(circle at 50% 0%, rgba(0, 255, 255, 0.1), transparent 60%);
     z-index: 0;
-    animation: pulse 8s infinite ease-in-out;
+    animation: aiPulse 8s infinite ease-in-out;
   }
 
   @media (max-width: 480px) {
-    padding: 4rem 1.5rem 3rem;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 1.5rem);
   }
 `;
 
 const FooterContent = styled.div`
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 480px) {
+    gap: 1.5rem;
+  }
 `;
 
 const FooterTitle = styled(motion.h3)`
-  font-size: 3rem;
-  font-weight: 900;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe);
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #00ffff, #00bfff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.7);
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
 
   @media (max-width: 480px) {
-    font-size: 2.4rem;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
   }
 `;
 
 const FooterText = styled(motion.p)`
-  font-size: 1.4rem;
-  color: #e4e7eb;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #a8d0e6;
   font-weight: 400;
-  text-shadow: 0 0 10px rgba(228, 231, 235, 0.4);
+  text-shadow: 0 0 6px rgba(168, 208, 230, 0.3);
 
   @media (max-width: 480px) {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
   }
 `;
 
 const FooterLinks = styled.div`
   display: flex;
-  gap: 2.5rem;
-  font-size: 1.3rem;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
 
-  @media (max-width: 480px) {
-    gap: 1.5rem;
+  @media (max-width: 768px) {
+    gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   }
 `;
 
 const FooterLink = styled(motion.a)`
-  color: #e4e7eb;
+  color: #a8d0e6;
   text-decoration: none;
-  transition: all 0.4s ease;
-  text-shadow: 0 0 10px rgba(228, 231, 235, 0.4);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 6px rgba(168, 208, 230, 0.3);
 
   &:hover {
-    color: #8b5cf6;
-    text-decoration: underline;
-    transform: translateY(-3px);
-    text-shadow: 0 0 25px rgba(139, 92, 246, 0.7);
+    color: #00ffff;
+    transform: translateY(-2px);
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
   }
 `;
 
 const FooterSocials = styled(Socials)`
-  margin-top: 1.5rem;
-  gap: 1.8rem;
+  margin-top: 1rem;
+
+  @media (max-width: 480px) {
+    margin-top: 0.8rem;
+  }
 `;
 
 const ScrollTop = styled(motion.button)`
   position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe);
-  color: #0a1020;
+  bottom: clamp(2rem, 4vw, 2.5rem);
+  right: clamp(2rem, 4vw, 2.5rem);
+  background: linear-gradient(90deg, #00ffff, #00bfff);
+  color: #020c1b;
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  font-size: 1.8rem;
   cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
   z-index: 1000;
 
   &:hover {
-    transform: scale(1.15) rotate(180deg);
-    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.7);
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
   }
 
   @media (max-width: 480px) {
-    width: 55px;
-    height: 55px;
-    font-size: 1.8rem;
-    bottom: 2.5rem;
-    right: 2.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    bottom: clamp(1.5rem, 3vw, 2rem);
+    right: clamp(1.5rem, 3vw, 2rem);
   }
 `;
 
@@ -880,7 +1003,7 @@ const ResumeModal = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -889,83 +1012,91 @@ const ResumeModal = styled(motion.div)`
 `;
 
 const ModalContent = styled.div`
-  background: rgba(255, 255, 255, 0.08);
-  padding: 3rem;
-  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: 15px;
   position: relative;
   width: 90%;
-  max-width: 850px;
-  max-height: 90vh;
+  max-width: 800px;
+  max-height: 85vh;
   text-align: center;
-  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.4);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 15px 50px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
   overflow: hidden;
 
-  @media (max-width: 480px) {
-    padding: 2.5rem;
+  @media (max-width: 768px) {
+    padding: 1.5rem;
     max-width: 95%;
-    max-height: 85vh;
+    max-height: 80vh;
+  }
+  @media (max-width: 480px) {
+    padding: 1rem;
+    max-height: 75vh;
   }
 `;
 
 const CloseButton = styled(motion.button)`
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 2.4rem;
+  top: 1rem;
+  right: 1rem;
+  font-size: clamp(1.8rem, 3vw, 2rem);
   background: none;
   border: none;
-  color: #e4e7eb;
+  color: #a8d0e6;
   cursor: pointer;
-  transition: all 0.4s ease;
-  z-index: 10;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: #8b5cf6;
-    transform: rotate(90deg) scale(1.3);
-    text-shadow: 0 0 18px rgba(139, 92, 246, 0.6);
+    color: #00ffff;
+    transform: rotate(90deg);
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
   }
 
   @media (max-width: 480px) {
-    top: 1.2rem;
-    right: 1.2rem;
-    font-size: 2rem;
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
   }
 `;
 
 const ModalButton = styled(motion.button)`
-  padding: 1.3rem 3rem;
-  border-radius: 60px;
-  font-weight: 700;
-  background: linear-gradient(45deg, #8b5cf6, #d8b4fe);
-  color: #0a1020;
+  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 8px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00ffff, #00bfff);
+  color: #020c1b;
   border: none;
   cursor: pointer;
-  transition: all 0.4s ease;
-  margin: 1rem;
-  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  margin: 0.8rem;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
 
   &:hover {
-    transform: translateY(-5px) scale(1.06);
-    box-shadow: 0 15px 50px rgba(139, 92, 246, 0.7);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
   }
 
   @media (max-width: 480px) {
-    padding: 1.1rem 2.5rem;
-    font-size: 1.1rem;
+    padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    margin: 0.6rem;
   }
 `;
 
 const AboutText = styled(motion.p)`
-  font-size: 1.5rem;
-  line-height: 1.9;
-  color: #e4e7eb;
-  text-shadow: 0 0 12px rgba(228, 231, 235, 0.4);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  line-height: 1.8;
+  color: #a8d0e6;
+  text-shadow: 0 0 8px rgba(168, 208, 230, 0.3);
   text-align: justify;
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+  }
+  @media (max-width: 480px) {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    line-height: 1.6;
   }
 `;
 
@@ -976,9 +1107,10 @@ const ParticleBackground = styled.canvas`
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.35;
+  opacity: 0.25;
 `;
 
+// Remaining components (BackgroundAnimation, TypingSubtitle, Home) with AI-themed particles
 const BackgroundAnimation = () => {
   const canvasRef = useRef(null);
 
@@ -991,19 +1123,19 @@ const BackgroundAnimation = () => {
     canvas.height = window.innerHeight;
 
     const particles = [];
-    const particleCount = 200;
+    const particleCount = 250;
 
-    const symbols = ['{', '}', '[', ']', '(', ')', 'React', 'Node', 'Mongo', 'Express', 'JS', 'API', 'DB'];
+    const symbols = ['AI', 'MERN', 'Node', 'React', 'Mongo', 'Express', 'ML', 'Neural', 'Data', 'Cloud'];
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 5 + 1;
-        this.speedX = Math.random() * 1.2 - 0.6;
-        this.speedY = Math.random() * 1.2 - 0.6;
+        this.size = Math.random() * 4 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
         this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
-        this.color = `hsl(${Math.random() * 60 + 260}, 80%, ${Math.random() * 40 + 40}%)`;
+        this.color = `hsl(${Math.random() * 60 + 180}, 100%, ${Math.random() * 30 + 50}%)`;
       }
 
       update() {
@@ -1016,7 +1148,7 @@ const BackgroundAnimation = () => {
 
       draw() {
         ctx.fillStyle = this.color;
-        ctx.font = `${this.size * 9}px Inter`;
+        ctx.font = `${this.size * 8}px Orbitron`;
         ctx.textAlign = 'center';
         ctx.fillText(this.symbol, this.x, this.y);
       }
@@ -1053,11 +1185,11 @@ const BackgroundAnimation = () => {
 };
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 80 },
+  hidden: { opacity: 0, y: 60 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 1, ease: [0.22, 0.61, 0.36, 1] } 
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] } 
   },
 };
 
@@ -1066,46 +1198,46 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.5,
+      staggerChildren: 0.15,
+      delayChildren: 0.4,
     },
   },
 };
 
 const cardHover = {
   hover: {
-    scale: 1.1,
-    rotateX: 4,
-    rotateY: 4,
-    boxShadow: "0 25px 60px rgba(139, 92, 246, 0.6)",
-    transition: { duration: 0.5, ease: "easeOut" },
+    scale: 1.05,
+    rotateX: 3,
+    rotateY: 3,
+    boxShadow: "0 20px 50px rgba(0, 255, 255, 0.4)",
+    transition: { duration: 0.4, ease: "easeOut" },
   },
   tap: {
-    scale: 0.95,
+    scale: 0.98,
   },
 };
 
 const skillCard = {
-  hidden: { opacity: 0, scale: 0.6, rotate: -12 },
+  hidden: { opacity: 0, scale: 0.7, rotate: -8 },
   visible: {
     opacity: 1,
     scale: 1,
     rotate: 0,
     transition: { 
-      duration: 0.7, 
+      duration: 0.6, 
       ease: "easeOut", 
       type: "spring", 
-      stiffness: 140,
-      damping: 12 
+      stiffness: 120,
+      damping: 10 
     },
   },
 };
 
 const buttonPulse = {
   hover: {
-    scale: 1.12,
-    boxShadow: "0 0 25px rgba(139, 92, 246, 0.8)",
-    transition: { duration: 0.4 },
+    scale: 1.08,
+    boxShadow: "0 0 20px rgba(0, 255, 255, 0.6)",
+    transition: { duration: 0.3 },
   },
 };
 
@@ -1126,7 +1258,7 @@ const TypingSubtitle = ({ text }) => {
         setIsDeleting(!isDeleting);
         setCurrentIndex(isDeleting ? 0 : text.length);
       }
-    }, isDeleting ? 40 : 120);
+    }, isDeleting ? 30 : 100);
 
     return () => clearTimeout(handler);
   }, [currentIndex, isDeleting, text]);
@@ -1134,7 +1266,7 @@ const TypingSubtitle = ({ text }) => {
   return (
     <Subtitle>
       {displayText}
-      <span style={{ color: '#8b5cf6', animation: 'blink 0.8s infinite' }}>|</span>
+      <span style={{ color: '#00ffff', animation: 'blink 0.7s infinite' }}>|</span>
       <style>{`
         @keyframes blink {
           0%, 50% { opacity: 1; }
@@ -1192,8 +1324,8 @@ const Home = () => {
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [-25, 25]);
-  const rotateY = useTransform(x, [-100, 100], [-12, 12]);
+  const rotateX = useTransform(y, [-100, 100], [-20, 20]);
+  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -1243,10 +1375,11 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan | Full-Stack & AI/ML <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan | MERN & AIMl <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           <NavLink href="#home">Home</NavLink>
           <NavLink href="#about">About</NavLink>
+          <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#resume">Resume</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </NavLinks>
@@ -1265,7 +1398,7 @@ const Home = () => {
             >
               <ProfileRing
                 animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               />
               <ProfileImage 
                 src={profile} 
@@ -1276,7 +1409,7 @@ const Home = () => {
             </ProfileImageContainer>
           </motion.div>
           <HeaderContainer>
-            <Title variants={fadeInUp}>Siva Satya Sai Bhagavan</Title>
+            <Title variants={fadeInUp}>Siva Satya Sai Bhagavan GopalaJosyula</Title>
             <TypingSubtitle text="Full-Stack Developer & AI/ML Enthusiast | Building scalable MERN & Python solutions | Skilled in Java, Cloud, DevOps & Data-Driven Applications for Enterprise and Product Innovation." />
 
             <motion.div
@@ -1355,26 +1488,25 @@ const Home = () => {
             variants={fadeInUp}
             whileHover="hover"
           >
-            <h3 style={{ fontSize: "1.8rem", color: "#e4e7eb", textShadow: "0 0 12px rgba(228, 231, 235, 0.5)" }}>
+            <h3 style={{ fontSize: "1.8rem", color: "#e0fbfc", textShadow: "0 0 10px rgba(224, 251, 252, 0.4)" }}>
               Ramachandra College of Engineering, Eluru (JNTUK)
             </h3>
-            <p style={{ fontSize: "1.3rem", color: "#d8b4fe" }}>
+            <p style={{ fontSize: "1.3rem", color: "#00bfff" }}>
               B.Tech in Artificial Intelligence and Data Science
             </p>
-            <p style={{ fontSize: "1.3rem", color: "#d8b4fe" }}>
+            <p style={{ fontSize: "1.3rem", color: "#00bfff" }}>
               2022 – 2026
             </p>
-            <p style={{ fontSize: "1.3rem", color: "#e4e7eb", lineHeight: "1.5" }}>
+            <p style={{ fontSize: "1.3rem", color: "#e0fbfc", lineHeight: "1.5" }}>
               Current Aggregate: 70% | Focus: MERN & AI Integration
             </p>
             <Tags>
               <Tag whileHover={{ scale: 1.1 }}>B.Tech – AIDS (Artificial Intelligence & Data Science)</Tag>
-<Tag whileHover={{ scale: 1.1 }}>JNTUK – R20 Curriculum</Tag>
-<Tag whileHover={{ scale: 1.1 }} className="concept">MERN Stack & Full-Stack Development</Tag>
-<Tag whileHover={{ scale: 1.1 }}>Machine Learning & AI</Tag>
-<Tag whileHover={{ scale: 1.1 }}>Python, Java & JavaScript</Tag>
-<Tag whileHover={{ scale: 1.1 }}>Cloud & DevOps Basics (AWS, Docker)</Tag>
-
+              <Tag whileHover={{ scale: 1.1 }}>JNTUK – R20 Curriculum</Tag>
+              <Tag whileHover={{ scale: 1.1 }} className="concept">MERN Stack & Full-Stack Development</Tag>
+              <Tag whileHover={{ scale: 1.1 }}>Machine Learning & AI</Tag>
+              <Tag whileHover={{ scale: 1.1 }}>Python, Java & JavaScript</Tag>
+              <Tag whileHover={{ scale: 1.1 }}>Cloud & DevOps Basics (AWS, Docker)</Tag>
             </Tags>
           </Card>
         </Grid>
@@ -1391,57 +1523,53 @@ const Home = () => {
         <Grid>
           {[
             {
-    title: "AI Chatbot Dashboard",
-    desc: "Enterprise-grade chatbot dashboard integrating OpenAI API with real-time messaging, analytics, and conversation history. Developed using MERN stack with Socket.io for seamless interaction.",
-    tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN"],
-    link: "https://github.com/bhagavan444/ai-chatbot",
-    demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
-    //featured: true,
-    impact: "Handled 10,000+ queries with 95% accuracy and reduced response latency by 40%."
-  },
-  {
-    title: "Resume Builder Web App",
-    desc: "Full-stack, ATS-optimized resume builder enabling real-time PDF/Word export, AI scoring, and secure user authentication. Built with MERN stack and deployed on Vercel using MongoDB Atlas.",
-    tags: ["MERN", "OAuth2", "MongoDB", "PDF Generation", "AI Scoring"],
-    link: "https://github.com/bhagavan444/resumebuilder",
-    demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
-    //featured: true,
-    impact: "Reduced resume creation time by 70% for 500+ users; improved resume quality with AI-based scoring."
-  },
-  {
-    title: "Heart Disease Prediction Platform",
-    desc: "Scalable predictive healthcare platform combining Flask and MERN stack with deep learning models. Provides real-time dashboards and analytics, deployed on AWS for enterprise use.",
-    tags: ["MERN Hybrid", "TensorFlow", "Flask", "AWS", "Predictive Analytics"],
-    link: "https://github.com/bhagavan444/heart-disease-predictor",
-    demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
-    //featured: true,
-    impact: "Enhanced prediction accuracy to 92%, aiding faster clinical decisions."
-  },
-  {
-    title: "Career Path Recommendation Engine",
-    desc: "Personalized career recommendation system using MERN stack frontend and Python ML backend. Analyzes skills and market trends, integrated with LinkedIn API for real-time suggestions.",
-    tags: ["MERN", "Python ML", "Streamlit", "Recommendation Systems", "LinkedIn API"],
-    link: "https://github.com/bhagavan444/carrerrecomendation",
-    demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
-    //featured: true,
-    impact: "Achieved 85% match rate during beta testing; improved career planning efficiency for users."
-  },
-  {
-    title: "Fake News Detector",
-    desc: "Real-time NLP-powered news classification system using MERN frontend and Python backend. Includes admin panel for model updates and continuous monitoring for misinformation.",
-    tags: ["MERN", "NLP", "BERT", "Flask", "Admin Panel"],
-    link: "https://github.com/bhagavan444/fake-news-detector",
-    demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
-    impact: "Successfully detected 88% of fake news articles in live tests; reduced misinformation spread."
-  },
-  {
-    title: "Dynamic Portfolio Site",
-    desc: "Responsive and interactive personal portfolio built with React, Framer Motion, and Styled Components. Implements smooth animations, optimized performance, and SEO-friendly structure.",
-    tags: ["React", "Framer Motion", "Styled Components", "Vite", "Responsive Design"],
-    link: "https://github.com/bhagavan444/portfolio",
-    demo: "https://bhagavan.netlify.app",
-    impact: "Optimized for 60fps animations; improved user engagement and showcased projects effectively."
-  }
+              title: "AI Chatbot Dashboard",
+              desc: "Enterprise-grade chatbot dashboard integrating OpenAI API with real-time messaging, analytics, and conversation history. Developed using MERN stack with Socket.io for seamless interaction.",
+              tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN"],
+              link: "https://github.com/bhagavan444/ai-chatbot",
+              demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
+              impact: "Handled 10,000+ queries with 95% accuracy and reduced response latency by 40%."
+            },
+            {
+              title: "Resume Builder Web App",
+              desc: "Full-stack, ATS-optimized resume builder enabling real-time PDF/Word export, AI scoring, and secure user authentication. Built with MERN stack and deployed on Vercel using MongoDB Atlas.",
+              tags: ["MERN", "OAuth2", "MongoDB", "PDF Generation", "AI Scoring"],
+              link: "https://github.com/bhagavan444/resumebuilder",
+              demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
+              impact: "Reduced resume creation time by 70% for 500+ users; improved resume quality with AI-based scoring."
+            },
+            {
+              title: "Heart Disease Prediction Platform",
+              desc: "Scalable predictive healthcare platform combining Flask and MERN stack with deep learning models. Provides real-time dashboards and analytics, deployed on AWS for enterprise use.",
+              tags: ["MERN Hybrid", "TensorFlow", "Flask", "AWS", "Predictive Analytics"],
+              link: "https://github.com/bhagavan444/heart-disease-predictor",
+              demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
+              impact: "Enhanced prediction accuracy to 92%, aiding faster clinical decisions."
+            },
+            {
+              title: "Career Path Recommendation Engine",
+              desc: "Personalized career recommendation system using MERN stack frontend and Python ML backend. Analyzes skills and market trends, integrated with LinkedIn API for real-time suggestions.",
+              tags: ["MERN", "Python ML", "Streamlit", "Recommendation Systems", "LinkedIn API"],
+              link: "https://github.com/bhagavan444/carrerrecomendation",
+              demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
+              impact: "Achieved 85% match rate during beta testing; improved career planning efficiency for users."
+            },
+            {
+              title: "Fake News Detector",
+              desc: "Real-time NLP-powered news classification system using MERN frontend and Python backend. Includes admin panel for model updates and continuous monitoring for misinformation.",
+              tags: ["MERN", "NLP", "BERT", "Flask", "Admin Panel"],
+              link: "https://github.com/bhagavan444/fake-news-detector",
+              demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
+              impact: "Successfully detected 88% of fake news articles in live tests; reduced misinformation spread."
+            },
+            {
+              title: "Dynamic Portfolio Site",
+              desc: "Responsive and interactive personal portfolio built with React, Framer Motion, and Styled Components. Implements smooth animations, optimized performance, and SEO-friendly structure.",
+              tags: ["React", "Framer Motion", "Styled Components", "Vite", "Responsive Design"],
+              link: "https://github.com/bhagavan444/portfolio",
+              demo: "https://bhagavan.netlify.app",
+              impact: "Optimized for 60fps animations; improved user engagement and showcased projects effectively."
+            }
           ].map((project, i) => {
             const ProjectCard = project.featured ? FeaturedCard : Card;
             return (
@@ -1452,14 +1580,14 @@ const Home = () => {
                 variants={fadeInUp}
                 whileHover="hover"
               >
-                <h3 style={{ fontSize: "1.7rem", color: "#e4e7eb", textShadow: "0 0 12px rgba(228, 231, 235, 0.5)" }}>
+                <h3 style={{ fontSize: "1.7rem", color: "#e0fbfc", textShadow: "0 0 10px rgba(224, 251, 252, 0.4)" }}>
                   {project.title}
                 </h3>
-                <p style={{ fontSize: "1.1rem", color: "#e4e7eb", lineHeight: "1.6" }}>
+                <p style={{ fontSize: "1.1rem", color: "#e0fbfc", lineHeight: "1.6" }}>
                   {project.desc}
                 </p>
                 {project.impact && (
-                  <p style={{ fontSize: "1rem", color: "#8b5cf6", fontWeight: "600" }}>
+                  <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
                     <FaChartLine /> Impact: {project.impact}
                   </p>
                 )}
@@ -1493,99 +1621,97 @@ const Home = () => {
         <Grid>
           {[
             { 
-  icon: <FaCode />, 
-  title: "Programming Languages", 
-  skills: [
-    { name: "Python", level: 95 },          // Core for ML, scripting, backend
-    { name: "Java", level: 90 },            // Most asked in service-based companies
-    { name: "JavaScript (ES6+)", level: 90 }, // Full-stack & product-based demand
-    { name: "TypeScript", level: 80 },      // Safer JavaScript, demanded in MNCs
-    { name: "SQL", level: 85 },             // Required in both service & product
-    { name: "C/C++", level: 80 },           // DSA & system-level roles
-    { name: "Go (Golang)", level: 70 },     // Trending for scalable backends
-    { name: "Rust", level: 65 },            // Product startups & system programming
-  ] 
-},
-{ 
-  icon: <FaLaptopCode />, 
-  title: "Full-Stack Development", 
-  skills: [
-    { name: "React.js", level: 95 },
-    { name: "Node.js", level: 90 },
-    { name: "Express.js", level: 85 },
-    { name: "Next.js", level: 80 },
-    { name: "Spring Boot", level: 75 },     // Enterprise backends
-    { name: "Angular", level: 75 },         // Still used in service-based MNCs
-    { name: "Django / Flask", level: 80 },  // Python backend frameworks
-    { name: "MongoDB", level: 90 },
-    { name: "GraphQL", level: 70 },         // Modern API queries
-    { name: "REST API Development", level: 90 },
-  ] 
-},
-{ 
-  icon: <FaBrain />, 
-  title: "Machine Learning & Artificial Intelligence", 
-  skills: [
-    { name: "TensorFlow / Keras", level: 90 },      // Core DL frameworks
-    { name: "PyTorch", level: 85 },                 // Research & production
-    { name: "Scikit-learn", level: 85 },            // Classical ML
-    { name: "Hugging Face Transformers", level: 80 }, // NLP & LLMs
-    { name: "OpenAI API / LangChain", level: 75 },  // Generative AI + LLM apps
-    { name: "NLP (SpaCy, NLTK)", level: 80 },       // Natural language tasks
-    { name: "Computer Vision (OpenCV, CNNs)", level: 85 },
-    { name: "Generative AI (GANs, Diffusion)", level: 75 },
-    { name: "Reinforcement Learning (Gym, RLlib)", level: 70 },
-    { name: "MLflow / MLOps", level: 70 },          // Model lifecycle
-    { name: "Data Preprocessing (Pandas, NumPy)", level: 95 },
-    { name: "Data Visualization (Matplotlib, Seaborn, Plotly)", level: 90 },
-    { name: "Big Data (Hadoop, Spark MLlib)", level: 70 }, // Large-scale ML
-    { name: "AutoML (H2O.ai, AutoKeras)", level: 65 },     // Automated ML
-  ] 
-},
-
-{ 
-  icon: <FaCloud />, 
-  title: "Cloud & DevOps", 
-  skills: [
-    { name: "AWS", level: 85 },
-    { name: "Azure", level: 80 },
-    { name: "Google Cloud (GCP)", level: 75 },
-    { name: "Docker", level: 80 },
-    { name: "Kubernetes", level: 70 },
-    { name: "CI/CD (Jenkins, GitHub Actions)", level: 75 },
-    { name: "Terraform", level: 65 },       // Infra as code
-    { name: "Linux & Shell Scripting", level: 80 },
-  ] 
-},
-{ 
-  icon: <FaDatabase />, 
-  title: "Databases & Tools", 
-  skills: [
-    { name: "MySQL", level: 85 },
-    { name: "PostgreSQL", level: 85 },
-    { name: "MongoDB", level: 90 },
-    { name: "Redis", level: 70 },           // Cache, high-demand
-    { name: "Oracle DB", level: 70 },       // Used in large service MNCs
-    { name: "Firebase", level: 70 },        // Product/startup demand
-    { name: "Git & GitHub/GitLab", level: 95 },
-    { name: "Postman", level: 90 },
-    { name: "JIRA", level: 75 },            // Agile project tracking
-  ] 
-},
-{ 
-  icon: <FaUsers />, 
-  title: "Soft Skills", 
-  skills: [
-    { name: "Problem-Solving & DSA", level: 95 }, // Key for product-based coding rounds
-    { name: "System Design (LLD & HLD)", level: 80 },
-    { name: "Team Collaboration", level: 90 },
-    { name: "Agile / Scrum", level: 85 },
-    { name: "Communication", level: 90 },
-    { name: "Leadership & Mentoring", level: 80 },
-    { name: "Time Management", level: 85 },
-  ] 
-}
-
+              icon: <FaCode />, 
+              title: "Programming Languages", 
+              skills: [
+                { name: "Python", level: 95 },
+                { name: "Java", level: 90 },
+                { name: "JavaScript (ES6+)", level: 90 },
+                { name: "TypeScript", level: 80 },
+                { name: "SQL", level: 85 },
+                { name: "C/C++", level: 80 },
+                { name: "Go (Golang)", level: 70 },
+                { name: "Rust", level: 65 },
+              ] 
+            },
+            { 
+              icon: <FaLaptopCode />, 
+              title: "Full-Stack Development", 
+              skills: [
+                { name: "React.js", level: 95 },
+                { name: "Node.js", level: 90 },
+                { name: "Express.js", level: 85 },
+                { name: "Next.js", level: 80 },
+                { name: "Spring Boot", level: 75 },
+                { name: "Angular", level: 75 },
+                { name: "Django / Flask", level: 80 },
+                { name: "MongoDB", level: 90 },
+                { name: "GraphQL", level: 70 },
+                { name: "REST API Development", level: 90 },
+              ] 
+            },
+            { 
+              icon: <FaBrain />, 
+              title: "Machine Learning & Artificial Intelligence", 
+              skills: [
+                { name: "TensorFlow / Keras", level: 90 },
+                { name: "PyTorch", level: 85 },
+                { name: "Scikit-learn", level: 85 },
+                { name: "Hugging Face Transformers", level: 80 },
+                { name: "OpenAI API / LangChain", level: 75 },
+                { name: "NLP (SpaCy, NLTK)", level: 80 },
+                { name: "Computer Vision (OpenCV, CNNs)", level: 85 },
+                { name: "Generative AI (GANs, Diffusion)", level: 75 },
+                { name: "Reinforcement Learning (Gym, RLlib)", level: 70 },
+                { name: "MLflow / MLOps", level: 70 },
+                { name: "Data Preprocessing (Pandas, NumPy)", level: 95 },
+                { name: "Data Visualization (Matplotlib, Seaborn, Plotly)", level: 90 },
+                { name: "Big Data (Hadoop, Spark MLlib)", level: 70 },
+                { name: "AutoML (H2O.ai, AutoKeras)", level: 65 },
+              ] 
+            },
+            { 
+              icon: <FaCloud />, 
+              title: "Cloud & DevOps", 
+              skills: [
+                { name: "AWS", level: 85 },
+                { name: "Azure", level: 80 },
+                { name: "Google Cloud (GCP)", level: 75 },
+                { name: "Docker", level: 80 },
+                { name: "Kubernetes", level: 70 },
+                { name: "CI/CD (Jenkins, GitHub Actions)", level: 75 },
+                { name: "Terraform", level: 65 },
+                { name: "Linux & Shell Scripting", level: 80 },
+              ] 
+            },
+            { 
+              icon: <FaDatabase />, 
+              title: "Databases & Tools", 
+              skills: [
+                { name: "MySQL", level: 85 },
+                { name: "PostgreSQL", level: 85 },
+                { name: "MongoDB", level: 90 },
+                { name: "Redis", level: 70 },
+                { name: "Oracle DB", level: 70 },
+                { name: "Firebase", level: 70 },
+                { name: "Git & GitHub/GitLab", level: 95 },
+                { name: "Postman", level: 90 },
+                { name: "JIRA", level: 75 },
+              ] 
+            },
+            { 
+              icon: <FaUsers />, 
+              title: "Soft Skills", 
+              skills: [
+                { name: "Problem-Solving & DSA", level: 95 },
+                { name: "System Design (LLD & HLD)", level: 80 },
+                { name: "Team Collaboration", level: 90 },
+                { name: "Agile / Scrum", level: 85 },
+                { name: "Communication", level: 90 },
+                { name: "Leadership & Mentoring", level: 80 },
+                { name: "Time Management", level: 85 },
+              ] 
+            }
           ].map((category, i) => (
             <Card
               key={i}
@@ -1594,20 +1720,20 @@ const Home = () => {
               variants={skillCard}
               whileHover="hover"
             >
-              <h3 style={{ display: "flex", alignItems: "center", gap: "0.6rem", fontSize: "1.8rem", color: "#e4e7eb", textShadow: "0 0 12px rgba(228, 231, 235, 0.5)" }}>
+              <h3 style={{ display: "flex", alignItems: "center", gap: "0.6rem", fontSize: "1.8rem", color: "#e0fbfc", textShadow: "0 0 10px rgba(224, 251, 252, 0.4)" }}>
                 {category.icon} {category.title}
               </h3>
               {category.skills.map((skill, j) => (
                 <div key={j} style={{ marginBottom: "0.8rem" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.3rem" }}>
-                    <span style={{ fontSize: "0.95rem", color: "#d8b4fe" }}>{skill.name}</span>
-                    <span style={{ fontSize: "0.85rem", color: "#8b5cf6" }}>{skill.level}%</span>
+                    <span style={{ fontSize: "0.95rem", color: "#00bfff" }}>{skill.name}</span>
+                    <span style={{ fontSize: "0.85rem", color: "#00ffff" }}>{skill.level}%</span>
                   </div>
                   <ProgressBar>
                     <ProgressFill
                       initial={{ width: 0 }}
                       animate={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1.7, delay: j * 0.3 }}
+                      transition={{ duration: 1.5, delay: j * 0.2 }}
                     />
                   </ProgressBar>
                 </div>
@@ -1657,17 +1783,17 @@ const Home = () => {
               variants={fadeInUp}
               whileHover="hover"
             >
-              <h3 style={{ fontSize: "1.7rem", color: "#e4e7eb", textShadow: "0 0 12px rgba(228, 231, 235, 0.5)" }}>
+              <h3 style={{ fontSize: "1.7rem", color: "#e0fbfc", textShadow: "0 0 10px rgba(224, 251, 252, 0.4)" }}>
                 {intern.title} – {intern.company}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#d8b4fe" }}>
+              <p style={{ fontSize: "1.3rem", color: "#00bfff" }}>
                 {intern.duration}
               </p>
-              <p style={{ fontSize: "1.2rem", color: "#e4e7eb", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
                 {intern.desc}
               </p>
               {intern.impact && (
-                <p style={{ fontSize: "1rem", color: "#8b5cf6", fontWeight: "600" }}>
+                <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
                   <FaChartLine /> Impact: {intern.impact}
                 </p>
               )}
@@ -1703,83 +1829,150 @@ const Home = () => {
           <FaAward /> Certifications (19+)
         </SectionTitle>
         <div>
-          <p style={{ color: "#e4e7eb", fontSize: "1.7rem", marginBottom: "1.5rem", textAlign: "center", lineHeight: "1.6" }}>
+          <p style={{ color: "#e0fbfc", fontSize: "1.7rem", marginBottom: "1.5rem", textAlign: "center", lineHeight: "1.6" }}>
             Validated expertise in MERN, cloud, AI/ML, and DevOps—tailored for MNC roles with hands-on project proofs.
           </p>
           <Grid>
             {[
               {
-  title: "Java",
-  concepts: [
-    "Core OOP Principles (Abstraction, Encapsulation, Inheritance, Polymorphism)",
-    "Collections Framework (List, Set, Map, Queue)",
-    "Exception Handling & Custom Exceptions",
-    "Multithreading & Concurrency (synchronized, volatile, Executors)",
-    "Java 8+ Features (Streams, Lambdas, Optional, Functional Interfaces)",
-    "JVM Architecture & Memory Management (Heap, Stack, GC)",
-    "Design Patterns in Java (Singleton, Factory, Observer)",
-    "Serialization & Deserialization"
-  ],
-  certLink: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link",
-},
-{
-  title: "C for Everyone – Coursera",
-  concepts: [
-    "Pointers & Memory Management",
-    "Arrays & Strings",
-    "Structures, Unions & Enums",
-    "Dynamic Memory (malloc, calloc, realloc, free)",
-    "File I/O",
-    "Bitwise Operations",
-    "Function Pointers & Callbacks",
-    "Preprocessor Directives & Macros"
-  ],
-  certLink: "https://drive.google.com/file/d/1_icpofMdYi5iGjbELOY0VHMBloGJDhAA/view?usp=drive_link",
-},
-{
-  title: "Python",
-  concepts: [
-    "OOP & Classes",
-    "File Handling (CSV, JSON, TXT)",
-    "Modules & Packages (import, __init__)",
-    "List/Dict/Set Comprehensions",
-    "Exception Handling (try-except-finally)",
-    "Standard Libraries (os, sys, math, datetime)",
-    "NumPy & Pandas Basics",
-    "Decorators & Generators",
-    "Virtual Environments & Package Management"
-  ],
-  certLink: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link",
-},
-{
-  title: "React",
-  concepts: [
-    "JSX & Components",
-    "Props & State",
-    "Hooks (useState, useEffect, useRef, useContext)",
-    "React Router (Navigation, Params)",
-    "Conditional Rendering & Lists",
-    "Performance Optimization (memo, lazy, Suspense)",
-    "Redux / Context API for State Management",
-    "Error Boundaries",
-    "Testing (Jest, React Testing Library)"
-  ],
-  certLink: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link",
-},
-{
-  title: "AWS Certified",
-  concepts: [
-    "EC2, S3, EBS Basics",
-    "IAM Roles, Policies & Security Best Practices",
-    "VPC, Subnets, Gateways",
-    "Lambda Functions (Serverless)",
-    "CloudFormation Basics",
-    "Auto Scaling & Load Balancing",
-    "Monitoring (CloudWatch, CloudTrail)",
-    "Databases (RDS, DynamoDB)"
-  ],
-  certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view?usp=drive_link",
-},
+                title: "Java",
+                concepts: [
+                  "Core OOP Principles (Abstraction, Encapsulation, Inheritance, Polymorphism)",
+                  "Collections Framework (List, Set, Map, Queue)",
+                  "Exception Handling & Custom Exceptions",
+                  "Multithreading & Concurrency (synchronized, volatile, Executors)",
+                  "Java 8+ Features (Streams, Lambdas, Optional, Functional Interfaces)",
+                  "JVM Architecture & Memory Management (Heap, Stack, GC)",
+                  "Design Patterns in Java (Singleton, Factory, Observer)",
+                  "Serialization & Deserialization"
+                ],
+                certLink: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link",
+              },
+              {
+                title: "C for Everyone – Coursera",
+                concepts: [
+                  "Pointers & Memory Management",
+                  "Arrays & Strings",
+                  "Structures, Unions & Enums",
+                  "Dynamic Memory (malloc, calloc, realloc, free)",
+                  "File I/O",
+                  "Bitwise Operations",
+                  "Function Pointers & Callbacks",
+                  "Preprocessor Directives & Macros"
+                ],
+                certLink: "https://drive.google.com/file/d/1_icpofMdYi5iGjbELOY0VHMBloGJDhAA/view?usp=drive_link",
+              },
+              {
+                title: "Python",
+                concepts: [
+                  "OOP & Classes",
+                  "File Handling (CSV, JSON, TXT)",
+                  "Modules & Packages (import, __init__)",
+                  "List/Dict/Set Comprehensions",
+                  "Exception Handling (try-except-finally)",
+                  "Standard Libraries (os, sys, math, datetime)",
+                  "NumPy & Pandas Basics",
+                  "Decorators & Generators",
+                  "Virtual Environments & Package Management"
+                ],
+                certLink: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link",
+              },
+              {
+                title: "React",
+                concepts: [
+                  "JSX & Components",
+                  "Props & State",
+                  "Hooks (useState, useEffect, useRef, useContext)",
+                  "React Router (Navigation, Params)",
+                  "Conditional Rendering & Lists",
+                  "Performance Optimization (memo, lazy, Suspense)",
+                  "Redux / Context API for State Management",
+                  "Error Boundaries",
+                  "Testing (Jest, React Testing Library)"
+                ],
+                certLink: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link",
+              },
+              {
+                title: "AWS Certified",
+                concepts: [
+                  "EC2, S3, EBS Basics",
+                  "IAM Roles, Policies & Security Best Practices",
+                  "VPC, Subnets, Gateways",
+                  "Lambda Functions (Serverless)",
+                  "CloudFormation Basics",
+                  "Auto Scaling & Load Balancing",
+                  "Monitoring (CloudWatch, CloudTrail)",
+                  "Databases (RDS, DynamoDB)"
+                ],
+                certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view?usp=drive_link",
+              },
+              {
+                title: "R Programming",
+                concepts: [
+                  "R Syntax & Data Types",
+                  "Data Frames, Lists, Matrices",
+                  "dplyr & ggplot2 for Data Analysis",
+                  "Statistical Models (Regression, ANOVA)",
+                  "Data Cleaning & Transformation",
+                  "Hypothesis Testing",
+                  "Packages & Libraries",
+                  "Visualization Techniques"
+                ],
+                certLink: "https://drive.google.com/file/d/14MnNRgQKwmCXCeZIr1QG0Q9-GhE1jVJJ/view?usp=sharing",
+              },
+              {
+                title: "Django",
+                concepts: [
+                  "MTV (Model-Template-View) Architecture",
+                  "Django ORM Queries",
+                  "Authentication & Authorization",
+                  "Forms & Templates",
+                  "REST API with Django REST Framework (DRF)",
+                  "Middleware",
+                  "Deployment Basics (Gunicorn, Nginx, Heroku/AWS)"
+                ],
+                certLink: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view",
+              },
+              {
+                title: "ServiceNow",
+                concepts: [
+                  "ITSM Fundamentals",
+                  "Scripting in ServiceNow (Client & Server Scripts)",
+                  "Workflows & Business Rules",
+                  "CMDB Management",
+                  "Integration with APIs",
+                  "Incident, Problem & Change Management"
+                ],
+                certLink: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view",
+              },
+              {
+                title: "ML Using Python",
+                concepts: [
+                  "Supervised vs Unsupervised Learning",
+                  "Regression (Linear, Logistic)",
+                  "Classification (SVM, Decision Tree, Random Forest)",
+                  "Feature Engineering & Scaling",
+                  "Model Evaluation (Accuracy, Precision, Recall, F1, ROC)",
+                  "Overfitting vs Underfitting",
+                  "Cross Validation",
+                  "Clustering (K-Means, Hierarchical)"
+                ],
+                certLink: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view",
+              },
+              {
+                title: "AWS",
+                concepts: [
+                  "Cloud Computing Basics",
+                  "Elastic Load Balancer",
+                  "Auto Scaling",
+                  "Serverless (Lambda)",
+                  "Storage (S3, Glacier)",
+                  "Databases (RDS, DynamoDB)",
+                  "Networking (VPC, Route 53)"
+                ],
+                certLink: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
+              },
+              
 {
   title: "R Programming",
   concepts: [
@@ -1987,8 +2180,8 @@ const Home = () => {
                 <h3
                   style={{
                     fontSize: "1.4rem",
-                    color: "#e4e7eb",
-                    textShadow: "0 0 12px rgba(228, 231, 235, 0.5)",
+                    color: "#e0fbfc",
+                    textShadow: "0 0 10px rgba(224, 251, 252, 0.4)",
                   }}
                 >
                   {cert.title}
@@ -2078,17 +2271,17 @@ const Home = () => {
               variants={fadeInUp}
               whileHover="hover"
             >
-              <h3 style={{ fontSize: "1.6rem", color: "#e2e8f0", textShadow: "0 0 10px rgba(226, 232, 240, 0.4)" }}>
+              <h3 style={{ fontSize: "1.6rem", color: "#e0fbfc", textShadow: "0 0 8px rgba(224, 251, 252, 0.3)" }}>
                 {workshop.title}
               </h3>
-              <p style={{ fontSize: "1.3rem", color: "#d8b4fe" }}>
+              <p style={{ fontSize: "1.3rem", color: "#00bfff" }}>
                 {workshop.year}
               </p>
-              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
                 {workshop.desc}
               </p>
               {workshop.impact && (
-                <p style={{ fontSize: "1rem", color: "#a855f7", fontWeight: "600" }}>
+                <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
                   <FaChartLine /> Impact: {workshop.impact}
                 </p>
               )}
@@ -2121,23 +2314,23 @@ const Home = () => {
             <h3
               style={{
                 fontSize: "1.6rem",
-                color: "#e2e8f0",
-                textShadow: "0 0 10px rgba(226, 232, 240, 0.4)",
+                color: "#e0fbfc",
+                textShadow: "0 0 8px rgba(224, 251, 252, 0.3)",
               }}
             >
               24-Hour Hackathon – Brainovision, RCE Eluru
             </h3>
-            <p style={{ fontSize: "1.3rem", color: "#d8b4fe" }}>2025</p>
+            <p style={{ fontSize: "1.3rem", color: "#00bfff" }}>2025</p>
             <p
               style={{
                 fontSize: "1.2rem",
-                color: "#e2e8f0",
+                color: "#e0fbfc",
                 lineHeight: "1.6",
               }}
             >
               Developed a full-stack web platform for buying and selling second-hand electronics using MERN stack, implementing user authentication, product listing, and real-time transactions within 24 hours.
             </p>
-            <p style={{ fontSize: "1rem", color: "#a855f7", fontWeight: "600" }}>
+            <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
               <FaChartLine /> Impact: Won 2nd place; deployed live app with 100+ users
             </p>
             <Tags>
@@ -2215,14 +2408,14 @@ const Home = () => {
               variants={fadeInUp}
               whileHover="hover"
             >
-              <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 10px rgba(226, 232, 240, 0.4)" }}>
+              <h3 style={{ fontSize: "1.5rem", color: "#e0fbfc", textShadow: "0 0 8px rgba(224, 251, 252, 0.3)" }}>
                 {platform.title}
               </h3>
-              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
                 {platform.desc}
               </p>
               {platform.impact && (
-                <p style={{ fontSize: "1rem", color: "#a855f7", fontWeight: "600" }}>
+                <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
                   <FaChartLine /> Impact: {platform.impact}
                 </p>
               )}
@@ -2279,14 +2472,14 @@ const Home = () => {
               variants={fadeInUp}
               whileHover="hover"
             >
-              <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 10px rgba(226, 232, 240, 0.4)" }}>
+              <h3 style={{ fontSize: "1.5rem", color: "#e0fbfc", textShadow: "0 0 8px rgba(224, 251, 252, 0.3)" }}>
                 {hobby.title}
               </h3>
-              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
                 {hobby.desc}
               </p>
               {hobby.impact && (
-                <p style={{ fontSize: "1rem", color: "#a855f7", fontWeight: "600" }}>
+                <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
                   <FaChartLine /> Impact: {hobby.impact}
                 </p>
               )}
@@ -2334,14 +2527,14 @@ const Home = () => {
               variants={fadeInUp}
               whileHover="hover"
             >
-              <h3 style={{ fontSize: "1.5rem", color: "#e2e8f0", textShadow: "0 0 10px rgba(226, 232, 240, 0.4)" }}>
+              <h3 style={{ fontSize: "1.5rem", color: "#e0fbfc", textShadow: "0 0 8px rgba(224, 251, 252, 0.3)" }}>
                 {activity.title}
               </h3>
-              <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.6" }}>
+              <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
                 {activity.desc}
               </p>
               {activity.impact && (
-                <p style={{ fontSize: "1rem", color: "#a855f7", fontWeight: "600" }}>
+                <p style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "600" }}>
                   <FaChartLine /> Impact: {activity.impact}
                 </p>
               )}
@@ -2426,10 +2619,10 @@ const Home = () => {
             variants={fadeInUp}
             whileHover="hover"
           >
-            <h3 style={{ fontSize: "1.6rem", color: "#e2e8f0", textShadow: "0 0 10px rgba(226, 232, 240, 0.4)" }}>
+            <h3 style={{ fontSize: "1.6rem", color: "#e0fbfc", textShadow: "0 0 8px rgba(224, 251, 252, 0.3)" }}>
               My Professional Resume
             </h3>
-            <p style={{ fontSize: "1.2rem", color: "#e2e8f0", lineHeight: "1.6" }}>
+            <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
               Comprehensive overview of my MERN expertise, AI projects, and MNC-ready skills. Tailored for full-stack roles. View in-app for seamless experience.
             </p>
             <Links style={{ justifyContent: 'center', gap: '2rem' }}>
