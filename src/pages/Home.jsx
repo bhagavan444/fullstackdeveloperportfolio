@@ -62,28 +62,122 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(2, 12, 27, 0.95);
-  backdrop-filter: blur(20px);
-  padding: 1rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(2, 12, 27, 0.95),
+    rgba(17, 34, 64, 0.9)
+  );
+  backdrop-filter: blur(22px);
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
-  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
+  height: 30px;
+  box-shadow: 
+    0 6px 25px rgba(0, 240, 255, 0.15),
+    0 0 15px rgba(255, 0, 255, 0.1);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, #00f0ff, #ff00ff, #00f0ff) 1;
+  animation: glowBorder 5s ease-in-out infinite;
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease-in-out infinite;
+
+  /* Pseudo-element for subtle background glow */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 240, 255, 0.1),
+      transparent 70%
+    );
+    z-index: -1;
+    opacity: 0.5;
+    animation: pulseGlow 6s ease-in-out infinite;
+  }
+
+  /* Gradient shift animation */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
+  /* Glowing border animation */
+  @keyframes glowBorder {
+    0%, 100% {
+      border-image: linear-gradient(90deg, #00f0ff, #ff00ff, #00f0ff) 1;
+      box-shadow: 
+        0 6px 25px rgba(0, 240, 255, 0.15),
+        0 0 15px rgba(255, 0, 255, 0.1);
+    }
+    50% {
+      border-image: linear-gradient(90deg, #ff00ff, #00f0ff, #ff00ff) 1;
+      box-shadow: 
+        0 8px 30px rgba(0, 240, 255, 0.2),
+        0 0 20px rgba(255, 0, 255, 0.15);
+    }
+  }
+
+  /* Pulse glow for background */
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  /* Style for nav links or items (assuming child elements) */
+  & > a, & > div {
+    color: #e0fbfc;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+
+    &:hover {
+      color: #00f0ff;
+      transform: translateY(-2px);
+      text-shadow: 
+        0 0 12px rgba(0, 240, 255, 0.7),
+        0 0 20px rgba(255, 0, 255, 0.5);
+    }
+  }
 
   @media (max-width: 1024px) {
-    padding: 0.8rem 1.5rem;
-    height: 60px;
+    padding: clamp(0.8rem, 1.8vw, 1.2rem) clamp(1.5rem, 3vw, 2rem);
+    height: 55px;
   }
+
   @media (max-width: 768px) {
-    padding: 0.8rem 1rem;
+    padding: clamp(0.7rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
     flex-wrap: wrap;
+    height: auto;
+    box-shadow: 
+      0 4px 20px rgba(0, 240, 255, 0.1),
+      0 0 10px rgba(255, 0, 255, 0.08);
   }
+
   @media (max-width: 480px) {
-    padding: 0.6rem 0.8rem;
-    height: 50px;
+    padding: clamp(0.5rem, 1.2vw, 0.8rem) clamp(0.8rem, 1.8vw, 1.2rem);
+    height: auto;
+    & > a, & > div {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+    }
   }
 `;
 
@@ -210,7 +304,7 @@ const HeroSection = styled.section`
 
 const HeroContent = styled(motion.div)`
   display: flex;
-  flex-direction: row;
+  flex-direction:row;
   align-items: center;
   justify-content: center;
   gap: clamp(2rem, 4vw, 3rem);
@@ -237,26 +331,154 @@ const ProfileImageContainer = styled(motion.div)`
 `;
 
 const ProfileImage = styled(motion.img)`
-  width: clamp(220px, 25vw, 300px);
-  height: clamp(220px, 25vw, 300px);
-  border-radius: 20px;
+  width: clamp(240px, 26vw, 320px); /* Slightly larger for prominence */
+  height: clamp(240px, 26vw, 320px);
+  border-radius: 24px; /* Softer, modern corners */
   object-fit: cover;
-  border: 4px solid rgba(0, 255, 255, 0.2);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(255, 255, 255, 0.1);
+  border: 5px solid transparent; /* Thicker border with gradient */
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.3),
+    rgba(255, 0, 255, 0.3)
+  ); /* Gradient background for border */
+  box-shadow: 
+    0 0 40px rgba(0, 255, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 60px rgba(255, 0, 255, 0.3); /* Multi-layered neon glow */
   transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: neonPulse 3s infinite ease-in-out; /* Pulsing glow effect */
 
+  /* Holographic overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(255, 0, 255, 0.1),
+      transparent
+    );
+    opacity: 0.5;
+    animation: hologramShift 8s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Particle sparkle effect */
+  &::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 255, 255, 0.3),
+      transparent 50%
+    );
+    opacity: 0.4;
+    animation: particleSparkle 5s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Hover effects */
   &:hover {
-    box-shadow: 0 0 50px rgba(0, 255, 255, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
+    transform: scale(1.08) rotate(2deg); /* Slight scale and rotation */
+    box-shadow: 
+      0 0 80px rgba(0, 255, 255, 0.7),
+      inset 0 0 30px rgba(255, 255, 255, 0.2),
+      0 0 100px rgba(255, 0, 255, 0.5);
+    border-color: rgba(0, 255, 255, 0.5);
+    animation: neonPulseHover 1.5s infinite ease-in-out; /* Faster pulse on hover */
   }
 
+  /* Responsive adjustments */
   @media (max-width: 768px) {
-    width: clamp(180px, 20vw, 220px);
-    height: clamp(180px, 20vw, 220px);
+    width: clamp(200px, 24vw, 260px);
+    height: clamp(200px, 24vw, 260px);
+    border-radius: 20px;
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.4),
+      inset 0 0 15px rgba(255, 255, 255, 0.1);
+    &::before {
+      opacity: 0.4; /* Slightly less intense on mobile */
+    }
+    &::after {
+      opacity: 0.3;
+    }
+    &:hover {
+      transform: scale(1.05); /* Reduced scale for mobile */
+      box-shadow: 
+        0 0 50px rgba(0, 255, 255, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+    }
   }
+
   @media (max-width: 480px) {
-    width: clamp(150px, 18vw, 180px);
-    height: clamp(150px, 18vw, 180px);
+    width: clamp(180px, 22vw, 220px);
+    height: clamp(180px, 22vw, 220px);
+    border-width: 4px;
+  }
+`;
+
+/* Keyframe animations */
+const keyframes = `
+  @keyframes neonPulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 40px rgba(0, 255, 255, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.15),
+        0 0 60px rgba(255, 0, 255, 0.3);
+    }
+    50% {
+      box-shadow: 
+        0 0 60px rgba(0, 255, 255, 0.7),
+        inset 0 0 30px rgba(255, 255, 255, 0.2),
+        0 0 80px rgba(255, 0, 255, 0.5);
+    }
+  }
+
+  @keyframes neonPulseHover {
+    0%, 100% {
+      box-shadow: 
+        0 0 80px rgba(0, 255, 255, 0.7),
+        inset 0 0 30px rgba(255, 255, 255, 0.2),
+        0 0 100px rgba(255, 0, 255, 0.5);
+    }
+    50% {
+      box-shadow: 
+        0 0 100px rgba(0, 255, 255, 0.9),
+        inset 0 0 40px rgba(255, 255, 255, 0.25),
+        0 0 120px rgba(255, 0, 255, 0.7);
+    }
+  }
+
+  @keyframes hologramShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 400% 50%;
+    }
+  }
+
+  @keyframes particleSparkle {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -266,7 +488,7 @@ const ProfileRing = styled(motion.div)`
   left: -15px;
   width: calc(100% + 30px);
   height: calc(100% + 30px);
-  border: 2px dotted rgba(0, 255, 255, 0.3);
+  border: 3px dotted rgba(0, 255, 255, 0.3);
   border-radius: 20px;
   z-index: 1;
   animation: aiScan 20s linear infinite;
@@ -350,51 +572,129 @@ const Subtitle = styled(motion.div)`
 `;
 
 const CTAButton = styled(motion.a)`
-  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
-  border-radius: 8px;
-  font-weight: 800;
+  padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1.8rem, 3.5vw, 2.8rem);
+  border-radius: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  background: linear-gradient(90deg, #00ffff, #00bfff);
+  gap: 1rem;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  background: linear-gradient(
+    45deg,
+    #00f0ff,
+    #ff00ff,
+    #00b4ff,
+    #7fffd4,
+    #00f0ff
+  );
+  background-size: 300%;
   color: #020c1b;
-  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(0, 240, 255, 0.4),
+    0 0 15px rgba(255, 0, 255, 0.3);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00f0ff, #ff00ff) 1;
+  animation: gradientShift 6s ease infinite;
+  transition: all 0.4s ease;
 
+  /* Shine effect */
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -150%;
     width: 200%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.6s ease;
   }
 
-  &:hover:before {
-    left: 100%;
+  /* Ripple effect on click */
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+    pointer-events: none;
   }
 
+  /* Hover effects */
   &:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+      0 8px 30px rgba(0, 240, 255, 0.6),
+      0 0 20px rgba(255, 0, 255, 0.5);
+    &:before {
+      left: 100%;
+    }
   }
 
-  @media (max-width: 768px) {
-    padding: 0.8rem 2rem;
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
+  /* Active (click) effect */
+  &:active:after {
+    width: 200%;
+    height: 200%;
+    transition: width 0.5s ease, height 0.5s ease;
   }
+
+  /* Gradient animation */
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Pulsating glow */
+  @keyframes glowPulse {
+    0%, 100% {
+      border-image: linear-gradient(45deg, #00f0ff, #ff00ff) 1;
+    }
+    50% {
+      border-image: linear-gradient(45deg, #ff00ff, #00f0ff) 1;
+    }
+  }
+
+  /* Apply pulsating glow */
+  animation: gradientShift 6s ease infinite, glowPulse 3s ease infinite;
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    padding: clamp(0.7rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.2rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    box-shadow: 
+      0 3px 15px rgba(0, 240, 255, 0.3),
+      0 0 10px rgba(255, 0, 255, 0.2);
+  }
+
   @media (max-width: 480px) {
-    padding: 0.6rem 1.5rem;
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    padding: clamp(0.5rem, 1.8vw, 0.8rem) clamp(1.2rem, 2.8vw, 1.8rem);
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    box-shadow: 
+      0 2px 10px rgba(0, 240, 255, 0.2),
+      0 0 8px rgba(255, 0, 255, 0.15);
   }
 `;
+
 
 const Socials = styled.div`
   display: flex;
@@ -863,32 +1163,142 @@ const SubmitButton = styled(motion.button)`
   }
 `;
 
-const Footer = styled.footer`
-  background: linear-gradient(180deg, #020c1b, #0a192f, #112240);
+const Footer = styled(motion.footer)`
+  background: linear-gradient(
+    180deg,
+    #020c1b 0%,
+    #0a192f 50%,
+    #112240 100%
+  );
   color: #a8d0e6;
-  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 4vw, 3rem);
   text-align: center;
-  border-top: 1px solid rgba(0, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
+  border-top: 2px solid rgba(0, 240, 255, 0.3);
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 
+    0 -4px 20px rgba(0, 240, 255, 0.2),
+    0 -2px 10px rgba(255, 0, 255, 0.15);
+  animation: glowBorder 5s ease-in-out infinite;
 
+  /* Background overlay with pulsating gradient */
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 0%, rgba(0, 255, 255, 0.1), transparent 60%);
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(0, 240, 255, 0.15),
+      transparent 70%
+    );
     z-index: 0;
-    animation: aiPulse 8s infinite ease-in-out;
+    animation: aiPulse 6s ease-in-out infinite;
+  }
+
+  /* Secondary overlay for subtle texture */
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(0, 240, 255, 0.05),
+      rgba(255, 0, 255, 0.05)
+    );
+    opacity: 0.5;
+    z-index: 0;
+    animation: shiftTexture 10s linear infinite;
+  }
+
+  /* Ensure content stays above overlays */
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Style for links or text within footer */
+  & a, & p {
+    color: #a8d0e6;
+    text-decoration: none;
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+
+    &:hover {
+      color: #00f0ff;
+      text-shadow: 
+        0 0 12px rgba(0, 240, 255, 0.7),
+        0 0 20px rgba(255, 0, 255, 0.5);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Pulsating animation for background */
+  @keyframes aiPulse {
+    0%, 100% {
+      opacity: 0.15;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Shifting texture animation */
+  @keyframes shiftTexture {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 200% 200%;
+    }
+  }
+
+  /* Glowing border animation */
+  @keyframes glowBorder {
+    0%, 100% {
+      border-top-color: rgba(0, 240, 255, 0.3);
+      box-shadow: 
+        0 -4px 20px rgba(0, 240, 255, 0.2),
+        0 -2px 10px rgba(255, 0, 255, 0.15);
+    }
+    50% {
+      border-top-color: rgba(255, 0, 255, 0.3);
+      box-shadow: 
+        0 -6px 25px rgba(0, 240, 255, 0.3),
+        0 -3px 15px rgba(255, 0, 255, 0.25);
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+    & a, & p {
+      font-size: clamp(0.85rem, 1.6vw, 1rem);
+    }
+    box-shadow: 
+      0 -3px 15px rgba(0, 240, 255, 0.15),
+      0 -1px 8px rgba(255, 0, 255, 0.1);
   }
 
   @media (max-width: 480px) {
     padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 1.5rem);
+    & a, & p {
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+    box-shadow: 
+      0 -2px 10px rgba(0, 240, 255, 0.1),
+      0 -1px 6px rgba(255, 0, 255, 0.05);
   }
 `;
-
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -1003,54 +1413,167 @@ const ResumeModal = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95);
+  background: linear-gradient(
+    135deg,
+    rgba(2, 12, 27, 0.95),
+    rgba(17, 34, 64, 0.9)
+  );
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  animation: fadePulse 10s ease-in-out infinite;
+
+  /* Subtle background pulse */
+  @keyframes fadePulse {
+    0%, 100% {
+      background: linear-gradient(
+        135deg,
+        rgba(2, 12, 27, 0.95),
+        rgba(17, 34, 64, 0.9)
+      );
+    }
+    50% {
+      background: linear-gradient(
+        135deg,
+        rgba(2, 12, 27, 0.9),
+        rgba(17, 34, 64, 0.85)
+      );
+    }
+  }
 `;
 
 const ModalContent = styled.div`
-  background: rgba(255, 255, 255, 0.03);
-  padding: clamp(1.5rem, 3vw, 2rem);
-  border-radius: 15px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 240, 255, 0.1),
+    rgba(255, 0, 255, 0.1)
+  );
+  padding: clamp(2rem, 4vw, 2.5rem);
+  border-radius: 20px;
   position: relative;
   width: 90%;
-  max-width: 800px;
-  max-height: 85vh;
+  max-width: 850px;
+  max-height: 90vh;
   text-align: center;
-  box-shadow: 0 15px 50px rgba(0, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 
+    0 20px 60px rgba(0, 240, 255, 0.3),
+    0 0 30px rgba(255, 0, 255, 0.2);
+  backdrop-filter: blur(25px);
+  border: 2px solid transparent;
+  border-image: linear-gradient(45deg, #00f0ff, #ff00ff) 1;
   overflow: hidden;
+  animation: glowBorder 4s ease-in-out infinite;
+
+  /* Pseudo-element for inner glow */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 240, 255, 0.15),
+      transparent 70%
+    );
+    z-index: -1;
+    opacity: 0.5;
+    animation: innerPulse 6s ease-in-out infinite;
+  }
+
+  /* Hover effect for subtle 3D lift */
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+      0 25px 70px rgba(0, 240, 255, 0.4),
+      0 0 40px rgba(255, 0, 255, 0.3);
+  }
+
+  @keyframes glowBorder {
+    0%, 100% {
+      border-image: linear-gradient(45deg, #00f0ff, #ff00ff) 1;
+    }
+    50% {
+      border-image: linear-gradient(45deg, #ff00ff, #00f0ff) 1;
+    }
+  }
+
+  @keyframes innerPulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
     max-width: 95%;
-    max-height: 80vh;
+    max-height: 85vh;
+    box-shadow: 
+      0 15px 50px rgba(0, 240, 255, 0.25),
+      0 0 25px rgba(255, 0, 255, 0.15);
   }
+
   @media (max-width: 480px) {
-    padding: 1rem;
-    max-height: 75vh;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    max-height: 80vh;
+    border-radius: 15px;
   }
 `;
 
 const CloseButton = styled(motion.button)`
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: clamp(1.8rem, 3vw, 2rem);
+  top: 1.2rem;
+  right: 1.2rem;
+  font-size: clamp(2rem, 3.5vw, 2.2rem);
   background: none;
   border: none;
   color: #a8d0e6;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  z-index: 2;
+
+  /* Pseudo-element for hover glow */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(
+      circle,
+      rgba(0, 240, 255, 0.3),
+      transparent 70%
+    );
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+  }
 
   &:hover {
-    color: #00ffff;
-    transform: rotate(90deg);
-    text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    color: #00f0ff;
+    transform: rotate(90deg) scale(1.1);
+    text-shadow: 
+      0 0 15px rgba(0, 240, 255, 0.7),
+      0 0 25px rgba(255, 0, 255, 0.5);
+    &:before {
+      width: 200%;
+      height: 200%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    top: 1rem;
+    right: 1rem;
+    font-size: clamp(1.8rem, 3vw, 2rem);
   }
 
   @media (max-width: 480px) {
@@ -1061,41 +1584,177 @@ const CloseButton = styled(motion.button)`
 `;
 
 const ModalButton = styled(motion.button)`
-  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
-  border-radius: 8px;
-  font-weight: 600;
-  background: linear-gradient(90deg, #00ffff, #00bfff);
+  padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1.8rem, 3.5vw, 2.8rem);
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(
+    45deg,
+    #00f0ff,
+    #ff00ff,
+    #00b4ff,
+    #7fffd4,
+    #00f0ff
+  );
+  background-size: 300%;
   color: #020c1b;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 0.8rem;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  margin: 1rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  box-shadow: 
+    0 4px 20px rgba(0, 240, 255, 0.4),
+    0 0 15px rgba(255, 0, 255, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: gradientShift 6s ease infinite;
+
+  /* Shine effect */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  /* Ripple effect on click */
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease;
+  }
 
   &:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+      0 8px 30px rgba(0, 240, 255, 0.6),
+      0 0 20px rgba(255, 0, 255, 0.5);
+    &:before {
+      left: 100%;
+    }
+  }
+
+  &:active:after {
+    width: 200%;
+    height: 200%;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    margin: 0.8rem;
   }
 
   @media (max-width: 480px) {
-    padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    padding: clamp(0.6rem, 1.8vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
     margin: 0.6rem;
   }
 `;
-
 const AboutText = styled(motion.p)`
-  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-  line-height: 1.8;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(1.2rem, 2.7vw, 1.4rem);
+  line-height: 1.9;
   color: #a8d0e6;
-  text-shadow: 0 0 8px rgba(168, 208, 230, 0.3);
+  text-shadow: 
+    0 0 10px rgba(168, 208, 230, 0.4),
+    0 0 15px rgba(0, 240, 255, 0.2);
   text-align: justify;
+  position: relative;
+  z-index: 1;
+  animation: glowPulse 4s ease-in-out infinite;
+  transition: all 0.3s ease;
+
+  /* Pseudo-element for subtle underline glow on hover */
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00f0ff, #ff00ff);
+    transition: width 0.4s ease;
+    opacity: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    text-shadow: 
+      0 0 15px rgba(168, 208, 230, 0.6),
+      0 0 20px rgba(0, 240, 255, 0.4);
+    &:after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  /* Typing animation effect for initial load */
+  @keyframes typing {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  /* Glow pulse animation */
+  @keyframes glowPulse {
+    0%, 100% {
+      text-shadow: 
+        0 0 10px rgba(168, 208, 230, 0.4),
+        0 0 15px rgba(0, 240, 255, 0.2);
+    }
+    50% {
+      text-shadow: 
+        0 0 15px rgba(168, 208, 230, 0.6),
+        0 0 25px rgba(0, 240, 255, 0.3);
+    }
+  }
+
+  /* Apply typing animation on load */
+  overflow: hidden;
+  animation: typing 1.5s ease-out forwards;
 
   @media (max-width: 768px) {
-    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-size: clamp(1.1rem, 2.2vw, 1.2rem);
+    line-height: 1.7;
   }
+
   @media (max-width: 480px) {
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
     line-height: 1.6;
   }
 `;
@@ -1107,7 +1766,23 @@ const ParticleBackground = styled.canvas`
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.25;
+  opacity: 0.3;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 12, 27, 0.2),
+    rgba(17, 34, 64, 0.1)
+  );
+  animation: fadeIn 2s ease-in forwards;
+
+  /* Subtle background fade-in */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.3;
+    }
+  }
 `;
 
 // Remaining components (BackgroundAnimation, TypingSubtitle, Home) with AI-themed particles
@@ -1522,7 +2197,7 @@ const Home = () => {
         <Grid>
           {[
             {
-              title: "AI Chatbot Dashboard",
+              title: "AI Chatbot",
               desc: "Enterprise-grade chatbot dashboard integrating OpenAI API with real-time messaging, analytics, and conversation history. Developed using MERN stack with Socket.io for seamless interaction.",
               tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN"],
               link: "https://github.com/bhagavan444/ai-chatbot",
@@ -1546,7 +2221,7 @@ const Home = () => {
               impact: "Enhanced prediction accuracy to 92%, aiding faster clinical decisions."
             },
             {
-              title: "Career Path Recommendation Engine",
+              title: "Career Path Recommendation Platform",
               desc: "Personalized career recommendation system using MERN stack frontend and Python ML backend. Analyzes skills and market trends, integrated with LinkedIn API for real-time suggestions.",
               tags: ["MERN", "Python ML", "Streamlit", "Recommendation Systems", "LinkedIn API"],
               link: "https://github.com/bhagavan444/carrerrecomendation",
@@ -1554,7 +2229,7 @@ const Home = () => {
               impact: "Achieved 85% match rate during beta testing; improved career planning efficiency for users."
             },
             {
-              title: "Fake News Detector",
+              title: "Fake News Detector Platform",
               desc: "Real-time NLP-powered news classification system using MERN frontend and Python backend. Includes admin panel for model updates and continuous monitoring for misinformation.",
               tags: ["MERN", "NLP", "BERT", "Flask", "Admin Panel"],
               link: "https://github.com/bhagavan444/fake-news-detector",
@@ -1566,7 +2241,7 @@ const Home = () => {
               desc: "Responsive and interactive personal portfolio built with React, Framer Motion, and Styled Components. Implements smooth animations, optimized performance, and SEO-friendly structure.",
               tags: ["React", "Framer Motion", "Styled Components", "Vite", "Responsive Design"],
               link: "https://github.com/bhagavan444/portfolio",
-              demo: "https://bhagavan.netlify.app",
+              demo: "https://bhagavansportfolio.netlify.app",
               impact: "Optimized for 60fps animations; improved user engagement and showcased projects effectively."
             }
           ].map((project, i) => {
@@ -1641,11 +2316,10 @@ const Home = () => {
                 { name: "Node.js", level: 90 },
                 { name: "Express.js", level: 85 },
                 { name: "Next.js", level: 80 },
-                { name: "Spring Boot", level: 75 },
                 { name: "Angular", level: 75 },
                 { name: "Django / Flask", level: 80 },
                 { name: "MongoDB", level: 90 },
-                { name: "GraphQL", level: 70 },
+        
                 { name: "REST API Development", level: 90 },
               ] 
             },
@@ -1656,17 +2330,14 @@ const Home = () => {
                 { name: "TensorFlow / Keras", level: 90 },
                 { name: "PyTorch", level: 85 },
                 { name: "Scikit-learn", level: 85 },
-                { name: "Hugging Face Transformers", level: 80 },
-                { name: "OpenAI API / LangChain", level: 75 },
-                { name: "NLP (SpaCy, NLTK)", level: 80 },
+                
+                
                 { name: "Computer Vision (OpenCV, CNNs)", level: 85 },
                 { name: "Generative AI (GANs, Diffusion)", level: 75 },
                 { name: "Reinforcement Learning (Gym, RLlib)", level: 70 },
-                { name: "MLflow / MLOps", level: 70 },
                 { name: "Data Preprocessing (Pandas, NumPy)", level: 95 },
                 { name: "Data Visualization (Matplotlib, Seaborn, Plotly)", level: 90 },
-                { name: "Big Data (Hadoop, Spark MLlib)", level: 70 },
-                { name: "AutoML (H2O.ai, AutoKeras)", level: 65 },
+                
               ] 
             },
             { 
@@ -2622,7 +3293,7 @@ const Home = () => {
               My Professional Resume
             </h3>
             <p style={{ fontSize: "1.2rem", color: "#e0fbfc", lineHeight: "1.6" }}>
-               Versatile Full-Stack Developer with expertise in the MERN stack (MongoDB, Express.js, React, Node.js), Artificial Intelligence, and Data Science. Experienced in building scalable web applications, developing intelligent AI/ML models, and deploying cloud-based solutions. Skilled at integrating frontend and backend systems, optimizing performance, and delivering secure, user-friendly applications. Demonstrated ability to innovate through hackathons, research-based projects, and real-world applications across domains including web development, AI, and cloud technologies. Equipped with strong problem-solving, collaboration, and adaptability skills, making me well-prepared for impactful roles in product-based and service-based MNCs
+               Full-Stack Developer proficient in MERN stack, AI, and Data Science, with a knack for building scalable, user-friendly web apps and intelligent AI/ML models. Experienced in cloud deployments, system optimization, and cross-domain innovation through hackathons and research projects. Strong problem-solver and collaborator, ready to drive impact in dynamic tech environments.
             </p>
             <Links style={{ justifyContent: 'center', gap: '2rem' }}>
               <ModalButton
