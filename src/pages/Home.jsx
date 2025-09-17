@@ -184,7 +184,7 @@ const Nav = styled.nav`
 const NavBrand = styled.a`
   font-family: "Orbitron", sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.4rem);
-  font-weight: 700;
+  font-weight: 900;
   background: linear-gradient(90deg, #00ffff, #7fffd4, #00bfff);
   -webkit-background-clip: text;
   background-clip: text;
@@ -226,7 +226,7 @@ const NavBrand = styled.a`
 const NavLinks = styled.div`
 
   display: flex;
-  margin-right:50px;
+  margin-right:90px;
   gap: clamp(1rem, 2vw, 1.5rem);
   align-items: center;
 
@@ -652,8 +652,8 @@ const HeaderContainer = styled.div`
 `;
 const Title = styled(motion.h1)`
   font-family: "Orbitron", sans-serif;
-  font-size: clamp(2rem, 6vw,3rem);
-  font-weight: 800;
+  font-size: clamp(2rem, 6vw,2.5rem);
+  font-weight: 900;
   background: linear-gradient(90deg, #00ffff, #00bfff, #7fffd4, #00ffff);
   background-size: 200%;
   -webkit-background-clip: text;
