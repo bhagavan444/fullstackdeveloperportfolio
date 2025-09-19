@@ -2282,7 +2282,7 @@ const Home = () => {
               title: "AI Chatbot",
               desc: "Enterprise-grade chatbot dashboard integrating OpenAI API with real-time messaging, analytics, and conversation history. Developed using MERN stack with Socket.io for seamless interaction.",
               tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN"],
-              link: "https://github.com/bhagavan444/ai-chatbot",
+              link: "https://github.com/bhagavan444/chatbotwebapp",
               demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
               impact: "Handled 10,000+ queries with 95% accuracy and reduced response latency by 40%."
             },
@@ -2290,7 +2290,7 @@ const Home = () => {
               title: "Resume Builder Web App",
               desc: "Full-stack, ATS-optimized resume builder enabling real-time PDF/Word export, AI scoring, and secure user authentication. Built with MERN stack and deployed on Vercel using MongoDB Atlas.",
               tags: ["MERN", "OAuth2", "MongoDB", "PDF Generation", "AI Scoring"],
-              link: "https://github.com/bhagavan444/resumebuilder",
+              link: "https://github.com/bhagavan444/Resumebuilderwebapp",
               demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
               impact: "Reduced resume creation time by 70% for 500+ users; improved resume quality with AI-based scoring."
             },
@@ -2298,7 +2298,7 @@ const Home = () => {
               title: "Heart Disease Prediction Platform",
               desc: "Scalable predictive healthcare platform combining Flask and MERN stack with deep learning models. Provides real-time dashboards and analytics, deployed on AWS for enterprise use.",
               tags: ["MERN Hybrid", "TensorFlow", "Flask", "AWS", "Predictive Analytics"],
-              link: "https://github.com/bhagavan444/heart-disease-predictor",
+              link: "https://github.com/bhagavan444/Heartdiseasewebapp",
               demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
               impact: "Enhanced prediction accuracy to 92%, aiding faster clinical decisions."
             },
@@ -2314,7 +2314,7 @@ const Home = () => {
               title: "Fake News Detector Platform",
               desc: "Real-time NLP-powered news classification system using MERN frontend and Python backend. Includes admin panel for model updates and continuous monitoring for misinformation.",
               tags: ["MERN", "NLP", "BERT", "Flask", "Admin Panel"],
-              link: "https://github.com/bhagavan444/fake-news-detector",
+              link: "https://github.com/bhagavan444/fakenewsdetectorwebapp",
               demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
               impact: "Successfully detected 88% of fake news articles in live tests; reduced misinformation spread."
             },
