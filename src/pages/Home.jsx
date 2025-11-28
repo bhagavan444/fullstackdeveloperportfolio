@@ -62,224 +62,232 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(2, 12, 27, 0.95),
-    rgba(17, 34, 64, 0.9)
+  height: clamp(70px, 10vh, 90px);
+  background: linear-gradient(135deg, 
+    rgba(5, 15, 35, 0.98) 0%, 
+    rgba(10, 25, 55, 0.95) 50%, 
+    rgba(8, 20, 45, 0.98) 100%
   );
-  backdrop-filter: blur(22px);
-  padding: clamp(1rem, 2vw, 1.5rem) clamp(2rem, 4vw, 3rem);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(0, 240, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  z-index: 9999;
+  padding: 0 clamp(2rem, 5vw, 4rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 30px;
-  box-shadow: 
-    0 6px 25px rgba(0, 240, 255, 0.15),
-    0 0 15px rgba(255, 0, 255, 0.1);
-  z-index: 1000;
-  border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, #00f0ff, #ff00ff, #00f0ff) 1;
-  animation: glowBorder 5s ease-in-out infinite;
-  background-size: 200% 200%;
-  animation: gradientShift 10s ease-in-out infinite;
+  overflow: hidden;
 
-  /* Pseudo-element for subtle background glow */
-  &:before {
+  /* Dynamic neon glow line that breathes */
+  &::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgba(0, 240, 255, 0.1),
-      transparent 70%
+    height: 3px;
+    background: linear-gradient(90deg, 
+      #00f0ff 0%, 
+      #ff00ff 30%, 
+      #7928ff 50%, 
+      #ff00ff 70%, 
+      #00f0ff 100%
     );
-    z-index: -1;
-    opacity: 0.5;
-    animation: pulseGlow 6s ease-in-out infinite;
+    background-size: 200% 100%;
+    animation: neonFlow 8s linear infinite;
+    box-shadow: 0 0 20px #00f0ff, 0 0 40px #ff00ff;
+    opacity: 0.9;
   }
 
-  /* Gradient shift animation */
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
+  /* Subtle grid overlay for depth */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 255, 0.03) 2px,
+      rgba(0, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 0, 255, 0.03) 2px,
+      rgba(255, 0, 255, 0.03) 4px
+    );
+    pointer-events: none;
+    opacity: 0.6;
   }
 
-  /* Glowing border animation */
-  @keyframes glowBorder {
-    0%, 100% {
-      border-image: linear-gradient(90deg, #00f0ff, #ff00ff, #00f0ff) 1;
-      box-shadow: 
-        0 6px 25px rgba(0, 240, 255, 0.15),
-        0 0 15px rgba(255, 0, 255, 0.1);
-    }
-    50% {
-      border-image: linear-gradient(90deg, #ff00ff, #00f0ff, #ff00ff) 1;
-      box-shadow: 
-        0 8px 30px rgba(0, 240, 255, 0.2),
-        0 0 20px rgba(255, 0, 255, 0.15);
-    }
-  }
-
-  /* Pulse glow for background */
-  @keyframes pulseGlow {
-    0%, 100% {
-      opacity: 0.5;
-    }
-    50% {
-      opacity: 0.7;
-    }
-  }
-
-  /* Style for nav links or items (assuming child elements) */
-  & > a, & > div {
-    color: #e0fbfc;
-    text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(1rem, 1.8vw, 1.2rem);
-    transition: all 0.3s ease;
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
-
-    &:hover {
-      color: #00f0ff;
-      transform: translateY(-2px);
-      text-shadow: 
-        0 0 12px rgba(0, 240, 255, 0.7),
-        0 0 20px rgba(255, 0, 255, 0.5);
-    }
-  }
-
-  @media (max-width: 1024px) {
-    padding: clamp(0.8rem, 1.8vw, 1.2rem) clamp(1.5rem, 3vw, 2rem);
-    height: 55px;
-  }
-
-  @media (max-width: 768px) {
-    padding: clamp(0.7rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
-    flex-wrap: wrap;
-    height: auto;
-    box-shadow: 
-      0 4px 20px rgba(0, 240, 255, 0.1),
-      0 0 10px rgba(255, 0, 255, 0.08);
-  }
-
-  @media (max-width: 480px) {
-    padding: clamp(0.5rem, 1.2vw, 0.8rem) clamp(0.8rem, 1.8vw, 1.2rem);
-    height: auto;
-    & > a, & > div {
-      font-size: clamp(0.9rem, 1.6vw, 1rem);
-    }
+  @keyframes neonFlow {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
   }
 `;
 
 const NavBrand = styled.a`
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
   font-weight: 900;
-  background: linear-gradient(90deg, #00ffff, #7fffd4, #00bfff);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e0fbfc;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+
+  /* Holographic gradient text */
+  background: linear-gradient(
+    90deg,
+    #00ffff 0%,
+    #00ff9d 20%,
+    #7c3aed 40%,
+    #ff00ff 60%,
+    #00ffff 100%
+  );
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-  animation: fadeInBounce 0.6s ease-out forwards;
+  animation: holographicShift 6s linear infinite;
 
-  &:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
+  /* Subtle floating glow */
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.3);
+
+  &::after {
+    content: '★';
+    margin-left: 8px;
+    color: #00f0ff;
+    font-size: 0.8em;
+    opacity: 0;
+    animation: starPulse 3s infinite;
   }
 
-  @media (max-width: 768px) {
-    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+  &:hover::after {
+    opacity: 1;
   }
 
-  @media (max-width: 480px) {
-    font-size: clamp(1rem, 2vw, 1.1rem);
+  @keyframes holographicShift {
+    to { background-position: 200% center; }
   }
 
-  @keyframes fadeInBounce {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) scale(0.9);
-    }
-    50% {
-      transform: translateY(-10px) scale(1.02);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+  @keyframes starPulse {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.3); }
   }
 `;
 
 const NavLinks = styled.div`
-
   display: flex;
-  margin-right:90px;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1.8rem, 4vw, 3rem);
+  margin-right: clamp(1.5rem, 5vw, 4rem);   /* pulls everything nicely left */
+  margin-left: auto;
   align-items: center;
 
+  @media (max-width: 1024px) {
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+  }
+
   @media (max-width: 768px) {
-    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: rgba(5, 15, 35, 0.98);
+    backdrop-filter: blur(20px);
     flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    margin-top: 0.5rem;
+    justify-content: center;
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: -10px 0 50px rgba(0, 240, 255, 0.2);
+
+    &.active {
+      transform: translateX(0);
+    }
   }
 `;
 
 const NavLink = styled.a`
-font-family: "Orbitron", sans-serif;
-font-size: clamp(1.1rem, 3vw, 1rem);
-  font-weight: 800;
-  background: linear-gradient(90deg, #00ffff, #7fffd4, #00bfff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 2px;
+  color: rgba(224, 251, 252, 0.9);
+  text-decoration: none;
   position: relative;
-  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  transition: all 0.4s ease;
 
-  &:after {
-    content: "";
+  /* Electric underline effect */
+  &::before {
+    content: '';
     position: absolute;
+    bottom: 0;
+    left: 50%;
     width: 0;
     height: 2px;
-    bottom: -6px;
-    left: 0;
-    background: linear-gradient(90deg, #00ffff, #00bfff);
-    transition: width 0.3s ease;
-    border-radius: 2px;
-  }
-
-  &:hover:after {
-    width: 100%;
+    background: linear-gradient(90deg, #00f0ff, #ff00ff);
+    transition: all 0.5s ease;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px currentColor;
   }
 
   &:hover {
-    color: #00ffff;
-    transform: translateY(-2px);
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    color: #00f0ff;
+    text-shadow: 
+      0 0 20px rgba(0, 240, 255, 0.8),
+      0 0 40px rgba(0, 240, 255, 0.4);
+    transform: translateY(-3px);
   }
 
-  @media (max-width: 480px) {
-    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  &:hover::before {
+    width: 100%;
+  }
+
+  /* Active state glow */
+  &.active {
+    color: #00ffff;
+    text-shadow: 0 0 20px #00ffff;
+  }
+
+  &.active::before {
+    width: 100%;
+    height: 3px;
+    animation: pulseLine 2s infinite;
+  }
+
+  @keyframes pulseLine {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; box-shadow: 0 0 25px #00ffff; }
   }
 `;
 
+// Optional: Mobile menu toggle button (you can style it separately)
+const MobileToggle = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: #00f0ff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 10000;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
 const HeroSection = styled.section`
   min-height: 100vh;
   display: flex;
