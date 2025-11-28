@@ -1,6 +1,24 @@
 /* Home.css */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap');
 
+/* === FORCE SINGLE COLUMN RECTANGULAR LAYOUT FOR ALL GRIDS === */
+/* Apply this class to your <Grid> or container in Projects, Certifications, etc. */
+.projects-grid,
+.Grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;        /* Forces 1 column on ALL screens */
+  gap: 2.5rem !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+}
+
+/* Optional: Extra styling for better card appearance in single column */
+.projects-grid > *,
+.Grid > * {
+  width: 100% !important;
+}
+
 /* Base styles for unstyled components */
 .card-title {
   font-family: 'Orbitron', sans-serif;
@@ -219,7 +237,6 @@
 
 /* Ensure existing styled components work with these styles */
 @supports (font-family: 'Orbitron', 'Source Code Pro') {
-  /* Enhance neon glow effect for smaller screens */
   .card-title:hover,
   .cert-title:hover {
     text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);

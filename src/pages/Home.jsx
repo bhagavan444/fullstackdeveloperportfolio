@@ -556,29 +556,95 @@ const keyframes = `
 
 const ProfileRing = styled(motion.div)`
   position: absolute;
-  top: -15px;
-  left: -15px;
-  width: calc(100% + 30px);
-  height: calc(100% + 30px);
-  border: 2px solid rgba(0, 255, 255, 0.2);
-  border-radius: 20px;
-  z-index: 1;
-  background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), transparent);
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  animation: subtleRotate 20s linear infinite;
+  top: -18px;
+  left: -18px;
+  width: calc(100% + 36px);
+  height: calc(100% + 36px);
+  border-radius: 28px;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
 
-  &:before {
+  /* Multi-layered neon + glass + holographic ring system */
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.25), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.2), transparent 50%),
+    conic-gradient(from 0deg at 50% 50%, 
+      #00ffff, #00d0ff, #7f00ff, #ff00ff, #00ff9d, #00ffff
+    );
+
+  /* Animated flowing border (the magic) */
+  background-size: 400% 400%;
+  animation: 
+    ringFlow 14s linear infinite,
+    subtleRotate 32s linear infinite;
+
+  /* Glowing border with perfect mask trick */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  border: 3px solid transparent;
+  box-shadow: 
+    0 0 40px rgba(0, 255, 255, 0.5),
+    inset 0 0 30px rgba(0, 255, 255, 0.15),
+    0 0 80px rgba(138, 43, 226, 0.3);
+
+  /* Inner floating energy pulse */
+  &::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border: 2px dashed rgba(0, 255, 255, 0.15);
-    border-radius: 22px;
-    animation: subtleRotate 25s linear infinite reverse;
-    z-index: -1;
+    inset: 4px;
+    border-radius: 24px;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      rgba(0, 255, 255, 0.4) 15%,
+      rgba(255, 0, 255, 0.4) 30%,
+      transparent 50%
+    );
+    animation: energyPulse 8s ease-in-out infinite;
+    filter: blur(8px);
+    opacity: 0.7;
+  }
+
+  /* Dashed orbital trail (now looks like data stream) */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 30px;
+    border: 2px dashed rgba(0, 255, 255, 0.3);
+    background: transparent;
+    animation: 
+      subtleRotate 28s linear infinite reverse,
+      dashFlow 6s linear infinite;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  }
+
+  /* Responsive scaling */
+  @media (max-width: 768px) {
+    top: -14px;
+    left: -14px;
+    width: calc(100% + 28px);
+    height: calc(100% + 28px);
+    border-width: 2.5px;
+  }
+
+  @media (max-width: 480px) {
+    top: -12px;
+    left: -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    border-width: 2px;
+  }
+
+  /* Keyframes - Pure fire */
+  @keyframes ringFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
   }
 
   @keyframes subtleRotate {
@@ -586,22 +652,15 @@ const ProfileRing = styled(motion.div)`
     to { transform: rotate(360deg); }
   }
 
-  @media (max-width: 768px) {
-    top: -12px;
-    left: -12px;
-    width: calc(100% + 24px);
-    height: calc(100% + 24px);
+  @keyframes energyPulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.95); }
+    50% { opacity: 0.9; transform: scale(1.05); }
   }
 
-  @media (max-width: 480px) {
-    top: -10px;
-    left: -10px;
-    width: calc(100% + 20px);
-    height: calc(100% + 20px);
-    border-width: 1.5px;
-    &:before {
-      border-width: 1.5px;
-    }
+  @keyframes dashFlow {
+    0% { background: linear-gradient(90deg, transparent 50%, rgba(0,255,255,0.6) 50%); }
+    100% { background: linear-gradient(90deg, transparent 50%, rgba(0,255,255,0.6) 50%); 
+          background-position: 40px 0; }
   }
 `;
 const HeaderContainer = styled.div`
@@ -610,44 +669,120 @@ const HeaderContainer = styled.div`
   align-items: flex-start;
   max-width: 900px;
   position: relative;
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3rem);
+  border-radius: 24px;
   overflow: hidden;
-  padding: clamp(1rem, 2vw, 2rem);
-  background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(17, 34, 64, 0.7));
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  &:before {
+  /* Glassmorphism + Deep Space Background */
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1), transparent 50%),
+    linear-gradient(135deg, 
+      rgba(10, 25, 47, 0.95) 0%,
+      rgba(17, 34, 64, 0.85) 50%,
+      rgba(8, 20, 40, 0.95) 100%
+    );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(0, 255, 255, 0.15),
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
+
+  /* Floating Data Grid Overlay */
+  &::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
-    animation: gentleWave 15s linear infinite;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(0, 255, 255, 0.04) 40px,
+        rgba(0, 255, 255, 0.04) 41px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(0, 255, 255, 0.04) 40px,
+        rgba(0, 255, 255, 0.04) 41px
+      );
+    opacity: 0.6;
+    animation: gridPulse 20s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Animated Energy Orb + Orbiting Particles */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, 
+      rgba(0, 255, 255, 0.25) 0%,
+      rgba(138, 43, 226, 0.15) 40%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+    animation: 
+      energyOrb 18s ease-in-out infinite,
+      slowRotate 40s linear infinite;
     z-index: -1;
+    opacity: 0.5;
   }
 
-  & > * {
-    position: relative;
-    will-change: transform;
+  /* Subtle Scan Line (the recruiter magnet) */
+  > .scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+    box-shadow: 0 0 20px #00ffff;
+    animation: scan 9s linear infinite;
+    pointer-events: none;
+    z-index: 10;
   }
 
+  /* Responsive */
   @media (max-width: 1024px) {
     align-items: center;
     text-align: center;
-    padding: clamp(0.8rem, 1.5vw, 1.5rem);
+    padding: clamp(2rem, 5vw, 3rem);
   }
 
   @media (max-width: 480px) {
-    max-width: 100%;
-    padding: clamp(0.5rem, 1vw, 1rem);
-    border-radius: 8px;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: 20px;
   }
 
-  @keyframes gentleWave {
-    0% { transform: rotate(0deg) translateX(20px); }
-    100% { transform: rotate(360deg) translateX(20px); }
+  /* Keyframes – pure magic */
+  @keyframes gridPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes energyOrb {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; }
+  }
+
+  @keyframes slowRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
   }
 `;
 const Title = styled(motion.h1)`
@@ -698,76 +833,146 @@ const Subtitle = styled(motion.div)`
 `;
 
 const CTAButton = styled(motion.a)`
-  padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1.8rem, 3.5vw, 2.8rem);
-  border-radius: 12px;
-  font-family: 'Orbitron', sans-serif;
+  padding: clamp(1rem, 2.8vw, 1.5rem) clamp(2.2rem, 4.5vw, 3.2rem);
+  border-radius: 16px;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
   font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  background: rgba(10, 25, 47, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #e0fbfc;
-  box-shadow: 0 4px 20px rgba(0, 180, 255, 0.3);
+  justify-content: center;
+  gap: 0.9rem;
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #00b4ff, #7fffd4) 1;
-  transition: all 0.4s ease, transform 0.3s ease-out;
+  cursor: pointer;
+  isolation: isolate;
 
-  /* Wave animation */
-  &:before {
+  /* Multi-layered glass + neon core */
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.3), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.25), transparent 60%),
+    linear-gradient(135deg, 
+      rgba(10, 25, 47, 0.95) 0%,
+      rgba(15, 35, 70, 0.9) 50%,
+      rgba(8, 20, 45, 0.98) 100%
+    );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  
+  /* Animated flowing neon border — matches your ProfileRing perfectly */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.4),
+    0 0 60px rgba(255, 0, 255, 0.2),
+    inset 0 0 40px rgba(0, 255, 255, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.6);
+
+  color: #e0fffe;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.5);
+
+  /* Conic glow ring — identical DNA to your ProfileRing */
+  &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      rgba(127, 255, 212, 0.2),
-      transparent
+    inset: -4px;
+    border-radius: 20px;
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      #00ffff, #00d4ff, #7f00ff, #ff00ff, #00ff9d, #00ffff
     );
-    animation: waveFlow 4s ease infinite;
+    background-size: 200% 200%;
+    filter: blur(10px);
+    opacity: 0.7;
+    animation: conicFlow 12s linear infinite;
+    z-index: -1;
   }
 
-  /* Hover effects */
+  /* Inner holographic shimmer + scan pulse */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 14px;
+    background: linear-gradient(45deg,
+      transparent 30%,
+      rgba(0, 255, 255, 0.15) 50%,
+      transparent 70%
+    );
+    animation: shimmerScan 4s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  /* Text glow pulse */
+  > span {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 6s ease-in-out infinite;
+  }
+
+  /* Hover: Activate reactor mode */
   &:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 6px 25px rgba(0, 180, 255, 0.4);
-    &:before {
-      animation: waveFlow 3s ease infinite;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 
+      0 0 80px rgba(0, 255, 255, 0.7),
+      0 0 120px rgba(255, 0, 255, 0.4),
+      inset 0 0 60px rgba(0, 255, 255, 0.25);
+    
+    &::before { 
+      animation-duration: 8s; 
+      filter: blur(14px);
+      opacity: 1;
+    }
+    &::after { 
+      animation-duration: 2s; 
     }
   }
 
-  /* Active effect */
   &:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 10px rgba(0, 180, 255, 0.2);
+    transform: translateY(-2px) scale(1.02);
   }
 
-  /* Wave animation */
-  @keyframes waveFlow {
-    0% { left: -100%; }
-    20% { left: 0%; }
-    100% { left: 100%; }
-  }
-
-  /* Responsive adjustments */
+  /* Responsive */
   @media (max-width: 768px) {
-    padding: clamp(0.7rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.2rem);
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    box-shadow: 0 3px 15px rgba(0, 180, 255, 0.25);
+    padding: clamp(0.9rem, 2.5vw, 1.2rem) clamp(1.8rem, 4vw, 2.5rem);
+    border-radius: 14px;
   }
 
   @media (max-width: 480px) {
-    padding: clamp(0.5rem, 1.8vw, 0.8rem) clamp(1.2rem, 2.8vw, 1.8rem);
-    font-size: clamp(0.8rem, 1.8vw, 1rem);
-    box-shadow: 0 2px 10px rgba(0, 180, 255, 0.15);
+    padding: clamp(0.8rem, 2.2vw, 1rem) clamp(1.5rem, 3.5vw, 2rem);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+  }
+
+  /* Shared keyframes with your ProfileRing & Header */
+  @keyframes conicFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @keyframes shimmerScan {
+    0%, 100% { transform: translateX(-150%); }
+    50% { transform: translateX(150%); }
+  }
+
+  @keyframes textGlow {
+    0%, 100% { 
+      background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+      background-size: 200%;
+      background-position: 0%;
+    }
+    50% { 
+      background-position: 100%;
+    }
   }
 `;
 
@@ -1117,30 +1322,157 @@ const ProgressFill = styled(motion.div)`
 `;
 
 const ContactSection = styled(Section)`
-  background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
-  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 3vw, 2rem);
-  min-height: 80vh;
+  position: relative;
+  min-height: 90vh;
+  padding: clamp(6rem, 10vw, 8rem) clamp(2rem, 4vw, 4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* Deep space + holographic field */
+  background: 
+    radial-gradient(circle at 30% 70%, rgba(0, 255, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255, 0, 255, 0.1), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 153, 0.06), transparent 60%),
+    linear-gradient(135deg, #020c1b 0%, #0a192f 40%, #112240 80%, #020c1b 100%);
+
+  /* Matching flowing conic energy field (same DNA as ProfileRing & Header) */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      #00ffff, #00d4ff, #7f00ff, #ff00ff, #00ff9d, #00ffff
+    );
+    background-size: 200% 200%;
+    filter: blur(80px);
+    opacity: 0.25;
+    animation: conicFlow 20s linear infinite;
+    z-index: 0;
+  }
+
+  /* Floating holographic grid */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(45deg, 
+        transparent, 
+        transparent 50px, 
+        rgba(0, 255, 255, 0.04) 50px, 
+        rgba(0, 255, 255, 0.04) 51px
+      );
+    animation: gridDrift 30s linear infinite;
+    opacity: 0.6;
+    z-index: 0;
+  }
+
+  /* Signature scan line — now with rainbow pulse */
+  > .contact-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      #00ffff 20%, 
+      #ff00ff 50%, 
+      #00ffff 80%, 
+      transparent
+    );
+    box-shadow: 
+      0 0 40px #00ffff,
+      0 0 80px #ff00ff;
+    animation: contactScan 10s ease-in-out infinite;
+    z-index: 10;
+  }
+
+  @keyframes conicFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @keyframes gridDrift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+
+  @keyframes contactScan {
+    0%, 100% { transform: translateY(-100%); opacity: 0; }
+    15%, 85% { opacity: 1; }
+    50% { transform: translateY(0); }
+    100% { transform:  translateY(100%); opacity: 0; }
+  }
 `;
 
 const ContactIntro = styled(motion.p)`
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  color: #a8d0e6;
-  line-height: 1.6;
-  text-shadow: 0 0 8px rgba(168, 208, 230, 0.3);
+  position: relative;
+  z-index: 2;
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  max-width: 900px;
+  margin: 0 auto 3rem;
   text-align: center;
+  line-height: 1.7;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+
+  /* Multi-layer glowing text — matches your CTA button */
+  color: #e0fffe;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4),
+    0 0 60px rgba(0, 255, 255, 0.2);
+
+  /* Animated gradient text (same as CTA) */
+  background: linear-gradient(
+    90deg,
+    #00ffff 0%,
+    #7f00ff 30%,
+    #ff00ff 50%,
+    #00ff9d 70%,
+    #00ffff 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textFlow 12s ease-in-out infinite;
+
+  /* Subtle inner glow border */
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(10, 25, 47, 0.4);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+
+  /* Floating effect */
+  animation: float 8s ease-in-out infinite;
 
   @media (max-width: 768px) {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2.5rem;
   }
+
   @media (max-width: 480px) {
-    font-size: clamp(0.9rem, 1.8vw, 1rem);
-    max-width: 100%;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    padding: 1rem 1.2rem;
+  }
+
+  @keyframes textFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
   }
 `;
 
@@ -1435,31 +1767,138 @@ const FooterSocials = styled(Socials)`
 `;
 const ScrollTop = styled(motion.button)`
   position: fixed;
-  bottom: clamp(2rem, 4vw, 2.5rem);
-  right: clamp(2rem, 4vw, 2.5rem);
-  background: linear-gradient(90deg, #00ffff, #00bfff);
-  color: #020c1b;
-  border: none;
+  bottom: clamp(2.8rem, 6vw, 3.5rem);
+  right: clamp(2.8rem, 6vw, 3.5rem);
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.8rem;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
-  z-index: 1000;
+  z-index: 9999;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10, 25, 47, 0.7);
+  border: 2.5px solid rgba(0, 255, 255, 0.45);
+  box-shadow: 
+    0 0 40px rgba(0, 255, 255, 0.35),
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(0, 255, 255, 0.15);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 
+  /* Flowing conic ring — exact DNA match with ProfileRing & ResumeModal */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      #00ffff, #00d4ff, #7f00ff, #ff00ff, #00ff9d, #00ffff
+    );
+    background-size: 200% 200%;
+    filter: blur(14px);
+    opacity: 0;
+    animation: conicFlow 20s linear infinite;
+    transition: opacity 0.6s ease;
+    z-index: -1;
+  }
+
+  /* Holographic scan shimmer (same as ResumeModal) */
+  &::after {
+    content: '';
+    position: absolute;
+    top: -120%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background: linear-gradient(
+      0deg,
+      transparent,
+      rgba(0, 255, 255, 0.3),
+      transparent
+    );
+    transition: top 0.8s ease;
+  }
+
+  /* Icon with reactor glow */
+  > span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00ffff;
+    text-shadow: 
+      0 0 20px #00ffff,
+      0 0 40px #00ffff;
+    z-index: 2;
+    transition: all 0.4s ease;
+  }
+
+  /* Hover: Full activation sequence */
   &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-10px) scale(1.12);
+    box-shadow: 
+      0 0 80px rgba(0, 255, 255, 0.7),
+      0 20px 60px rgba(0, 0, 0, 0.6),
+      inset 0 0 50px rgba(0, 255, 255, 0.25);
+
+    &::before {
+      opacity: 1;
+      animation-duration: 10s;
+    }
+
+    &::after {
+      top: 120%;
+    }
+
+    > span {
+      color: white;
+      text-shadow: 
+        0 0 30px #00ffff,
+        0 0 60px #00ffff,
+        0 0 90px #00ffff;
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+  }
+
+  &:active {
+    transform: translateY(-6px) scale(1.08);
+  }
+
+  /* Mobile perfection */
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    bottom: clamp(2.2rem, 5vw, 3rem);
+    right: clamp(2.2rem, 5vw, 3rem);
+
+    > span { font-size: 1.8rem; }
   }
 
   @media (max-width: 480px) {
-    width: 40px;
-    height: 40px;
-    font-size: 1.4rem;
-    bottom: clamp(1.5rem, 3vw, 2rem);
-    right: clamp(1.5rem, 3vw, 2rem);
+    width: 56px;
+    height: 56px;
+    bottom: 2rem;
+    right: 2rem;
+
+    > span { font-size: 1.6rem; }
+  }
+
+  /* Shared keyframes */
+  @keyframes conicFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
   }
 `;
 
@@ -2130,7 +2569,7 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan | MERN & AIMl <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan | MERN | AIMl&DS <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           <NavLink href="#home">Home</NavLink>
           <NavLink href="#about">About</NavLink>
@@ -2225,7 +2664,9 @@ const Home = () => {
           animate={isAboutInView ? "visible" : "hidden"}
           variants={fadeInUp}
         >
-          Aspiring Software Engineer with a B.Tech in AI & Data Science (JNTUK), specializing in <span>MERN stack</span> for building high-performance, scalable web applications. Proven track record in deploying full-stack solutions, ML models, and cloud-native apps. With 19+ certifications and hands-on experience in MNC-level projects, I deliver clean, efficient code that drives innovation and business impact.
+          Enthusiastic and dedicated B Tech student in Artificial Intelligence and Data Science, seeking a challenging position in AI/ML or
+Software Development where I can apply my technical knowledge, programming skills, and problem-solving abilities to contribute to
+organizational goals. Eager to learn new technologies, work in a collaborative environment, and grow both personally and professionally.
         </AboutText>
       </Section>
 
@@ -2376,26 +2817,24 @@ const Home = () => {
         </SectionTitle>
         <Grid>
           {[
-            { 
-              icon: <FaCode />, 
-              title: "Programming Languages", 
-              skills: [
-                { name: "Python", level: 95 },
-                { name: "Java", level: 90 },
-                { name: "JavaScript (ES6+)", level: 90 },
-                { name: "TypeScript", level: 80 },
-                { name: "SQL", level: 85 },
-                { name: "C/C++", level: 80 },
-                { name: "Go (Golang)", level: 70 },
-                { name: "Rust", level: 65 },
-              ] 
-            },
+            {
+  icon: <FaCode />,
+  title: "Programming Languages",
+  skills: [
+    { name: "Python", level: 95 },         // Primary language for AI & DS
+    { name: "Java", level: 85 },           // For placements + OOP + coding rounds
+    { name: "JavaScript", level: 70 },     // Useful for web development (MERN)
+    { name: "SQL", level: 90 },            // Must-have for data-related jobs
+    { name: "C Programming", level: 75 }   // Good for fundamentals & aptitude rounds
+  ]
+},
+
             { 
               icon: <FaLaptopCode />, 
               title: "Full-Stack Development", 
               skills: [
-                { name: "React.js", level: 95 },
-                { name: "Node.js", level: 90 },
+                { name: "React.js", level: 85 },
+                { name: "Node.js", level: 80 },
                 { name: "Express.js", level: 85 },
                 { name: "Next.js", level: 80 },
                 { name: "Angular", level: 75 },
@@ -2405,65 +2844,69 @@ const Home = () => {
                 { name: "REST API Development", level: 90 },
               ] 
             },
-            { 
-              icon: <FaBrain />, 
-              title: "Machine Learning & Artificial Intelligence", 
-              skills: [
-                { name: "TensorFlow / Keras", level: 90 },
-                { name: "PyTorch", level: 85 },
-                { name: "Scikit-learn", level: 85 },
-                
-                
-                { name: "Computer Vision (OpenCV, CNNs)", level: 85 },
-                { name: "Generative AI (GANs, Diffusion)", level: 75 },
-                { name: "Reinforcement Learning (Gym, RLlib)", level: 70 },
-                { name: "Data Preprocessing (Pandas, NumPy)", level: 95 },
-                { name: "Data Visualization (Matplotlib, Seaborn, Plotly)", level: 90 },
-                
-              ] 
-            },
-            { 
-              icon: <FaCloud />, 
-              title: "Cloud & DevOps", 
-              skills: [
-                { name: "AWS", level: 85 },
-                { name: "Azure", level: 80 },
-                { name: "Google Cloud (GCP)", level: 75 },
-                { name: "Docker", level: 80 },
-                { name: "Kubernetes", level: 70 },
-                { name: "CI/CD (Jenkins, GitHub Actions)", level: 75 },
-                { name: "Terraform", level: 65 },
-                { name: "Linux & Shell Scripting", level: 80 },
-              ] 
-            },
-            { 
-              icon: <FaDatabase />, 
-              title: "Databases & Tools", 
-              skills: [
-                { name: "MySQL", level: 85 },
-                { name: "PostgreSQL", level: 85 },
-                { name: "MongoDB", level: 90 },
-                { name: "Redis", level: 70 },
-                { name: "Oracle DB", level: 70 },
-                { name: "Firebase", level: 70 },
-                { name: "Git & GitHub/GitLab", level: 95 },
-                { name: "Postman", level: 90 },
-                { name: "JIRA", level: 75 },
-              ] 
-            },
-            { 
-              icon: <FaUsers />, 
-              title: "Soft Skills", 
-              skills: [
-                { name: "Problem-Solving & DSA", level: 95 },
-                { name: "System Design (LLD & HLD)", level: 80 },
-                { name: "Team Collaboration", level: 90 },
-                { name: "Agile / Scrum", level: 85 },
-                { name: "Communication", level: 90 },
-                { name: "Leadership & Mentoring", level: 80 },
-                { name: "Time Management", level: 85 },
-              ] 
-            }
+            {
+  icon: <FaBrain />,
+  title: "Machine Learning & Data Science",
+  skills: [
+    { name: "Machine Learning (Regression, Classification, Clustering)", level: 90 },
+    { name: "Deep Learning (ANN, CNN, RNN)", level: 85 },
+    { name: "TensorFlow / Keras", level: 85 },
+    { name: "Scikit-learn", level: 90 },
+
+    { name: "NLP (Text Processing, TF-IDF)", level: 80 },
+    { name: "Statistics & Probability", level: 88 },
+    { name: "Data Preprocessing (Pandas, NumPy)", level: 95 },
+
+    { name: "Computer Vision (OpenCV, CNNs)", level: 80 },
+    { name: "Data Visualization (Matplotlib, Seaborn, Plotly)", level: 90 },
+
+    { name: "SQL for Data Analysis", level: 85 },
+    { name: "Big Data Basics (Hadoop, Spark)", level: 65 }
+  ]
+},
+
+           {
+  icon: <FaCloud />,
+  title: "Cloud & DevOps",
+  skills: [
+    { name: "AWS (EC2, S3, Lambda Basics)", level: 75 },
+    { name: "Docker (Containers Basics)", level: 70 },
+    { name: "CI/CD (GitHub Actions)", level: 70 },
+    { name: "Linux & Shell Scripting", level: 80 },
+    { name: "Version Control (Git & GitHub)", level: 90 }
+  ]
+}
+,
+          {
+  icon: <FaDatabase />,
+  title: "Databases & Tools",
+  skills: [
+    { name: "MySQL", level: 85 },
+    { name: "MongoDB", level: 85 },
+    { name: "PostgreSQL (Basics)", level: 70 },
+
+    { name: "Git & GitHub", level: 90 },
+    { name: "Postman (API Testing)", level: 85 },
+
+    { name: "Firebase (Basics)", level: 65 },
+    { name: "VS Code", level: 95 }
+  ]
+}
+,
+            {
+  icon: <FaUsers />,
+  title: "Soft Skills",
+  skills: [
+    { name: "Problem-Solving", level: 90 },
+    { name: "Analytical Thinking", level: 85 },
+    { name: "Team Collaboration", level: 90 },
+    { name: "Agile / Scrum (Basics)", level: 75 },
+    { name: "Communication Skills", level: 90 },
+    { name: "Adaptability & Quick Learning", level: 88 },
+    { name: "Time Management", level: 85 }
+  ]
+}
+,
           ].map((category, i) => (
             <Card
               key={i}
@@ -2505,17 +2948,7 @@ const Home = () => {
         </SectionTitle>
         <Grid>
           {[
-            {
-              title: "AI/ML Intern – Smart Sorting Project",
-              company: "SmartBridge (Remote)",
-              duration: "May 2025 – June 2025",
-              desc: "Led development of CNN model for real-time disease detection in agriculture, integrated with MERN dashboard for MNC-scale deployment.",
-              tech: ["Python", "CNN", "Flask", "TensorFlow/Keras", "MERN Integration"],
-              concepts: ["Deep Learning", "Computer Vision", "Scalable Deployment"],
-              gitLink: "https://github.com/bhagavan444/smartbridge-internship",
-              certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
-              impact: "Achieved 94% accuracy in production",
-            },
+            
             {
               title: "Machine Learning & Data Science Intern",
               company: "Blackbucks (Remote)",
@@ -2523,10 +2956,33 @@ const Home = () => {
               desc: "Optimized regression models for real estate prediction, built MERN API for data visualization, contributing to MNC analytics pipeline.",
               tech: ["Python", "Scikit-learn", "Pandas", "MERN API"],
               concepts: ["Regression", "Feature Engineering", "API Design"],
-              gitLink: "https://github.com/bhagavan444/blackbucks-internship",
+              gitLink: "https://github.com/bhagavan444",
               certLink: "https://drive.google.com/file/d/1yQQqBf32o8d3sYlheDCdaLTKj5_hepfY/view",
               impact: "Boosted model precision by 15%",
             },
+            {
+              title: "AI/ML Intern – Smart Sorting Project",
+              company: "SmartBridge (Remote)",
+              duration: "May 2025 – June 2025",
+              desc: "Led development of CNN model for real-time disease detection in agriculture, integrated with MERN dashboard for MNC-scale deployment.",
+              tech: ["Python", "CNN", "Flask", "TensorFlow/Keras", "MERN Integration"],
+              concepts: ["Deep Learning", "Computer Vision", "Scalable Deployment"],
+              gitLink: "https://github.com/bhagavan444",
+              certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
+              impact: "Achieved 94% accuracy in production",
+            },
+            {
+  title: "MERN Stack Internship Program",
+  company: "StudyOwl Education Private Limited (Online)",
+  duration: "15 May 2025 – 16 July 2025",
+  desc: "Successfully completed an 8-week MERN Stack Internship focused on full-stack development and practical implementation of web applications.",
+  tech: ["MongoDB", "Express.js", "React.js", "Node.js"],
+  concepts: ["Full-Stack Development", "API Development", "Frontend Design"],
+  gitLink: "https://github.com/bhagavan444", // add if you have any related GitHub repos
+  certLink: "https://drive.google.com/file/d/1bwbNlc9mdPYQOIyUpoiBIOhpyxaMBvbC/view?usp=sharing",
+  impact: "Completed an AICTE-recognized MERN internship enhancing full-stack development skills.",
+},
+
           ].map((intern, i) => (
             <Card
               key={i}
@@ -3392,77 +3848,262 @@ const Home = () => {
         </Grid>
       </Section>
 
-      {/* Footer */}
-      <Footer>
-        <FooterContent
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainer}
+  <Footer>
+  <FooterContent
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={staggerContainer}
+  >
+    {/* Name with Electric Glitch + Pulse Effect */}
+    <FooterTitle variants={fadeInUp}>
+      <motion.span
+        animate={{ 
+          textShadow: [
+            "0 0 10px #00ffff",
+            "0 0 20px #00ffff",
+            "0 0 10px #00ffff"
+          ]
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        Siva Satya Sai Bhagavan
+      </motion.span>
+      <FaBolt 
+        style={{ 
+          fontSize: '1.4rem', 
+          marginLeft: '0.5rem',
+          color: '#00ffff',
+          filter: 'drop-shadow(0 0 12px #00ffff)',
+          animation: 'pulse 1.5s infinite'
+        }} 
+      />
+    </FooterTitle>
+
+    {/* Futuristic Tagline with Neon Glow */}
+    <FooterText variants={fadeInUp}>
+      <motion.span
+        initial={{ opacity: 0.6 }}
+        whileInView={{ opacity: 1 }}
+        style={{
+          background: 'linear-gradient(90deg, #00ffff, #ff00ff, #00ffff)',
+          backgroundSize: '200%',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          animation: 'flow 6s linear infinite',
+          fontWeight: '600',
+          letterSpacing: '1px'
+        }}
+      >
+        © {new Date().getFullYear()} | MERN Stack | AI & Data Science | Cloud Computing | Scalable Solutions
+      </motion.span>
+    </FooterText>
+
+    {/* Navigation Links — Neon Hover Trail */}
+    <FooterLinks>
+      {["Home", "About", "Projects", "Skills", "Resume", "Contact"].map((link, i) => (
+        <FooterLink
+          key={link}
+          href={`#${link.toLowerCase()}`}
+          variants={fadeInUp}
+          custom={i}
+          whileHover={{ 
+            scale: 1.15,
+            color: "#00ffff",
+            textShadow: "0 0 20px #00ffff, 0 0 40px #00ffff",
+            transition: { type: "spring", stiffness: 400 }
+          }}
+          whileTap={{ scale: 0.95 }}
         >
-          <FooterTitle variants={fadeInUp}>Siva Satya Sai Bhagavan <FaBolt style={{ fontSize: '1.2rem', marginLeft: '0.3rem' }} /></FooterTitle>
-          <FooterText variants={fadeInUp}>
-  © 2025 | MERN Stack | AI & Data Science | Cloud Computing | Scalable Solutions
-</FooterText>
-
-          <FooterLinks>
-            <FooterLink href="#home" variants={fadeInUp}>Home</FooterLink>
-            <FooterLink href="#about" variants={fadeInUp}>About</FooterLink>
-            <FooterLink href="#projects" variants={fadeInUp}>Projects</FooterLink>
-            <FooterLink href="#skills" variants={fadeInUp}>Skills</FooterLink>
-            <FooterLink href="#resume" variants={fadeInUp}>Resume</FooterLink>
-            <FooterLink href="#contact" variants={fadeInUp}>Contact</FooterLink>
-          </FooterLinks>
-          <FooterSocials>
-            <SocialLink href="mailto:g.sivasatyasaibhagavan@gmail.com">
-              <FaEnvelope />
-            </SocialLink>
-            <SocialLink href="https://www.linkedin.com/in/siva-satya-sai-bhagavan-gopalajosyula-1624a027b/" target="_blank" rel="noreferrer">
-              <FaLinkedin />
-            </SocialLink>
-            <SocialLink href="https://github.com/bhagavan444" target="_blank" rel="noreferrer">
-              <FaGithub />
-            </SocialLink>
-          </FooterSocials>
-        </FooterContent>
-      </Footer>
-
-      {showTopBtn && (
-        <ScrollTop 
-          whileHover="hover"
-          whileTap={{ scale: 0.9 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          <FaArrowUp />
-        </ScrollTop>
-      )}
-
-      <AnimatePresence>
-        {showResumeModal && (
-          <ResumeModal
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+          <motion.span
+            style={{ position: 'relative' }}
+            whileHover={{
+              boxShadow: "0 0 15px #00ffff",
+            }}
           >
-            <ModalContent>
-              <CloseButton 
-                whileHover={{ scale: 1.2, rotate: 90 }}
-                onClick={() => setShowResumeModal(false)}
-              >
-                <FiX />
-              </CloseButton>
-              <iframe
-                src={resumePdf}
-                title="Resume"
-                style={{ width: "100%", height: "70vh", border: "none", borderRadius: "15px" }}
-              />
-              <ModalButton as="a" href={resumePdf} download="Siva_Bhagavan_MERN_Resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FiDownload /> Download
-              </ModalButton>
-            </ModalContent>
-          </ResumeModal>
-        )}
-      </AnimatePresence>
+            {link}
+          </motion.span>
+        </FooterLink>
+      ))}
+    </FooterLinks>
+
+    {/* Social Icons — Orbiting Glow + 3D Flip */}
+    <FooterSocials>
+      <SocialLink 
+        href="mailto:g.sivasatyasaibhagavan@gmail.com"
+        whileHover={{ 
+          scale: 1.4, 
+          rotate: 360,
+          filter: "drop-shadow(0 0 20px #ff0066)"
+        }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ duration: 0.5 }}
+      >
+        <FaEnvelope />
+      </SocialLink>
+
+      <SocialLink 
+        href="https://www.linkedin.com/in/siva-satya-sai-bhagavan-gopalajosyula-1624a027b/" 
+        target="_blank" 
+        rel="noreferrer"
+        whileHover={{ 
+          scale: 1.4, 
+          rotateY: 180,
+          filter: "drop-shadow(0 0 20px #0077b5)"
+        }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ duration: 0.6 }}
+      >
+        <FaLinkedin />
+      </SocialLink>
+
+      <SocialLink 
+        href="https://github.com/bhagavan444" 
+        target="_blank" 
+        rel="noreferrer"
+        whileHover={{ 
+          scale: 1.4, 
+          rotate: -360,
+          filter: "drop-shadow(0 0 20px #00ff00)"
+        }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ duration: 0.5 }}
+      >
+        <FaGithub />
+      </SocialLink>
+    </FooterSocials>
+  </FooterContent>
+
+  {/* Neon Divider Line */}
+  <motion.div
+    initial={{ width: 0 }}
+    whileInView={{ width: "100%" }}
+    transition={{ duration: 1.5, ease: "easeOut" }}
+    style={{
+      height: '2px',
+      background: 'linear-gradient(90deg, transparent, #00ffff, transparent)',
+      boxShadow: '0 0 20px #00ffff',
+      marginTop: '2rem'
+    }}
+  />
+</Footer>
+
+{/* Scroll to Top — Now a Glowing Orb */}
+{showTopBtn && (
+  <ScrollTop
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    whileHover={{ 
+      scale: 1.3,
+      boxShadow: "0 0 40px #00ffff, 0 0 80px #00ffff",
+      background: "rgba(0, 255, 255, 0.3)"
+    }}
+    whileTap={{ scale: 0.9 }}
+    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    style={{
+      position: 'fixed',
+      bottom: '30px',
+      right: '30px',
+      width: '60px',
+      height: '60px',
+      borderRadius: '50%',
+      background: 'rgba(0, 255, 255, 0.15)',
+      backdropFilter: 'blur(10px)',
+      border: '2px solid #00ffff',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      zIndex: 999,
+      boxShadow: '0 0 20px rgba(0, 255, 255, 0.5)',
+    }}
+  >
+    <FaArrowUp style={{ fontSize: '1.6rem', color: '#00ffff' }} />
+  </ScrollTop>
+)}
+
+{/* Resume Modal — Holographic Upgrade */}
+<AnimatePresence>
+  {showResumeModal && (
+    <ResumeModal
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      style={{ 
+        backdropFilter: 'blur(12px)',
+        background: 'rgba(0, 0, 0, 0.8)'
+      }}
+    >
+      <ModalContent
+        initial={{ y: 100, scale: 0.9, opacity: 0 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
+        exit={{ y: 100, scale: 0.9, opacity: 0 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        style={{
+          background: 'rgba(10, 15, 30, 0.95)',
+          border: '1px solid #00ffff',
+          borderRadius: '20px',
+          boxShadow: '0 0 50px rgba(0, 255, 255, 0.4)',
+          maxWidth: '900px',
+          width: '95%',
+          overflow: 'hidden'
+        }}
+      >
+        <CloseButton 
+          whileHover={{ 
+            scale: 1.3, 
+            rotate: 180, 
+            color: '#ff0066',
+            filter: 'drop-shadow(0 0 15px #ff0066)'
+          }}
+          whileTap={{ scale: 0.8 }}
+          onClick={() => setShowResumeModal(false)}
+        >
+          <FiX />
+        </CloseButton>
+
+        <iframe
+          src={`${resumePdf}#zoom=100&view=FitH&toolbar=0&navpanes=0`}
+          title="Resume"
+          style={{ 
+            width: "100%", 
+            height: "75vh", 
+            border: "none", 
+            borderRadius: "15px",
+            boxShadow: 'inset 0 0 30px rgba(0, 255, 255, 0.2)'
+          }}
+        />
+
+        <ModalButton 
+          as="a" 
+          href={resumePdf} 
+          download="Siva_Bhagavan_Resume_2025.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          whileHover={{ 
+            scale: 1.08, 
+            backgroundColor: "#00ffff", 
+            color: "#000",
+            boxShadow: "0 0 30px #00ffff"
+          }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            marginTop: '1rem',
+            padding: '0.9rem 2rem',
+            background: 'rgba(0, 255, 255, 0.15)',
+            border: '1px solid #00ffff',
+            borderRadius: '50px',
+            color: '#00ffff',
+            fontWeight: 'bold'
+          }}
+        >
+          <FiDownload style={{ marginRight: '0.5rem' }} /> Download Resume
+        </ModalButton>
+      </ModalContent>
+    </ResumeModal>
+  )}
+</AnimatePresence>
     </Container>
   );
 };
