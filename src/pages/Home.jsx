@@ -188,9 +188,7 @@ const NavBrand = styled.a`
 
 const NavLinks = styled.div`
   display: flex;
-  gap: clamp(1.8rem, 4vw, 3rem);
-  margin-right: clamp(1.5rem, 5vw, 4rem);   /* pulls everything nicely left */
-  margin-left: auto;
+  gap: clamp(3rem, 4vw, 3rem);
   align-items: center;
 
   @media (max-width: 1024px) {
@@ -383,292 +381,222 @@ const HeroContent = styled(motion.div)`
 
 const ProfileImageContainer = styled(motion.div)`
   position: relative;
-  perspective: 1200px;
-  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.3));
+  perspective: 1600px;
+  filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.35));
 `;
+
 const ProfileImage = styled(motion.img)`
   width: clamp(240px, 26vw, 320px);
   height: clamp(240px, 26vw, 320px);
-  border-radius: 24px;
+  border-radius: 28px;
   object-fit: cover;
-  border: 5px solid transparent;
-  background: linear-gradient(
-    45deg,
-    rgba(0, 255, 255, 0.35),
-    rgba(255, 0, 255, 0.35)
-  );
-  box-shadow: 
-    0 0 50px rgba(0, 255, 255, 0.6),
-    inset 0 0 25px rgba(255, 255, 255, 0.2),
-    0 0 80px rgba(255, 0, 255, 0.4);
-  transition: all 0.4s ease-out;
   position: relative;
   overflow: hidden;
-  will-change: transform, box-shadow; /* Optimize for smooth animations */
-  animation: neonGlowPulse 4s infinite ease-in-out;
+  border: 5px solid transparent;
+  background: linear-gradient(145deg, #0a0022, #1a0033);
+  box-shadow: 
+    0 0 70px rgba(0, 255, 255, 0.7),
+    inset 0 0 50px rgba(255, 255, 255, 0.12),
+    0 12px 40px rgba(0, 0, 0, 0.9);
+  will-change: transform, filter, box-shadow;
+  animation: plasmaBreathe 5s infinite ease-in-out;
 
-  /* Enhanced holographic overlay */
-  &:before {
+  /* Liquid Chrome Flowing Border */
+  &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: -6px;
+    border-radius: 34px;
     background: linear-gradient(
-      135deg,
-      rgba(0, 255, 255, 0.15),
-      rgba(255, 0, 255, 0.15),
-      transparent 70%
+      45deg,
+      #00ffff, #00eaff, #ff00ff, #ff0099, #00ff9d, #00ffff
     );
-    opacity: 0.6;
-    animation: hologramWave 10s infinite linear;
+    background-size: 400% 400%;
+    animation: liquidChrome 11s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 5px;
+    z-index: 3;
     pointer-events: none;
-    z-index: 1;
   }
 
-  /* Dynamic particle effect */
-  &:after {
+  /* Vertical Scanner Beam + Glitch Scanlines */
+  &::after {
     content: '';
     position: absolute;
-    top: -15px;
-    left: -15px;
-    width: calc(100% + 30px);
-    height: calc(100% + 30px);
-    background: radial-gradient(
-      circle at 25% 25%,
-      rgba(0, 255, 255, 0.4),
-      transparent 60%
+    top: -150%;
+    left: -10%;
+    width: 120%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 255, 255, 0.25) 20%,
+      rgba(0, 255, 255, 0.6) 50%,
+      rgba(255, 0, 255, 0.4) 80%,
+      transparent 100%
     );
-    opacity: 0.5;
-    animation: particleOrbit 6s infinite ease-in-out;
-    pointer-events: none;
+    animation: scannerSweep 8s infinite linear;
+    filter: blur(8px);
+    opacity: 0.7;
     z-index: 2;
+    pointer-events: none;
+    mix-blend-mode: screen;
   }
 
-  /* Hover effects with premium flair */
+  /* Micro Glitch Grid + Data Veins */
+  background-image: 
+    repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,0,255,0.04) 4px, rgba(255,0,255,0.04) 8px),
+    repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,255,255,0.04) 4px, rgba(0,255,255,0.04) 8px),
+    radial-gradient(circle at 30% 70%, rgba(0,255,255,0.3) 1px, transparent 2px),
+    radial-gradient(circle at 70% 30%, rgba(255,0,255,0.3) 1px, transparent 2px);
+  background-size: 100% 100%, 100% 100%, 80px 80px, 80px 80px;
+  animation: dataVeins 18s linear infinite;
+
   &:hover {
-    transform: scale(1.1) rotate(3deg);
+    transform: translateY(-16px) scale(1.1) rotateY(12deg);
+    filter: brightness(1.4) contrast(1.3) saturate(1.6);
     box-shadow: 
-      0 0 100px rgba(0, 255, 255, 0.8),
-      inset 0 0 35px rgba(255, 255, 255, 0.25),
-      0 0 120px rgba(255, 0, 255, 0.6);
-    border-color: rgba(0, 255, 255, 0.6);
-    animation: neonGlowPulseHover 2s infinite ease-in-out;
+      0 0 140px rgba(0, 255, 255, 1),
+      inset 0 0 80px rgba(255, 255, 255, 0.35),
+      0 30px 80px rgba(0, 0, 0, 0.9);
+    animation: plasmaBreatheHover 1.8s infinite ease-in-out;
   }
 
-  /* Responsive adjustments */
+  /* Responsive */
   @media (max-width: 768px) {
-    width: clamp(200px, 24vw, 260px);
-    height: clamp(200px, 24vw, 260px);
-    border-radius: 20px;
-    box-shadow: 
-      0 0 40px rgba(0, 255, 255, 0.5),
-      inset 0 0 20px rgba(255, 255, 255, 0.15);
-    &:before {
-      opacity: 0.5;
-    }
-    &:after {
-      opacity: 0.4;
-    }
-    &:hover {
-      transform: scale(1.07);
-      box-shadow: 
-        0 0 70px rgba(0, 255, 255, 0.7),
-        inset 0 0 25px rgba(255, 255, 255, 0.2);
-    }
+    width: clamp(200px, 42vw, 280px);
+    height: clamp(200px, 42vw, 280px);
+    border-radius: 24px;
+    &:hover { transform: translateY(-10px) scale(1.07) rotateY(6deg); }
   }
 
   @media (max-width: 480px) {
     width: clamp(180px, 22vw, 220px);
     height: clamp(180px, 22vw, 220px);
-    border-width: 4px;
-    border-radius: 18px;
+    border-radius: 20px;
   }
 
-  @keyframes neonGlowPulse {
-    0%, 100% {
-      box-shadow: 
-        0 0 50px rgba(0, 255, 255, 0.6),
-        inset 0 0 25px rgba(255, 255, 255, 0.2);
-    }
-    50% {
-      box-shadow: 
-        0 0 60px rgba(0, 255, 255, 0.7),
-        inset 0 0 30px rgba(255, 255, 255, 0.25);
-    }
+  @keyframes plasmaBreathe {
+    0%, 100% { box-shadow: 0 0 70px rgba(0,255,255,.7), inset 0 0 50px rgba(255,255,255,.12); }
+    50% { box-shadow: 0 0 90px rgba(0,255,255,.9), inset 0 0 70px rgba(255,255,255,.18); }
   }
 
-  @keyframes neonGlowPulseHover {
-    0%, 100% {
-      box-shadow: 
-        0 0 100px rgba(0, 255, 255, 0.8),
-        inset 0 0 35px rgba(255, 255, 255, 0.25);
-    }
-    50% {
-      box-shadow: 
-        0 0 120px rgba(0, 255, 255, 0.9),
-        inset 0 0 40px rgba(255, 255, 255, 0.3);
-    }
+  @keyframes plasmaBreatheHover {
+    0%, 100% { box-shadow: 0 0 140px rgba(0,255,255,1), inset 0 0 80px rgba(255,255,255,.35); }
+    50% { box-shadow: 0 0 170px rgba(0,255,255,1.2), inset 0 0 100px rgba(255,255,255,.45); }
   }
 
-  @keyframes hologramWave {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(10px, -10px); }
-    100% { transform: translate(0, 0); }
-  }
-
-  @keyframes particleOrbit {
-    0% { transform: rotate(0deg) translate(10px) rotate(0deg); }
-    100% { transform: rotate(360deg) translate(10px) rotate(-360deg); }
-  }
-`;
-/* Keyframe animations */
-const keyframes = `
-  @keyframes neonPulse {
-    0%, 100% {
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
-    }
-  }
-
-  @keyframes neonPulseHover {
-    0%, 100% {
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
-    }
-    50% {
-      box-shadow: 0 0 50px rgba(0, 255, 255, 0.7);
-    }
-  }
-
-  @keyframes hologramShift {
-    0% {
-      background-position: 0% 0%;
-    }
-    100% {
-      background-position: 100% 0%;
-    }
-  }
-
-  @keyframes particleSparkle {
-    0%, 100% {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
+  @keyframes liquidChrome { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+  @keyframes scannerSweep { 0% { transform: translateY(-150%) rotate(8deg); } 100% { transform: translateY(150%) rotate(8deg); } }
+  @keyframes dataVeins { 0% { background-position: 0 0, 0 0, 0 0, 0 0; } 100% { background-position: 80px 80px, 80px 80px, 160px 160px, 160px; } }
 `;
 
 const ProfileRing = styled(motion.div)`
   position: absolute;
-  top: -18px;
-  left: -18px;
-  width: calc(100% + 36px);
-  height: calc(100% + 36px);
-  border-radius: 28px;
-  z-index: 10;
+  top: -22px;
+  left: -22px;
+  width: calc(100% + 44px);
+  height: calc(100% + 44px);
+  border-radius: 34px;
   pointer-events: none;
+  z-index: 10;
   overflow: hidden;
 
-  /* Multi-layered neon + glass + holographic ring system */
+  /* Fractal Plasma Ring + Infinite Flow */
   background: 
-    radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.25), transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.2), transparent 50%),
-    conic-gradient(from 0deg at 50% 50%, 
-      #00ffff, #00d0ff, #7f00ff, #ff00ff, #00ff9d, #00ffff
-    );
+    conic-gradient(
+      from 0deg at 50% 50%,
+      #00ffff 0deg,
+      #ff00ff 60deg,
+      #8a2be2 120deg,
+      #ff1493 180deg,
+      #00ffea 240deg,
+      #00ffff 360deg
+    ),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
 
-  /* Animated flowing border (the magic) */
-  background-size: 400% 400%;
-  animation: 
-    ringFlow 14s linear infinite,
-    subtleRotate 32s linear infinite;
+  background-size: 300% 300%;
+  animation: fractalPlasmaFlow 16s linear infinite, slowOrbit 40s linear infinite;
 
-  /* Glowing border with perfect mask trick */
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
+  /* Triple glowing border using mask */
+  padding: 7px;
+  border: 3px solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 
-  border: 3px solid transparent;
   box-shadow: 
-    0 0 40px rgba(0, 255, 255, 0.5),
-    inset 0 0 30px rgba(0, 255, 255, 0.15),
-    0 0 80px rgba(138, 43, 226, 0.3);
+    0 0 100px rgba(0, 255, 255, 0.9),
+    inset 0 0 60px rgba(0, 255,255, 0.25),
+    0 0 140px rgba(255, 0, 255, 0.6);
 
-  /* Inner floating energy pulse */
+  /* Breathing Fractal Core */
   &::before {
     content: '';
     position: absolute;
-    inset: 4px;
-    border-radius: 24px;
+    inset: 12px;
+    border-radius: 28px;
     background: conic-gradient(
-      from 0deg,
+      from var(--rot, 0deg),
       transparent 0%,
-      rgba(0, 255, 255, 0.4) 15%,
-      rgba(255, 0, 255, 0.4) 30%,
-      transparent 50%
+      #00ffff 12%,
+      #ff00ff 25%,
+      transparent 40%,
+      #00ffea 60%,
+      transparent 80%
     );
-    animation: energyPulse 8s ease-in-out infinite;
-    filter: blur(8px);
-    opacity: 0.7;
+    filter: blur(22px);
+    animation: coreFractalPulse 7s ease-in-out infinite;
+    opacity: 0.85;
   }
 
-  /* Dashed orbital trail (now looks like data stream) */
+  /* Orbital Micro-Rings + Data Stream */
   &::after {
     content: '';
     position: absolute;
-    inset: -4px;
-    border-radius: 30px;
-    border: 2px dashed rgba(0, 255, 255, 0.3);
-    background: transparent;
-    animation: 
-      subtleRotate 28s linear infinite reverse,
-      dashFlow 6s linear infinite;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 255, 255, 0.35);
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.6);
+    animation: microOrbit 20s linear infinite reverse;
+    opacity: 0.7;
   }
 
-  /* Responsive scaling */
   @media (max-width: 768px) {
+    top: -16px;
+    left: -16px;
+    width: calc(100% + 32px);
+    height: calc(100% + 32px);
+  }
+
+  @media (max-width: 480px) {
     top: -14px;
     left: -14px;
     width: calc(100% + 28px);
     height: calc(100% + 28px);
-    border-width: 2.5px;
   }
 
-  @media (max-width: 480px) {
-    top: -12px;
-    left: -12px;
-    width: calc(100% + 24px);
-    height: calc(100% + 24px);
-    border-width: 2px;
+  @keyframes fractalPlasmaFlow {
+    0% { background-position: 0% 0%; transform: rotate(0deg); }
+    100% { background-position: 100% 100%; transform: rotate(360deg); }
   }
 
-  /* Keyframes - Pure fire */
-  @keyframes ringFlow {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-  }
-
-  @keyframes subtleRotate {
+  @keyframes slowOrbit {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
 
-  @keyframes energyPulse {
-    0%, 100% { opacity: 0.5; transform: scale(0.95); }
-    50% { opacity: 0.9; transform: scale(1.05); }
+  @keyframes coreFractalPulse {
+    0%, 100% { opacity: 0.6; transform: scale(0.92); --rot: 0deg; }
+    50% { opacity: 1; transform: scale(1.12); --rot: 180deg; }
   }
 
-  @keyframes dashFlow {
-    0% { background: linear-gradient(90deg, transparent 50%, rgba(0,255,255,0.6) 50%); }
-    100% { background: linear-gradient(90deg, transparent 50%, rgba(0,255,255,0.6) 50%); 
-          background-position: 40px 0; }
+  @keyframes microOrbit {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { opacity: 0.4; }
+    100% { transform: rotate(-360deg) scale(1.08); opacity: 0.7; }
   }
 `;
 const HeaderContainer = styled.div`
