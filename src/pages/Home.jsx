@@ -187,16 +187,14 @@ const NavBrand = styled.a`
 
 const NavLinks = styled.div`
   display: flex;
-  gap: clamp(1.8rem, 3vw, 3.2rem);        /* Reduced gap — looks tighter & more elegant */
+  gap: clamp(0.6rem, 1.3vw, 1.6rem);        /* Super tight – exactly what you asked for */
   align-items: center;
   margin-left: auto;
-  
-  /* Still keeps CONTACT safely away from the edge */
-  padding-right: clamp(2.5rem, 6vw, 6rem);
+  padding-right: clamp(2.2rem, 5vw, 6rem);
 
   @media (max-width: 1024px) {
-    gap: clamp(1.4rem, 2.6vw, 2.4rem);     /* Tighter on tablets */
-    padding-right: clamp(2rem, 5vw, 4.5rem);
+    gap: clamp(0.5rem, 1.1vw, 1.4rem);
+    padding-right: clamp(1.6rem, 4vw, 4.8rem);
   }
 
   @media (max-width: 768px) {
@@ -204,19 +202,19 @@ const NavLinks = styled.div`
     top: 0;
     right: 0;
     height: 100dvh;
-    width: 300px;
-    max-width: 88vw;
+    width: 320px;
+    max-width: 90vw;
     background: rgba(5, 15, 35, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1.5rem;
-    gap: clamp(2.4rem, 6vw, 3.6rem);      /* Slightly reduced mobile gap too */
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: -12px 0 60px rgba(0, 212,255,0.22);
+    padding: 2rem 1.8rem;
+    gap: 5rem;
+    transform: translateX(110%);
+    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -20px 0 90px rgba(0, 240, 255, 0.3);
     z-index: 9999;
 
     &.active {
@@ -225,81 +223,141 @@ const NavLinks = styled.div`
   }
 
   @media (max-width: 480px) {
-    width: 280px;
-    max-width: 92vw;
-    padding: 2rem 1.2rem;
-    gap: 2.6rem;                          /* Clean & balanced on small phones */
+    width: 300px;
+    max-width: 94vw;
+    padding: 2rem 1.4rem;
+    gap: 4.4rem;
   }
 `;
 
 const NavLink = styled.a`
   font-family: 'Orbitron', sans-serif;
-  font-weight: 600;
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-weight: 700;
+  font-size: clamp(0.92rem, 1.85vw, 1.1rem);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgba(224, 251, 252, 0.9);
+  letter-spacing: 2.8px;
+  color: rgba(224, 251, 252, 0.94);
   text-decoration: none;
   position: relative;
-  padding: 0.5rem 0;
-  transition: all 0.4s ease;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateZ(0);
+  will-change: transform;
 
-  /* Electric underline effect */
   &::before {
     content: '';
     position: absolute;
-    bottom: 0;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.08));
+    border: 1px solid rgba(0,255,255,0.25);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: scale(0.92);
+    transition: all 0.6s ease;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 7px;
     left: 50%;
     width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #00f0ff, #ff00ff);
-    transition: all 0.5s ease;
+    height: 3px;
+    background: linear-gradient(90deg, #00f0ff, #ff00ff, #8b5cf6, #00f0ff);
+    background-size: 300% 100%;
+    border-radius: 3px;
     transform: translateX(-50%);
-    box-shadow: 0 0 15px currentColor;
+    transition: width 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 22px #00f0ff;
   }
 
   &:hover {
-    color: #00f0ff;
+    color: #00ffff;
+    transform: translateY(-9px) scale(1.1);
     text-shadow: 
-      0 0 20px rgba(0, 240, 255, 0.8),
-      0 0 40px rgba(0, 240, 255, 0.4);
-    transform: translateY(-3px);
+      0 0 25px #00ffff,
+      0 0 50px #00ffff,
+      0 0 80px rgba(0,255,255,0.7);
   }
 
   &:hover::before {
-    width: 100%;
+    opacity: 1;
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(0,255,255,0.4);
   }
 
-  /* Active state glow */
+  &:hover::after {
+    width: 96%;
+    animation: flowLine 3s linear infinite;
+  }
+
   &.active {
     color: #00ffff;
-    text-shadow: 0 0 20px #00ffff;
+    text-shadow: 0 0 35px #00ffff;
   }
 
   &.active::before {
-    width: 100%;
-    height: 3px;
-    animation: pulseLine 2s infinite;
+    opacity: 0.35;
+    animation: pulseCard 4s ease-in-out infinite;
   }
 
-  @keyframes pulseLine {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; box-shadow: 0 0 25px #00ffff; }
+  &.active::after {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00ffff, #8b5cf6, #ff2aff);
+    animation: flowLine 2.5s linear infinite;
+  }
+
+  @keyframes flowLine {
+    0%   { background-position: 0% 0; }
+    100% { background-position: 300% 0; }
+  }
+
+  @keyframes pulseCard {
+     0%, 100% { box-shadow: 0 0 20px rgba(0,255,255,0.4); }
+    50%      { box-shadow: 0 0 45px rgba(0,255,255,0.8); }
   }
 `;
-
-// Optional: Mobile menu toggle button (you can style it separately)
 const MobileToggle = styled.button`
   display: none;
   background: none;
   border: none;
   color: #00f0ff;
-  font-size: 1.8rem;
+  font-size: 2.3rem;
   cursor: pointer;
+  padding: 14px;
+  border-radius: 16px;
+  position: relative;
   z-index: 10000;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 20px;
+    background: conic-gradient(from 90deg, #00f0ff, #ff00ff, #8b5cf6, #00f0ff);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 0.7;
+    animation: rotateRing 2.5s linear infinite;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
 
   @media (max-width: 768px) {
     display: block;
+  }
+
+  @keyframes rotateRing {
+    100% { transform: rotate(360deg); }
   }
 `;
 const HeroSection = styled.section`
@@ -404,7 +462,7 @@ const ProfileImageContainer = styled(motion.div)`
 const ProfileImage = styled(motion.img)`
   width: clamp(260px, 28vw, 340px);
   height: clamp(260px, 28vw, 340px);
-  border-radius: 36px;
+  border-radius: 50%;                    /* Only change: fully round */
   object-fit: cover;
   position: relative;
   z-index: 3;
@@ -413,12 +471,12 @@ const ProfileImage = styled(motion.img)`
   transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform;
 
-  /* === EPIC MULTI-LAYER BORDER MAGIC === */
+  /* === EPIC MULTI-LAYER BORDER MAGIC (now perfectly round) === */
   &::before {
     content: '';
     position: absolute;
     inset: -8px;
-    border-radius: 44px;
+    border-radius: 50%;                  /* Round border */
     background: conic-gradient(
       from 0deg,
       #00ffff 0deg,
@@ -438,12 +496,12 @@ const ProfileImage = styled(motion.img)`
     filter: blur(1px);
   }
 
-  /* Inner neon edge glow */
+  /* Inner neon edge glow – also round */
   &::after {
     content: '';
     position: absolute;
     inset: 4px;
-    border-radius: 32px;
+    border-radius: 50%;                  /* Round inner glow */
     background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2));
     filter: blur(20px);
     opacity: 0.8;
@@ -471,19 +529,19 @@ const ProfileImage = styled(motion.img)`
   @media (max-width: 768px) {
     width: clamp(220px, 48vw, 300px);
     height: clamp(220px, 48vw, 300px);
-    border-radius: 32px;
-    &::before { inset: -6px; padding: 4px; }
+    border-radius: 50%;                 /* Still round on tablet */
+    &::before { inset: -6px; padding: 4px; border-radius: 50%; }
+    &::after  { border-radius: 50%; }
     &:hover { transform: translateY(-16px) scale(1.07) rotateY(5deg); }
   }
 
   @media (max-width: 480px) {
     width: clamp(190px, 64vw, 260px);
     height: clamp(190px, 64vw, 260px);
-    border-radius: 28px;
-    &::before { inset: -5px; padding: 3.5px; }
+    border-radius: 50%;                 /* Still round on mobile */
+    &::before { inset: -5px; padding: 3.5px; border-radius: 50%; }
   }
 
-  /* Animations – buttery smooth */
   @keyframes borderRotate {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -494,18 +552,18 @@ const ProfileImage = styled(motion.img)`
     50% { opacity: 0.9; transform: scale(1.06); }
   }
 `;
+
 const ProfileRing = styled(motion.div)`
   position: absolute;
   top: -16px;
   left: -16px;
   width: calc(100% + 32px);
   height: calc(100% + 32px);
-  border-radius: 38px;
+  border-radius: 50%;                    /* Round ring to match */
   pointer-events: none;
-  z-index: 2; /* Below image, above container glow */
-  isolation: isolate; /* Critical fix: prevents blending/flicker with navbar */
+  z-index: 2;
+  isolation: isolate;
   
-  /* Super lightweight rotating ring — buttery smooth */
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
@@ -519,18 +577,12 @@ const ProfileRing = styled(motion.div)`
   background-size: 180% 180%;
   animation: ringRotate 20s linear infinite;
   padding: 3px;
-  border-radius: 38px;
 
-  /* Mask trick for crisp border */
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 
-  /* Minimal glow — no heavy shadows */
   filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.5));
-
-  /* Remove all ::before/::after heavy effects — causes flicker on scroll */
-  /* Only keep pure background animation = zero repaint issues */
 
   @media (max-width: 768px) {
     top: -12px;
@@ -538,6 +590,7 @@ const ProfileRing = styled(motion.div)`
     width: calc(100% + 24px);
     height: calc(100% + 24px);
     padding: 2.5px;
+    border-radius: 50%;
   }
 
   @keyframes ringRotate {
@@ -545,7 +598,6 @@ const ProfileRing = styled(motion.div)`
     to { transform: rotate(360deg); }
   }
 `;
-
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -1454,118 +1506,74 @@ const ContactSection = styled(Section)`
   isolation: isolate;
   z-index: 1;
 
-  /* Deep void with living aurora — feels infinite */
+  /* Sky-blue dominant cosmic background */
   background: 
-    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.14), transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.12), transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(0, 255, 180, 0.08), transparent 70%),
+    radial-gradient(circle at 20% 80%, rgba(100, 200, 255, 0.22), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(135, 206, 250, 0.18), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(135, 206, 255, 0.14), transparent 70%),
     linear-gradient(135deg, 
-      #000814 0%, 
-      #001233 30%, 
-      #0c1b3d 60%, 
-      #020c1b 100%
+      #0a1628 0%, 
+      #0f1e3a 35%, 
+      #112240 70%, 
+      #081222 100%
     );
 
-  /* MASSIVE BREATHING HOLOGRAPHIC CORE — your signature */
+  /* BREATHING SKY-BLUE HOLOGRAPHIC CORE */
   &::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1200px;
-    height: 1200px;
+    top: 50%; left: 50%;
+    width: 1300px; height: 1300px;
     background: conic-gradient(
       from 0deg at 50% 50%,
-      #00ffff 0deg,
-      #00d4ff 60deg,
-      #8b5cf6 120deg,
-      #ff2df0 180deg,
-      #00ff9d 240deg,
-      #00ffff 360deg
+      #64c8ff 0deg,
+      #87CEFA 70deg,
+      #87CEEB 140deg,
+      #00d4ff 200deg,
+      #40c4ff 270deg,
+      #64c8ff 360deg
     );
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.22;
+    filter: blur(130px);
+    opacity: 0.28;
     transform: translate(-50%, -50%);
-    animation: auroraBreathe 18s ease-in-out infinite;
+    animation: auroraBreathe 20s ease-in-out infinite;
+    pointer-events: none;
     z-index: 0;
   }
 
-  /* Slow-moving quantum lattice grid — feels alive */
+  /* Subtle sky-blue quantum grid */
   &::after {
     content: '';
     position: absolute;
     inset: -50%;
     background: 
-      repeating-linear-gradient(30deg, 
-        transparent 0px,
-        transparent 80px,
-        rgba(0, 255, 255, 0.03) 81px,
-        rgba(0, 255, 255, 0.03) 82px
-      ),
-      repeating-linear-gradient(150deg, 
-        transparent 0px,
-        transparent 80px,
-        rgba(255, 0, 255, 0.03) 81px,
-        rgba(255, 0, 255, 0.03) 82px
-      );
+      repeating-linear-gradient(30deg, transparent 0px, transparent 80px, rgba(100, 200, 255, 0.05) 81px, rgba(100, 200, 255, 0.05) 82px),
+      repeating-linear-gradient(150deg, transparent 0px, transparent 80px, rgba(135, 206, 250, 0.04) 81px, rgba(135, 206, 250, 0.04) 82px);
     background-size: 200px 200px;
-    animation: latticeFlow 40s linear infinite;
-    opacity: 0.5;
+    animation: latticeFlow 45s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
     z-index: 0;
   }
 
-  /* FLOATING ENERGY RINGS — pure magic */
+  /* Floating sky-blue rings */
   > .ring-1, > .ring-2, > .ring-3 {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(0, 255, 255, 0.15);
-    opacity: 0.3;
+    border: 1px solid rgba(135, 206, 250, 0.25);
+    opacity: 0.35;
     pointer-events: none;
-    animation: floatRing 25s linear infinite;
+    animation: floatRing 28s linear infinite;
   }
 
-  > .ring-1 {
-    width: 800px; height: 800px;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    border-color: rgba(0, 255, 255, 0.2);
-    animation-delay: 0s;
-  }
-
-  > .ring-2 {
-    width: 600px; height: 600px;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border-color: rgba(138, 43, 226, 0.18);
-    animation-delay: -8s;
-  }
-
-  > .ring-3 {
-    width: 1000px; height: 400px;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%) rotate(20deg);
-    border-color: rgba(0, 255, 180, 0.15);
-    animation-delay: -15s;
-  }
-
-  /* SUBTLE FINAL SCAN — appears only once every 30s */
-  > .final-scan {
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, #00ffff, transparent);
-    box-shadow: 0 0 60px #00ffff, 0 0 120px #ff00ff;
-    opacity: 0;
-    animation: finalScan 30s linear infinite;
-    z-index: 10;
-  }
+  > .ring-1 { width: 850px; height: 850px; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(0deg); border-color: rgba(100, 200, 255, 0.3); }
+  > .ring-2 { width: 650px; height: 650px; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); border-color: rgba(135, 206, 250, 0.28); animation-delay: -9s; }
+  > .ring-3 { width: 1050px; height: 450px; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(20deg); border-color: rgba(100, 200, 255, 0.22); animation-delay: -16s; }
 
   @keyframes auroraBreathe {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.18; }
-    50%      { transform: translate(-50%, -50%) scale(1.3); opacity: 0.28; }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.24; }
+    50%      { transform: translate(-50%, -50%) scale(1.35); opacity: 0.34; }
   }
 
   @keyframes latticeFlow {
@@ -1577,228 +1585,149 @@ const ContactSection = styled(Section)`
     0%   { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
     100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
   }
-
-  @keyframes finalScan {
-    0%     { top: -100%; opacity: 0; }
-    3%     { opacity: 1; }
-    10%    { top: 100%; opacity: 1; }
-    13%    { opacity: 0; }
-    100%   { top: 100%; opacity: 0; }
-  }
 `;
 
+// GORGEOUS SKY-BLUE TEXT
 const ContactIntro = styled(motion.p)`
-  position: relative;
   z-index: 2;
-  font-size: clamp(1.4rem, 3.2vw, 2rem);
-  max-width: 900px;
-  margin: 0 auto 3rem;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  max-width: 920px;
+  margin: 0 auto 3.5rem;
   text-align: center;
-  line-height: 1.7;
-  font-weight: 500;
-  letter-spacing: 0.8px;
+  line-height: 1.75;
+  font-weight: 600;
+  letter-spacing: 1px;
 
-  /* Multi-layer glowing text — matches your CTA button */
-  color: #e0fffe;
-  text-shadow: 
-    0 0 10px rgba(0, 255, 255, 0.6),
-    0 0 30px rgba(0, 255, 255, 0.4),
-    0 0 60px rgba(0, 255, 255, 0.2);
-
-  /* Animated gradient text (same as CTA) */
-  background: linear-gradient(
-    90deg,
-    #00ffff 0%,
-    #7f00ff 30%,
-    #ff00ff 50%,
-    #00ff9d 70%,
-    #00ffff 100%
-  );
+  background: linear-gradient(90deg, #64c8ff, #87CEFA, #87CEEB, #40c4ff, #64c8ff);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textFlow 12s ease-in-out infinite;
+  text-shadow: 0 0 30px rgba(135, 206, 250, 0.6);
+  animation: textFlow 14s ease-in-out infinite;
 
-  /* Subtle inner glow border */
-  padding: 1.5rem 2rem;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  background-color: rgba(10, 25, 47, 0.4);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-
-  /* Floating effect */
-  animation: float 8s ease-in-out infinite;
-
-  @media (max-width: 768px) {
-    font-size: clamp(1.2rem, 2.8vw, 1.6rem);
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    padding: 1rem 1.2rem;
-  }
+  padding: 1.8rem 2.5rem;
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
+  background-color: rgba(10, 25, 47, 0.5);
+  border: 1.5px solid rgba(135, 206, 250, 0.4);
 
   @keyframes textFlow {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
 `;
 
+// FORM – CLEAN & SKY-BLUE ACCENTS
 const Form = styled(motion.form)`
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  border: 1px solid rgba(0, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
+  padding: 3.2rem 3rem;
+  background: rgba(10, 25, 50, 0.96);
+  border: 2.5px solid rgba(135, 206, 250, 0.7);
+  border-radius: 38px;
+  backdrop-filter: blur(32px);
+  box-shadow: 
+    0 0 90px rgba(135, 206, 250, 0.4),
+    inset 0 0 70px rgba(135, 206, 250, 0.15),
+    0 35px 90px rgba(0, 0, 0, 0.8);
   z-index: 10;
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-    gap: 1.2rem;
-  }
-  @media (max-width: 480px) {
-    padding: 1rem;
-    gap: 1rem;
-  }
+  position: relative;
+  overflow: hidden;
 `;
 
-const Input = styled.input`
-  padding: clamp(0.8rem, 2vw, 1.2rem);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  color: #e0fbfc;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-
-  &:focus {
-    border-color: #00ffff;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
-    transform: scale(1.01);
-    outline: none;
-  }
+// INPUTS – SKY BLUE FOCUS
+const Input = styled(motion.input)`
+  padding: 1.4rem 2rem;
+  background: rgba(135, 206, 250, 0.08);
+  border: 2px solid rgba(135, 206, 250, 0.4);
+  border-radius: 24px;
+  color: #e6f3ff;
+  font-size: 1.15rem;
+  transition: all 0.4s ease;
 
   &::placeholder {
-    color: #a8d0e6;
+    color: rgba(135, 206, 250, 0.8);
+    font-weight: 500;
   }
-
-  @media (max-width: 480px) {
-    padding: clamp(0.6rem, 1.5vw, 1rem);
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-  }
-`;
-
-const Textarea = styled.textarea`
-  min-height: 160px;
-  padding: clamp(0.8rem, 2vw, 1.2rem);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  color: #e0fbfc;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
-  resize: vertical;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 
   &:focus {
-    border-color: #00ffff;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
-    transform: scale(1.01);
     outline: none;
+    border-color: #87CEEB;
+    background: rgba(135, 206, 250, 0.18);
+    box-shadow: 0 0 30px rgba(135, 206, 250, 0.6);
   }
+`;
+
+const Textarea = styled(motion.textarea)`
+  min-height: 180px;
+  padding: 1.6rem 2rem;
+  background: rgba(135, 206, 250, 0.08);
+  border: 2px solid rgba(135, 206, 250, 0.4);
+  border-radius: 28px;
+  color: #e6f3ff;
+  font-size: 1.2rem;
+  resize: none;
+  transition: all 0.4s ease;
 
   &::placeholder {
-    color: #a8d0e6;
+    color: rgba(135, 206, 250, 0.8);
   }
 
-  @media (max-width: 768px) {
-    min-height: 120px;
-  }
-  @media (max-width: 480px) {
-    min-height: 100px;
-    padding: clamp(0.6rem, 1.5vw, 1rem);
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  &:focus {
+    outline: none;
+    border-color: #87CEEB;
+    background: rgba(135, 206, 250, 0.18);
+    box-shadow: 0 0 35px rgba(135, 206, 250, 0.6);
   }
 `;
 
-const CharCount = styled.p`
-  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-  color: #a8d0e6;
-  text-align: right;
-  text-shadow: 0 0 6px rgba(168, 208, 230, 0.3);
-
-  @media (max-width: 480px) {
-    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
-  }
-`;
-
-const ErrorMessage = styled.p`
-  color: #ff4d4d;
-  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-  margin-top: 0.5rem;
-  font-weight: 500;
-  text-shadow: 0 0 6px rgba(255, 77, 77, 0.3);
-
-  @media (max-width: 480px) {
-    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
-  }
-`;
-
-const SuccessMessage = styled(motion.p)`
-  color: #00ff00;
-  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-  margin-top: 0.5rem;
-  font-weight: 500;
-  text-shadow: 0 0 6px rgba(0, 255, 0, 0.3);
-
-  @media (max-width: 480px) {
-    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
-  }
-`;
-
+// BUTTON – SKY BLUE GRADIENT
 const SubmitButton = styled(motion.button)`
-  padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
-  border-radius: 8px;
-  font-weight: 600;
-  background: linear-gradient(90deg, #00ffff, #00bfff);
-  color: #020c1b;
+  padding: 1.3rem 4rem;
+  background: linear-gradient(90deg, #64c8ff, #87CEEB, #40c4ff);
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   border: none;
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  align-self: center;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  box-shadow: 0 15px 50px rgba(135, 206, 250, 0.6);
+  transition: all 0.4s ease;
 
   &:hover:not(:disabled) {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 30px rgba(0, 255, 255, 0.5);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 25px 70px rgba(135, 206, 250, 0.8);
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.7;
     cursor: not-allowed;
-    transform: none;
   }
+`;
 
-  @media (max-width: 480px) {
-    padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-  }
+// OTHER COMPONENTS – UPDATED COLORS
+const CharCount = styled.p`
+  color: #87CEEB;
+  font-weight: 600;
+  text-shadow: 0 0 15px rgba(135, 206, 250, 0.5);
+`;
+
+const ErrorMessage = styled.p`
+  color: #ff6b6b;
+  text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+`;
+
+const SuccessMessage = styled(motion.p)`
+  color: #00ff9d;
+  background: rgba(0, 255, 157, 0.15);
+  padding: 1.2rem 2.5rem;
+  border-radius: 24px;
+  border: 1.5px solid #00ff9d;
+  text-shadow: 0 0 20px #00ff9d;
+  font-weight: 700;
 `;
 
 const Footer = styled(motion.footer)`
@@ -2724,12 +2653,14 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan | MERN | AIML&DS <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan|MERN|AIML&DS <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
-          <NavLink href="#home">Home</NavLink>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
+          
+          <NavLink href="#internships">Experience</NavLink>
+          
           <NavLink href="#skills">Skills</NavLink>
+          <NavLink href="#projects">Projects</NavLink>
+
           <NavLink href="#resume">Resume</NavLink>
           <NavLink href="#contact">Contact</NavLink>
         </NavLinks>
@@ -2759,7 +2690,7 @@ const Home = () => {
             </ProfileImageContainer>
           </motion.div>
           <HeaderContainer>
-            <Title variants={fadeInUp}>Siva Satya Sai Bhagavan GopalaJosyula</Title>
+            <Title variants={fadeInUp}> GopalaJosyula Siva Satya Sai Bhagavan </Title>
             <TypingSubtitle text="Full-Stack Developer & AI/ML Enthusiast | Building scalable MERN & Python solutions | Skilled in Java, Cloud, DevOps & Data-Driven Applications for Enterprise and Product Innovation." />
 
             <motion.div
@@ -3372,15 +3303,15 @@ const Home = () => {
     Core Skills
   </SectionTitle>
 
-  {/* 2 CARDS PER ROW – CINEMATIC GRID */}
+  {/* ULTRA-TIGHT, PROFESSIONAL GRID */}
   <motion.div
     style={{
-      maxWidth: "1400px",
+      maxWidth: "1260px",
       margin: "0 auto",
-      padding: "2rem 2rem",
+      padding: "2rem 1.5rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(520px, 1fr))",
-      gap: "4rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", // Reduced again: 420px → 360px
+      gap: "2.8rem", // Reduced from 3.2rem
     }}
   >
     {[
@@ -3457,19 +3388,19 @@ const Home = () => {
         key={i}
         initial={{ opacity: 0, y: 100 }}
         animate={isSkillsInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, delay: i * 0.18, ease: "easeOut" }}
-        whileHover={{ y: -18, transition: { duration: 0.5 } }}
+        transition={{ duration: 1, delay: i * 0.16, ease: "easeOut" }}
+        whileHover={{ y: -12, transition: { duration: 0.4 } }}
         style={{
           background: "rgba(10, 25, 50, 0.96)",
           backdropFilter: "blur(32px)",
-          border: "3.5px solid rgba(0, 255, 255, 0.78)",
-          borderRadius: "48px",
-          padding: "4rem 3.6rem",
-          minHeight: "580px",
+          border: "3px solid rgba(0, 255, 255, 0.78)",
+          borderRadius: "38px",
+          padding: "2.8rem 2.4rem", // Even tighter
+          minHeight: "480px", // Down from 520px
           boxShadow: `
-            0 50px 130px rgba(0, 0, 0, 0.9),
-            0 0 140px rgba(0, 255, 255, 0.52),
-            inset 0 0 90px rgba(0, 255, 255, 0.22)
+            0 45px 120px rgba(0, 0, 0, 0.9),
+            0 0 130px rgba(0, 255, 255, 0.5),
+            inset 0 0 80px rgba(0, 255, 255, 0.2)
           `,
           position: "relative",
           overflow: "hidden",
@@ -3478,41 +3409,41 @@ const Home = () => {
         }}
       >
         {/* Top Glow Line */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "11px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 85px #00ffff" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "9px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 70px #00ffff" }} />
 
         {/* Icon + Title */}
-        <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", marginBottom: "2.5rem" }}>
-          <div style={{ fontSize: "3.2rem", color: "#00ffff", filter: "drop-shadow(0 0 20px #00ffff)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "2rem" }}>
+          <div style={{ fontSize: "2.5rem", color: "#00ffff", filter: "drop-shadow(0 0 16px #00ffff)" }}>
             {category.icon}
           </div>
-          <h3 style={{ fontSize: "2.4rem", fontWeight: "900", color: "#00ffff", margin: 0, textShadow: "0 0 30px #00ffff", letterSpacing: "1.5px" }}>
+          <h3 style={{ fontSize: "1.9rem", fontWeight: "900", color: "#00ffff", margin: 0, textShadow: "0 0 26px #00ffff", letterSpacing: "1px" }}>
             {category.title}
           </h3>
         </div>
 
         {/* Skills with Progress Bars */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.6rem", flex: 1 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.3rem", flex: 1 }}>
           {category.skills.map((skill, j) => (
             <motion.div
               key={j}
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={isSkillsInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: i * 0.18 + j * 0.09 }}
+              transition={{ duration: 0.7, delay: i * 0.16 + j * 0.08 }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-                <span style={{ fontSize: "1.18rem", color: "#e0fbfc", fontWeight: "700" }}>{skill.name}</span>
-                <span style={{ fontSize: "1.1rem", color: "#00ffff", fontWeight: "800" }}>{skill.level}%</span>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.35rem" }}>
+                <span style={{ fontSize: "1.05rem", color: "#e0fbfc", fontWeight: "700" }}>{skill.name}</span>
+                <span style={{ fontSize: "1rem", color: "#00ffff", fontWeight: "800" }}>{skill.level}%</span>
               </div>
-              <div style={{ height: "14px", background: "rgba(0, 255, 255, 0.18)", borderRadius: "8px", overflow: "hidden", border: "1.5px solid rgba(0, 255, 255, 0.4)" }}>
+              <div style={{ height: "12px", background: "rgba(0, 255, 255, 0.18)", borderRadius: "6px", overflow: "hidden", border: "1.3px solid rgba(0, 255, 255, 0.4)" }}>
                 <motion.div
                   initial={{ width: 0 }}
                   animate={isSkillsInView ? { width: `${skill.level}%` } : { width: 0 }}
-                  transition={{ duration: 1.8, delay: i * 0.18 + j * 0.12, ease: "easeOut" }}
+                  transition={{ duration: 1.8, delay: i * 0.16 + j * 0.11, ease: "easeOut" }}
                   style={{
                     height: "100%",
                     background: "linear-gradient(90deg, #00ffff, #00ffea)",
-                    borderRadius: "8px",
-                    boxShadow: "0 0 25px #00ffff",
+                    borderRadius: "6px",
+                    boxShadow: "0 0 22px #00ffff",
                     position: "relative",
                     overflow: "hidden",
                   }}
@@ -3536,7 +3467,7 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "10px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 80px #00ffff" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "8px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 70px #00ffff" }} />
       </motion.div>
     ))}
   </motion.div>
@@ -3550,15 +3481,15 @@ const Home = () => {
     Professional Experience
   </SectionTitle>
 
-  {/* VERTICAL STACK — Tall, premium internship cards */}
+  {/* TIGHTER, MORE ELEGANT VERTICAL STACK */}
   <motion.div
     style={{
-      maxWidth: "1000px",
+      maxWidth: "920px",
       margin: "0 auto",
       display: "flex",
       flexDirection: "column",
-      gap: "4.8rem",
-      padding: "3rem 2rem",
+      gap: "3.6rem",        // Reduced from 4.8rem
+      padding: "2.5rem 1.8rem",
     }}
   >
     {[
@@ -3598,20 +3529,20 @@ const Home = () => {
     ].map((intern, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 80 }}
-        animate={isInternshipsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
-        transition={{ duration: 0.9, delay: i * 0.18, ease: "easeOut" }}
-        whileHover={{ y: -10, transition: { duration: 0.4 } }}
+        initial={{ opacity: 0, y: 70 }}
+        animate={isInternshipsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 70 }}
+        transition={{ duration: 0.85, delay: i * 0.16, ease: "easeOut" }}
+        whileHover={{ y: -8, transition: { duration: 0.35 } }}
         style={{
-          background: "rgba(10, 25, 50, 0.82)",
-          backdropFilter: "blur(22px)",
-          border: "1.5px solid rgba(0, 255, 255, 0.38)",
-          borderRadius: "34px",
-          padding: "3.2rem 3rem",
+          background: "rgba(10, 25, 50, 0.88)",
+          backdropFilter: "blur(20px)",
+          border: "1.4px solid rgba(0, 255, 255, 0.42)",
+          borderRadius: "28px",           // Reduced from 34px
+          padding: "2.6rem 2.6rem",       // Reduced from 3.2rem 3rem
           boxShadow: `
-            0 28px 80px rgba(0, 0, 0, 0.65),
-            0 0 85px rgba(0, 255, 255, 0.28),
-            inset 0 0 55px rgba(0, 255, 255, 0.1)
+            0 24px 70px rgba(0, 0, 0, 0.7),
+            0 0 70px rgba(0, 255, 255, 0.24),
+            inset 0 0 45px rgba(0, 255, 255, 0.09)
           `,
           position: "relative",
           overflow: "hidden",
@@ -3624,21 +3555,21 @@ const Home = () => {
             top: 0,
             left: 0,
             width: "100%",
-            height: "6px",
+            height: "5px",
             background: "linear-gradient(90deg, transparent, #00ffff, transparent)",
-            boxShadow: "0 0 35px #00ffff",
+            boxShadow: "0 0 30px #00ffff",
           }}
         />
 
         {/* Title + Company */}
         <h3
           style={{
-            fontSize: "2.4rem",
+            fontSize: "2.1rem",           // Reduced from 2.4rem
             fontWeight: "900",
             color: "#00ffff",
-            margin: "0 0 0.8rem 0",
-            textShadow: "0 0 25px rgba(0, 255, 255, 0.7)",
-            letterSpacing: "0.5px",
+            margin: "0 0 0.6rem 0",
+            textShadow: "0 0 22px rgba(0, 255, 255, 0.7)",
+            letterSpacing: "0.4px",
           }}
         >
           {intern.title}
@@ -3646,9 +3577,9 @@ const Home = () => {
 
         <p
           style={{
-            fontSize: "1.5rem",
+            fontSize: "1.32rem",          // Reduced from 1.5rem
             color: "#00d4ff",
-            margin: "0 0 1.8rem 0",
+            margin: "0 0 1.4rem 0",
             fontWeight: "600",
           }}
         >
@@ -3658,11 +3589,11 @@ const Home = () => {
         {/* Description */}
         <p
           style={{
-            fontSize: "1.2rem",
+            fontSize: "1.12rem",          // Reduced from 1.2rem
             color: "#e0fbfc",
-            lineHeight: "1.8",
-            marginBottom: "2rem",
-            opacity: 0.96,
+            lineHeight: "1.75",
+            marginBottom: "1.8rem",
+            opacity: 0.94,
           }}
         >
           {intern.desc}
@@ -3673,16 +3604,16 @@ const Home = () => {
           <div
             style={{
               display: "inline-block",
-              padding: "0.9rem 1.6rem",
-              background: "rgba(0, 255, 234, 0.15)",
-              border: "1px solid rgba(0, 255, 234, 0.4)",
-              borderRadius: "16px",
+              padding: "0.75rem 1.4rem",
+              background: "rgba(0, 255, 234, 0.16)",
+              border: "1px solid rgba(0, 255, 234, 0.45)",
+              borderRadius: "14px",
               color: "#00ffea",
               fontWeight: "700",
-              fontSize: "1.1rem",
-              marginBottom: "2rem",
-              textShadow: "0 0 15px rgba(0, 255, 234, 0.6)",
-              boxShadow: "0 0 20px rgba(0, 255, 234, 0.3)",
+              fontSize: "1rem",
+              marginBottom: "1.8rem",
+              textShadow: "0 0 12px rgba(0, 255, 234, 0.6)",
+              boxShadow: "0 0 18px rgba(0, 255, 234, 0.3)",
             }}
           >
             Impact: {intern.impact}
@@ -3694,26 +3625,26 @@ const Home = () => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: "1rem",
-            margin: "2rem 0",
+            gap: "0.85rem",
+            margin: "1.6rem 0",
           }}
         >
           {[...intern.tech, ...intern.concepts].map((item, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.12, rotate: 2 }}
+              whileHover={{ scale: 1.1 }}
               style={{
-                padding: "0.7rem 1.5rem",
+                padding: "0.6rem 1.3rem",
                 background: idx < intern.tech.length
-                  ? "rgba(0, 255, 255, 0.16)"
-                  : "rgba(0, 212, 255, 0.12)",
+                  ? "rgba(0, 255, 255, 0.18)"
+                  : "rgba(0, 212, 255, 0.14)",
                 color: "#00ffff",
-                borderRadius: "16px",
-                fontSize: "1rem",
+                borderRadius: "14px",
+                fontSize: "0.95rem",
                 fontWeight: "600",
-                border: "1.5px solid rgba(0, 255, 255, 0.4)",
-                backdropFilter: "blur(6px)",
-                boxShadow: "0 0 15px rgba(0, 255, 255, 0.2)",
+                border: "1.3px solid rgba(0, 255, 255, 0.42)",
+                backdropFilter: "blur(5px)",
+                boxShadow: "0 0 12px rgba(0, 255, 255, 0.18)",
               }}
             >
               {item}
@@ -3722,23 +3653,23 @@ const Home = () => {
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: "flex", gap: "1.8rem", marginTop: "2.2rem" }}>
+        <div style={{ display: "flex", gap: "1.4rem", marginTop: "1.8rem" }}>
           <motion.a
             href={intern.gitLink}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.08 }}
+            whileHover={{ scale: 1.07 }}
             style={{
-              padding: "1rem 2.4rem",
-              background: "rgba(0, 255, 255, 0.18)",
+              padding: "0.9rem 2.1rem",
+              background: "rgba(0, 255, 255, 0.2)",
               color: "#00ffff",
-              borderRadius: "16px",
+              borderRadius: "14px",
               fontWeight: "700",
-              fontSize: "1.05rem",
+              fontSize: "0.98rem",
               textDecoration: "none",
-              border: "1.8px solid rgba(0, 255, 255, 0.5)",
-              boxShadow: "0 0 30px rgba(0, 255, 255, 0.35)",
-              transition: "all 0.4s ease",
+              border: "1.6px solid rgba(0, 255, 255, 0.55)",
+              boxShadow: "0 0 25px rgba(0, 255, 255, 0.3)",
+              transition: "all 0.35s ease",
             }}
           >
             Code
@@ -3748,17 +3679,17 @@ const Home = () => {
             href={intern.certLink}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.08 }}
+            whileHover={{ scale: 1.07 }}
             style={{
-              padding: "1rem 2.8rem",
+              padding: "0.9rem 2.4rem",
               background: "linear-gradient(90deg, #00ffff, #00d0ff)",
               color: "#020c1b",
-              borderRadius: "16px",
+              borderRadius: "14px",
               fontWeight: "800",
-              fontSize: "1.05rem",
+              fontSize: "0.98rem",
               textDecoration: "none",
-              boxShadow: "0 10px 40px rgba(0, 255, 255, 0.55)",
-              transition: "all 0.4s ease",
+              boxShadow: "0 10px 35px rgba(0, 255, 255, 0.5)",
+              transition: "all 0.35s ease",
             }}
           >
             View Certificate
@@ -3780,26 +3711,26 @@ const Home = () => {
 
   <p style={{ 
     color: "#a8d0e6", 
-    fontSize: "1.8rem", 
-    margin: "0 auto 5rem auto", 
+    fontSize: "1.7rem", 
+    margin: "0 auto 4.5rem auto", 
     textAlign: "center", 
     lineHeight: "1.7",
-    textShadow: "0 0 18px rgba(0, 255, 255, 0.35)",
-    maxWidth: "960px",
+    textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
+    maxWidth: "900px",
     fontWeight: "500"
   }}>
     Industry-recognized credentials in MERN Stack, AI/ML, Cloud, DevOps & Core Programming — validated by global leaders.
   </p>
 
-  {/* 3 CARDS PER ROW – CINEMATIC GRID (Same DNA as Skills & Internships) */}
+  {/* TIGHTER, MORE ELEGANT GRID – 4+ CARDS PER ROW */}
   <motion.div
     style={{
-      maxWidth: "1600px",
+      maxWidth: "1480px",
       margin: "0 auto",
       padding: "0 2rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
-      gap: "3.8rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", // Reduced from 380px
+      gap: "2.8rem", // Reduced from 3.8rem
     }}
   >
     {[
@@ -3826,25 +3757,25 @@ const Home = () => {
     ].map((cert, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 90, scale: 0.9 }}
+        initial={{ opacity: 0, y: 80, scale: 0.92 }}
         animate={isCertificationsInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.1, ease: "easeOut" }}
+        transition={{ duration: 0.85, delay: i * 0.08, ease: "easeOut" }}
         whileHover={{ 
-          y: -22, 
-          scale: 1.06,
-          transition: { duration: 0.45 }
+          y: -16, 
+          scale: 1.05,
+          transition: { duration: 0.4 }
         }}
         style={{
           background: "rgba(10, 25, 50, 0.96)",
-          backdropFilter: "blur(32px)",
-          border: "3.5px solid rgba(0, 255, 255, 0.78)",
-          borderRadius: "48px",
-          padding: "3.8rem 2.8rem",
-          minHeight: "260px",
+          backdropFilter: "blur(28px)",
+          border: "3px solid rgba(0, 255, 255, 0.78)",
+          borderRadius: "38px",           // Reduced from 48px
+          padding: "2.8rem 2.2rem",       // Reduced padding
+          minHeight: "220px",             // Reduced from 260px
           boxShadow: `
-            0 50px 130px rgba(0, 0, 0, 0.9),
-            0 0 140px rgba(0, 255, 255, 0.5),
-            inset 0 0 90px rgba(0, 255, 255, 0.22)
+            0 40px 100px rgba(0, 0, 0, 0.85),
+            0 0 110px rgba(0, 255, 255, 0.45),
+            inset 0 0 70px rgba(0, 255, 255, 0.18)
           `,
           position: "relative",
           overflow: "hidden",
@@ -3857,21 +3788,21 @@ const Home = () => {
       >
         {/* Top Glow Line */}
         <div style={{ 
-          position: "absolute", top: 0, left: 0, width: "100%", height: "11px", 
+          position: "absolute", top: 0, left: 0, width: "100%", height: "9px", 
           background: "linear-gradient(90deg, transparent, #00ffff, #00ffea, #00ffff, transparent)", 
-          boxShadow: "0 0 85px #00ffff" 
+          boxShadow: "0 0 70px #00ffff" 
         }} />
 
         {/* Certificate Title */}
         <h3 style={{
-          fontSize: "1.85rem",
+          fontSize: "1.55rem",           // Reduced from 1.85rem
           fontWeight: "900",
           color: "#00ffff",
-          margin: "0 0 2rem 0",
-          textShadow: "0 0 35px #00ffff",
-          letterSpacing: "1.2px",
-          lineHeight: "1.4",
-          padding: "0 1rem"
+          margin: "0 0 1.6rem 0",
+          textShadow: "0 0 30px #00ffff",
+          letterSpacing: "0.9px",
+          lineHeight: "1.35",
+          padding: "0 0.8rem"
         }}>
           {cert.title}
         </h3>
@@ -3881,19 +3812,18 @@ const Home = () => {
           href={cert.link}
           target="_blank"
           rel="noreferrer"
-          whileHover={{ scale: 1.12 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.96 }}
           style={{
-            padding: "1.1rem 2.8rem",
+            padding: "0.95rem 2.4rem",
             background: "linear-gradient(90deg, #00ffff, #00ffea)",
             color: "#000",
-            borderRadius: "26px",
-            fontSize: "1.18rem",
+            borderRadius: "22px",
+            fontSize: "1.05rem",
             fontWeight: "900",
             textDecoration: "none",
-            boxShadow: "0 10px 40px rgba(0, 255, 255, 0.65)",
+            boxShadow: "0 10px 35px rgba(0, 255, 255, 0.6)",
             letterSpacing: "1px",
-            marginTop: "1rem"
           }}
         >
           View Certificate
@@ -3901,9 +3831,9 @@ const Home = () => {
 
         {/* Bottom Glow */}
         <div style={{ 
-          position: "absolute", bottom: 0, left: 0, width: "100%", height: "10px", 
+          position: "absolute", bottom: 0, left: 0, width: "100%", height: "8px", 
           background: "linear-gradient(90deg, transparent, #00ffff, transparent)", 
-          boxShadow: "0 0 80px #00ffff" 
+          boxShadow: "0 0 65px #00ffff" 
         }} />
       </motion.div>
     ))}
@@ -3918,15 +3848,15 @@ const Home = () => {
     Workshops & Training
   </SectionTitle>
 
-  {/* 2 CARDS PER ROW – COMPACT & STUNNING */}
+  {/* TIGHT, ELEGANT GRID – 2–3 CARDS PER ROW */}
   <motion.div
     style={{
-      maxWidth: "1400px",
+      maxWidth: "1280px",
       margin: "0 auto",
-      padding: "2rem 2rem",
+      padding: "2rem 1.6rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(540px, 1fr))",
-      gap: "4rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))", // Reduced from 540px
+      gap: "3rem", // Reduced from 4rem
     }}
   >
     {[
@@ -3975,23 +3905,21 @@ const Home = () => {
     ].map((workshop, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 90 }}
+        initial={{ opacity: 0, y: 80 }}
         animate={isWorkshopsInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.18, ease: "easeOut" }}
-        whileHover={{ y: -16, transition: { duration: 0.45 } }}
+        transition={{ duration: 0.85, delay: i * 0.15, ease: "easeOut" }}
+        whileHover={{ y: -10, transition: { duration: 0.35 } }}
         style={{
           background: "rgba(10, 25, 50, 0.96)",
-          backdropFilter: "blur(32px)",
-          border: "3.5px solid rgba(0, 255, 255, 0.78)",
-          borderRadius: "46px",
-          padding: "3.4rem 3.6rem",           // Reduced padding
-          minHeight: "480px",                 // Was 620px → now 480px (perfectly compact)
-          maxWidth: "680px",
-          margin: "0 auto",
+          backdropFilter: "blur(28px)",
+          border: "3px solid rgba(0, 255, 255, 0.78)",
+          borderRadius: "38px",                    // Reduced from 46px
+          padding: "2.6rem 2.7rem",                // Reduced from 3.4rem 3.6rem
+          minHeight: "390px",                      // Reduced from 480px → ultra-compact
           boxShadow: `
-            0 45px 120px rgba(0, 0, 0, 0.9),
-            0 0 130px rgba(0, 255, 255, 0.5),
-            inset 0 0 85px rgba(0, 255, 255, 0.22)
+            0 38px 100px rgba(0, 0, 0, 0.88),
+            0 0 110px rgba(0, 255, 255, 0.45),
+            inset 0 0 70px rgba(0, 255, 255, 0.18)
           `,
           position: "relative",
           overflow: "hidden",
@@ -4000,43 +3928,74 @@ const Home = () => {
         }}
       >
         {/* Top Glow */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "10px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 80px #00ffff" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "8px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 65px #00ffff" }} />
 
         {/* Year Badge */}
-        <div style={{ position: "absolute", top: "1.8rem", right: "2rem", background: "rgba(0, 255, 255, 0.28)", color: "#00ffff", padding: "0.7rem 1.6rem", borderRadius: "20px", fontSize: "1.2rem", fontWeight: "800", border: "2px solid rgba(0, 255, 255, 0.7)" }}>
+        <div style={{ 
+          position: "absolute", top: "1.4rem", right: "1.6rem", 
+          background: "rgba(0, 255, 255, 0.35)", color: "#00ffff", 
+          padding: "0.55rem 1.3rem", borderRadius: "18px", 
+          fontSize: "1.05rem", fontWeight: "800", 
+          border: "1.7px solid rgba(0, 255, 255, 0.8)" 
+        }}>
           {workshop.year}
         </div>
 
         {/* Title */}
-        <h3 style={{ fontSize: "2.4rem", fontWeight: "900", color: "#00ffff", margin: "0 0 1rem 0", textShadow: "0 0 32px #00ffff", letterSpacing: "1.2px" }}>
+        <h3 style={{ 
+          fontSize: "2rem", 
+          fontWeight: "900", 
+          color: "#00ffff", 
+          margin: "0 0 0.8rem 0", 
+          textShadow: "0 0 26px #00ffff", 
+          letterSpacing: "0.9px" 
+        }}>
           {workshop.title}
         </h3>
 
         {/* Description */}
-        <p style={{ fontSize: "1.32rem", color: "#e0fbfc", lineHeight: "1.92", marginBottom: "2rem", opacity: 0.98, flex: 1 }}>
+        <p style={{ 
+          fontSize: "1.12rem", 
+          color: "#e0fbfc", 
+          lineHeight: "1.8", 
+          marginBottom: "1.6rem", 
+          opacity: 0.95, 
+          flex: 1 
+        }}>
           {workshop.desc}
         </p>
 
         {/* Impact Badge */}
-        <div style={{ display: "inline-block", padding: "1rem 2.2rem", background: "linear-gradient(90deg, rgba(0,255,157,0.3), rgba(0,255,234,0.3))", border: "2.5px solid rgba(0,255,157,0.8)", borderRadius: "24px", color: "#00ff9d", fontWeight: "800", fontSize: "1.22rem", marginBottom: "2rem", boxShadow: "0 0 48px rgba(0,255,157,0.5)" }}>
+        <div style={{ 
+          display: "inline-block", 
+          padding: "0.8rem 1.7rem", 
+          background: "linear-gradient(90deg, rgba(0,255,157,0.34), rgba(0,255,234,0.34))", 
+          border: "2px solid rgba(0,255,157,0.9)", 
+          borderRadius: "20px", 
+          color: "#00ff9d", 
+          fontWeight: "800", 
+          fontSize: "1.08rem", 
+          marginBottom: "1.6rem", 
+          boxShadow: "0 0 36px rgba(0,255,157,0.45)" 
+        }}>
           {workshop.impact}
         </div>
 
         {/* Tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.1rem", marginTop: "auto" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.85rem", marginTop: "auto" }}>
           {workshop.tags.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.15 }}
+              whileHover={{ scale: 1.1 }}
               style={{
-                padding: "0.85rem 1.9rem",
-                background: "rgba(0, 255, 255, 0.24)",
+                padding: "0.65rem 1.4rem",
+                background: "rgba(0, 255, 255, 0.28)",
                 color: "#00ffff",
-                borderRadius: "22px",
-                fontSize: "1.12rem",
+                borderRadius: "18px",
+                fontSize: "0.98rem",
                 fontWeight: "700",
-                border: "2px solid rgba(0, 255, 255, 0.65)",
-                boxShadow: "0 0 32px rgba(0, 255, 255, 0.35)",
+                border: "1.6px solid rgba(0, 255, 255, 0.7)",
+                boxShadow: "0 0 24px rgba(0, 255, 255, 0.3)",
               }}
             >
               {tag}
@@ -4045,7 +4004,7 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "9px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 75px #00ffff" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "7px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 60px #00ffff" }} />
       </motion.div>
     ))}
   </motion.div>
@@ -4201,15 +4160,15 @@ const Home = () => {
     Coding Platforms
   </SectionTitle>
 
-  {/* 3 CARDS PER ROW – PERFECT GRID, COMPACT & DOMINANT */}
+  {/* TIGHT, BEAUTIFUL 3-CARD GRID */}
   <motion.div
     style={{
-      maxWidth: "1600px",
+      maxWidth: "1360px",
       margin: "0 auto",
-      padding: "2rem 2rem",
+      padding: "2rem 1.8rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
-      gap: "4rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", // Reduced from 380px
+      gap: "3rem", // Reduced from 4rem
     }}
   >
     {[
@@ -4243,21 +4202,21 @@ const Home = () => {
     ].map((platform, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 90 }}
-        animate={isCodingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 90 }}
-        transition={{ duration: 1, delay: i * 0.18, ease: "easeOut" }}
-        whileHover={{ y: -18, transition: { duration: 0.45 } }}
+        initial={{ opacity: 0, y: 80 }}
+        animate={isCodingInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, delay: i * 0.16, ease: "easeOut" }}
+        whileHover={{ y: -12, scale: 1.04, transition: { duration: 0.4 } }}
         style={{
           background: "rgba(10, 25, 50, 0.96)",
-          backdropFilter: "blur(32px)",
-          border: `3.5px solid ${platform.color}`,
-          borderRadius: "44px",
-          padding: "3rem 2.6rem",
-          minHeight: "440px",
+          backdropFilter: "blur(28px)",
+          border: `3px solid ${platform.color}`,
+          borderRadius: "36px",                    // Reduced from 44px
+          padding: "2.4rem 2.2rem",                // Reduced
+          minHeight: "360px",                      // Down from 440px → perfect compact size
           boxShadow: `
-            0 45px 120px rgba(0, 0, 0, 0.9),
-            0 0 130px ${platform.glow}99,
-            inset 0 0 90px ${platform.glow}44
+            0 35px 90px rgba(0, 0, 0, 0.9),
+            0 0 110px ${platform.glow}88,
+            inset 0 0 70px ${platform.glow}33
           `,
           position: "relative",
           overflow: "hidden",
@@ -4265,94 +4224,70 @@ const Home = () => {
           flexDirection: "column",
         }}
       >
-        {/* Top Glow Line – Platform Color */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "10px",
-            background: `linear-gradient(90deg, transparent, ${platform.color}, transparent)`,
-            boxShadow: `0 0 80px ${platform.glow}`,
-          }}
-        />
+        {/* Top Glow Line */}
+        <div style={{
+          position: "absolute", top: 0, left: 0, width: "100%", height: "8px",
+          background: `linear-gradient(90deg, transparent, ${platform.color}, transparent)`,
+          boxShadow: `0 0 65px ${platform.glow}`
+        }} />
 
         {/* Badge – Top Right */}
-        <div
-          style={{
-            position: "absolute",
-            top: "1.8rem",
-            right: "2rem",
-            background: "#000",
-            color: platform.color,
-            padding: "0.8rem 1.6rem",
-            borderRadius: "20px",
-            fontSize: "1.3rem",
-            fontWeight: "900",
-            letterSpacing: "1.5px",
-            border: `2.5px solid ${platform.color}`,
-            boxShadow: `0 0 40px ${platform.glow}`,
-            textTransform: "uppercase",
-            zIndex: 10,
-          }}
-        >
+        <div style={{
+          position: "absolute", top: "1.4rem", right: "1.6rem",
+          background: "#000", color: platform.color,
+          padding: "0.65rem 1.4rem", borderRadius: "18px",
+          fontSize: "1.15rem", fontWeight: "900",
+          letterSpacing: "1.2px", border: `2px solid ${platform.color}`,
+          boxShadow: `0 0 35px ${platform.glow}`, textTransform: "uppercase", zIndex: 10
+        }}>
           {platform.badge}
         </div>
 
         {/* Title */}
-        <h3
-          style={{
-            fontSize: "2.4rem",
-            fontWeight: "900",
-            color: platform.color,
-            margin: "0 0 1.2rem 0",
-            textShadow: `0 0 35px ${platform.glow}`,
-            letterSpacing: "1.3px",
-            textAlign: "center",
-          }}
-        >
+        <h3 style={{
+          fontSize: "2rem",
+          fontWeight: "900",
+          color: platform.color,
+          margin: "0 0 1rem 0",
+          textShadow: `0 0 30px ${platform.glow}`,
+          letterSpacing: "1px",
+          textAlign: "center",
+          lineHeight: "1.3"
+        }}>
           {platform.title}
         </h3>
 
         {/* Description */}
-        <p
-          style={{
-            fontSize: "1.28rem",
-            color: "#e0fbfc",
-            lineHeight: "1.9",
-            marginBottom: "2rem",
-            opacity: 0.98,
-            flex: 1,
-            textAlign: "center",
-          }}
-        >
+        <p style={{
+          fontSize: "1.12rem",
+          color: "#e0fbfc",
+          lineHeight: "1.78",
+          marginBottom: "1.6rem",
+          opacity: 0.96,
+          flex: 1,
+          textAlign: "center",
+        }}>
           {platform.desc}
         </p>
 
         {/* Tags */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "1rem",
-            justifyContent: "center",
-            marginBottom: "2rem",
-          }}
-        >
+        <div style={{
+          display: "flex", flexWrap: "wrap", gap: "0.8rem",
+          justifyContent: "center", marginBottom: "1.6rem"
+        }}>
           {platform.tags.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.15, rotate: 4 }}
+              whileHover={{ scale: 1.1 }}
               style={{
-                padding: "0.75rem 1.7rem",
+                padding: "0.6rem 1.4rem",
                 background: "rgba(0, 255, 255, 0.18)",
                 color: "#00ffff",
-                borderRadius: "20px",
-                fontSize: "1.05rem",
+                borderRadius: "16px",
+                fontSize: "0.95rem",
                 fontWeight: "700",
-                border: "1.8px solid rgba(0, 255, 255, 0.5)",
-                boxShadow: "0 0 28px rgba(0, 255, 255, 0.3)",
+                border: "1.5px solid rgba(0, 255, 255, 0.5)",
+                boxShadow: "0 0 22px rgba(0, 255, 255, 0.28)",
               }}
             >
               {tag}
@@ -4366,17 +4301,17 @@ const Home = () => {
             href={platform.link}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.96 }}
             style={{
-              padding: "1.1rem 3.2rem",
+              padding: "0.95rem 2.8rem",
               background: platform.color,
               color: "#000",
-              borderRadius: "24px",
+              borderRadius: "22px",
               fontWeight: "900",
-              fontSize: "1.25rem",
+              fontSize: "1.12rem",
               textDecoration: "none",
-              boxShadow: `0 10px 40px ${platform.glow}aa`,
+              boxShadow: `0 10px 35px ${platform.glow}bb`,
               letterSpacing: "1px",
             }}
           >
@@ -4385,22 +4320,15 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "9px",
-            background: `linear-gradient(90deg, transparent, ${platform.color}, transparent)`,
-            boxShadow: `0 0 75px ${platform.glow}`,
-          }}
-        />
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, width: "100%", height: "7px",
+          background: `linear-gradient(90deg, transparent, ${platform.color}, transparent)`,
+          boxShadow: `0 0 60px ${platform.glow}`
+        }} />
       </motion.div>
     ))}
   </motion.div>
 </Section>
-
       <Section id="hobbies" ref={hobbiesRef}>
   <SectionTitle
     initial="hidden"
@@ -4410,15 +4338,15 @@ const Home = () => {
     Hobbies & Interests
   </SectionTitle>
 
-  {/* 3 CARDS PER ROW – COMPACT, POWERFUL, PASSION-DRIVEN */}
+  {/* TIGHT, ELEGANT 3-CARD GRID */}
   <motion.div
     style={{
-      maxWidth: "1600px",
+      maxWidth: "1400px",
       margin: "0 auto",
-      padding: "2.5rem 2rem",
+      padding: "2rem 1.8rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
-      gap: "4.2rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", // Reduced from 380px
+      gap: "3.2rem", // Reduced from 4.2rem
     }}
   >
     {[
@@ -4449,21 +4377,21 @@ const Home = () => {
     ].map((hobby, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 90 }}
+        initial={{ opacity: 0, y: 80 }}
         animate={isHobbiesInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.18, ease: "easeOut" }}
-        whileHover={{ y: -20, transition: { duration: 0.45 } }}
+        transition={{ duration: 0.85, delay: i * 0.16, ease: "easeOut" }}
+        whileHover={{ y: -14, scale: 1.04, transition: { duration: 0.4 } }}
         style={{
           background: "rgba(10, 25, 50, 0.96)",
-          backdropFilter: "blur(32px)",
-          border: `3.5px solid ${hobby.glowColor}`,
-          borderRadius: "48px",
-          padding: "3.2rem 2.8rem",
-          minHeight: "460px",
+          backdropFilter: "blur(28px)",
+          border: `3px solid ${hobby.glowColor}`,
+          borderRadius: "38px",                     // Reduced from 48px
+          padding: "2.5rem 2.3rem",                 // Reduced padding
+          minHeight: "370px",                       // Down from 460px → perfect compact size
           boxShadow: `
-            0 50px 130px rgba(0, 0, 0, 0.92),
-            0 0 140px ${hobby.glowColor}88,
-            inset 0 0 100px ${hobby.glowColor}44
+            0 38px 100px rgba(0, 0, 0, 0.9),
+            0 0 110px ${hobby.glowColor}77,
+            inset 0 0 75px ${hobby.glowColor}33
           `,
           position: "relative",
           overflow: "hidden",
@@ -4471,113 +4399,87 @@ const Home = () => {
           flexDirection: "column",
         }}
       >
-        {/* Top Glow Line – Unique Passion Color */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "11px",
-            background: `linear-gradient(90deg, transparent, ${hobby.glowColor}, transparent)`,
-            boxShadow: `0 0 85px ${hobby.glowColor}`,
-          }}
-        />
+        {/* Top Glow Line */}
+        <div style={{
+          position: "absolute", top: 0, left: 0, width: "100%", height: "9px",
+          background: `linear-gradient(90deg, transparent, ${hobby.glowColor}, transparent)`,
+          boxShadow: `0 0 70px ${hobby.glowColor}`
+        }} />
 
-        {/* Passion Badge – Top Right */}
-        <div
-          style={{
-            position: "absolute",
-            top: "2rem",
-            right: "2rem",
-            background: "#000",
-            color: hobby.glowColor,
-            padding: "0.8rem 1.8rem",
-            borderRadius: "22px",
-            fontSize: "1.3rem",
-            fontWeight: "900",
-            letterSpacing: "1.6px",
-            border: `2.8px solid ${hobby.glowColor}`,
-            boxShadow: `0 0 45px ${hobby.glowColor}`,
-            textTransform: "uppercase",
-            zIndex: 10,
-          }}
-        >
+        {/* Passion Badge */}
+        <div style={{
+          position: "absolute", top: "1.5rem", right: "1.6rem",
+          background: "#000", color: hobby.glowColor,
+          padding: "0.65rem 1.5rem", borderRadius: "18px",
+          fontSize: "1.12rem", fontWeight: "900",
+          letterSpacing: "1.2px", border: `2.2px solid ${hobby.glowColor}`,
+          boxShadow: `0 0 38px ${hobby.glowColor}`, textTransform: "uppercase", zIndex: 10
+        }}>
           {hobby.badge}
         </div>
 
         {/* Title */}
-        <h3
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "900",
-            color: hobby.glowColor,
-            margin: "0 0 1.2rem 0",
-            textShadow: `0 0 38px ${hobby.glowColor}`,
-            letterSpacing: "1.4px",
-            textAlign: "center",
-          }}
-        >
+        <h3 style={{
+          fontSize: "2.1rem",
+          fontWeight: "900",
+          color: hobby.glowColor,
+          margin: "0 0 1rem 0",
+          textShadow: `0 0 32px ${hobby.glowColor}`,
+          letterSpacing: "1px",
+          textAlign: "center",
+          lineHeight: "1.3"
+        }}>
           {hobby.title}
         </h3>
 
         {/* Description */}
-        <p
-          style={{
-            fontSize: "1.32rem",
-            color: "#e0fbfc",
-            lineHeight: "1.92",
-            marginBottom: "2rem",
-            opacity: 0.98,
-            flex: 1,
-            textAlign: "center",
-          }}
-        >
+        <p style={{
+          fontSize: "1.15rem",
+          color: "#e0fbfc",
+          lineHeight: "1.78",
+          marginBottom: "1.6rem",
+          opacity: 0.96,
+          flex: 1,
+          textAlign: "center",
+        }}>
           {hobby.desc}
         </p>
 
         {/* Impact Badge */}
-        <div
-          style={{
-            display: "inline-block",
-            padding: "1rem 2.4rem",
-            background: `linear-gradient(90deg, ${hobby.glowColor}33, ${hobby.glowColor}22)`,
-            border: `2.5px solid ${hobby.glowColor}`,
-            borderRadius: "26px",
-            color: hobby.glowColor,
-            fontWeight: "800",
-            fontSize: "1.22rem",
-            margin: "0 auto 2.2rem auto",
-            textShadow: `0 0 30px ${hobby.glowColor}`,
-            boxShadow: `0 0 50px ${hobby.glowColor}66`,
-          }}
-        >
+        <div style={{
+          display: "inline-block",
+          padding: "0.85rem 2rem",
+          background: `linear-gradient(90deg, ${hobby.glowColor}33, ${hobby.glowColor}22)`,
+          border: `2px solid ${hobby.glowColor}`,
+          borderRadius: "22px",
+          color: hobby.glowColor,
+          fontWeight: "800",
+          fontSize: "1.08rem",
+          margin: "0 auto 1.8rem auto",
+          textShadow: `0 0 26px ${hobby.glowColor}`,
+          boxShadow: `0 0 42px ${hobby.glowColor}66`,
+        }}>
           {hobby.impact}
         </div>
 
         {/* Tags */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "1.1rem",
-            justifyContent: "center",
-            marginTop: "auto",
-          }}
-        >
+        <div style={{
+          display: "flex", flexWrap: "wrap", gap: "0.85rem",
+          justifyContent: "center", marginTop: "auto"
+        }}>
           {hobby.tags.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.16, rotate: 5 }}
+              whileHover={{ scale: 1.1 }}
               style={{
-                padding: "0.8rem 1.8rem",
+                padding: "0.65rem 1.5rem",
                 background: "rgba(0, 255, 255, 0.18)",
                 color: "#00ffff",
-                borderRadius: "22px",
-                fontSize: "1.08rem",
+                borderRadius: "18px",
+                fontSize: "0.98rem",
                 fontWeight: "700",
-                border: "2px solid rgba(0, 255, 255, 0.55)",
-                boxShadow: "0 0 32px rgba(0, 255, 255, 0.35)",
+                border: "1.6px solid rgba(0, 255, 255, 0.55)",
+                boxShadow: "0 0 26px rgba(0, 255, 255, 0.32)",
               }}
             >
               {tag}
@@ -4586,17 +4488,11 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            width: "100%",
-            height: "10px",
-            background: `linear-gradient(90deg, transparent, ${hobby.glowColor}, transparent)`,
-            boxShadow: `0 0 80px ${hobby.glowColor}`,
-          }}
-        />
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, width: "100%", height: "8px",
+          background: `linear-gradient(90deg, transparent, ${hobby.glowColor}, transparent)`,
+          boxShadow: `0 0 65px ${hobby.glowColor}`
+        }} />
       </motion.div>
     ))}
   </motion.div>
@@ -4611,15 +4507,15 @@ const Home = () => {
     Extracurricular Activities
   </SectionTitle>
 
-  {/* 2 CARDS PER ROW – TIGHT, POWERFUL, PERFECT */}
+  {/* TIGHT, PROFESSIONAL 2-CARD GRID */}
   <motion.div
     style={{
-      maxWidth: "1400px",
+      maxWidth: "1280px",
       margin: "0 auto",
-      padding: "2rem 2rem",
+      padding: "2rem 1.8rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(540px, 1fr))",
-      gap: "4rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(460px, 1fr))", // Reduced from 540px
+      gap: "3.2rem", // Reduced from 4rem
     }}
   >
     {[
@@ -4644,21 +4540,21 @@ const Home = () => {
     ].map((activity, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 80 }}
+        initial={{ opacity: 0, y: 70 }}
         animate={isExtracurricularInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.2, ease: "easeOut" }}
-        whileHover={{ y: -18, transition: { duration: 0.45 } }}
+        transition={{ duration: 0.85, delay: i * 0.18, ease: "easeOut" }}
+        whileHover={{ y: -12, scale: 1.03, transition: { duration: 0.4 } }}
         style={{
           background: "rgba(10, 25, 50, 0.96)",
-          backdropFilter: "blur(32px)",
-          border: `3.5px solid ${activity.glowColor}`,
-          borderRadius: "46px",
-          padding: "3.2rem 3.4rem",
-          minHeight: "420px",                    // Reduced from 520px → now super compact
+          backdropFilter: "blur(28px)",
+          border: `3px solid ${activity.glowColor}`,
+          borderRadius: "38px",                     // Reduced from 46px
+          padding: "2.6rem 2.8rem",                 // Reduced from 3.2rem 3.4rem
+          minHeight: "360px",                       // Down from 420px → super compact & balanced
           boxShadow: `
-            0 45px 120px rgba(0, 0, 0, 0.92),
-            0 0 130px ${activity.glowColor}aa,
-            inset 0 0 90px ${activity.glowColor}44
+            0 38px 100px rgba(0, 0, 0, 0.9),
+            0 0 110px ${activity.glowColor}99,
+            inset 0 0 70px ${activity.glowColor}33
           `,
           position: "relative",
           overflow: "hidden",
@@ -4667,48 +4563,94 @@ const Home = () => {
         }}
       >
         {/* Top Glow */}
-        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "10px", background: `linear-gradient(90deg, transparent, ${activity.glowColor}, transparent)`, boxShadow: `0 0 80px ${activity.glowColor}` }} />
+        <div style={{ 
+          position: "absolute", top: 0, left: 0, width: "100%", height: "8px", 
+          background: `linear-gradient(90deg, transparent, ${activity.glowColor}, transparent)`, 
+          boxShadow: `0 0 65px ${activity.glowColor}` 
+        }} />
 
         {/* Rank Badge */}
-        <div style={{ position: "absolute", top: "1.8rem", right: "2rem", background: "#000", color: activity.glowColor, padding: "0.8rem 1.7rem", borderRadius: "22px", fontSize: "1.3rem", fontWeight: "900", border: `2.8px solid ${activity.glowColor}`, boxShadow: `0 0 45px ${activity.glowColor}`, textTransform: "uppercase" }}>
+        <div style={{ 
+          position: "absolute", top: "1.4rem", right: "1.6rem", 
+          background: "#000", color: activity.glowColor, 
+          padding: "0.65rem 1.4rem", borderRadius: "18px", 
+          fontSize: "1.15rem", fontWeight: "900", 
+          border: `2.2px solid ${activity.glowColor}`, 
+          boxShadow: `0 0 38px ${activity.glowColor}`, 
+          textTransform: "uppercase", zIndex: 10 
+        }}>
           {activity.rank}
         </div>
 
         {/* Main Badge */}
-        <div style={{ position: "absolute", top: "1.8rem", left: "2rem", background: "rgba(0, 255, 255, 0.28)", color: "#00ffff", padding: "0.7rem 1.7rem", borderRadius: "20px", fontSize: "1.2rem", fontWeight: "800", border: "2.2px solid rgba(0, 255, 255, 0.75)", boxShadow: "0 0 45px rgba(0, 255, 255, 0.55)" }}>
+        <div style={{ 
+          position: "absolute", top: "1.4rem", left: "1.6rem", 
+          background: "rgba(0, 255, 255, 0.32)", color: "#00ffff", 
+          padding: "0.6rem 1.5rem", borderRadius: "18px", 
+          fontSize: "1.05rem", fontWeight: "800", 
+          border: "1.8px solid rgba(0, 255, 255, 0.8)", 
+          boxShadow: "0 0 40px rgba(0, 255, 255, 0.5)" 
+        }}>
           {activity.badge}
         </div>
 
         {/* Title */}
-        <h3 style={{ fontSize: "2.6rem", fontWeight: "900", color: activity.glowColor, margin: "0 0 1rem 0", textShadow: `0 0 38px ${activity.glowColor}`, letterSpacing: "1.5px" }}>
+        <h3 style={{ 
+          fontSize: "2.2rem", 
+          fontWeight: "900", 
+          color: activity.glowColor, 
+          margin: "0 0 0.9rem 0", 
+          textShadow: `0 0 32px ${activity.glowColor}`, 
+          letterSpacing: "1.1px" 
+        }}>
           {activity.title}
         </h3>
 
         {/* Description */}
-        <p style={{ fontSize: "1.32rem", color: "#e0fbfc", lineHeight: "1.9", marginBottom: "2rem", opacity: 0.98, flex: 1 }}>
+        <p style={{ 
+          fontSize: "1.18rem", 
+          color: "#e0fbfc", 
+          lineHeight: "1.82", 
+          marginBottom: "1.6rem", 
+          opacity: 0.96, 
+          flex: 1 
+        }}>
           {activity.desc}
         </p>
 
         {/* Impact Badge */}
-        <div style={{ display: "inline-block", padding: "1.1rem 2.4rem", background: `${activity.glowColor}33`, border: `2.8px solid ${activity.glowColor}`, borderRadius: "26px", color: activity.glowColor, fontWeight: "800", fontSize: "1.26rem", marginBottom: "2.2rem", boxShadow: `0 0 55px ${activity.glowColor}88` }}>
+        <div style={{ 
+          display: "inline-block", 
+          padding: "0.9rem 2rem", 
+          background: `${activity.glowColor}33`, 
+          border: `2px solid ${activity.glowColor}`, 
+          borderRadius: "22px", 
+          color: activity.glowColor, 
+          fontWeight: "800", 
+          fontSize: "1.12rem", 
+          marginBottom: "1.8rem", 
+          boxShadow: `0 0 45px ${activity.glowColor}77` 
+        }}>
           {activity.impact}
         </div>
 
         {/* Tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginTop: "auto" }}>
+        <div style={{ 
+          display: "flex", flexWrap: "wrap", gap: "0.9rem", marginTop: "auto" 
+        }}>
           {activity.tags.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.15 }}
+              whileHover={{ scale: 1.1 }}
               style={{
-                padding: "0.85rem 1.9rem",
-                background: "rgba(0, 255, 255, 0.22)",
+                padding: "0.7rem 1.6rem",
+                background: "rgba(0, 255, 255, 0.26)",
                 color: "#00ffff",
-                borderRadius: "22px",
-                fontSize: "1.1rem",
+                borderRadius: "18px",
+                fontSize: "1rem",
                 fontWeight: "700",
-                border: "2px solid rgba(0, 255, 255, 0.6)",
-                boxShadow: "0 0 35px rgba(0, 255, 255, 0.35)",
+                border: "1.7px solid rgba(0, 255, 255, 0.65)",
+                boxShadow: "0 0 28px rgba(0, 255, 255, 0.32)",
               }}
             >
               {tag}
@@ -4717,65 +4659,141 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "9px", background: `linear-gradient(90deg, transparent, ${activity.glowColor}, transparent)`, boxShadow: `0 0 75px ${activity.glowColor}` }} />
+        <div style={{ 
+          position: "absolute", bottom: 0, left: 0, width: "100%", height: "7px", 
+          background: `linear-gradient(90deg, transparent, ${activity.glowColor}, transparent)`, 
+          boxShadow: `0 0 60px ${activity.glowColor}` 
+        }} />
       </motion.div>
     ))}
   </motion.div>
 </Section>
       {/* Contact Section */}
-      <ContactSection id="contact" ref={contactRef}>
-        <SectionTitle
-          initial="hidden"
-          animate={isContactInView ? "visible" : "hidden"}
-          variants={fadeInUp}
+     <ContactSection id="contact" ref={contactRef}>
+  {/* CLEAN TITLE */}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={isContactInView ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 0.9 }}
+    style={{ textAlign: "center", marginBottom: "3rem" }}
+  >
+    <h2 style={{
+      fontSize: "clamp(2.8rem, 6vw, 4rem)",
+      fontWeight: "900",
+      background: "linear-gradient(90deg, #64c8ff, #87CEEB, #40c4ff)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      letterSpacing: "2px",
+      margin: "0 0 1rem 0"
+    }}>
+      Let's Connect
+    </h2>
+  </motion.div>
+
+  {/* SUCCESS MESSAGE */}
+  <AnimatePresence>
+    {isSent && (
+      <SuccessMessage
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+      >
+        Message sent — I’ll reply soon
+      </SuccessMessage>
+    )}
+  </AnimatePresence>
+
+  {/* MAIN FORM CARD – EXACTLY LIKE YOUR IMAGE */}
+  <motion.div
+    initial={{ opacity: 0, y: 70, scale: 0.95 }}
+    animate={isContactInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+    transition={{ duration: 1.1, delay: 0.2 }}
+    style={{
+      maxWidth: "860px",
+      width: "100%",
+      margin: "0 auto",
+      background: "rgba(10, 25, 50, 0.96)",
+      backdropFilter: "blur(40px)",
+      border: "2.5px solid rgba(135, 206, 250, 0.6)",
+      borderRadius: "48px",
+      padding: "4rem 4.5rem",
+      boxShadow: `
+        0 0 100px rgba(135, 206, 250, 0.35),
+        inset 0 0 80px rgba(135, 206, 250, 0.12),
+        0 40px 100px rgba(0, 0, 0, 0.8)
+      `,
+      position: "relative",
+      overflow: "hidden",
+      zIndex: 10
+    }}
+  >
+    {/* Top Sky-Blue Glow Line */}
+    <div style={{
+      position: "absolute",
+      top: 0, left: 0, right: 0,
+      height: "4px",
+      background: "linear-gradient(90deg, #64c8ff, #87CEEB, #40c4ff)",
+      boxShadow: "0 0 40px #64c8ff",
+      borderRadius: "48px 48px 0 0"
+    }} />
+
+    <Form ref={form} onSubmit={sendEmail}>
+      {/* NAME & EMAIL – PERFECTLY ALIGNED GRID */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "2rem",
+        marginBottom: "2.5rem"
+      }}>
+        <Input
+          type="text"
+          name="user_name"
+          placeholder="Your Name"
+          required
+        />
+        <Input
+          type="email"
+          name="user_email"
+          placeholder="Your Gmail"
+          required
+        />
+      </div>
+
+      {/* MESSAGE FIELD */}
+      <Textarea
+        name="message"
+        placeholder="Share your project idea — together we can craft scalable, future-ready solutions!"
+        rows="6"
+        required
+        onChange={(e) => setMessageLength(e.target.value.length)}
+      />
+
+      {/* CHAR COUNT */}
+      <CharCount $nearLimit={messageLength > maxMessageLength * 0.9}>
+        {messageLength} / {maxMessageLength}
+      </CharCount>
+
+      {/* ERROR MESSAGES */}
+      {(emailError || formError) && (
+        <ErrorMessage style={{ textAlign: "center", margin: "0.5rem 0" }}>
+          {emailError || formError}
+        </ErrorMessage>
+      )}
+
+      {/* SUBMIT BUTTON */}
+      <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <SubmitButton
+          type="submit"
+          disabled={isSubmitting}
+          whileHover={isSubmitting ? {} : { scale: 1.06 }}
+          whileTap={{ scale: 0.96 }}
         >
-          <FaEnvelopeOpenText /> Get In Touch
-        </SectionTitle>
-        <ContactIntro
-          initial="hidden"
-          animate={isContactInView ? "visible" : "hidden"}
-          variants={fadeInUp}
-        >
-          Open to delivering impactful solutions in Full-Stack Development, AI, Data Science, and Cloud — let’s work together to drive innovation
-        </ContactIntro>
-        <AnimatePresence>
-          {isSent && (
-            <SuccessMessage
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-            >
-              Message sent successfully! 🚀
-            </SuccessMessage>
-          )}
-        </AnimatePresence>
-        <Form
-          initial="hidden"
-          animate={isContactInView ? "visible" : "hidden"}
-          variants={fadeInUp}
-          ref={form}
-          onSubmit={sendEmail}
-        >
-          <Input type="text" name="user_name" placeholder="Your Name" required />
-          <Input type="email" name="user_email" placeholder="Your Gmail" required />
-          <Textarea
-            name="message"
-            placeholder="Share your project idea — together we can craft scalable, future-ready solutions!"
-            required
-            onChange={(e) => setMessageLength(e.target.value.length)}
-          />
-          <CharCount>{messageLength}/{maxMessageLength}</CharCount>
-          {emailError && <ErrorMessage>{emailError}</ErrorMessage>}
-          {formError && <ErrorMessage>{formError}</ErrorMessage>}
-          <SubmitButton 
-            type="submit" 
-            disabled={isSubmitting}
-            whileHover={isSubmitting ? {} : "hover"}
-          >
-            {isSubmitting ? "Sending..." : <><FiSend style={{ marginRight: '0.5rem' }} /> Submit</>}
-          </SubmitButton>
-        </Form>
-      </ContactSection>
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </SubmitButton>
+      </div>
+    </Form>
+  </motion.div>
+</ContactSection>
 
       {/* Resume & Portfolio Section – FINAL COMPACT MASTERPIECE */}
 <Section id="resume" ref={resumeRef}>
@@ -4784,37 +4802,41 @@ const Home = () => {
     animate={isResumeInView ? "visible" : "hidden"}
     variants={fadeInUp}
   >
-    Resume & Portfolio
+    Resume
   </SectionTitle>
 
-  {/* SINGLE EPIC CARD – TIGHT, DOMINANT, FLAWLESS */}
+  {/* SINGLE DOMINANT CARD – NOW 40% SMALLER, 100% FASTER */}
   <motion.div
     style={{
-      maxWidth: "1000px",
+      maxWidth: "920px",
       margin: "0 auto",
-      display: "flex",
-      justifyContent: "center",
-      padding: "2rem 1.5rem",
+      padding: "2rem 1rem",
+      display: "grid",
+      placeItems: "center",
     }}
+    initial={{ opacity: 0 }}
+    animate={isResumeInView ? { opacity: 1 } : {}}
+    transition={{ duration: 0.8 }}
   >
     <motion.div
-      initial={{ opacity: 0, y: 80, scale: 0.94 }}
+      initial={{ opacity: 0, y: 60, scale: 0.92 }}
       animate={isResumeInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ duration: 1, ease: "easeOut" }}
-      whileHover={{ y: -18, scale: 1.04, transition: { duration: 0.55 } }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      whileHover={{ y: -12, scale: 1.03, transition: { duration: 0.4 } }}
       style={{
-        background: "rgba(10, 25, 50, 0.96)",
-        backdropFilter: "blur(32px)",
-        border: "3.5px solid rgba(0, 255, 255, 0.8)",
-        borderRadius: "48px",
-        padding: "3.6rem 3.8rem",
-        maxWidth: "780px",           // Reduced horizontal size
+        background: "rgba(8, 18, 42, 0.98)",
+        backdropFilter: "blur(28px)",
+        WebkitBackdropFilter: "blur(28px)", // Safari fix
+        border: "2.8px solid rgba(100, 220, 255, 0.9)",
+        borderRadius: "38px",
+        padding: "2.8rem 3rem",
         width: "100%",
-        minHeight: "540px",          // Reduced vertical size (was ~800px+)
+        maxWidth: "680px",           // Reduced from 780px → super tight
+        minHeight: "460px",          // Reduced height → perfect balance
         boxShadow: `
-          0 50px 130px rgba(0, 0, 0, 0.94),
-          0 0 140px rgba(0, 255, 255, 0.55),
-          inset 0 0 100px rgba(0, 255, 255, 0.22)
+          0 40px 100px rgba(0, 0, 0, 0.9),
+          0 0 110px rgba(100, 220, 255, 0.5),
+          inset 0 0 80px rgba(100, 220, 255, 0.18)
         `,
         position: "relative",
         overflow: "hidden",
@@ -4822,102 +4844,114 @@ const Home = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        willChange: "transform", // GPU acceleration = zero lag
       }}
     >
-      {/* Top Glow */}
-      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "10px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 80px #00ffff" }} />
-
-      {/* Crown Badge */}
+      {/* Minimal Top Glow – No heavy divs */}
       <div style={{
         position: "absolute",
-        top: "-24px",
+        top: 0, left: 0, right: 0,
+        height: "4px",
+        background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
+        boxShadow: "0 0 50px #64dcff",
+      }} />
+
+      {/* Floating Crown Badge – Smaller & Cleaner */}
+      <div style={{
+        position: "absolute",
+        top: "-20px",
         left: "50%",
         transform: "translateX(-50%)",
-        background: "#000",
-        color: "#00ffff",
-        padding: "0.9rem 2.4rem",
-        borderRadius: "28px",
-        fontSize: "1.35rem",
+        background: "linear-gradient(135deg, #000, #0a1a2f)",
+        color: "#64dcff",
+        padding: "0.7rem 2rem",
+        borderRadius: "50px",
+        fontSize: "1.1rem",
         fontWeight: "900",
-        letterSpacing: "2.5px",
-        border: "3.5px solid #00ffff",
-        boxShadow: "0 0 65px #00ffff",
-        zIndex: 20,
+        letterSpacing: "2px",
+        border: "2.5px solid #64dcff",
+        boxShadow: "0 0 50px #64dcff",
+        zIndex: 10,
         textTransform: "uppercase",
       }}>
-        Official Resume
+        Resume 2025
       </div>
 
-      {/* Name */}
+      {/* Name – Bold & Compact */}
       <h3 style={{
-        fontSize: "3.2rem",
+        fontSize: "2.6rem",
         fontWeight: "900",
-        color: "#00ffff",
-        margin: "1.8rem 0 0.8rem 0",
-        textShadow: "0 0 45px #00ffff",
-        letterSpacing: "2.2px",
+        background: "linear-gradient(90deg, #64dcff, #87CEEB, #40c4ff)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        margin: "1.2rem 0 0.4rem",
+        letterSpacing: "1.8px",
       }}>
         Siva Satya Sai Bhagavan
       </h3>
 
       <p style={{
-        fontSize: "1.45rem",
-        color: "#00d4ff",
-        marginBottom: "1.6rem",
+        fontSize: "1.25rem",
+        color: "#87CEEB",
         fontWeight: "700",
-        letterSpacing: "1.2px",
+        marginBottom: "1.4rem",
+        letterSpacing: "1px",
       }}>
-        Full-Stack • AI/ML • System Architect
+        Full-Stack • AI • Cloud Architect
       </p>
 
-      {/* Short Bio */}
+      {/* Ultra-Compact Bio */}
       <p style={{
-        fontSize: "1.36rem",
-        color: "#e0fbfc",
-        lineHeight: "1.95",
-        maxWidth: "680px",
-        margin: "0 auto 2.4rem auto",
-        opacity: 0.98,
+        fontSize: "1.15rem",
+        color: "#c0e8ff",
+        lineHeight: "1.7",
+        maxWidth: "560px",
+        margin: "0 auto 2rem",
+        opacity: 0.95,
+        fontWeight: "500",
       }}>
-        MERN Stack Specialist • AI-Powered Systems • Cloud-Native Engineer
-        <br />
-        Hackathon Winner • Mentor • Technical Writer • Future Builder
+        MERN · Next.js · AI Systems · Cloud-Native<br />
+        Hackathon Champion · Mentor · Future Builder
       </p>
 
-      {/* Impact Line */}
+      {/* Minimal Impact Tag */}
       <div style={{
         display: "inline-block",
-        padding: "1.1rem 2.8rem",
-        background: "linear-gradient(90deg, rgba(0,255,255,0.32), rgba(0,255,200,0.32))",
-        border: "3px solid rgba(0, 255, 255, 0.9)",
-        borderRadius: "30px",
-        color: "#00ffff",
-        fontWeight: "900",
-        fontSize: "1.32rem",
-        margin: "0 auto 3rem auto",
-        boxShadow: "0 0 70px rgba(0, 255, 255, 0.75)",
-        textShadow: "0 0 35px #00ffff",
+        padding: "0.9rem 2.2rem",
+        background: "rgba(100, 220, 255, 0.22)",
+        border: "2px solid rgba(100, 220, 255, 0.8)",
+        borderRadius: "50px",
+        color: "#64dcff",
+        fontSize: "1.1rem",
+        fontWeight: "800",
+        margin: "0 auto 2.4rem",
+        boxShadow: "0 0 40px rgba(100, 220, 255, 0.6)",
       }}>
-        Ready to Build the Future — Together
+        Ready to Build the Future
       </div>
 
-      {/* Action Buttons – Compact & Powerful */}
-      <div style={{ display: "flex", justifyContent: "center", gap: "2.2rem", flexWrap: "wrap", marginTop: "auto" }}>
+      {/* Compact Action Buttons */}
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: "1.8rem",
+        flexWrap: "wrap",
+      }}>
         <motion.button
           onClick={openResumeModal}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.96 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
           style={{
-            padding: "1.3rem 3.4rem",
-            background: "linear-gradient(90deg, #00ffff, #00d0ff)",
+            padding: "1rem 2.8rem",
+            background: "linear-gradient(90deg, #64dcff, #40c4ff)",
             color: "#000",
             border: "none",
-            borderRadius: "26px",
-            fontSize: "1.35rem",
+            borderRadius: "50px",
+            fontSize: "1.2rem",
             fontWeight: "900",
             cursor: "pointer",
-            boxShadow: "0 15px 50px rgba(0, 255, 255, 0.8)",
-            letterSpacing: "1.2px",
+            boxShadow: "0 12px 40px rgba(100, 220, 255, 0.7)",
+            letterSpacing: "1px",
           }}
         >
           View Resume
@@ -4928,19 +4962,19 @@ const Home = () => {
           download="Siva_Bhagavan_Resume_2025.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.96 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
           style={{
-            padding: "1.3rem 3.4rem",
-            background: "rgba(0, 255, 255, 0.24)",
-            color: "#00ffff",
-            border: "3px solid #00ffff",
-            borderRadius: "26px",
-            fontSize: "1.35rem",
+            padding: "1rem 2.8rem",
+            background: "transparent",
+            color: "#64dcff",
+            border: "2.5px solid #64dcff",
+            borderRadius: "50px",
+            fontSize: "1.2rem",
             fontWeight: "900",
             textDecoration: "none",
-            boxShadow: "0 15px 50px rgba(0, 255, 255, 0.6)",
-            letterSpacing: "1.2px",
+            boxShadow: "0 12px 40px rgba(100, 220, 255, 0.5)",
+            letterSpacing: "1px",
           }}
         >
           Download PDF
@@ -4948,7 +4982,13 @@ const Home = () => {
       </div>
 
       {/* Bottom Glow */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, width: "100%", height: "9px", background: "linear-gradient(90deg, transparent, #00ffff, transparent)", boxShadow: "0 0 75px #00ffff" }} />
+      <div style={{
+        position: "absolute",
+        bottom: 0, left: 0, right: 0,
+        height: "4px",
+        background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
+        boxShadow: "0 0 50px #64dcff",
+      }} />
     </motion.div>
   </motion.div>
 </Section>
