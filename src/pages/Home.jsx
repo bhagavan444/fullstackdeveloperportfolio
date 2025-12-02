@@ -2744,7 +2744,7 @@ const Home = () => {
     animate={isAboutInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -2902,7 +2902,8 @@ const Home = () => {
     animate={isEducationInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize:"clamp(2.8rem, 7vw, 4.2rem)",
+
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -3090,7 +3091,7 @@ const Home = () => {
     animate={isProjectsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize:"clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -3353,7 +3354,7 @@ const Home = () => {
     animate={isSkillsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
       WebkitBackgroundClip: "text",
@@ -3525,7 +3526,7 @@ const Home = () => {
     animate={isInternshipsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -3805,7 +3806,7 @@ const Home = () => {
     animate={isCertificationsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4rem, 10vw, 7rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
       WebkitBackgroundClip: "text",
@@ -4063,7 +4064,7 @@ const Home = () => {
     animate={isWorkshopsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -4286,7 +4287,7 @@ const Home = () => {
     animate={isHackathonsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -4559,7 +4560,7 @@ const Home = () => {
     animate={isCodingInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
       WebkitBackgroundClip: "text",
@@ -4761,7 +4762,7 @@ const Home = () => {
     animate={isHobbiesInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
       WebkitBackgroundClip: "text",
@@ -4946,7 +4947,7 @@ const Home = () => {
     animate={isExtracurricularInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
       WebkitBackgroundClip: "text",
@@ -5121,7 +5122,7 @@ const Home = () => {
     animate={isContactInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64c8ff, #87CEEB, #40c4ff)",
       WebkitBackgroundClip: "text",
@@ -5337,7 +5338,7 @@ const Home = () => {
     animate={isResumeInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(4.5rem, 11vw, 8rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #87CEEB, #40c4ff)",
       WebkitBackgroundClip: "text",
