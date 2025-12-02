@@ -2653,16 +2653,16 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan|MERN|AIML&DS <FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan | Full-Stack & AI&ML<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           
           <NavLink href="#internships">Experience</NavLink>
-          
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
+<NavLink href="#projects">Projects</NavLink>
+<NavLink href="#skills">Skills</NavLink>
+<NavLink href="#certifications">Certifications</NavLink>
+<NavLink href="#resume">Resume</NavLink>
+<NavLink href="#contact">Contact</NavLink>
 
-          <NavLink href="#resume">Resume</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
         </NavLinks>
       </Nav>
 
@@ -2691,7 +2691,7 @@ const Home = () => {
           </motion.div>
           <HeaderContainer>
             <Title variants={fadeInUp}> GopalaJosyula Siva Satya Sai Bhagavan </Title>
-            <TypingSubtitle text="Full-Stack Developer & AI/ML Enthusiast | Building scalable MERN & Python solutions | Skilled in Java, Cloud, DevOps & Data-Driven Applications for Enterprise and Product Innovation." />
+            <TypingSubtitle text="AI/ML & Full-Stack Engineering | Building scalable MERN and Python systems | Cloud, DevOps, and data-powered architectures for modern product innovation." />
 
             <motion.div
               variants={fadeInUp}
@@ -2702,14 +2702,14 @@ const Home = () => {
                 whileHover="hover"
                 whileTap={{ scale: 0.95 }}
               >
-                <FaProjectDiagram /> Explore Projects
+                <FaProjectDiagram /> Project Showcase
               </CTAButton>
               <CTAButton
                 href="#contact"
                 whileHover="hover"
                 whileTap={{ scale: 0.95 }}
               >
-                <FiSend /> Let's Connect
+                <FiSend /> Get in Touch
               </CTAButton>
             </motion.div>
             <motion.div variants={fadeInUp}>
@@ -2755,7 +2755,7 @@ const Home = () => {
       textAlign: "center",
     }}
   >
-    > ABOUT ME
+    ABOUT ME
   </SectionTitle>
 
   <p style={{
@@ -2867,11 +2867,14 @@ const Home = () => {
           animate={isAboutInView ? { opacity: 1 } : {}}
           transition={{ duration: 1.4, delay: 0.3 }}
         >
-          Passionate <strong>B.Tech Artificial Intelligence & Data Science</strong> student building intelligent, scalable systems using <strong>MERN Stack</strong> and <strong>AI/ML</strong>.
+          Passionate <strong>B.Tech Artificial Intelligence & Data Science</strong> student skilled in building intelligent, scalable applications using the <strong>MERN Stack</strong> and <strong>AI/ML</strong>. Experienced in developing full-stack web apps, deploying ML models, and creating real-world solutions through data-driven problem solving.
+
           <br /><br />
-          I craft high-performance web applications and AI solutions that don’t just work — they <strong>dominate</strong>.
+          I create high-performance web applications and AI solutions that don’t just work — they <strong>deliver results</strong>.
+
           <br /><br />
-          <em>Hackathon Winner • Open Source Contributor • Mentor • Always Building the Future</em>
+          <em>Open Source Contributor • Tech Innovator • Always Building What’s Next</em>
+
         </motion.p>
 
         {/* Signature Line */}
@@ -2910,7 +2913,7 @@ const Home = () => {
       textAlign: "center",
     }}
   >
-    > EDUCATION
+     EDUCATION
   </SectionTitle>
 
   <p style={{
@@ -2986,7 +2989,7 @@ const Home = () => {
         boxShadow: "0 0 60px #64dcff",
         textTransform: "uppercase",
       }}>
-        B.Tech AIDS
+        B Tech AI&DS
       </div>
 
       {/* Year Badge */}
@@ -3037,7 +3040,7 @@ const Home = () => {
           fontWeight: "500",
         }}>
           Pursuing <strong>Bachelor of Technology in Artificial Intelligence & Data Science</strong><br />
-          <strong>Current CGPA:</strong> 7.0 / 10.0 • Final Year Student
+          <strong>Current CGPA:</strong> 7.8 / 10.0 • Final Year Student
         </p>
 
         {/* Compact Skills Tags */}
@@ -3049,12 +3052,14 @@ const Home = () => {
         }}>
           {[
             "MERN Stack",
-            "AI & Machine Learning",
-            "Python • Java • C++",
-            "Cloud Computing",
-            "Docker & Kubernetes",
-            "System Design",
-            "DevOps"
+"Artificial Intelligence & Machine Learning",
+"Python • Java • SQL",
+"Deep Learning (TensorFlow, Keras)",
+"Data Science & Analytics",
+"REST APIs & Backend Development",
+"Database Management (MongoDB, MySQL)",
+"Version Control (Git & GitHub)"
+
           ].map((skill, i) => (
             <motion.span
               key={i}
@@ -3096,7 +3101,7 @@ const Home = () => {
       textAlign: "center",
     }}
   >
-    > FEATURED PROJECTS
+      My PROJECTS
   </SectionTitle>
 
   <p style={{
@@ -3109,7 +3114,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
   }}>
-    Production-grade apps. Built with passion. Deployed at scale.
+    Designed for reliability, optimized for scale, and deployed with purpose.
   </p>
 
   {/* 2 PROJECTS PER ROW — EXACT SAME CARD STYLE AS HACKATHONS */}
@@ -3125,53 +3130,59 @@ const Home = () => {
   >
     {[
       {
-        title: "AI Chatbot Platform",
-        desc: "Enterprise-grade chatbot with OpenAI integration, real-time messaging, analytics dashboard, and conversation history.",
-        tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN"],
-        link: "https://github.com/bhagavan444/chatbotwebapp",
-        demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
-        impact: "10,000+ queries handled • 95% accuracy • 40% faster response",
-      },
+  title: "AI Chatbot Platform",
+  desc: "Intelligent chatbot platform powered by OpenAI, featuring real-time conversation handling, secure backend APIs, and an analytics dashboard for monitoring user interactions.",
+  tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN Stack", "Tailwind CSS"],
+  link: "https://github.com/bhagavan444/chatbotwebapp",
+  demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
+  impact: "Handles 10,000+ queries with 95% response accuracy and 40% faster processing.",
+},
+
       {
-        title: "Resume Builder Web App",
-        desc: "ATS-optimized resume builder with AI scoring, real-time PDF export, and secure OAuth2 authentication.",
-        tags: ["MERN", "OAuth2", "PDF Generation", "AI Scoring", "MongoDB"],
-        link: "https://github.com/bhagavan444/Resumebuilderwebapp",
-        demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
-        impact: "70% faster resume creation • 500+ active users",
-      },
+  title: "Resume Builder Web App",
+  desc: "Full-stack resume builder with ATS-friendly templates, AI-powered scoring, real-time PDF/Word export, and secure OAuth authentication for seamless user access.",
+  tags: ["MERN Stack", "OAuth", "PDF/Word Export", "AI Scoring", "MongoDB", "Node.js"],
+  link: "https://github.com/bhagavan444/Resumebuilderwebapp",
+  demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
+  impact: "Reduced resume creation time by 70% and served 500+ active users.",
+},
+
       {
-        title: "Heart Disease Prediction",
-        desc: "Clinical-grade healthcare platform using TensorFlow CNNs with real-time monitoring dashboard. Deployed on AWS.",
-        tags: ["TensorFlow", "Flask", "MERN Hybrid", "AWS", "Healthcare AI"],
-        link: "https://github.com/bhagavan444/Heartdiseasewebapp",
-        demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
-        impact: "92% prediction accuracy • Production-ready",
-      },
+  title: "Heart Disease Prediction",
+  desc: "Machine learning–based prediction system using TensorFlow models with a Flask backend and an interactive web interface for real-time risk assessment.",
+  tags: ["TensorFlow", "Flask", "Machine Learning", "Healthcare AI", "Python"],
+  link: "https://github.com/bhagavan444/Heartdiseasewebapp",
+  demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
+  impact: "Achieved 92% prediction accuracy with a fully deployable end-to-end workflow.",
+},
+
       {
-        title: "Career Path Recommender",
-        desc: "AI-powered career guidance engine analyzing skills, trends & LinkedIn data for personalized recommendations.",
-        tags: ["MERN", "Python ML", "LinkedIn API", "Recommendation Engine"],
-        link: "https://github.com/bhagavan444/carrerrecomendation",
-        demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
-        impact: "85% match accuracy • Helped 1000+ users",
-      },
+  title: "Career Path Recommender",
+  desc: "Machine learning–based recommendation system that suggests personalized career paths based on user skills, interests, and dataset-driven analysis.",
+  tags: ["Python", "Machine Learning", "Streamlit", "Recommendation Engine"],
+  link: "https://github.com/bhagavan444/carrerrecomendation",
+  demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
+  impact: "Achieved 85% recommendation accuracy with an intuitive, interactive interface.",
+},
+
       {
-        title: "Fake News Detector",
-        desc: "Real-time NLP classifier using BERT with admin panel and live misinformation monitoring dashboard.",
-        tags: ["BERT", "NLP", "MERN", "Flask", "Admin Panel"],
-        link: "https://github.com/bhagavan444/fakenewsdetectorwebapp",
-        demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
-        impact: "88% detection accuracy • Live deployment",
-      },
+  title: "Fake News Detector",
+  desc: "NLP-based fake news classification system using TF-IDF and machine learning models, deployed with a Flask API and React frontend for real-time text analysis.",
+  tags: ["NLP", "Machine Learning", "TF-IDF", "Flask", "React"],
+  link: "https://github.com/bhagavan444/fakenewsdetectorwebapp",
+  demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
+  impact: "Achieved 94% classification accuracy with a fully deployed end-to-end system.",
+},
+
       {
-        title: "Dynamic Portfolio (This Site)",
-        desc: "Ultra-smooth, animated, cyberpunk-inspired portfolio built with React + Framer Motion. You're experiencing it now.",
-        tags: ["React", "Framer Motion", "Vite", "60fps", "Glassmorphism"],
-        link: "https://github.com/bhagavan444/portfolio",
-        demo: "https://bhagavansportfolio.netlify.app",
-        impact: "Pure digital art • 100% custom • You’re here",
-      },
+  title: "Dynamic Portfolio (This Site)",
+  desc: "Interactive, high-performance developer portfolio built with React and Framer Motion, featuring smooth animations, responsive design, and a modern glassmorphic UI.",
+  tags: ["React", "Framer Motion", "Vite", "UI/UX", "Animations"],
+  link: "https://github.com/bhagavan444/portfolio",
+  demo: "https://bhagavansportfolio.netlify.app",
+  impact: "Fully custom-built portfolio delivering a smooth 60fps experience with polished UI/UX.",
+},
+
     ].map((project, i) => (
       <motion.div
         key={i}
@@ -3352,7 +3363,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > SKILLS
+    SKILLS
   </SectionTitle>
 
   <p style={{
@@ -3380,12 +3391,31 @@ const Home = () => {
     }}
   >
     {[
-      { title: "Languages", skills: ["Python 95%", "JavaScript 90%", "Java 85%", "SQL 90%", "C/C++ 80%"] },
-      { title: "Frontend", skills: ["React.js 92%", "Next.js 88%", "TypeScript 88%", "Tailwind 94%", "Framer Motion 90%"] },
-      { title: "Backend & APIs", skills: ["Node.js 88%", "Express.js 90%", "REST APIs 94%", "GraphQL 82%", "Django 88%"] },
-      { title: "AI & ML", skills: ["Machine Learning 90%", "Deep Learning 87%", "TensorFlow 88%", "Scikit-learn 94%", "NLP & CV 85%"] },
-      { title: "Cloud & DevOps", skills: ["AWS (Certified) 82%", "Docker 82%", "Git & GitHub 95%", "CI/CD 80%", "Linux 85%"] },
-      { title: "Databases", skills: ["MongoDB 92%", "PostgreSQL 88%", "MySQL 88%", "Redis 80%", "Firebase 85%"] },
+      {
+  title: "Languages",
+  skills: ["Python 90%", "JavaScript (ES6) 85%", "Java 80%", "SQL 85%", "C 75%"]
+},
+{
+  title: "Frontend",
+  skills: ["React.js 88%", "HTML5 90%", "CSS3 88%", "Tailwind CSS 92%", "Vite 85%"]
+},
+{
+  title: "Backend & APIs",
+  skills: ["Node.js 85%", "Express.js 88%", "REST APIs 90%", "Flask 82%", "Streamlit 80%"]
+},
+{
+  title: "AI & ML",
+  skills: ["Machine Learning 88%", "Deep Learning 85%", "TensorFlow 85%", "Scikit-learn 90%", "NLP 82%"]
+},
+{
+  title: "Cloud & DevOps",
+  skills: ["AWS (Certified) 80%", "Git & GitHub 95%", "Linux 80%", "CI/CD (GitHub Actions) 75%", "Deployment (Flask/Streamlit) 85%"]
+},
+{
+  title: "Databases",
+  skills: ["MongoDB 90%", "MySQL 85%", "Firebase 78%", "Database Design 82%"]
+}
+
     ].map((category, i) => (
       <motion.div
         key={i}
@@ -3505,7 +3535,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > PROFESSIONAL EXPERIENCE
+     INDUSTRY INTERNSHIPS
   </SectionTitle>
 
   <p style={{
@@ -3535,25 +3565,26 @@ const Home = () => {
     {/* === FIRST TWO INTERNSHIPS — 2 PER ROW === */}
     {[
       {
-        title: "Machine Learning & Data Science Intern",
-        company: "Blackbucks (Remote)",
-        duration: "May 2024 – June 2024",
-        desc: "Developed regression models for real estate price prediction. Built scalable MERN backend with real-time analytics dashboard serving enterprise clients.",
-        impact: "Improved model accuracy by 15%",
-        tech: ["Python", "Scikit-learn", "Pandas", "MERN API", "Feature Engineering"],
-        certLink: "https://drive.google.com/file/d/1yQQqBf32o8d3sYlheDCdaLTKj5_hepfY/view",
-        color: "#64dcff",
-      },
-      {
-        title: "AI/ML Intern – Smart Sorting",
-        company: "SmartBridge (Remote)",
-        duration: "May 2025 – June 2025",
-        desc: "Led CNN-based crop disease detection system. Integrated deep learning model with MERN dashboard for real-time farm monitoring.",
-        impact: "Achieved 94% accuracy in production",
-        tech: ["TensorFlow", "Keras", "CNN", "Flask", "MERN", "Computer Vision"],
-        certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
-        color: "#64dcff",
-      },
+  title: "Machine Learning & Data Science Intern",
+  company: "Blackbucks (Remote)",
+  duration: "May 2024 – June 2024",
+  desc: "Developed machine learning models for house price prediction using regression techniques. Focused on data preprocessing, feature engineering, and model optimization to improve prediction performance.",
+  impact: "Enhanced model accuracy by 18% through systematic tuning and feature refinement.",
+  tech: ["Python", "Scikit-learn", "Pandas", "Feature Engineering", "Data Visualization"],
+  certLink: "https://drive.google.com/file/d/1yQQqBf32o8d3sYlheDCdaLTKj5_hepfY/view",
+  color: "#64dcff",
+},
+{
+  title: "AI/ML Intern – Smart Sorting",
+  company: "SmartBridge (Remote)",
+  duration: "May 2025 – June 2025",
+  desc: "Built a deep learning model using CNNs for fruit and vegetable disease classification. Deployed the model using Flask to enable real-time inference and integrated it into a simple web interface for user interaction.",
+  impact: "Achieved 92% classification accuracy with an efficient, deployed end-to-end workflow.",
+  tech: ["TensorFlow", "Keras", "CNN", "Flask", "Computer Vision", "Python"],
+  certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
+  color: "#64dcff",
+}
+
     ].map((intern, i) => (
       <motion.div
         key={i}
@@ -3727,19 +3758,19 @@ const Home = () => {
         boxShadow: "0 0 60px #64dcff",
         textTransform: "uppercase",
       }}>
-        AICTE Certified
+        Study Owl (AICTE Approved) 
       </div>
 
       <div style={{ textAlign: "center" }}>
         <h3 style={{ fontSize: "3rem", fontWeight: "900", color: "#ffffff", margin: "0 0 1rem 0" }}>
-          MERN Stack Internship Program
+          MERN Stack Internship
         </h3>
         <p style={{ fontSize: "1.8rem", color: "#64dcff", fontWeight: "700", margin: "0 0 2rem 0" }}>
           StudyOwl Education • May 15 – July 16, 2025
         </p>
 
         <p style={{ fontSize: "1.5rem", color: "#c0e8ff", lineHeight: "1.9", maxWidth: "900px", margin: "0 auto 3rem" }}>
-          Completed prestigious 8-week AICTE-recognized MERN Stack internship. Built production-grade full-stack applications with secure authentication, RESTful APIs, and responsive design.
+          Successfully completed an AICTE-recognized 8-week MERN Stack internship, building production-ready applications with JWT/OAuth authentication, Express.js APIs, and responsive React frontends optimized for performance.
         </p>
 
         <motion.a
@@ -3784,7 +3815,7 @@ const Home = () => {
       letterSpacing: "6px",
     }}
   >
-    > CERTIFICATIONS
+    CERTIFICATIONS
   </SectionTitle>
 
   <p style={{
@@ -3797,7 +3828,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 20px rgba(0, 255, 255, 0.4)",
   }}>
-    19+ Industry-recognized credentials — validated by AWS, IBM, Coursera, DeepLearning.AI, Meta & more.
+    Credentials across cloud, AI/ML, and full-stack development from AWS, IBM, Coursera, DeepLearning.AI, Meta, and more.
   </p>
 
   <motion.div
@@ -3812,22 +3843,119 @@ const Home = () => {
     }}
   >
     {[
-      { title: "AWS Certified Solutions Architect – Associate", platform: "Amazon Web Services", year: "2024", link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view" },
-      { title: "AWS Certified Cloud Practitioner", platform: "Amazon Web Services", year: "2024", link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view" },
-      { title: "IBM Full Stack Software Developer", platform: "IBM", year: "2024", link: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing" },
-      { title: "Machine Learning with Python", platform: "Stanford Online • Coursera", year: "2024", link: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view" },
-      { title: "Large Language Models", platform: "DeepLearning.AI", year: "2025", link: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing" },
-      { title: "React.js Professional", platform: "Meta • Coursera", year: "2024", link: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link" },
-      { title: "Python Mastery", platform: "Udemy", year: "2024", link: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link" },
-      { title: "JavaScript ES6+ Mastery", platform: "Udemy", year: "2024", link: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link" },
-      { title: "MLOps & Deployment", platform: "DeepLearning.AI • Coursera", year: "2025", link: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link" },
-      { title: "CI/CD & DevOps", platform: "Udemy", year: "2024", link: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing" },
-      { title: "ServiceNow Certified Application Developer", platform: "ServiceNow", year: "2024", link: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view" },
-      { title: "Django & DRF Professional", platform: "Udemy", year: "2024", link: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view" },
-      { title: "Java Masterclass", platform: "Udemy", year: "2023", link: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link" },
-      { title: "Advanced Python", platform: "Udemy", year: "2024", link: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link" },
-      { title: "HTML5 Mastery", platform: "Udemy", year: "2023", link: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link" },
-      { title: "Advanced CSS & Animations", platform: "Udemy", year: "2024", link: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link" },
+      {
+  title: "AWS Certified Solutions Architect – Associate",
+  platform: "Amazon Web Services",
+  year: "2024",
+  type: "Cloud Certification",
+  link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view"
+},
+{
+  title: "AWS Certified Cloud Practitioner",
+  platform: "Amazon Web Services",
+  year: "2024",
+  type: "Cloud Certification",
+  link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view"
+},
+{
+  title: "IBM Full Stack Software Developer",
+  platform: "IBM",
+  year: "2024",
+  type: "Full Stack Development",
+  link: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing"
+},
+{
+  title: "Machine Learning with Python",
+  platform: "Stanford Online • Coursera",
+  year: "2024",
+  type: "Machine Learning",
+  link: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view"
+},
+{
+  title: "Large Language Models",
+  platform: "DeepLearning.AI",
+  year: "2025",
+  type: "AI / LLMs",
+  link: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing"
+},
+{
+  title: "React.js Professional",
+  platform: "Meta • Coursera",
+  year: "2024",
+  type: "Frontend Development",
+  link: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link"
+},
+{
+  title: "Python Mastery",
+  platform: "Udemy",
+  year: "2024",
+  type: "Programming",
+  link: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link"
+},
+{
+  title: "JavaScript ES6+ Mastery",
+  platform: "Udemy",
+  year: "2024",
+  type: "Programming",
+  link: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link"
+},
+{
+  title: "MLOps & Deployment",
+  platform: "DeepLearning.AI • Coursera",
+  year: "2025",
+  type: "MLOps / Deployment",
+  link: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link"
+},
+{
+  title: "CI/CD & DevOps",
+  platform: "Udemy",
+  year: "2024",
+  type: "DevOps",
+  link: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing"
+},
+{
+  title: "ServiceNow Certified Application Developer",
+  platform: "ServiceNow",
+  year: "2024",
+  type: "Enterprise Software",
+  link: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view"
+},
+{
+  title: "Django & DRF Professional",
+  platform: "Udemy",
+  year: "2024",
+  type: "Backend Development",
+  link: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view"
+},
+{
+  title: "Java Masterclass",
+  platform: "Udemy",
+  year: "2023",
+  type: "Programming",
+  link: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link"
+},
+{
+  title: "Advanced Python",
+  platform: "Udemy",
+  year: "2024",
+  type: "Programming",
+  link: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link"
+},
+{
+  title: "HTML5 Mastery",
+  platform: "Udemy",
+  year: "2023",
+  type: "Frontend Development",
+  link: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link"
+},
+{
+  title: "Advanced CSS & Animations",
+  platform: "Udemy",
+  year: "2024",
+  type: "Frontend Development",
+  link: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link"
+}
+
     ].map((cert, i) => (
       <motion.a
         key={i}
@@ -3945,7 +4073,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > WORKSHOPS & TRAINING
+   Workshops, Bootcamps & Professional Training
   </SectionTitle>
 
   <p style={{
@@ -3958,7 +4086,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
   }}>
-    Continuously leveling up. Mastered cutting-edge tech through elite training.
+    Committed to continuous learning with advanced training in emerging and industry-leading technologies.
   </p>
 
   {/* 2–3 CARDS PER ROW — EXACT SAME STYLE AS HACKATHONS */}
@@ -3974,47 +4102,48 @@ const Home = () => {
   >
     {[
       {
-        title: "Machine Learning with Python",
-        desc: "Hands-on mastery of data preprocessing, model building, evaluation & real-time MERN dashboard integration.",
-        tags: ["Python", "Scikit-learn", "Pandas", "MERN Dashboard", "Feature Engineering"],
-        year: "2024",
-        impact: "Built 3+ production-ready ML models",
-      },
-      {
-        title: "Deep Learning with TensorFlow",
-        desc: "Advanced CNNs, neural networks & live inference using TensorFlow + MERN frontend integration.",
-        tags: ["TensorFlow", "Keras", "CNN", "Deep Learning", "Computer Vision"],
-        year: "2025",
-        impact: "95% accuracy on live inference models",
-      },
-      {
-        title: "Full-Stack Web Development",
-        desc: "Complete MERN stack mastery: React, Node.js, Express, MongoDB, JWT, and cloud deployment.",
-        tags: ["MERN", "React.js", "Node.js", "MongoDB", "JWT Auth"],
-        year: "2022",
-        impact: "5+ projects deployed to production",
-      },
-      {
-        title: "Artificial Intelligence & Data Science",
-        desc: "End-to-end AI/ML pipelines with interactive data dashboards using MERN stack.",
-        tags: ["AI", "Data Science", "ML Pipelines", "Visualization"],
-        year: "2022",
-        impact: "Led AI-powered team project",
-      },
-      {
-        title: "Mobile App Development",
-        desc: "Cross-platform mobile apps using React Native with secure MERN backend integration.",
-        tags: ["React Native", "Mobile Dev", "MERN API", "Expo"],
-        year: "2023",
-        impact: "2 fully functional apps shipped",
-      },
-      {
-        title: "Web Development Foundation",
-        desc: "Deep mastery of HTML, CSS, JavaScript — the unbreakable foundation of all my work.",
-        tags: ["HTML", "CSS", "JavaScript", "Frontend Architecture"],
-        year: "2022",
-        impact: "Foundation for 10+ elite projects",
-      },
+  title: "Machine Learning with Python – 7-Day Intensive Workshop",
+  desc: "Hands-on training focused on data preprocessing, model development, evaluation techniques, and integration with MERN-based dashboards.",
+  tags: ["Python", "Scikit-learn", "Pandas", "MERN Dashboard", "Feature Engineering"],
+  year: "2024",
+  impact: "Built multiple end-to-end ML models during the program",
+},
+{
+  title: "Deep Learning with TensorFlow – 7-Day Advanced Workshop",
+  desc: "Practical exposure to neural networks, CNN architectures, and real-time inference using TensorFlow with interactive frontend integration.",
+  tags: ["TensorFlow", "Keras", "CNN", "Deep Learning", "Computer Vision"],
+  year: "2025",
+  impact: "Achieved high-accuracy live inference models as part of training",
+},
+{
+  title: "Full-Stack Web Development – 7-Day Bootcamp",
+  desc: "Comprehensive MERN stack training covering React, Node.js, Express, MongoDB, authentication systems, and cloud deployment workflows.",
+  tags: ["MERN", "React.js", "Node.js", "MongoDB", "JWT Auth"],
+  year: "2022",
+  impact: "Deployed multiple full-stack applications",
+},
+{
+  title: "Artificial Intelligence & Data Science – 7-Day Workshop",
+  desc: "Focused on building end-to-end AI/ML pipelines with data analysis, applied machine learning, and visualization dashboards.",
+  tags: ["AI", "Data Science", "ML Pipelines", "Visualization"],
+  year: "2022",
+  impact: "Led team-based AI project as part of the workshop",
+},
+{
+  title: "Mobile App Development – 7-Day Workshop",
+  desc: "Developed cross-platform mobile applications using React Native with secure MERN backend connectivity.",
+  tags: ["React Native", "Mobile Dev", "MERN API", "Expo"],
+  year: "2023",
+  impact: "Built and shipped functional mobile app prototypes",
+},
+{
+  title: "Web Development Foundation – 7-Day Workshop",
+  desc: "Structured training in core web technologies including HTML, CSS, and JavaScript, forming the basis for advanced frontend development.",
+  tags: ["HTML", "CSS", "JavaScript", "Frontend Architecture"],
+  year: "2022",
+  impact: "Established strong fundamentals for future full-stack projects",
+},
+
     ].map((workshop, i) => (
       <motion.div
         key={i}
@@ -4167,7 +4296,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > HACKATHON WARRIOR
+    Hackathon Developer & Rapid Prototyping Enthusiast
   </SectionTitle>
 
   <p style={{
@@ -4180,7 +4309,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
   }}>
-    Proven under pressure. Building production-grade apps in 24 hours.
+   onsistently delivering reliable, production-focused applications even in time-critical environments.
   </p>
 
   {/* 2-CARD GRID — SAME DESIGN LANGUAGE AS CODING PROFILES */}
@@ -4196,19 +4325,21 @@ const Home = () => {
   >
     {[
       {
-        title: "24-Hour National Hackathon",
-        event: "Brainovision 2025",
-        organizer: "RCE Eluru",
-        rank: "2nd Place",
-        year: "2025",
-        desc: "Built a full-featured second-hand electronics marketplace with real-time chat, Stripe payments, JWT auth, and responsive UI — all in 24 hours.",
-        tags: ["MERN Stack", "Real-time Chat", "Stripe Payments", "JWT Auth", "Responsive UI"],
-        impact: "2nd out of 42 teams • 120+ users on launch day • Fully deployed",
-        codeLink: "https://github.com/bhagavan444/hackathon-electromart",
-        certLink: "https://drive.google.com/file/d/1CQaoA9V93Lg4XS1FmcG-0gVUaKvw2zUq/view",
-        color: "#64dcff",
-        glow: "#64dcff",
-      },
+  title: "24-Hour National Hackathon",
+  event: "Brainovision 2025",
+  organizer: "RCE Eluru",
+  rank: "participant",
+  role: "Lead Developer",
+  year: "2025",
+  desc: "Participated in a 24-hour national hackathon and built a MERN-based platform for second-hand electronics, featuring real-time chat, secure authentication, and a responsive UI.",
+  tags: ["MERN Stack", "Real-time Chat", "JWT Authentication", "Responsive UI"],
+  impact: "Delivered a fully functional prototype within 24 hours and recognized as a top-performing participant.",
+  codeLink: "https://github.com/bhagavan444/hackathon-electromart",
+  certLink: "https://drive.google.com/file/d/1CQaoA9V93Lg4XS1FmcG-0gVUaKvw2zUq/view",
+  color: "#64dcff",
+  glow: "#64dcff",
+}
+
       // Add more later — scales perfectly
     ].map((hack, i) => (
       <motion.div
@@ -4438,7 +4569,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > CODING PROFILES
+    Competitive Programming Profiles
   </SectionTitle>
 
   <p style={{
@@ -4451,7 +4582,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
   }}>
-    Competitive programming excellence — proven through global rankings & consistent performance.
+    Demonstrated proficiency in competitive programming with consistent performance across global coding platforms.
   </p>
 
   {/* PERFECT 3-CARD GRID */}
@@ -4467,32 +4598,33 @@ const Home = () => {
   >
     {[
       {
-        platform: "LeetCode",
-        badge: "Knight Rank",
-        title: "Top 10% Globally",
-        stats: "300+ Solved • 100-Day Streak",
-        color: "#FFA116",
-        glow: "#ff8c00",
-        link: "https://leetcode.com/u/AxZsDhEeto/",
-      },
-      {
-        platform: "HackerRank",
-        badge: "5 Star Coder",
-        title: "Gold Badges in Python & AI",
-        stats: "Top 20% Worldwide",
-        color: "#00ff9d",
-        glow: "#00ff9d",
-        link: "https://www.hackerrank.com/profile/g_sivasatyasaib1",
-      },
-      {
-        platform: "CodeChef",
-        badge: "Contest Warrior",
-        title: "20+ Rated Contests",
-        stats: "Fast • Clean • Optimized",
-        color: "#ff4757",
-        glow: "#ff6b6b",
-        link: "https://www.codechef.com/users/bhagavan444",
-      },
+  platform: "LeetCode",
+  badge: " Good LeetCode Rank",
+  title: "Global Ranking",
+  stats: "200+ Problems Solved • 100-Day Coding Streak",
+  color: "#FFA116",
+  glow: "#ff8c00",
+  link: "https://leetcode.com/u/AxZsDhEeto/"
+},
+{
+  platform: "HackerRank",
+  badge: "Python & Problem Solving",
+  title: "Gold Badges in Python & Problem Solving",
+  stats: " Global Performance",
+  color: "#00ff9d",
+  glow: "#00ff9d",
+  link: "https://www.hackerrank.com/profile/g_sivasatyasaib1"
+},
+{
+  platform: "CodeChef",
+  badge: "Competitive Programmer",
+  title: "20+ Official Coding Contests",
+  stats: "Consistent • Structured • Optimized Solutions",
+  color: "#ff4757",
+  glow: "#ff6b6b",
+  link: "https://www.codechef.com/users/bhagavan444"
+}
+
     ].map((profile, i) => (
       <motion.a
         key={i}
@@ -4639,7 +4771,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > HOBBIES & PASSIONS
+    Professional Interests
   </SectionTitle>
 
   <p style={{
@@ -4652,7 +4784,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
   }}>
-    Beyond code — what fuels my drive, creativity, and continuous growth.
+    Beyond coding—guided by curiosity, innovation, and lifelong learning.
   </p>
 
   {/* SAME UI AS CODING PROFILES — PERFECT MATCH */}
@@ -4668,29 +4800,32 @@ const Home = () => {
   >
     {[
       {
-        title: "Coding Challenges",
-        subtitle: "DSA Warrior",
-        stats: "500+ Problems • Knight Rank • Daily Streak",
-        color: "#ff00aa",
-        glow: "#ff00aa",
-        icon: "Code",
-      },
-      {
-        title: "Technical Blogging",
-        subtitle: "Tech Author",
-        stats: "10+ Articles • 1K+ Readers • Medium Writer",
-        color: "#00ff9d",
-        glow: "#00ff9d",
-        icon: "PenTool",
-      },
-      {
-        title: "AI & Future Tech",
-        subtitle: "AI Pioneer",
-        stats: "5+ AI Apps • LLM Integration • Visionary Builder",
-        color: "#ffd700",
-        glow: "#ffdd00",
-        icon: "Cpu",
-      },
+  title: "Coding Challenges",
+  subtitle: "DSA Enthusiast",
+  stats: "500+ Problems Solved • LeetCode Rank Holder • Consistent Daily Practice",
+  color: "#ff00aa",
+  glow: "#ff00aa",
+  icon: "Code"
+},
+{
+  title: "Tech & Research Reading",
+  subtitle: "Continuous Learner",
+  stats: "AI Papers • Tech Blogs • Industry Trends",
+  color: "#8e44ad",
+  glow: "#9b59b6",
+  icon: "BookOpen"
+}
+,
+{
+  title: "Machine Learning Research",
+  subtitle: "ML Explorer",
+  stats: "Hands-on with ML models • Experimenting with datasets • Applying research insights",
+  color: "#ffd700",
+  glow: "#ffdd00",
+  icon: "BarChart"
+}
+
+
     ].map((hobby, i) => (
       <motion.div
         key={i}
@@ -4821,7 +4956,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > BEYOND CODE
+   Outside of Coding Activities
   </SectionTitle>
 
   <p style={{
@@ -4834,7 +4969,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
   }}>
-    Leadership, mentorship, and continuous growth — the foundation of excellence.
+    Leadership, mentorship, and continuous growth — the core of my work philosophy.
   </p>
 
   {/* EXACT SAME UI AS CODING PROFILES — PERFECT CONSISTENCY */}
@@ -4850,21 +4985,22 @@ const Home = () => {
   >
     {[
       {
-        title: "Technical Workshops",
-        subtitle: "Tech Mentor",
-        stats: "100+ Students Trained • 5+ Workshops Led",
-        color: "#ff00ff",
-        glow: "#ff00ff",
-        icon: "Users",
-      },
-      {
-        title: "Elite Certifications",
-        subtitle: "Certified Prodigy",
-        stats: "8+ Advanced Certs • AI, Cloud, DevOps, Full-Stack",
-        color: "#00ff88",
-        glow: "#00ff88",
-        icon: "Award",
-      },
+  title: "Technical Workshops",
+  subtitle: "Tech Facilitator",
+  stats: "Trained 100+ Students • Led 5+ Hands-On Workshops",
+  color: "#ff00ff",
+  glow: "#ff00ff",
+  icon: "Users"
+},
+{
+  title: "Elite Certifications",
+  subtitle: "Certified Specialist",
+  stats: "8+ Advanced Certifications • AI • Cloud • DevOps • Full-Stack",
+  color: "#00ff88",
+  glow: "#00ff88",
+  icon: "Award"
+}
+
     ].map((activity, i) => (
       <motion.div
         key={i}
@@ -4995,7 +5131,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > LET'S CONNECT
+   Get in Touch
   </SectionTitle>
 
   <p style={{
@@ -5008,8 +5144,7 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(100, 200, 255, 0.3)",
   }}>
-    Open to full-time roles, freelance projects, or just a tech conversation.  
-    Let’s build something extraordinary together.
+   Available for full-time opportunities, freelance work, and professional tech conversations. Let's collaborate to build something valuable.
   </p>
 
   {/* ULTRA-CLEAN, PROFESSIONAL CONTACT CARD */}
@@ -5111,7 +5246,8 @@ const Home = () => {
       {/* Message */}
       <Textarea
         name="message"
-        placeholder="Hi! I'm interested in discussing a full-time opportunity / freelance project / collaboration..."
+        placeholder="Hello! I'm reaching out regarding a full-time role, freelance work, or a collaboration opportunity…"
+
         rows={6}
         required
         onChange={(e) => setMessageLength(e.target.value.length)}
@@ -5190,7 +5326,8 @@ const Home = () => {
       fontWeight: "500",
     }}
   >
-    Or reach me directly: g.sivasatyasaibhagavan@gmail@gmail.com • +91 75692 05626
+    Or contact me directly at: g.sivasatyasaibhagavan@gmail.com
+ • +91 75692 05626
   </motion.p>
 </Section>
       <Section id="resume" ref={resumeRef}>
@@ -5210,7 +5347,7 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-    > RESUME
+   My Resume
   </SectionTitle>
 
   <p style={{
@@ -5223,8 +5360,8 @@ const Home = () => {
     fontWeight: "500",
     textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
   }}>
-    Full-Stack Engineer • AI Specialist • Cloud Architect<br />
-    Building production-grade systems that scale and inspire.
+    Full-Stack Developer • AI/ML Engineer • Cloud Engineer
+Designing and delivering scalable, high-performance software solutions.
   </p>
 
   {/* SINGLE DOMINANT, ULTRA-CLEAN CARD — SAME DESIGN LANGUAGE AS CODING PROFILES */}
@@ -5321,7 +5458,7 @@ const Home = () => {
         marginBottom: "1.8rem",
         letterSpacing: "1px",
       }}>
-        Full-Stack • AI • Cloud Architect
+       Full-Stack Development • AI/ML Engineering • Cloud Engineering
       </p>
 
       {/* Core Stack */}
@@ -5334,7 +5471,7 @@ const Home = () => {
         maxWidth: "600px",
         fontWeight: "600",
       }}>
-        MERN Stack · Next.js · React Native · Python AI · AWS · Docker · System Design
+       MERN Stack · Next.js · React Native · AI/ML with Python · AWS · Docker · System Architecture
       </p>
 
       {/* Impact Badge */}
@@ -5351,7 +5488,7 @@ const Home = () => {
         boxShadow: "0 0 50px rgba(100, 220, 255, 0.6)",
         textAlign: "center",
       }}>
-        Production-Ready • Battle-Tested • Future-Proof
+       Production-Grade • Performance-Optimized • Future-Ready Architecture
       </div>
 
       {/* Action Buttons */}
@@ -5378,7 +5515,7 @@ const Home = () => {
             letterSpacing: "1px",
           }}
         >
-          View Full Resume
+        Open Resume
         </motion.button>
 
         <motion.a
@@ -5401,7 +5538,7 @@ const Home = () => {
             letterSpacing: "1px",
           }}
         >
-          Download PDF
+          Get PDF Version
         </motion.a>
       </div>
 
@@ -5482,7 +5619,7 @@ const Home = () => {
         margin: 0,
         letterSpacing: "2px",
       }}>
-        Full-Stack • AI • Future Architect
+       Full-Stack Engineering • AI/ML Development • Cloud Architecture
       </p>
     </motion.div>
 
@@ -5601,7 +5738,7 @@ const Home = () => {
         textShadow: "0 0 20px rgba(100, 220, 255, 0.6)",
       }}
     >
-      Ready to ship world-class products. Let's talk.
+     Focused on building reliable, scalable products. Open to conversations.
     </motion.p>
   </FooterContent>
 
