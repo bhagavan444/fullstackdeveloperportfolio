@@ -2653,7 +2653,7 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan | Full-Stack & AI&ML<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan| Full-Stack| |AIML & DS|<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           
           <NavLink href="#internships">Experience</NavLink>
@@ -2661,7 +2661,6 @@ const Home = () => {
 <NavLink href="#skills">Skills</NavLink>
 <NavLink href="#certifications">Certifications</NavLink>
 <NavLink href="#resume">Resume</NavLink>
-<NavLink href="#contact">Contact</NavLink>
 
         </NavLinks>
       </Nav>
@@ -2738,7 +2737,7 @@ const Home = () => {
       </HeroSection>
 
      <Section id="about" ref={aboutRef}>
-  {/* Epic Gradient Title – Matches all other sections */}
+  {/* Epic Gradient Title */}
   <SectionTitle
     initial="hidden"
     animate={isAboutInView ? "visible" : "hidden"}
@@ -2758,152 +2757,325 @@ const Home = () => {
     ABOUT ME
   </SectionTitle>
 
-  <p style={{
-    color: "#a0d8f0",
-    fontSize: "1.5rem",
-    textAlign: "center",
-    margin: "0 auto 6rem",
-    maxWidth: "900px",
-    lineHeight: "1.8",
-    fontWeight: "500",
-    textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
-  }}>
+  <p
+    style={{
+      color: "#a0d8f0",
+      fontSize: "1.6rem",   // increased
+      textAlign: "center",
+      margin: "0 auto 4.5rem",
+      maxWidth: "900px",
+      lineHeight: "1.85",
+      fontWeight: "500",
+    }}
+  >
     Full-Stack × AI Engineer | Building the future, one line of code at a time.
   </p>
 
-  {/* MEDIUM RECTANGULAR HERO CARD – SAME AS PROJECTS & EDUCATION */}
+  {/* LARGE RECTANGULAR CARD */}
   <motion.div
     style={{
-      maxWidth: "1480px",
+      maxWidth: "1280px",
       margin: "0 auto",
-      padding: "0 2rem",
+      padding: "0 1.5rem",
       display: "grid",
       placeItems: "center",
     }}
   >
     <motion.div
-      initial={{ opacity: 0, y: 100, rotateX: -20 }}
+      initial={{ opacity: 0, y: 80, rotateX: -12 }}
       animate={isAboutInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 1.1, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" }}
       style={{
         width: "100%",
-        maxWidth: "1000px",
+        maxWidth: "1100px",
         background: "rgba(8, 20, 48, 0.98)",
-        backdropFilter: "blur(40px)",
-        WebkitBackdropFilter: "blur(40px)",
-        border: "3.5px solid #64dcff60",
-        borderRadius: "44px",
-        padding: "4rem 4.5rem",
+        backdropFilter: "blur(36px)",
+        WebkitBackdropFilter: "blur(36px)",
+        border: "2.6px solid rgba(100,220,255,0.55)",
+        borderRadius: "18px",
+        padding: "3rem 3.2rem",
         position: "relative",
         overflow: "hidden",
         boxShadow: `
-          0 40px 110px rgba(0, 0, 0, 0.9),
-          0 0 140px #64dcff55,
-          inset 0 0 100px #64dcff18
+          0 40px 120px rgba(0,0,0,0.9),
+          0 0 140px rgba(100,220,255,0.28),
+          inset 0 0 80px rgba(100,220,255,0.06)
         `,
-        transformStyle: "preserve-3d",
+        minHeight: "460px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
       whileHover={{
         borderColor: "#64dcff",
         boxShadow: `
-          0 50px 130px rgba(0, 0, 0, 0.95),
-          0 0 180px #64dcff88,
-          inset 0 0 120px #64dcff30
+          0 50px 140px rgba(0,0,0,0.95),
+          0 0 180px #64dcff70,
+          inset 0 0 110px #64dcff18
         `,
       }}
     >
-      {/* Top & Bottom Glow Lines */}
-      <div style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "7px",
-        background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-        filter: "drop-shadow(0 0 45px #64dcff)",
-      }} />
-      <div style={{
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: "7px",
-        background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-        filter: "drop-shadow(0 0 45px #64dcff)",
-      }} />
+      {/* Small top glow */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "6px",
+          background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
+        }}
+      />
 
-      {/* Floating Badge – Iconic */}
-      <div style={{
-        position: "absolute",
-        top: "-22px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        background: "#64dcff",
-        color: "#000",
-        padding: "1rem 3rem",
-        borderRadius: "60px",
-        fontSize: "1.6rem",
-        fontWeight: "900",
-        letterSpacing: "3px",
-        boxShadow: "0 0 80px #64dcff",
-        textTransform: "uppercase",
-        zIndex: 10,
-      }}>
-        Full-Stack × AI Engineer
-      </div>
-
-      {/* About Text */}
-      <div style={{ textAlign: "center" }}>
-        <motion.p
+      {/* Left Identity Column */}
+      <div
+        style={{
+          flex: "0 0 260px",
+          marginRight: "1.6rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1rem",
+        }}
+      >
+        <div
           style={{
-            fontSize: "1.68rem",
-            color: "#e0f8ff",
-            lineHeight: "2",
-            maxWidth: "840px",
-            margin: "2.5rem auto 0",
-            fontWeight: "500",
+            width: "120px",
+            height: "120px",
+            borderRadius: "50%",
+            background:
+              "linear-gradient(180deg, rgba(100,220,255,0.08), rgba(100,220,255,0.04))",
+            border: "1.6px solid rgba(100,220,255,0.12)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#c0e8ff",
+            fontWeight: 900,
+            fontSize: "1.1rem",  // increased
+            boxShadow: "0 10px 30px rgba(100,220,255,0.06)",
           }}
-          initial={{ opacity: 0 }}
-          animate={isAboutInView ? { opacity: 1 } : {}}
-          transition={{ duration: 1.4, delay: 0.3 }}
         >
-          Passionate <strong>B.Tech Artificial Intelligence & Data Science</strong> student skilled in building intelligent, scalable applications using the <strong>MERN Stack</strong> and <strong>AI/ML</strong>. Experienced in developing full-stack web apps, deploying ML models, and creating real-world solutions through data-driven problem solving.
+          S S S B
+        </div>
 
-          <br /><br />
-          I create high-performance web applications and AI solutions that don’t just work — they <strong>deliver results</strong>.
-
-          <br /><br />
-          <em>Open Source Contributor • Tech Innovator • Always Building What’s Next</em>
-
-        </motion.p>
-
-        {/* Signature Line */}
-        <motion.div
-          style={{
-            height: "4px",
-            width: "200px",
-            background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-            margin: "3.5rem auto 0",
-            borderRadius: "2px",
-            boxShadow: "0 0 55px #64dcff",
-          }}
-          initial={{ scaleX: 0 }}
-          animate={isAboutInView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1.2, delay: 0.8 }}
-        />
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              fontSize: "1.15rem",  // increased
+              color: "#bff8ff",
+              fontWeight: 800,
+              letterSpacing: "0.6px",
+            }}
+          >
+            B.Tech (AI & DS) • Final Year
+          </div>
+          <div
+            style={{
+              fontSize: "1.05rem",   // increased
+              color: "#9fe6ff",
+              marginTop: "0.35rem",
+              fontWeight: 700,
+            }}
+          >
+            MERN • AI/ML • Cloud
+          </div>
+        </div>
       </div>
+
+      {/* Divider */}
+      <div
+        style={{
+          width: "1px",
+          height: "72%",
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(100,220,255,0.04))",
+          marginRight: "1.6rem",
+        }}
+      />
+
+      {/* Right Content */}
+      <div style={{ flex: "1 1 auto", minWidth: 0 }}>
+        <h3
+          style={{
+            margin: 0,
+            fontSize: "2.1rem",  // increased
+            fontWeight: "900",
+            color: "#ffffff",
+            lineHeight: 1.05,
+          }}
+        >
+          I'm Siva — Full-Stack & AI Engineer
+        </h3>
+
+        <p
+          style={{
+            marginTop: "0.8rem",
+            color: "#c8fbff",
+            fontSize: "1.18rem",  // increased
+            lineHeight: 1.7,
+            fontWeight: 500,
+          }}
+        >
+          Production-focused developer combining MERN expertise with applied AI/ML.
+          I build scalable frontends, secure backend APIs, and deploy ML models as
+          cloud-ready services with clean architecture and exceptional performance.
+        </p>
+
+        {/* Highlight Tags */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "0.6rem",
+            marginTop: "1.1rem",
+          }}
+        >
+          <div
+            style={{
+              padding: "0.7rem 1rem",
+              borderRadius: 12,
+              background: "rgba(100,220,255,0.06)",
+              color: "#bff8ff",
+              fontWeight: 800,
+              fontSize: "1.05rem", // increased
+              border: "1px solid rgba(100,220,255,0.06)",
+            }}
+          >
+            MERN • Next.js
+          </div>
+
+          <div
+            style={{
+              padding: "0.7rem 1rem",
+              borderRadius: 12,
+              background: "rgba(100,220,255,0.06)",
+              color: "#bff8ff",
+              fontWeight: 800,
+              fontSize: "1.05rem", // increased
+              border: "1px solid rgba(100,220,255,0.06)",
+            }}
+          >
+            TensorFlow • Model Deployment
+          </div>
+
+          <div
+            style={{
+              padding: "0.7rem 1rem",
+              borderRadius: 12,
+              background: "rgba(100,220,255,0.06)",
+              color: "#bff8ff",
+              fontWeight: 800,
+              fontSize: "1.05rem", // increased
+              border: "1px solid rgba(100,220,255,0.06)",
+            }}
+          >
+            AWS • Docker • CI/CD
+          </div>
+        </div>
+
+        <p
+          style={{
+            marginTop: "1.3rem",
+            color: "#9fe6ff",
+            fontSize: "1.12rem", // increased
+            lineHeight: 1.55,
+            fontWeight: 700,
+          }}
+        >
+          Recent work: enterprise-grade AI chatbot (memory + streaming), ATS resume
+          builder, ML-powered disease detection system, and real-world deployments
+          across AWS/Docker.
+        </p>
+
+        {/* Buttons */}
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            marginTop: "1.6rem",
+            flexWrap: "wrap",
+          }}
+        >
+          <motion.a
+            href="#projects"
+            whileHover={{ scale: 1.04 }}
+            style={{
+              padding: "0.8rem 1.6rem",
+              background: "linear-gradient(90deg,#64dcff,#40c4ff)",
+              color: "#001",
+              borderRadius: 999,
+              fontWeight: 900,
+              textDecoration: "none",
+              boxShadow: "0 12px 36px rgba(100,220,255,0.22)",
+              fontSize: "1.05rem",
+            }}
+          >
+            View Projects
+          </motion.a>
+
+          <motion.a
+            href={resumePdf}
+            download="Siva_Satya_Sai_Bhagavan_Resume_2025.pdf"
+            whileHover={{ scale: 1.04 }}
+            style={{
+              padding: "0.7rem 1.4rem",
+              background: "transparent",
+              color: "#64dcff",
+              border: "2px solid rgba(100,220,255,0.6)",
+              borderRadius: 999,
+              fontWeight: 900,
+              textDecoration: "none",
+              boxShadow: "0 8px 24px rgba(100,220,255,0.08)",
+              fontSize: "1.05rem",
+            }}
+          >
+            Download Resume
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.03 }}
+            style={{
+              padding: "0.6rem 0.95rem",
+              background: "rgba(255,255,255,0.02)",
+              color: "#bff8ff",
+              borderRadius: 12,
+              fontWeight: 700,
+              textDecoration: "none",
+              border: "1px solid rgba(100,220,255,0.04)",
+              fontSize: "1.05rem",
+            }}
+          >
+            Let's Talk
+          </motion.a>
+        </div>
+      </div>
+
+      {/* Bottom Glow */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 12,
+          left: 20,
+          right: 20,
+          height: "6px",
+          background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
+          borderRadius: 12,
+          opacity: 0.9,
+        }}
+      />
     </motion.div>
   </motion.div>
 </Section>
-      <Section id="education" ref={educationRef}>
-  {/* Epic Title */}
+
+<Section id="education" ref={educationRef}>
+  {/* Epic Gradient Title */}
   <SectionTitle
     initial="hidden"
     animate={isEducationInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize:"clamp(2.8rem, 7vw, 4.2rem)",
-
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -2914,184 +3086,216 @@ const Home = () => {
       textAlign: "center",
     }}
   >
-     EDUCATION
+    EDUCATION
   </SectionTitle>
 
   <p style={{
     color: "#a0d8f0",
     fontSize: "1.5rem",
     textAlign: "center",
-    margin: "0 auto 5rem",
+    margin: "0 auto 4.5rem",
     maxWidth: "900px",
     lineHeight: "1.8",
     fontWeight: "500",
-    textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
   }}>
-    Strong academic foundation in Artificial Intelligence & Data Science.
+    Strong academic journey from foundation to Artificial Intelligence & Data Science.
   </p>
 
-  {/* COMPACT HERO CARD — REDUCED SIZE, PERFECT BALANCE */}
+  {/* MAIN CONTAINER */}
   <motion.div
     style={{
-      maxWidth: "1480px",
+      maxWidth: "1280px",
       margin: "0 auto",
-      padding: "0 2rem",
+      padding: "0 1.5rem",
       display: "grid",
       placeItems: "center",
+      gap: "3rem",
     }}
   >
+
+    {/* ROW 1: B.TECH CARD (Full Width, rectangular) */}
     <motion.div
-      initial={{ opacity: 0, y: 90, rotateX: -18 }}
+      initial={{ opacity: 0, y: 80, rotateX: -15 }}
       animate={isEducationInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 1.1, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut" }}
       style={{
         width: "100%",
-        maxWidth: "1000px",                    // Reduced from 1200px → perfect compact size
+        maxWidth: "1100px",                // wider rectangle
         background: "rgba(8, 20, 48, 0.98)",
-        backdropFilter: "blur(40px)",
-        WebkitBackdropFilter: "blur(40px)",
-        border: "3.5px solid #64dcff60",
-        borderRadius: "44px",
-        padding: "3.8rem 4.2rem",              // Reduced padding for tighter look
+        backdropFilter: "blur(36px)",
+        WebkitBackdropFilter: "blur(36px)",
+        border: "3px solid #64dcff70",
+        borderRadius: "20px",              // less rounded = more rectangular
+        padding: "3.2rem 3.6rem",
         position: "relative",
         overflow: "hidden",
-        boxShadow: `
-          0 40px 110px rgba(0, 0, 0, 0.9),
-          0 0 140px #64dcff55,
-          inset 0 0 100px #64dcff18
-        `,
-        transformStyle: "preserve-3d",
+        boxShadow: "0 30px 80px rgba(0,0,0,0.9), 0 0 110px #64dcff50, inset 0 0 70px #64dcff18",
+        minHeight: "380px",                // increased height for rectangle feel
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
       whileHover={{
         borderColor: "#64dcff",
-        boxShadow: `
-          0 50px 130px rgba(0, 0, 0, 0.95),
-          0 0 180px #64dcff88,
-          inset 0 0 120px #64dcff30
-        `,
+        boxShadow: "0 40px 100px rgba(0,0,0,0.95), 0 0 150px #64dcff80, inset 0 0 90px #64dcff30",
       }}
     >
-      {/* Top & Bottom Glow Lines */}
-      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "7px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)", filter: "drop-shadow(0 0 45px #64dcff)" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "7px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)", filter: "drop-shadow(0 0 45px #64dcff)" }} />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "6px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)" }} />
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "6px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)" }} />
 
-      {/* Degree Badge */}
-      <div style={{
-        position: "absolute",
-        top: "2rem",
-        right: "2.5rem",
-        background: "#64dcff",
-        color: "#000",
-        padding: "0.9rem 2.2 RQrem",
-        borderRadius: "50px",
-        fontSize: "1.35rem",
-        fontWeight: "900",
-        letterSpacing: "1.8px",
-        boxShadow: "0 0 60px #64dcff",
-        textTransform: "uppercase",
-      }}>
-        B Tech AI&DS
-      </div>
-
-      {/* Year Badge */}
-      <div style={{
-        position: "absolute",
-        top: "2rem",
-        left: "2.5rem",
-        background: "rgba(100, 220, 255, 0.15)",
-        color: "#64dcff",
-        padding: "0.8rem 1.8rem",
-        borderRadius: "50px",
-        fontSize: "1.2rem",
-        fontWeight: "800",
-        border: "2px solid #64dcff60",
-        backdropFilter: "blur(10px)",
-      }}>
+      <div style={{ position: "absolute", top: "1.6rem", left: "2rem", background: "rgba(100,220,255,0.18)", color: "#64dcff", padding: "0.6rem 1.5rem", borderRadius: "12px", fontSize: "1.05rem", fontWeight: "800", border: "2px solid #64dcff60", backdropFilter: "blur(8px)" }}>
         2022 – 2026
       </div>
+      <div style={{ position: "absolute", top: "1.6rem", right: "2rem", background: "#64dcff", color: "#000", padding: "0.6rem 1.8rem", borderRadius: "12px", fontSize: "1.05rem", fontWeight: "900", letterSpacing: "1.5px", boxShadow: "0 0 35px #64dcff", textTransform: "uppercase" }}>
+        B.TECH AI&DS
+      </div>
 
-      {/* Main Content */}
-      <div style={{ textAlign: "center" }}>
-        <h3 style={{
-          fontSize: "clamp(2.8rem, 6.5vw, 4.6rem)",
-          fontWeight: "900",
-          color: "#ffffff",
-          margin: "0 0 0.8rem 0",
-          textShadow: "0 0 35px rgba(255,255,255,0.6)",
-        }}>
+      <div style={{ textAlign: "center", width: "100%" }}>
+        <h3 style={{ fontSize: "clamp(2.2rem, 5vw, 3.4rem)", fontWeight: "900", color: "#fff", margin: "0 0 0.4rem", textShadow: "0 0 30px rgba(255,255,255,0.35)" }}>
           Ramachandra College of Engineering
         </h3>
-
-        <p style={{
-          fontSize: "1.7rem",
-          color: "#64dcff",
-          fontWeight: "700",
-          margin: "0 0 2.2rem 0",
-          textShadow: "0 0 28px #64dcff",
-        }}>
+        <p style={{ fontSize: "1.4rem", color: "#64dcff", fontWeight: "700", marginBottom: "1.2rem" }}>
           Eluru • JNTUK University
         </p>
-
-        <p style={{
-          fontSize: "1.48rem",
-          color: "#c0e8ff",
-          lineHeight: "1.85",
-          margin: "0 auto 3rem",
-          maxWidth: "780px",
-          fontWeight: "500",
-        }}>
-          Pursuing <strong>Bachelor of Technology in Artificial Intelligence & Data Science</strong><br />
-          <strong>Current CGPA:</strong> 7.8 / 10.0 • Final Year Student
+        <p style={{ fontSize: "1.18rem", color: "#c0e8ff", lineHeight: "1.7", marginBottom: "1.8rem", maxWidth: "920px", margin: "0 auto 1.8rem" }}>
+          Pursuing <strong>Bachelor of Technology in AI & Data Science</strong><br />
+          <strong>CGPA: 7.8 / 10.0</strong> • Final Year
         </p>
 
-        {/* Compact Skills Tags */}
-        <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "1.2rem",
-          justifyContent: "center",
-        }}>
-          {[
-            "MERN Stack",
-"Artificial Intelligence & Machine Learning",
-"Python • Java • SQL",
-"Deep Learning (TensorFlow, Keras)",
-"Data Science & Analytics",
-"REST APIs & Backend Development",
-"Database Management (MongoDB, MySQL)",
-"Version Control (Git & GitHub)"
-
-          ].map((skill, i) => (
-            <motion.span
-              key={i}
-              whileHover={{ scale: 1.08 }}
-              style={{
-                padding: "0.8rem 1.9rem",
-                background: "rgba(100, 220, 255, 0.12)",
-                color: "#88d8ff",
-                borderRadius: "22px",
-                fontSize: "1.08rem",
-                fontWeight: "600",
-                border: "1.6px solid rgba(100, 220, 255, 0.4)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.9rem", justifyContent: "center", rowGap: "1rem" }}>
+          {["MERN Stack","AI & ML","Python • Java • SQL","Deep Learning","Data Science","REST APIs","MongoDB • MySQL","Git & GitHub"].map((skill, i) => (
+            <motion.span key={i} whileHover={{ scale: 1.05 }} style={{ padding: "0.65rem 1.6rem", background: "rgba(100,220,255,0.12)", color: "#88d8ff", borderRadius: "12px", fontSize: "0.98rem", fontWeight: "700", border: "1.2px solid rgba(100,220,255,0.28)", backdropFilter: "blur(6px)" }}>
               {skill}
             </motion.span>
           ))}
         </div>
       </div>
     </motion.div>
+
+    {/* ROW 2: INTER + 10TH SIDE BY SIDE (rectangular, matched height) */}
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))",
+        gap: "2.5rem",
+        width: "100%",
+        maxWidth: "1100px",
+      }}
+    >
+      {/* INTERMEDIATE CARD */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={isEducationInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, delay: 0.2 }}
+        style={{
+          background: "rgba(8, 20, 48, 0.92)",
+          backdropFilter: "blur(32px)",
+          border: "2.5px solid #64dcff50",
+          borderRadius: "18px",
+          padding: "2.6rem 2.4rem",
+          position: "relative",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.7), 0 0 80px #64dcff30",
+          minHeight: "300px",            // matched rectangular height
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ position: "absolute", top: "1.6rem", left: "1.8rem", background: "rgba(100,220,255,0.15)", color: "#64dcff", padding: "0.5rem 1.1rem", borderRadius: "12px", fontSize: "0.95rem", fontWeight: "700" }}>
+          2020 – 2022
+        </div>
+        <div style={{ position: "absolute", top: "1.6rem", right: "1.8rem", background: "#64dcff", color: "#000", padding: "0.5rem 1.2rem", borderRadius: "12px", fontSize: "0.95rem", fontWeight: "900" }}>
+          INTER MPC
+        </div>
+
+        <div style={{ width: "100%" }}>
+          <h3 style={{ fontSize: "1.9rem", fontWeight: "900", color: "#fff", margin: "0 0 0.6rem" }}>
+            Sri Vidya Junior College
+          </h3>
+          <p style={{ fontSize: "1.18rem", color: "#64dcff", margin: "0 0 1rem" }}>
+            Gudivada, Andhra Pradesh
+          </p>
+          <p style={{ fontSize: "1.12rem", color: "#c0e8ff", lineHeight: "1.7", marginBottom: "1.4rem", fontWeight: "500" }}>
+            Completed Intermediate (MPC) with strong foundation in core science and mathematics.
+            <br />
+            <strong>Marks: 781 / 1000</strong> • <strong>78.1%</strong>
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "center" }}>
+            {["Physics", "Chemistry", "Mathematics", "Applied Maths", "Computer Basics"].map((tag, i) => (
+              <motion.span key={i} whileHover={{ scale: 1.04 }} style={{ padding: "0.5rem 1rem", background: "rgba(100,220,255,0.10)", color: "#aee9ff", borderRadius: "12px", fontSize: "0.95rem", fontWeight: "600", border: "1px solid rgba(100,220,255,0.22)" }}>
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* 10TH CARD */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={isEducationInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.9, delay: 0.4 }}
+        style={{
+          background: "rgba(8, 20, 48, 0.88)",
+          backdropFilter: "blur(28px)",
+          border: "2px solid #64dcff40",
+          borderRadius: "18px",
+          padding: "2.6rem 2.4rem",
+          position: "relative",
+          boxShadow: "0 15px 50px rgba(0,0,0,0.6)",
+          minHeight: "300px",            // matched rectangular height
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ position: "absolute", top: "1.4rem", left: "1.8rem", background: "rgba(100,220,255,0.12)", color: "#64dcff", padding: "0.4rem 1.1rem", borderRadius: "12px", fontSize: "0.92rem", fontWeight: "700" }}>
+          2019 – 2020
+        </div>
+        <div style={{ position: "absolute", top: "1.4rem", right: "1.8rem", background: "#64dcff", color: "#000", padding: "0.4rem 1.1rem", borderRadius: "12px", fontSize: "0.92rem", fontWeight: "900" }}>
+          10TH SSC
+        </div>
+
+        <div style={{ width: "100%" }}>
+          <h3 style={{ fontSize: "1.85rem", fontWeight: "900", color: "#fff", margin: "0 0 0.5rem" }}>
+            Montessori English Medium High School
+          </h3>
+          <p style={{ fontSize: "1.12rem", color: "#64dcff", margin: "0 0 0.8rem" }}>
+            Gudivada, Andhra Pradesh
+          </p>
+          <p style={{ fontSize: "1.08rem", color: "#c0e8ff", lineHeight: "1.65", marginBottom: "1.2rem", fontWeight: "500" }}>
+            Strong foundational schooling with focus on core subjects and language proficiency.
+            <br />
+            <strong>GPA: 9.5 / 10.0</strong>
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.7rem", justifyContent: "center" }}>
+            {["English", "Mathematics", "Science", "Social Studies", "Computer Fundamentals"].map((tag, i) => (
+              <motion.span key={i} whileHover={{ scale: 1.04 }} style={{ padding: "0.45rem 0.95rem", background: "rgba(100,220,255,0.08)", color: "#bfeeff", borderRadius: "12px", fontSize: "0.92rem", fontWeight: "600", border: "1px solid rgba(100,220,255,0.18)" }}>
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
   </motion.div>
 </Section>
-      <Section id="projects" ref={projectsRef}>
+
+
+<Section id="projects" ref={projectsRef}>
   {/* Epic Title */}
   <SectionTitle
     initial="hidden"
     animate={isProjectsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize:"clamp(2.8rem, 7vw, 4.2rem)",
+      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
       fontWeight: "900",
       background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
       WebkitBackgroundClip: "text",
@@ -3102,155 +3306,146 @@ const Home = () => {
       textAlign: "center",
     }}
   >
-      My PROJECTS
+    FEATURED PROJECTS
   </SectionTitle>
 
   <p style={{
     color: "#a0d8f0",
     fontSize: "1.5rem",
     textAlign: "center",
-    margin: "0 auto 6rem",
+    margin: "0 auto 5.5rem",
     maxWidth: "900px",
     lineHeight: "1.8",
     fontWeight: "500",
-    textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
   }}>
-    Designed for reliability, optimized for scale, and deployed with purpose.
+    High-impact applications built with AI, full-stack, and modern web technologies.
   </p>
 
-  {/* 2 PROJECTS PER ROW — EXACT SAME CARD STYLE AS HACKATHONS */}
+  {/* COMPACT & BEAUTIFUL GRID */}
   <motion.div
     style={{
-      maxWidth: "1480px",
+      maxWidth: "1240px",
       margin: "0 auto",
-      padding: "0 2rem",
+      padding: "0 1.5rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(560px, 1fr))",
-      gap: "4rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(500px, 1fr))",  // Slightly smaller cards
+      gap: "3.2rem",  // Tighter spacing
     }}
   >
     {[
       {
-  title: "AI Chatbot Platform",
-  desc: "Intelligent chatbot platform powered by OpenAI, featuring real-time conversation handling, secure backend APIs, and an analytics dashboard for monitoring user interactions.",
-  tags: ["React", "Node.js", "OpenAI API", "Socket.io", "MERN Stack", "Tailwind CSS"],
-  link: "https://github.com/bhagavan444/chatbotwebapp",
-  demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
-  impact: "Handles 10,000+ queries with 95% response accuracy and 40% faster processing.",
-},
-
+        title: "AI Chatbot Platform",
+        desc: "Enterprise-grade intelligent chatbot with real-time streaming, memory retention, analytics dashboard, and secure OAuth backend.",
+        tags: ["React", "Node.js", "OpenAI", "Socket.io", "MongoDB", "Tailwind"],
+        link: "https://github.com/bhagavan444/chatbotwebapp",
+        demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
+        impact: "10K+ queries • 95% accuracy • 40% faster",
+        badge: "Most Advanced"
+      },
       {
-  title: "Resume Builder Web App",
-  desc: "Full-stack resume builder with ATS-friendly templates, AI-powered scoring, real-time PDF/Word export, and secure OAuth authentication for seamless user access.",
-  tags: ["MERN Stack", "OAuth", "PDF/Word Export", "AI Scoring", "MongoDB", "Node.js"],
-  link: "https://github.com/bhagavan444/Resumebuilderwebapp",
-  demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
-  impact: "Reduced resume creation time by 70% and served 500+ active users.",
-},
-
+        title: "Resume Builder Pro",
+        desc: "ATS-optimized resume generator with AI scoring, real-time editing, PDF export, and Google OAuth login.",
+        tags: ["MERN", "OAuth", "AI Scoring", "PDF Export", "Redis"],
+        link: "https://github.com/bhagavan444/Resumebuilderwebapp",
+        demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
+        impact: "500+ users • 70% faster • 100% ATS pass",
+        badge: "Most Used"
+      },
       {
-  title: "Heart Disease Prediction",
-  desc: "Machine learning–based prediction system using TensorFlow models with a Flask backend and an interactive web interface for real-time risk assessment.",
-  tags: ["TensorFlow", "Flask", "Machine Learning", "Healthcare AI", "Python"],
-  link: "https://github.com/bhagavan444/Heartdiseasewebapp",
-  demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
-  impact: "Achieved 92% prediction accuracy with a fully deployable end-to-end workflow.",
-},
-
+        title: "Heart Disease Predictor",
+        desc: "Deep learning system using TensorFlow with Flask API and interactive UI for real-time risk assessment.",
+        tags: ["TensorFlow", "Flask", "ML", "Healthcare AI", "Python"],
+        link: "https://github.com/bhagavan444/Heartdiseasewebapp",
+        demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
+        impact: "92% accuracy • Live deployed",
+        badge: "Best ML Project"
+      },
       {
-  title: "Career Path Recommender",
-  desc: "Machine learning–based recommendation system that suggests personalized career paths based on user skills, interests, and dataset-driven analysis.",
-  tags: ["Python", "Machine Learning", "Streamlit", "Recommendation Engine"],
-  link: "https://github.com/bhagavan444/carrerrecomendation",
-  demo: "https://drive.google.com/file/d/1cHQUdThz6tm7uvds_g2OfMcg3j9wHuRS/view",
-  impact: "Achieved 85% recommendation accuracy with an intuitive, interactive interface.",
+  title: "Career Path Recommendation System",
+  desc: "ML-based system that recommends personalized career and course paths using user skills and preference analysis.",
+  tags: ["Python", "Machine Learning", "Recommendation Systems", "Streamlit"],
+  link: "",
+  demo: "",
+  impact: "Personalized career predictions with explainable insights",
+  badge: "Research"
 },
-
-      {
+{
   title: "Fake News Detector",
-  desc: "NLP-based fake news classification system using TF-IDF and machine learning models, deployed with a Flask API and React frontend for real-time text analysis.",
-  tags: ["NLP", "Machine Learning", "TF-IDF", "Flask", "React"],
-  link: "https://github.com/bhagavan444/fakenewsdetectorwebapp",
-  demo: "https://drive.google.com/file/d/1sBIB10_UrncsuAhfs3ekjSJbE58LxUQO/view?usp=sharing",
-  impact: "Achieved 94% classification accuracy with a fully deployed end-to-end system.",
+  desc: "NLP-powered classifier that detects fake news using TF–IDF and supervised learning, served via a Flask API with a React UI.",
+  tags: ["NLP", "Flask", "React", "Scikit-learn", "TF-IDF"],
+  link: "",
+  demo: "",
+  impact: "High-accuracy text classification with confidence scoring",
+  badge: "NLP"
 },
 
       {
-  title: "Dynamic Portfolio (This Site)",
-  desc: "Interactive, high-performance developer portfolio built with React and Framer Motion, featuring smooth animations, responsive design, and a modern glassmorphic UI.",
-  tags: ["React", "Framer Motion", "Vite", "UI/UX", "Animations"],
-  link: "https://github.com/bhagavan444/portfolio",
-  demo: "https://bhagavansportfolio.netlify.app",
-  impact: "Fully custom-built portfolio delivering a smooth 60fps experience with polished UI/UX.",
-},
-
+        title: "This Portfolio",
+        desc: "Ultra-smooth animated portfolio with glassmorphism, 60fps performance, and responsive design.",
+        tags: ["React", "Framer Motion", "Vite", "UI/UX"],
+        link: "https://github.com/bhagavan444/portfolio",
+        demo: "https://bhagavansportfolio.netlify.app",
+        impact: "Zero-lag • Modern design",
+        badge: "Personal Brand"
+      },
     ].map((project, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 80, rotateX: -18 }}
-        animate={isProjectsInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-        transition={{ duration: 0.95, delay: i * 0.15, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 70 }}
+        animate={isProjectsInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: i * 0.15 }}
         style={{
           background: "rgba(8, 20, 48, 0.98)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          border: "3px solid #64dcff60",
-          borderRadius: "40px",
-          padding: "3.2rem 3rem",
+          backdropFilter: "blur(38px)",
+          border: "2.8px solid #64dcff60",
+          borderRadius: "34px",
+          padding: "2.6rem 2.8rem",        // Reduced padding → tighter look
           position: "relative",
           overflow: "hidden",
-          boxShadow: `
-            0 35px 100px rgba(0, 0, 0, 0.85),
-            0 0 130px #64dcff50,
-            inset 0 0 90px #64dcff18
-          `,
-          transformStyle: "preserve-3d",
+          boxShadow: "0 30px 90px rgba(0,0,0,0.8), 0 0 110px #64dcff40, inset 0 0 70px #64dcff15",
         }}
         whileHover={{
-          borderColor: "#64dcff99",
-          boxShadow: `
-            0 40px 120px rgba(0, 0, 0, 0.9),
-            0 0 160px #64dcff80,
-            inset 0 0 110px #64dcff28
-          `,
+          borderColor: "#64dcff",
+          y: -10,
+          boxShadow: "0 45px 120px rgba(0,0,0,0.9), 0 0 160px #64dcff85, inset 0 0 100px #64dcff30",
         }}
       >
-        {/* Top & Bottom Glow */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "6px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)", filter: "drop-shadow(0 0 40px #64dcff)" }} />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "6px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)", filter: "drop-shadow(0 0 40px #64dcff)" }} />
+        {/* Glow Lines */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "5px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "5px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)" }} />
 
-        {/* Project Badge */}
+        {/* Badge */}
         <div style={{
           position: "absolute",
-          top: "1.8rem",
-          right: "2rem",
-          background: "#64dcff",
+          top: "1.6rem",
+          right: "1.8rem",
+          background: i === 0 ? "linear-gradient(45deg,#ff2e63,#7209b7)" : "#64dcff",
           color: "#000",
-          padding: "0.8rem 1.8rem",
+          padding: "0.6rem 1.4rem",
           borderRadius: "50px",
-          fontSize: "1.1rem",
+          fontSize: "0.9rem",
           fontWeight: "900",
-          boxShadow: "0 0 50px #64dcff",
+          boxShadow: "0 0 45px currentColor",
           textTransform: "uppercase",
           letterSpacing: "1px",
         }}>
-          Live
+          {project.badge}
         </div>
 
         <h3 style={{
-          fontSize: "2.3rem",
+          fontSize: "2.1rem",
           fontWeight: "900",
-          color: "#ffffff",
-          margin: "0 0 0.8rem 0",
-          textShadow: "0 0 30px rgba(255,255,255,0.5)",
+          color: "#fff",
+          margin: "0 0 0.9rem 0",
+          lineHeight: "1.2",
         }}>
           {project.title}
         </h3>
 
         <p style={{
-          fontSize: "1.22rem",
+          fontSize: "1.18rem",
           color: "#c0e8ff",
-          lineHeight: "1.8",
+          lineHeight: "1.78",
           margin: "0 0 2rem 0",
           fontWeight: "500",
         }}>
@@ -3259,40 +3454,35 @@ const Home = () => {
 
         {/* Impact */}
         <div style={{
-          display: "inline-block",
-          padding: "0.9rem 2.4rem",
-          background: "rgba(100, 220, 255, 0.2)",
+          padding: "0.9rem 2.2rem",
+          background: "linear-gradient(90deg, rgba(100,220,255,0.22), rgba(100,220,255,0.08))",
           border: "2px solid #64dcff",
           borderRadius: "50px",
           color: "#64dcff",
-          fontSize: "1.15rem",
+          fontSize: "1.1rem",
           fontWeight: "800",
-          margin: "0 0 2.5rem 0",
-          boxShadow: "0 0 50px #64dcff66",
+          margin: "0 0 2.2rem 0",
+          display: "inline-block",
+          boxShadow: "0 0 50px #64dcff60",
         }}>
           {project.impact}
         </div>
 
         {/* Tags */}
-        <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "1rem",
-          marginBottom: "2.5rem",
-        }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.9rem", marginBottom: "2.4rem" }}>
           {project.tags.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.08 }}
               style={{
-                padding: "0.7rem 1.6rem",
-                background: "rgba(100, 220, 255, 0.12)",
+                padding: "0.6rem 1.4rem",
+                background: "rgba(100, 220, 255, 0.13)",
                 color: "#88d8ff",
-                borderRadius: "20px",
-                fontSize: "0.98rem",
+                borderRadius: "18px",
+                fontSize: "0.94rem",
                 fontWeight: "600",
-                border: "1.5px solid rgba(100, 220, 255, 0.4)",
-                backdropFilter: "blur(8px)",
+                border: "1.3px solid rgba(100,220,255,0.4)",
+                backdropFilter: "blur(6px)",
               }}
             >
               {tag}
@@ -3300,44 +3490,39 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Action Buttons */}
-        <div style={{ display: "flex", gap: "1.8rem" }}>
+        {/* Buttons */}
+        <div style={{ display: "flex", gap: "1.5rem" }}>
           <motion.a
             href={project.link}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
             style={{
-              padding: "1rem 2.6rem",
+              padding: "0.9rem 2.2rem",
               background: "transparent",
               color: "#64dcff",
-              border: "2.5px solid #64dcff",
+              border: "2px solid #64dcff",
               borderRadius: "50px",
-              fontSize: "1.1rem",
+              fontSize: "1.02rem",
               fontWeight: "800",
               textDecoration: "none",
-              boxShadow: "0 12px 40px #64dcff40",
             }}
           >
             View Code
           </motion.a>
-
           <motion.a
             href={project.demo}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
             style={{
-              padding: "1rem 2.8rem",
+              padding: "0.9rem 2.4rem",
               background: "#64dcff",
               color: "#000",
               borderRadius: "50px",
-              fontSize: "1.1rem",
+              fontSize: "1.02rem",
               fontWeight: "900",
               textDecoration: "none",
-              boxShadow: "0 15px 50px #64dcff80",
             }}
           >
             Live Demo
@@ -3347,179 +3532,244 @@ const Home = () => {
     ))}
   </motion.div>
 </Section>
-    <Section id="skills" ref={skillsRef}>
-  {/* Clean Futuristic Title */}
+   <Section id="skills" ref={skillsRef}>
+  {/* Epic Title */}
   <SectionTitle
     initial="hidden"
     animate={isSkillsInView ? "visible" : "hidden"}
     variants={fadeInUp}
     style={{
-      fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
+      fontSize: "clamp(3rem, 8vw, 4.8rem)",
       fontWeight: "900",
-      background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
+      background: "linear-gradient(90deg, #00ffff, #00d4ff, #0099ff)",
       WebkitBackgroundClip: "text",
       backgroundClip: "text",
       WebkitTextFillColor: "transparent",
-      textShadow: "0 0 80px rgba(0, 255, 255, 0.6)",
-      letterSpacing: "8px",
+      textShadow: "0 0 90px rgba(0, 255, 255, 0.7)",
+      letterSpacing: "10px",
+      textAlign: "center",
     }}
   >
     SKILLS
   </SectionTitle>
 
-  <p style={{
-    color: "#a0f0ff",
-    fontSize: "1.5rem",
-    textAlign: "center",
-    margin: "0 auto 5.5rem",
-    maxWidth: "900px",
-    lineHeight: "1.8",
-    fontWeight: "500",
-    textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
-  }}>
-    Production-grade expertise across the full stack — validated by real projects & global certifications.
+  <p
+    style={{
+      color: "#a0f8ff",
+      fontSize: "1.5rem",
+      textAlign: "center",
+      margin: "0 auto 6rem",
+      maxWidth: "900px",
+      lineHeight: "1.8",
+      fontWeight: "500",
+    }}
+  >
+    Mastered tools & technologies that power modern AI and full-stack applications —
+    focused on practical, production-ready skills with measurable results.
   </p>
 
-  {/* MODERN MINIMAL GRID – Fresh Look */}
+  {/* Certifications-style cards for Skills */}
   <motion.div
     style={{
-      maxWidth: "1400px",
+      maxWidth: "1600px",
       margin: "0 auto",
       padding: "0 2rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-      gap: "2.8rem",
+      gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
+      gap: "3rem",
+      perspective: "1400px",
     }}
   >
     {[
       {
-  title: "Languages",
-  skills: ["Python 90%", "JavaScript (ES6) 85%", "Java 80%", "SQL 85%", "C 75%"]
-},
-{
-  title: "Frontend",
-  skills: ["React.js 88%", "HTML5 90%", "CSS3 88%", "Tailwind CSS 92%", "Vite 85%"]
-},
-{
-  title: "Backend & APIs",
-  skills: ["Node.js 85%", "Express.js 88%", "REST APIs 90%", "Flask 82%", "Streamlit 80%"]
-},
-{
-  title: "AI & ML",
-  skills: ["Machine Learning 88%", "Deep Learning 85%", "TensorFlow 85%", "Scikit-learn 90%", "NLP 82%"]
-},
-{
-  title: "Cloud & DevOps",
-  skills: ["AWS (Certified) 80%", "Git & GitHub 95%", "Linux 80%", "CI/CD (GitHub Actions) 75%", "Deployment (Flask/Streamlit) 85%"]
-},
-{
-  title: "Databases",
-  skills: ["MongoDB 90%", "MySQL 85%", "Firebase 78%", "Database Design 82%"]
-}
-
-    ].map((category, i) => (
+    title: "Programming Languages",
+    subtitle: "Core job-ready coding expertise",
+    skills: ["Python 95%", "JavaScript 90%", "SQL 88%", "Java 82%", "HTML/CSS 90%"],
+  },
+  {
+    title: "Frontend Development",
+    subtitle: "Modern, production-grade UI engineering",
+    skills: ["React.js 92%", "Next.js 85%", "Tailwind CSS 94%", "Responsive UI 90%", "Framer Motion 85%"],
+  },
+  {
+    title: "Backend & API Engineering",
+    subtitle: "Secure, scalable server-side development",
+    skills: ["Node.js 90%", "Express.js 90%", "REST APIs 94%", "Authentication/JWT 88%", "Flask 85%"],
+  },
+  {
+    title: "AI, ML & Deep Learning",
+    subtitle: "Industry-level applied machine learning",
+    skills: [
+      "TensorFlow 88%", 
+      "Keras 86%", 
+      "Scikit-learn 91%", 
+      "PyTorch 80%", 
+      "NLP 87%", 
+      "Feature Engineering 90%", 
+      "Model Deployment 84%"
+    ],
+  },
+  {
+    title: "Data Engineering & Analysis",
+    subtitle: "Transforming data into usable insights",
+    skills: ["Pandas 92%", "NumPy 90%", "Data Preprocessing 92%", "Model Evaluation 88%", "Exploratory Analysis 85%"],
+  },
+  {
+    title: "Databases & Cloud",
+    subtitle: "Cloud infrastructure and secure data systems",
+    skills: ["MongoDB 90%", "PostgreSQL 85%", "Firebase 82%", "AWS (EC2/S3) 80%", "Docker 78%"],
+  },
+  {
+    title: "DevOps & Tools",
+    subtitle: "Engineering productivity & deployment workflows",
+    skills: ["Git & GitHub 96%", "Linux 85%", "CI/CD Pipelines 80%", "Postman 90%", "Agile SDLC 85%"],
+  },
+  {
+    title: "Professional Skills",
+    subtitle: "Skills companies expect from freshers",
+    skills: ["Problem Solving 94%", "Debugging 90%", "Algorithmic Thinking 88%", "Code Optimization 86%", "Team Collaboration 95%"],
+  },
+    ].map((cat, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 60 }}
-        animate={isSkillsInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 100, rotateX: -25 }}
+        animate={isSkillsInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+        transition={{ duration: 0.9, delay: i * 0.09, ease: "easeOut" }}
         style={{
-          background: "rgba(15, 30, 60, 0.92)",
-          backdropFilter: "blur(30px)",
-          WebkitBackdropFilter: "blur(30px)",
-          border: "1px solid rgba(0, 255, 255, 0.4)",
-          borderRadius: "28px",
-          padding: "2.6rem 2.2rem",
+          textDecoration: "none",
+          borderRadius: "32px",
+          background: "rgba(8, 22, 48, 0.98)",
+          backdropFilter: "blur(40px)",
+          WebkitBackdropFilter: "blur(40px)",
+          border: "3px solid rgba(0, 255, 255, 0.8)",
+          padding: "2.4rem 2rem",
+          minHeight: "240px",
           position: "relative",
           overflow: "hidden",
           boxShadow: `
-            0 20px 60px rgba(0, 0, 0, 0.7),
-            0 0 80px rgba(0, 255, 255, 0.25),
-            inset 0 0 60px rgba(0, 255, 255, 0.08)
+            0 30px 80px rgba(0, 0, 0, 0.8),
+            0 0 120px rgba(0, 255, 255, 0.45),
+            inset 0 0 60px rgba(0, 255, 255, 0.12)
           `,
-          transform: "translateZ(0)",
+          transformStyle: "preserve-3d",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+        }}
+        whileHover={{
+          transform: "translateY(-8px)",
+          boxShadow: `
+            0 40px 110px rgba(0,0,0,0.9),
+            0 0 160px rgba(0,255,255,0.55),
+            inset 0 0 90px rgba(0,255,255,0.12)
+          `,
+          borderColor: "rgba(0,255,255,0.95)",
         }}
       >
-        {/* Top Accent Line */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          height: "4px",
-          background: "linear-gradient(90deg, #00ffff, #0088ff)",
-          borderRadius: "28px 28px 0 0",
-        }} />
+        {/* Top Glow */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "6px",
+            background: "linear-gradient(90deg, transparent, #00ffff, transparent)",
+            filter: "drop-shadow(0 0 40px #00ffff)",
+          }}
+        />
 
-        {/* Category Title */}
-        <h3 style={{
-          fontSize: "1.8rem",
-          fontWeight: "900",
-          color: "#00ffff",
-          margin: "0 0 2rem 0",
-          textAlign: "center",
-          textShadow: "0 0 20px #00ffff",
-          letterSpacing: "1.2px",
-        }}>
-          {category.title}
-        </h3>
-
-        {/* Skills List – Clean & Fast */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1.1rem 1.6rem",
-        }}>
-          {category.skills.map((skill, j) => (
-            <motion.div
-              key={j}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isSkillsInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.1 + j * 0.08 }}
-              style={{
-                background: "rgba(0, 255, 255, 0.08)",
-                border: "1px solid rgba(0, 255, 255, 0.3)",
-                borderRadius: "16px",
-                padding: "1rem 1.4rem",
-                textAlign: "center",
-                fontWeight: "700",
-                color: "#e0fbfc",
-                fontSize: "1.05rem",
-                backdropFilter: "blur(10px)",
-                boxShadow: "inset 0 0 20px rgba(0, 255, 255, 0.1)",
-                transition: "all 0.3s ease",
-              }}
-              whileHover={{
-                background: "rgba(0, 255, 255, 0.15)",
-                borderColor: "rgba(0, 255, 255, 0.6)",
-                boxShadow: "0 0 25px rgba(0, 255, 255, 0.3)",
-              }}
-            >
-              {skill}
-            </motion.div>
-          ))}
+        {/* Category */}
+        <div
+          style={{
+            color: "#00ffff",
+            fontSize: "0.95rem",
+            fontWeight: "800",
+            letterSpacing: "2.5px",
+            textTransform: "uppercase",
+            marginBottom: "0.4rem",
+            textShadow: "0 0 20px rgba(0,255,255,0.15)",
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          → {cat.title}
         </div>
 
-        {/* Subtle Corner Glows */}
-        <div style={{
-          position: "absolute",
-          top: "-2px", left: "-2px",
-          width: "60px", height: "60px",
-          background: "radial-gradient(circle, #00ffff 0%, transparent 70%)",
-          borderRadius: "28px",
-          opacity: 0.4,
-        }} />
-        <div style={{
-          position: "absolute",
-          bottom: "-2px", right: "-2px",
-          width: "60px", height: "60px",
-          background: "radial-gradient(circle, #0088ff 0%, transparent 70%)",
-          borderRadius: "28px",
-          opacity: 0.4,
-        }} />
+        <h3
+          style={{
+            color: "#ffffff",
+            fontSize: "1.5rem",
+            fontWeight: "900",
+            margin: "0",
+            lineHeight: "1.25",
+            textShadow: "0 0 18px rgba(255,255,255,0.06)",
+          }}
+        >
+          {cat.subtitle}
+        </h3>
+
+        {/* Short description for the category (keeps certification-style content) */}
+        <p
+          style={{
+            color: "#c8fbff",
+            fontSize: "0.98rem",
+            lineHeight: "1.5",
+            margin: "0.45rem 0 0.6rem 0",
+            fontWeight: 500,
+          }}
+        >
+          {`Hands-on experience and project work tailored for entry-level roles — emphasis on deliverables, clean code and interview-ready fundamentals.`}
+        </p>
+
+        {/* Skill tags laid out similarly to certification tags but visually matching */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginTop: "auto" }}>
+          {cat.skills.map((s, idx) => {
+            const [name, pct] = s.split(" ");
+            return (
+              <div
+                key={idx}
+                style={{
+                  padding: "0.55rem 0.9rem",
+                  background: "rgba(0,255,255,0.06)",
+                  color: "#bff8ff",
+                  borderRadius: "18px",
+                  fontSize: "0.93rem",
+                  fontWeight: 800,
+                  border: "1px solid rgba(0,255,255,0.08)",
+                  display: "inline-flex",
+                  gap: "0.6rem",
+                  alignItems: "center",
+                }}
+                title={`${name} — ${pct}`}
+                aria-label={`${name} skill ${pct}`}
+              >
+                <span style={{ fontWeight: 900 }}>{name}</span>
+                <span style={{ fontSize: "0.85rem", color: "#8ef0ff", fontWeight: 700 }}>{pct}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Glow */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "5px",
+            background: "linear-gradient(90deg, transparent, #00ffff, transparent)",
+            filter: "drop-shadow(0 0 35px #00ffff)",
+          }}
+        />
       </motion.div>
     ))}
   </motion.div>
 </Section>
-      <Section id="internships" ref={internshipsRef}>
+
+     <Section id="internships" ref={internshipsRef}>
   {/* Epic Title */}
   <SectionTitle
     initial="hidden"
@@ -3569,8 +3819,8 @@ const Home = () => {
   title: "Machine Learning & Data Science Intern",
   company: "Blackbucks (Remote)",
   duration: "May 2024 – June 2024",
-  desc: "Developed machine learning models for house price prediction using regression techniques. Focused on data preprocessing, feature engineering, and model optimization to improve prediction performance.",
-  impact: "Enhanced model accuracy by 18% through systematic tuning and feature refinement.",
+  desc: "Developed ML models for house price prediction — preprocessing, feature engineering and optimization.",
+  impact: "Enhanced model accuracy by 18% through tuning and feature refinement.",
   tech: ["Python", "Scikit-learn", "Pandas", "Feature Engineering", "Data Visualization"],
   certLink: "https://drive.google.com/file/d/1yQQqBf32o8d3sYlheDCdaLTKj5_hepfY/view",
   color: "#64dcff",
@@ -3579,8 +3829,8 @@ const Home = () => {
   title: "AI/ML Intern – Smart Sorting",
   company: "SmartBridge (Remote)",
   duration: "May 2025 – June 2025",
-  desc: "Built a deep learning model using CNNs for fruit and vegetable disease classification. Deployed the model using Flask to enable real-time inference and integrated it into a simple web interface for user interaction.",
-  impact: "Achieved 92% classification accuracy with an efficient, deployed end-to-end workflow.",
+  desc: "Built a CNN-based classifier for fruit/vegetable disease detection and deployed it with Flask.",
+  impact: "Achieved 92% classification accuracy with an efficient deployed workflow.",
   tech: ["TensorFlow", "Keras", "CNN", "Flask", "Computer Vision", "Python"],
   certLink: "https://drive.google.com/file/d/1-_8ZI8uZ3DcrFpfZ3pts7VSYrAqPN5Zw/view",
   color: "#64dcff",
@@ -3593,89 +3843,90 @@ const Home = () => {
         animate={isInternshipsInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
         transition={{ duration: 0.95, delay: i * 0.18, ease: "easeOut" }}
         style={{
+          /* REDUCED CARD SIZE: smaller padding, tighter radius, lighter shadow */
           background: "rgba(8, 20, 48, 0.98)",
-          backdropFilter: "blur(40px)",
-          border: `3px solid ${intern.color}60`,
-          borderRadius: "40px",
-          padding: "3.2rem 3rem",
+          backdropFilter: "blur(36px)",
+          border: `2px solid ${intern.color}50`,
+          borderRadius: "20px",
+          padding: "1.6rem 1.8rem",
           position: "relative",
           overflow: "hidden",
           boxShadow: `
-            0 35px 100px rgba(0, 0, 0, 0.85),
-            0 0 130px ${intern.color}50,
-            inset 0 0 90px ${intern.color}18
+            0 18px 40px rgba(0, 0, 0, 0.75),
+            0 0 50px ${intern.color}30,
+            inset 0 0 40px ${intern.color}12
           `,
         }}
         whileHover={{
           borderColor: intern.color + "99",
           boxShadow: `
-            0 40px 120px rgba(0, 0, 0, 0.9),
-            0 0 160px ${intern.color}80,
-            inset 0 0 110px ${intern.color}28
+            0 24px 60px rgba(0, 0, 0, 0.85),
+            0 0 90px ${intern.color}50,
+            inset 0 0 60px ${intern.color}20
           `,
         }}
       >
         {/* Top Glow */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "6px", background: `linear-gradient(90deg, transparent, ${intern.color}, transparent)`, filter: `drop-shadow(0 0 40px ${intern.color})` }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "5px", background: `linear-gradient(90deg, transparent, ${intern.color}, transparent)`, filter: `drop-shadow(0 0 24px ${intern.color})` }} />
 
         {/* Company Badge */}
         <div style={{
           position: "absolute",
-          top: "1.8rem",
-          right: "2rem",
+          top: "1.2rem",
+          right: "1.2rem",
           background: intern.color,
           color: "#000",
-          padding: "0.8rem 1.8rem",
-          borderRadius: "50px",
-          fontSize: "1.1rem",
-          fontWeight: "900",
-          boxShadow: `0 0 45px ${intern.color}`,
+          padding: "0.5rem 1.1rem",
+          borderRadius: "36px",
+          fontSize: "0.95rem",
+          fontWeight: "800",
+          boxShadow: `0 0 30px ${intern.color}`,
         }}>
           {intern.company.split(" ")[0]}
         </div>
 
-        <h3 style={{ fontSize: "2.2rem", fontWeight: "900", color: "#ffffff", margin: "0 0 0.6rem 0" }}>
+        <h3 style={{ fontSize: "1.6rem", fontWeight: "800", color: "#ffffff", margin: "0 0 0.4rem 0" }}>
           {intern.title}
         </h3>
 
-        <p style={{ fontSize: "1.4rem", color: intern.color, fontWeight: "700", margin: "0 0 1.8rem 0" }}>
+        <p style={{ fontSize: "1.05rem", color: intern.color, fontWeight: "700", margin: "0 0 1rem 0" }}>
           {intern.duration}
         </p>
 
-        <p style={{ fontSize: "1.22rem", color: "#c0e8ff", lineHeight: "1.8", marginBottom: "2rem" }}>
+        <p style={{ fontSize: "0.98rem", color: "#c0e8ff", lineHeight: "1.6", marginBottom: "1.2rem" }}>
           {intern.desc}
         </p>
 
         {/* Impact */}
         <div style={{
           display: "inline-block",
-          padding: "0.9rem 2.4rem",
-          background: "rgba(100, 220, 255, 0.2)",
-          border: `2px solid ${intern.color}`,
-          borderRadius: "50px",
+          padding: "0.55rem 1.6rem",
+          background: "rgba(100, 220, 255, 0.16)",
+          border: `1.6px solid ${intern.color}`,
+          borderRadius: "28px",
           color: intern.color,
-          fontSize: "1.15rem",
-          fontWeight: "800",
-          margin: "0 0 2.5rem 0",
-          boxShadow: `0 0 50px ${intern.color}60`,
+          fontSize: "0.98rem",
+          fontWeight: "700",
+          margin: "0 0 1.4rem 0",
+          boxShadow: `0 0 30px ${intern.color}40`,
         }}>
           {intern.impact}
         </div>
 
         {/* Tech Tags */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginBottom: "2rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginBottom: "1.2rem" }}>
           {intern.tech.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               style={{
-                padding: "0.7rem 1.5rem",
-                background: "rgba(100, 220, 255, 0.12)",
+                padding: "0.45rem 0.95rem",
+                background: "rgba(100, 220, 255, 0.10)",
                 color: "#88d8ff",
-                borderRadius: "20px",
-                fontSize: "0.98rem",
+                borderRadius: "14px",
+                fontSize: "0.88rem",
                 fontWeight: "600",
-                border: "1.5px solid rgba(100, 220, 255, 0.4)",
+                border: "1px solid rgba(100, 220, 255, 0.32)",
               }}
             >
               {tag}
@@ -3689,17 +3940,18 @@ const Home = () => {
             href={intern.certLink}
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.07 }}
+            whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.95 }}
             style={{
-              padding: "1rem 3rem",
+              padding: "0.8rem 2rem",
               background: intern.color,
               color: "#000",
-              borderRadius: "50px",
-              fontSize: "1.15rem",
-              fontWeight: "900",
+              borderRadius: "40px",
+              fontSize: "0.95rem",
+              fontWeight: "800",
               textDecoration: "none",
-              boxShadow: `0 15px 50px ${intern.color}80`,
+              boxShadow: `0 10px 30px ${intern.color}60`,
+              display: "inline-block",
             }}
           >
             View Certificate
@@ -3707,7 +3959,7 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "6px", background: `linear-gradient(90deg, transparent, ${intern.color}, transparent)`, filter: `drop-shadow(0 0 40px ${intern.color})` }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "5px", background: `linear-gradient(90deg, transparent, ${intern.color}, transparent)`, filter: `drop-shadow(0 0 24px ${intern.color})` }} />
       </motion.div>
     ))}
 
@@ -3799,6 +4051,7 @@ const Home = () => {
     </motion.div>
   </motion.div>
 </Section>
+
       <Section id="certifications" ref={certificationsRef}>
   {/* Futuristic Title */}
   <SectionTitle
@@ -3845,118 +4098,133 @@ const Home = () => {
   >
     {[
       {
-  title: "AWS Certified Solutions Architect – Associate",
-  platform: "Amazon Web Services",
-  year: "2024",
-  type: "Cloud Certification",
-  link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view"
-},
-{
-  title: "AWS Certified Cloud Practitioner",
-  platform: "Amazon Web Services",
-  year: "2024",
-  type: "Cloud Certification",
-  link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view"
-},
-{
-  title: "IBM Full Stack Software Developer",
-  platform: "IBM",
-  year: "2024",
-  type: "Full Stack Development",
-  link: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing"
-},
-{
-  title: "Machine Learning with Python",
-  platform: "Stanford Online • Coursera",
-  year: "2024",
-  type: "Machine Learning",
-  link: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view"
-},
-{
-  title: "Large Language Models",
-  platform: "DeepLearning.AI",
-  year: "2025",
-  type: "AI / LLMs",
-  link: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing"
-},
-{
-  title: "React.js Professional",
-  platform: "Meta • Coursera",
-  year: "2024",
-  type: "Frontend Development",
-  link: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link"
-},
-{
-  title: "Python Mastery",
-  platform: "Udemy",
-  year: "2024",
-  type: "Programming",
-  link: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link"
-},
-{
-  title: "JavaScript ES6+ Mastery",
-  platform: "Udemy",
-  year: "2024",
-  type: "Programming",
-  link: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link"
-},
-{
-  title: "MLOps & Deployment",
-  platform: "DeepLearning.AI • Coursera",
-  year: "2025",
-  type: "MLOps / Deployment",
-  link: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link"
-},
-{
-  title: "CI/CD & DevOps",
-  platform: "Udemy",
-  year: "2024",
-  type: "DevOps",
-  link: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing"
-},
-{
-  title: "ServiceNow Certified Application Developer",
-  platform: "ServiceNow",
-  year: "2024",
-  type: "Enterprise Software",
-  link: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view"
-},
-{
-  title: "Django & DRF Professional",
-  platform: "Udemy",
-  year: "2024",
-  type: "Backend Development",
-  link: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view"
-},
-{
-  title: "Java Masterclass",
-  platform: "Udemy",
-  year: "2023",
-  type: "Programming",
-  link: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link"
-},
-{
-  title: "Advanced Python",
-  platform: "Udemy",
-  year: "2024",
-  type: "Programming",
-  link: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link"
-},
-{
-  title: "HTML5 Mastery",
-  platform: "Udemy",
-  year: "2023",
-  type: "Frontend Development",
-  link: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link"
-},
-{
-  title: "Advanced CSS & Animations",
-  platform: "Udemy",
-  year: "2024",
-  type: "Frontend Development",
-  link: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link"
-}
-
+        title: "AWS Certified Solutions Architect – Associate",
+        platform: "Amazon Web Services",
+        year: "2024",
+        type: "Cloud Certification",
+        link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
+        desc: "Validated design and deployment of highly available, fault-tolerant systems on AWS — hands-on with EC2, S3, VPC, IAM and CloudFormation."
+      },
+      {
+        title: "AWS Certified Cloud Practitioner",
+        platform: "Amazon Web Services",
+        year: "2024",
+        type: "Cloud Certification",
+        link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
+        desc: "Core AWS fundamentals including global infrastructure, billing, security basics, and well-architected principles — ideal for cloud-first engineering."
+      },
+      {
+        title: "IBM Full Stack Software Developer",
+        platform: "IBM",
+        year: "2024",
+        type: "Full Stack Development",
+        link: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing",
+        desc: "End-to-end web application development: React frontends, Node/Express backends, and CI/CD workflows with emphasis on maintainability and testing."
+      },
+      {
+        title: "Machine Learning with Python",
+        platform: "Stanford Online • Coursera",
+        year: "2024",
+        type: "Machine Learning",
+        link: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view",
+        desc: "Supervised/unsupervised learning foundations, model evaluation, and practical Python implementations using scikit-learn and Pandas."
+      },
+      {
+        title: "Large Language Models",
+        platform: "DeepLearning.AI",
+        year: "2025",
+        type: "AI / LLMs",
+        link: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing",
+        desc: "Hands-on training with transformer architectures, prompt engineering, fine-tuning, and deployment best practices for production LLMs."
+      },
+      {
+        title: "React.js Professional",
+        platform: "Meta • Coursera",
+        year: "2024",
+        type: "Frontend Development",
+        link: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link",
+        desc: "Component-driven development, hooks, performance optimization, and building accessible, responsive user interfaces with React."
+      },
+      {
+        title: "Python Mastery",
+        platform: "Udemy",
+        year: "2024",
+        type: "Programming",
+        link: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link",
+        desc: "Advanced Python concepts including OOP, modules, generators, decorators and writing production-ready Python code."
+      },
+      {
+        title: "JavaScript ES6+ Mastery",
+        platform: "Udemy",
+        year: "2024",
+        type: "Programming",
+        link: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link",
+        desc: "Modern JavaScript (ES6+) patterns, asynchronous programming, module systems, and best practices for building modern web apps."
+      },
+      {
+        title: "MLOps & Deployment",
+        platform: "DeepLearning.AI • Coursera",
+        year: "2025",
+        type: "MLOps / Deployment",
+        link: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link",
+        desc: "CI/CD for ML, model versioning, containerization, monitoring and serving models reliably in production environments."
+      },
+      {
+        title: "CI/CD & DevOps",
+        platform: "Udemy",
+        year: "2024",
+        type: "DevOps",
+        link: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing",
+        desc: "Practical CI/CD pipelines, automated testing, container orchestration and deployment using modern DevOps tooling."
+      },
+      {
+        title: "ServiceNow Certified Application Developer",
+        platform: "ServiceNow",
+        year: "2024",
+        type: "Enterprise Software",
+        link: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view",
+        desc: "Platform development for enterprise workflows, building scoped apps, scripting server/client logic and admin configuration."
+      },
+      {
+        title: "Django & DRF Professional",
+        platform: "Udemy",
+        year: "2024",
+        type: "Backend Development",
+        link: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view",
+        desc: "Robust backend APIs with Django and Django REST Framework, authentication, serialization and deployment-ready service design."
+      },
+      {
+        title: "Java Masterclass",
+        platform: "Udemy",
+        year: "2023",
+        type: "Programming",
+        link: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link",
+        desc: "Core Java principles, OOP design patterns, and building stable server-side components using Java."
+      },
+      {
+        title: "Advanced Python",
+        platform: "Udemy",
+        year: "2024",
+        type: "Programming",
+        link: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link",
+        desc: "Deep-dive into advanced libraries, performance tuning, concurrency, and testing for production Python applications."
+      },
+      {
+        title: "HTML5 Mastery",
+        platform: "Udemy",
+        year: "2023",
+        type: "Frontend Development",
+        link: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link",
+        desc: "Solid HTML5 semantics, accessibility, and modern layout techniques to build resilient responsive interfaces."
+      },
+      {
+        title: "Advanced CSS & Animations",
+        platform: "Udemy",
+        year: "2024",
+        type: "Frontend Development",
+        link: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link",
+        desc: "Complex layouts, CSS animations, transitions, and visual polish to create engaging, high-performance UIs."
+      }
     ].map((cert, i) => (
       <motion.a
         key={i}
@@ -4015,18 +4283,30 @@ const Home = () => {
           color: "#ffffff",
           fontSize: "1.7rem",
           fontWeight: "900",
-          margin: "0 0 1.5rem 0",
+          margin: "0 0 0.9rem 0",
           lineHeight: "1.3",
           textShadow: "0 0 30px rgba(255, 255, 255, 0.6)",
         }}>
           {cert.title}
         </h3>
 
+        {/* Short descriptive matter added */}
+        <p style={{
+          color: "#c8fbff",
+          fontSize: "0.98rem",
+          lineHeight: "1.5",
+          margin: "0 0 1.1rem 0",
+          fontWeight: 500,
+        }}>
+          {cert.desc}
+        </p>
+
         {/* Year + Clean Arrow */}
         <div style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          marginTop: "auto",
         }}>
           <span style={{
             color: "#66ffff",
@@ -4057,7 +4337,8 @@ const Home = () => {
     ))}
   </motion.div>
 </Section>
-      <Section id="workshops" ref={workshopsRef}>
+
+<Section id="workshops" ref={workshopsRef}>
   {/* Epic Title */}
   <SectionTitle
     initial="hidden"
@@ -4074,77 +4355,78 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-   Workshops, Bootcamps & Professional Training
+    Workshops, Bootcamps & Professional Training
   </SectionTitle>
 
-  <p style={{
-    color: "#a0d8f0",
-    fontSize: "1.5rem",
-    textAlign: "center",
-    margin: "0 auto 6rem",
-    maxWidth: "900px",
-    lineHeight: "1.8",
-    fontWeight: "500",
-    textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
-  }}>
+  <p
+    style={{
+      color: "#a0d8f0",
+      fontSize: "1.5rem",
+      textAlign: "center",
+      margin: "0 auto 6rem",
+      maxWidth: "900px",
+      lineHeight: "1.8",
+      fontWeight: "500",
+      textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
+    }}
+  >
     Committed to continuous learning with advanced training in emerging and industry-leading technologies.
   </p>
 
-  {/* 2–3 CARDS PER ROW — EXACT SAME STYLE AS HACKATHONS */}
+  {/* 2 CARDS PER ROW */}
   <motion.div
     style={{
       maxWidth: "1480px",
       margin: "0 auto",
       padding: "0 2rem",
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))",
+      gridTemplateColumns: "repeat(2, minmax(420px, 1fr))",
       gap: "4rem",
     }}
   >
     {[
       {
-  title: "Machine Learning with Python – 7-Day Intensive Workshop",
-  desc: "Hands-on training focused on data preprocessing, model development, evaluation techniques, and integration with MERN-based dashboards.",
-  tags: ["Python", "Scikit-learn", "Pandas", "MERN Dashboard", "Feature Engineering"],
-  year: "2024",
-  impact: "Built multiple end-to-end ML models during the program",
-},
-{
-  title: "Deep Learning with TensorFlow – 7-Day Advanced Workshop",
-  desc: "Practical exposure to neural networks, CNN architectures, and real-time inference using TensorFlow with interactive frontend integration.",
-  tags: ["TensorFlow", "Keras", "CNN", "Deep Learning", "Computer Vision"],
-  year: "2025",
-  impact: "Achieved high-accuracy live inference models as part of training",
-},
-{
-  title: "Full-Stack Web Development – 7-Day Bootcamp",
-  desc: "Comprehensive MERN stack training covering React, Node.js, Express, MongoDB, authentication systems, and cloud deployment workflows.",
-  tags: ["MERN", "React.js", "Node.js", "MongoDB", "JWT Auth"],
-  year: "2022",
-  impact: "Deployed multiple full-stack applications",
-},
-{
-  title: "Artificial Intelligence & Data Science – 7-Day Workshop",
-  desc: "Focused on building end-to-end AI/ML pipelines with data analysis, applied machine learning, and visualization dashboards.",
-  tags: ["AI", "Data Science", "ML Pipelines", "Visualization"],
-  year: "2022",
-  impact: "Led team-based AI project as part of the workshop",
-},
-{
-  title: "Mobile App Development – 7-Day Workshop",
-  desc: "Developed cross-platform mobile applications using React Native with secure MERN backend connectivity.",
-  tags: ["React Native", "Mobile Dev", "MERN API", "Expo"],
-  year: "2023",
-  impact: "Built and shipped functional mobile app prototypes",
-},
-{
-  title: "Web Development Foundation – 7-Day Workshop",
-  desc: "Structured training in core web technologies including HTML, CSS, and JavaScript, forming the basis for advanced frontend development.",
-  tags: ["HTML", "CSS", "JavaScript", "Frontend Architecture"],
-  year: "2022",
-  impact: "Established strong fundamentals for future full-stack projects",
-},
-
+        title: "Machine Learning with Python – 7-Day Intensive Workshop",
+        desc: "Hands-on training focused on data preprocessing, model development, evaluation techniques, and integration with MERN-based dashboards.",
+        tags: ["Python", "Scikit-learn", "Pandas", "MERN Dashboard", "Feature Engineering"],
+        year: "2024",
+        impact: "Built multiple end-to-end ML models during the program",
+      },
+      {
+        title: "Deep Learning with TensorFlow – 7-Day Advanced Workshop",
+        desc: "Practical exposure to neural networks, CNN architectures, and real-time inference using TensorFlow with interactive frontend integration.",
+        tags: ["TensorFlow", "Keras", "CNN", "Deep Learning", "Computer Vision"],
+        year: "2025",
+        impact: "Achieved high-accuracy live inference models as part of training",
+      },
+      {
+        title: "Full-Stack Web Development – 7-Day Bootcamp",
+        desc: "Comprehensive MERN stack training covering React, Node.js, Express, MongoDB, authentication systems, and cloud deployment workflows.",
+        tags: ["MERN", "React.js", "Node.js", "MongoDB", "JWT Auth"],
+        year: "2022",
+        impact: "Deployed multiple full-stack applications",
+      },
+      {
+        title: "Artificial Intelligence & Data Science – 7-Day Workshop",
+        desc: "Focused on building end-to-end AI/ML pipelines with data analysis, applied machine learning, and visualization dashboards.",
+        tags: ["AI", "Data Science", "ML Pipelines", "Visualization"],
+        year: "2022",
+        impact: "Led team-based AI project as part of the workshop",
+      },
+      {
+        title: "Mobile App Development – 7-Day Workshop",
+        desc: "Developed cross-platform mobile applications using React Native with secure MERN backend connectivity.",
+        tags: ["React Native", "Mobile Dev", "MERN API", "Expo"],
+        year: "2023",
+        impact: "Built and shipped functional mobile app prototypes",
+      },
+      {
+        title: "Web Development Foundation – 7-Day Workshop",
+        desc: "Structured training in core web technologies including HTML, CSS, and JavaScript, forming the basis for advanced frontend development.",
+        tags: ["HTML", "CSS", "JavaScript", "Frontend Architecture"],
+        year: "2022",
+        impact: "Established strong fundamentals for future full-stack projects",
+      },
     ].map((workshop, i) => (
       <motion.div
         key={i}
@@ -4153,113 +4435,128 @@ const Home = () => {
         transition={{ duration: 0.95, delay: i * 0.14, ease: "easeOut" }}
         style={{
           background: "rgba(8, 20, 48, 0.98)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          border: "3px solid #64dcff60",
-          borderRadius: "40px",
-          padding: "3.2rem 2.8rem",
+          backdropFilter: "blur(36px)",
+          WebkitBackdropFilter: "blur(36px)",
+          border: "2px solid #64dcff50",
+          borderRadius: "20px",
+          padding: "2rem 2.2rem",          // INCREASED PADDING
+          minHeight: "260px",              // ⭐ INCREASED CARD HEIGHT
           position: "relative",
           overflow: "hidden",
           boxShadow: `
-            0 35px 100px rgba(0, 0, 0, 0.85),
-            0 0 130px #64dcff50,
-            inset 0 0 90px #64dcff18
+            0 18px 40px rgba(0, 0, 0, 0.75),
+            0 0 70px #64dcff30,
+            inset 0 0 40px #64dcff12
           `,
           transformStyle: "preserve-3d",
         }}
         whileHover={{
-          borderColor: "#64dcff99",
+          borderColor: "#64dcff88",
           boxShadow: `
-            0 40px 120px rgba(0, 0, 0, 0.9),
-            0 0 160px #64dcff80,
-            inset 0 0 110px #64dcff28
+            0 26px 60px rgba(0, 0, 0, 0.85),
+            0 0 100px #64dcff60,
+            inset 0 0 60px #64dcff20
           `,
         }}
       >
         {/* Top Glow Line */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          height: "6px",
-          background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-          filter: "drop-shadow(0 0 40px #64dcff)",
-        }} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "5px",
+            background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
+            filter: "drop-shadow(0 0 24px #64dcff)",
+          }}
+        />
 
         {/* Year Badge */}
-        <div style={{
-          position: "absolute",
-          top: "1.8rem",
-          right: "2rem",
-          background: "rgba(100, 220, 255, 0.15)",
-          color: "#64dcff",
-          padding: "0.7rem 1.6rem",
-          borderRadius: "50px",
-          fontSize: "1.1rem",
-          fontWeight: "800",
-          border: "2px solid #64dcff60",
-          backdropFilter: "blur(10px)",
-        }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "1rem",
+            right: "1rem",
+            background: "rgba(100, 220, 255, 0.14)",
+            color: "#64dcff",
+            padding: "0.45rem 1rem",
+            borderRadius: "36px",
+            fontSize: "0.95rem",
+            fontWeight: "700",
+            border: "1.6px solid #64dcff50",
+            backdropFilter: "blur(8px)",
+          }}
+        >
           {workshop.year}
         </div>
 
         {/* Title */}
-        <h3 style={{
-          fontSize: "2.3rem",
-          fontWeight: "900",
-          color: "#ffffff",
-          margin: "0 0 0.8rem 0",
-          textShadow: "0 0 30px rgba(255,255,255,0.5)",
-        }}>
+        <h3
+          style={{
+            fontSize: "1.6rem",
+            fontWeight: "900",
+            color: "#ffffff",
+            margin: "0 0 0.5rem 0",
+            textShadow: "0 0 18px rgba(255,255,255,0.45)",
+          }}
+        >
           {workshop.title}
         </h3>
 
         {/* Description */}
-        <p style={{
-          fontSize: "1.22rem",
-          color: "#c0e8ff",
-          lineHeight: "1.8",
-          margin: "0 0 2.5rem 0",
-          fontWeight: "500",
-        }}>
+        <p
+          style={{
+            fontSize: "1rem",
+            color: "#c0e8ff",
+            lineHeight: "1.6",
+            margin: "0 0 1.2rem 0",
+            fontWeight: "500",
+          }}
+        >
           {workshop.desc}
         </p>
 
         {/* Impact Badge */}
-        <div style={{
-          display: "inline-block",
-          padding: "1rem 2.6rem",
-          background: "rgba(100, 220, 255, 0.2)",
-          border: "2px solid #64dcff",
-          borderRadius: "50px",
-          color: "#64dcff",
-          fontSize: "1.18rem",
-          fontWeight: "800",
-          margin: "0 0 2.5rem 0",
-          boxShadow: "0 0 50px #64dcff66",
-        }}>
+        <div
+          style={{
+            display: "inline-block",
+            padding: "0.55rem 1.6rem",
+            background: "rgba(100, 220, 255, 0.14)",
+            border: "1.4px solid #64dcff40",
+            borderRadius: "22px",
+            color: "#64dcff",
+            fontSize: "0.95rem",
+            fontWeight: "700",
+            margin: "0 0 1rem 0",
+            boxShadow: "0 0 30px #64dcff40",
+          }}
+        >
           {workshop.impact}
         </div>
 
         {/* Tags */}
-        <div style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "1rem",
-          justifyContent: "center",
-        }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.6rem",
+            justifyContent: "center",
+          }}
+        >
           {workshop.tags.map((tag, idx) => (
             <motion.span
               key={idx}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.06 }}
               style={{
-                padding: "0.7rem 1.6rem",
-                background: "rgba(100, 220, 255, 0.12)",
+                padding: "0.45rem 1rem",
+                background: "rgba(100, 220, 255, 0.10)",
                 color: "#88d8ff",
-                borderRadius: "20px",
-                fontSize: "0.98rem",
+                borderRadius: "14px",
+                fontSize: "0.86rem",
                 fontWeight: "600",
-                border: "1.5px solid rgba(100, 220, 255, 0.4)",
-                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(100, 220, 255, 0.28)",
+                backdropFilter: "blur(6px)",
               }}
             >
               {tag}
@@ -4268,17 +4565,22 @@ const Home = () => {
         </div>
 
         {/* Bottom Glow */}
-        <div style={{
-          position: "absolute",
-          bottom: 0, left: 0, right: 0,
-          height: "6px",
-          background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-          filter: "drop-shadow(0 0 40px #64dcff)",
-        }} />
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "5px",
+            background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
+            filter: "drop-shadow(0 0 24px #64dcff)",
+          }}
+        />
       </motion.div>
     ))}
   </motion.div>
 </Section>
+
       {/* Hackathons & Competitions Section */}
 <Section id="hackathons" ref={hackathonsRef}>
   {/* Epic Title */}
@@ -4573,190 +4875,220 @@ const Home = () => {
     Competitive Programming Profiles
   </SectionTitle>
 
-  <p style={{
-    color: "#a0f0ff",
-    fontSize: "1.5rem",
-    textAlign: "center",
-    margin: "0 auto 5.5rem",
-    maxWidth: "900px",
-    lineHeight: "1.8",
-    fontWeight: "500",
-    textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
-  }}>
+  <p
+    style={{
+      color: "#a0f0ff",
+      fontSize: "1.5rem",
+      textAlign: "center",
+      margin: "0 auto 5.5rem",
+      maxWidth: "900px",
+      lineHeight: "1.8",
+      fontWeight: "500",
+      textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
+    }}
+  >
     Demonstrated proficiency in competitive programming with consistent performance across global coding platforms.
   </p>
 
-  {/* PERFECT 3-CARD GRID */}
-  <motion.div
-    style={{
-      maxWidth: "1480px",
-      margin: "0 auto",
-      padding: "0 2rem",
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
-      gap: "3.5rem",
-    }}
-  >
-    {[
-      {
-  platform: "LeetCode",
-  badge: " Good LeetCode Rank",
-  title: "Global Ranking",
-  stats: "200+ Problems Solved • 100-Day Coding Streak",
-  color: "#FFA116",
-  glow: "#ff8c00",
-  link: "https://leetcode.com/u/AxZsDhEeto/"
-},
-{
-  platform: "HackerRank",
-  badge: "Python & Problem Solving",
-  title: "Gold Badges in Python & Problem Solving",
-  stats: " Global Performance",
-  color: "#00ff9d",
-  glow: "#00ff9d",
-  link: "https://www.hackerrank.com/profile/g_sivasatyasaib1"
-},
-{
-  platform: "CodeChef",
-  badge: "Competitive Programmer",
-  title: "20+ Official Coding Contests",
-  stats: "Consistent • Structured • Optimized Solutions",
-  color: "#ff4757",
-  glow: "#ff6b6b",
-  link: "https://www.codechef.com/users/bhagavan444"
-}
+  {/* background accent container (diagonal subtle stripes for uniqueness) */}
+  <div style={{
+    maxWidth: "1480px",
+    margin: "0 auto",
+    padding: "0 2rem 3.5rem",
+    position: "relative",
+    overflow: "visible",
+  }}>
+    <div style={{
+      pointerEvents: "none",
+      position: "absolute",
+      inset: "-120px -40% auto -40%",
+      height: "260px",
+      transform: "rotate(-6deg)",
+      background: "linear-gradient(90deg, rgba(0,136,255,0.03) 0%, rgba(0,255,255,0.02) 50%, rgba(0,136,255,0.03) 100%)",
+      filter: "blur(36px)",
+      borderRadius: "20px",
+    }} />
 
-    ].map((profile, i) => (
-      <motion.a
-        key={i}
-        href={profile.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        initial={{ opacity: 0, y: 80, rotateX: -20 }}
-        animate={isCodingInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.15, ease: "easeOut" }}
-        style={{
-          textDecoration: "none",
-          background: "rgba(8, 20, 48, 0.98)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          border: `3px solid ${profile.color}60`,
-          borderRadius: "36px",
-          padding: "3rem 2.4rem",
-          position: "relative",
-          overflow: "hidden",
-          boxShadow: `
-            0 30px 90px rgba(0, 0, 0, 0.85),
-            0 0 120px ${profile.glow}50,
-            inset 0 0 80px ${profile.glow}20
-          `,
-          transformStyle: "preserve-3d",
-          cursor: "pointer",
-          display: "block",
-        }}
-        whileHover={{
-          borderColor: profile.color + "99",
-          boxShadow: `
-            0 35px 100px rgba(0, 0, 0, 0.9),
-            0 0 140px ${profile.glow}80,
-            inset 0 0 100px ${profile.glow}30
-          `,
-        }}
-      >
-        {/* Top Glow Line */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          height: "6px",
-          background: `linear-gradient(90deg, transparent, ${profile.color}, transparent)`,
-          filter: `drop-shadow(0 0 40px ${profile.glow})`,
-        }} />
+    {/* PERFECT 3-CARD GRID */}
+    <motion.div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
+        gap: "3.5rem",
+      }}
+    >
+      {[
+        {
+          platform: "LeetCode",
+          badge: "Good Rank",
+          title: "Global Ranking",
+          stats: "200+ Problems Solved • 100-Day Coding Streak",
+          color: "#FFA116",
+          glow: "#ff8c00",
+          link: "https://leetcode.com/u/AxZsDhEeto/",
+          progress: 82
+        },
+        {
+          platform: "HackerRank",
+          badge: "Python & Problem Solving",
+          title: "Gold Badges in Python & Problem Solving",
+          stats: "Global Performance • Practice-focused",
+          color: "#00ff9d",
+          glow: "#00ff9d",
+          link: "https://www.hackerrank.com/profile/g_sivasatyasaib1",
+          progress: 76
+        },
+        {
+          platform: "CodeChef",
+          badge: "Competitive Programmer",
+          title: "20+ Official Coding Contests",
+          stats: "Consistent • Structured • Optimized Solutions",
+          color: "#ff4757",
+          glow: "#ff6b6b",
+          link: "https://www.codechef.com/users/bhagavan444",
+          progress: 70
+        }
+      ].map((profile, i) => (
+        <motion.a
+          key={i}
+          href={profile.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 60, rotateX: -12, scale: 0.98 }}
+          animate={isCodingInView ? { opacity: 1, y: 0, rotateX: 0, scale: 1 } : {}}
+          transition={{ duration: 0.9, delay: i * 0.12, ease: "easeOut" }}
+          whileHover={{ rotateX: 0, rotateY: 4, translateY: -6, boxShadow: `0 36px 120px ${profile.glow}50` }}
+          style={{
+            textDecoration: "none",
+            background: "linear-gradient(180deg, rgba(10,18,36,0.95), rgba(8,16,32,0.95))",
+            border: `2.6px solid ${profile.color}40`,
+            borderRadius: "28px",
+            padding: "2.4rem 2.2rem",
+            position: "relative",
+            overflow: "hidden",
+            boxShadow: `0 20px 80px rgba(0,0,0,0.7), 0 0 90px ${profile.glow}30, inset 0 0 36px ${profile.glow}10`,
+            transformStyle: "preserve-3d",
+            cursor: "pointer",
+            display: "block",
+          }}
+        >
+          {/* subtle SVG corner accent */}
+          <svg width="120" height="120" viewBox="0 0 120 120" style={{ position: "absolute", top: -18, right: -18, opacity: 0.06 }}>
+            <defs>
+              <linearGradient id={`g-${i}`} x1="0" x2="1">
+                <stop offset="0" stopColor={profile.color} stopOpacity="0.6"/>
+                <stop offset="1" stopColor="#ffffff" stopOpacity="0.05"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 60 C20 10, 100 10, 120 60 L120 120 L0 120 Z" fill={`url(#g-${i})`} />
+          </svg>
 
-        {/* Header: Platform + Badge */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-          <h3 style={{
-            fontSize: "2rem",
-            fontWeight: "900",
-            color: "#ffffff",
-            margin: 0,
-            textShadow: "0 0 30px rgba(255,255,255,0.6)",
-          }}>
-            {profile.platform}
-          </h3>
-          <div style={{
-            background: profile.color,
-            color: "#000",
-            padding: "0.7rem 1.6rem",
-            borderRadius: "50px",
-            fontSize: "1.05rem",
-            fontWeight: "900",
-            boxShadow: `0 0 40px ${profile.glow}`,
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-          }}>
-            {profile.badge}
+          {/* Header: Platform + micro-pill */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.6rem" }}>
+            <div>
+              <div style={{ fontSize: "0.95rem", color: "#cfeffd", fontWeight: 900, letterSpacing: "1px" }}>{profile.platform}</div>
+              <div style={{ marginTop: "6px", fontSize: "0.86rem", color: "#98f0ff", fontWeight: 700 }}>{profile.badge}</div>
+            </div>
+
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.6rem",
+              padding: "0.5rem 1rem",
+              borderRadius: 999,
+              background: `linear-gradient(90deg, ${profile.color}22, ${profile.color}08)`,
+              border: `1px solid ${profile.color}30`,
+              fontWeight: 900,
+              color: profile.color,
+              fontSize: "0.98rem",
+            }}>
+              {/* animated dot */}
+              <span style={{
+                width: 10, height: 10, borderRadius: 999,
+                background: profile.color, display: "inline-block",
+                boxShadow: `0 0 10px ${profile.glow}aa`,
+                transformOrigin: "center",
+                animation: "pulse 1.6s infinite ease-in-out"
+              }} />
+              Live
+            </div>
           </div>
-        </div>
 
-        {/* Main Title */}
-        <h4 style={{
-          fontSize: "1.9rem",
-          fontWeight: "900",
-          color: profile.color,
-          margin: "0 0 1rem 0",
-          textAlign: "center",
-          textShadow: `0 0 35px ${profile.glow}`,
-        }}>
-          {profile.title}
-        </h4>
+          {/* Main Title & textured underline */}
+          <h4 style={{
+            fontSize: "1.6rem",
+            fontWeight: "900",
+            color: profile.color,
+            margin: "0 0 0.6rem 0",
+            textAlign: "left",
+            textShadow: `0 0 18px ${profile.glow}22`
+          }}>
+            {profile.title}
+          </h4>
 
-        {/* Stats */}
-        <p style={{
-          color: "#a0f0ff",
-          fontSize: "1.2rem",
-          textAlign: "center",
-          margin: "0 0 3.5rem 0",
-          fontWeight: "600",
-          lineHeight: "1.6",
-        }}>
-          {profile.stats}
-        </p>
+          {/* Stats + micro progress */}
+          <p style={{
+            color: "#a8f4ff",
+            fontSize: "1.02rem",
+            margin: "0 0 1.4rem 0",
+            fontWeight: 600,
+            lineHeight: 1.5
+          }}>{profile.stats}</p>
 
-        {/* Clean "View Profile" Button */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <motion.div
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              padding: "1rem 2.8rem",
-              background: profile.color,
-              color: "#000",
-              borderRadius: "50px",
-              fontWeight: "900",
-              fontSize: "1.15rem",
-              boxShadow: `0 12px 40px ${profile.glow}aa`,
-              letterSpacing: "1px",
-              cursor: "pointer",
-            }}
-          >
-            View Profile →
-          </motion.div>
-        </div>
+          {/* micro progress bar row */}
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.6rem" }}>
+            <div style={{ flex: "1 1 auto", height: 8, background: "rgba(255,255,255,0.04)", borderRadius: 999, overflow: "hidden" }}>
+              <div style={{
+                width: `${profile.progress}%`,
+                height: "100%",
+                borderRadius: 999,
+                background: `linear-gradient(90deg, ${profile.color}, ${profile.glow})`,
+                boxShadow: `0 6px 20px ${profile.glow}40`
+              }} />
+            </div>
+            <div style={{ minWidth: 48, textAlign: "right", fontWeight: 800, color: "#bff8ff" }}>{profile.progress}%</div>
+          </div>
 
-        {/* Bottom Glow */}
-        <div style={{
-          position: "absolute",
-          bottom: 0, left: 0, right: 0,
-          height: "6px",
-          background: `linear-gradient(90deg, transparent, ${profile.color}, transparent)`,
-          filter: `drop-shadow(0 0 40px ${profile.glow})`,
-        }} />
-      </motion.a>
-    ))}
-  </motion.div>
+          {/* call to action (glow pill) */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <motion.div
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                padding: "0.9rem 2.2rem",
+                background: `linear-gradient(90deg, ${profile.color}, ${profile.glow})`,
+                color: "#001",
+                borderRadius: 999,
+                fontWeight: 900,
+                fontSize: "1rem",
+                boxShadow: `0 14px 46px ${profile.glow}55`,
+              }}
+            >
+              View Profile →
+            </motion.div>
+
+            <div style={{ color: "#98f0ff", fontWeight: 700, fontSize: "0.95rem", opacity: 0.95 }}>
+              Verified • Active
+            </div>
+          </div>
+
+          {/* bottom neon glow */}
+          <div style={{
+            position: "absolute",
+            left: 12, right: 12, bottom: 12, height: 6,
+            borderRadius: 8,
+            background: `linear-gradient(90deg, transparent, ${profile.color}, transparent)`,
+            filter: `drop-shadow(0 0 18px ${profile.glow})`,
+            opacity: 0.9
+          }} />
+        </motion.a>
+      ))}
+    </motion.div>
+  </div>
 </Section>
-      <Section id="hobbies" ref={hobbiesRef}>
-  {/* Premium Title */}
+
+{/* --- HOBBIES / PROFESSIONAL INTERESTS (matched & enhanced) --- */}
+<Section id="hobbies" ref={hobbiesRef}>
   <SectionTitle
     initial="hidden"
     animate={isHobbiesInView ? "visible" : "hidden"}
@@ -4788,7 +5120,6 @@ const Home = () => {
     Beyond coding—guided by curiosity, innovation, and lifelong learning.
   </p>
 
-  {/* SAME UI AS CODING PROFILES — PERFECT MATCH */}
   <motion.div
     style={{
       maxWidth: "1480px",
@@ -4801,147 +5132,136 @@ const Home = () => {
   >
     {[
       {
-  title: "Coding Challenges",
-  subtitle: "DSA Enthusiast",
-  stats: "500+ Problems Solved • LeetCode Rank Holder • Consistent Daily Practice",
-  color: "#ff00aa",
-  glow: "#ff00aa",
-  icon: "Code"
-},
-{
-  title: "Tech & Research Reading",
-  subtitle: "Continuous Learner",
-  stats: "AI Papers • Tech Blogs • Industry Trends",
-  color: "#8e44ad",
-  glow: "#9b59b6",
-  icon: "BookOpen"
-}
-,
-{
-  title: "Machine Learning Research",
-  subtitle: "ML Explorer",
-  stats: "Hands-on with ML models • Experimenting with datasets • Applying research insights",
-  color: "#ffd700",
-  glow: "#ffdd00",
-  icon: "BarChart"
-}
-
-
+        title: "Coding Challenges",
+        subtitle: "DSA Enthusiast",
+        stats: "500+ Problems Solved • LeetCode Rank Holder • Consistent Daily Practice",
+        color: "#ff00aa",
+        glow: "#ff00aa",
+        icon: (
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M8 7L16 12L8 17V7Z" fill="#ff00aa"/>
+          </svg>
+        )
+      },
+      {
+        title: "Tech & Research Reading",
+        subtitle: "Continuous Learner",
+        stats: "AI Papers • Tech Blogs • Industry Trends — Weekly synthesis notes",
+        color: "#8e44ad",
+        glow: "#9b59b6",
+        icon: (
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M3 6H21V8H3V6Z" fill="#9b59b6"/>
+            <path d="M3 10H21V12H3V10Z" fill="#9b59b6" opacity="0.85"/>
+            <path d="M3 14H21V16H3V14Z" fill="#9b59b6" opacity="0.65"/>
+          </svg>
+        )
+      },
+      {
+        title: "Machine Learning Research",
+        subtitle: "ML Explorer",
+        stats: "Experimenting with models, reproducible notebooks, and small research prototypes",
+        color: "#ffd700",
+        glow: "#ffdd00",
+        icon: (
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <circle cx="12" cy="12" r="8" fill="#ffd700"/>
+            <path d="M12 8V12L14.5 14" stroke="#111" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        )
+      }
     ].map((hobby, i) => (
       <motion.div
         key={i}
-        initial={{ opacity: 0, y: 80, rotateX: -20 }}
+        initial={{ opacity: 0, y: 60, rotateX: -12 }}
         animate={isHobbiesInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.15, ease: "easeOut" }}
+        transition={{ duration: 0.85, delay: i * 0.12 }}
+        whileHover={{ translateY: -8, scale: 1.01 }}
         style={{
-          background: "rgba(8, 20, 48, 0.98)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          border: `3px solid ${hobby.color}60`,
-          borderRadius: "36px",
-          padding: "3rem 2.4rem",
+          background: "linear-gradient(180deg, rgba(10,20,36,0.96), rgba(6,14,28,0.96))",
+          border: `2.4px solid ${hobby.color}40`,
+          borderRadius: "28px",
+          padding: "2.4rem 2rem",
           position: "relative",
+          boxShadow: `0 22px 80px rgba(0,0,0,0.7), 0 0 90px ${hobby.glow}30`,
           overflow: "hidden",
-          boxShadow: `
-            0 30px 90px rgba(0, 0, 0, 0.85),
-            0 0 120px ${hobby.glow}50,
-            inset 0 0 80px ${hobby.glow}20
-          `,
-          transformStyle: "preserve-3d",
-        }}
-        whileHover={{
-          borderColor: hobby.color + "99",
-          boxShadow: `
-            0 35px 100px rgba(0, 0, 0, 0.9),
-            0 0 140px ${hobby.glow}80,
-            inset 0 0 100px ${hobby.glow}30
-          `,
         }}
       >
-        {/* Top Glow Line */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          height: "6px",
-          background: `linear-gradient(90deg, transparent, ${hobby.color}, transparent)`,
-          filter: `drop-shadow(0 0 40px ${hobby.glow})`,
-        }} />
-
-        {/* Header: Title + Badge */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-          <h3 style={{
-            fontSize: "2rem",
-            fontWeight: "900",
-            color: "#ffffff",
-            margin: 0,
-            textShadow: "0 0 30px rgba(255,255,255,0.6)",
-          }}>
-            {hobby.title}
-          </h3>
-          <div style={{
-            background: hobby.color,
-            color: "#000",
-            padding: "0.7rem 1.6rem",
-            borderRadius: "50px",
-            fontSize: "1.05rem",
-            fontWeight: "900",
-            boxShadow: `0 0 40px ${hobby.glow}`,
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-          }}>
-            {hobby.subtitle}
+        {/* header row */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.2rem" }}>
+          <div>
+            <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "#eafcff" }}>{hobby.title}</div>
+            <div style={{ fontSize: "0.92rem", color: "#bfeaff", fontWeight: 700, marginTop: 6 }}>{hobby.subtitle}</div>
           </div>
-        </div>
 
-        {/* Main Highlight */}
-        <h4 style={{
-          fontSize: "1.9rem",
-          fontWeight: "900",
-          color: hobby.color,
-          margin: "0 0 1rem 0",
-          textAlign: "center",
-          textShadow: `0 0 35px ${hobby.glow}`,
-        }}>
-          {hobby.stats.split(" • ")[0]}
-        </h4>
-
-        {/* Supporting Stats */}
-        <p style={{
-          color: "#a0f0ff",
-          fontSize: "1.2rem",
-          textAlign: "center",
-          margin: "0 0 3.5rem 0",
-          fontWeight: "600",
-          lineHeight: "1.6",
-        }}>
-          {hobby.stats.includes("•") ? hobby.stats.split(" • ").slice(1).join(" • ") : hobby.stats}
-        </p>
-
-        {/* Icon */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
+          {/* icon badge */}
           <div style={{
-            fontSize: "3.4rem",
-            color: hobby.color,
-            filter: `drop-shadow(0 0 30px ${hobby.glow})`,
+            width: 64, height: 64, borderRadius: 14,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: `linear-gradient(180deg, ${hobby.color}22, ${hobby.color}08)`,
+            border: `1px solid ${hobby.color}30`,
+            boxShadow: `0 10px 36px ${hobby.glow}33`
           }}>
             {hobby.icon}
           </div>
         </div>
 
-        {/* Bottom Glow */}
+        {/* highlight */}
+        <div style={{ fontSize: "1.6rem", fontWeight: 900, color: hobby.color, marginBottom: 8 }}>{hobby.stats.split(" • ")[0]}</div>
+        <p style={{ color: "#a8f4ff", fontSize: "1rem", margin: "0 0 1.6rem 0", fontWeight: 600 }}>
+          {hobby.stats.includes("•") ? hobby.stats.split("•").slice(1).join(" • ").trim() : hobby.stats}
+        </p>
+
+        {/* micro action row */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            style={{
+              padding: "0.8rem 1.8rem",
+              borderRadius: 999,
+              background: `linear-gradient(90deg, ${hobby.color}, ${hobby.glow})`,
+              boxShadow: `0 12px 36px ${hobby.glow}55`,
+              color: "#001",
+              fontWeight: 900,
+            }}
+          >
+            Explore →
+          </motion.div>
+
+          <div style={{ color: "#98f0ff", fontWeight: 800, fontSize: "0.95rem" }}>
+            Active • Curious
+          </div>
+        </div>
+
+        {/* neon bottom stroke */}
         <div style={{
           position: "absolute",
-          bottom: 0, left: 0, right: 0,
-          height: "6px",
+          left: 12, right: 12, bottom: 12, height: 6,
+          borderRadius: 8,
           background: `linear-gradient(90deg, transparent, ${hobby.color}, transparent)`,
-          filter: `drop-shadow(0 0 40px ${hobby.glow})`,
+          filter: `drop-shadow(0 0 20px ${hobby.glow})`,
+          opacity: 0.95
         }} />
       </motion.div>
     ))}
   </motion.div>
 </Section>
+
+{/* small keyframe for pulse (put this in your global CSS or style tag) */}
+<style>
+{`
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.18); opacity: 0.75; }
+  100% { transform: scale(1); opacity: 1; }
+}
+`}
+</style>
+
      <Section id="extracurricular" ref={extracurricularRef}>
   {/* Premium Title */}
+  <Section id="extracurricular" ref={extracurricularRef}>
+  {/* Title */}
   <SectionTitle
     initial="hidden"
     animate={isExtracurricularInView ? "visible" : "hidden"}
@@ -4951,169 +5271,249 @@ const Home = () => {
       fontWeight: "900",
       background: "linear-gradient(90deg, #00ffff, #00d0ff, #0088ff)",
       WebkitBackgroundClip: "text",
-      backgroundClip: "text",
       WebkitTextFillColor: "transparent",
-      textShadow: "0 0 80px rgba(0, 255, 255, 0.6)",
+      textShadow: "0 0 80px rgba(0,255,255,0.6)",
       letterSpacing: "8px",
+      textAlign: "center",
     }}
   >
-   Outside of Coding Activities
+    Outside of Coding Activities
   </SectionTitle>
 
-  <p style={{
-    color: "#a0f0ff",
-    fontSize: "1.5rem",
-    textAlign: "center",
-    margin: "0 auto 5.5rem",
-    maxWidth: "900px",
-    lineHeight: "1.8",
-    fontWeight: "500",
-    textShadow: "0 0 16px rgba(0, 255, 255, 0.3)",
-  }}>
+  <p
+    style={{
+      color: "#a0f0ff",
+      fontSize: "1.5rem",
+      textAlign: "center",
+      margin: "0 auto 5.5rem",
+      maxWidth: "900px",
+      lineHeight: "1.8",
+      fontWeight: "500",
+      textShadow: "0 0 16px rgba(0,255,255,0.3)",
+    }}
+  >
     Leadership, mentorship, and continuous growth — the core of my work philosophy.
   </p>
 
-  {/* EXACT SAME UI AS CODING PROFILES — PERFECT CONSISTENCY */}
-  <motion.div
+  {/* DIAGONAL ACCENT + PREMIUM GRID */}
+  <div
     style={{
       maxWidth: "1480px",
       margin: "0 auto",
-      padding: "0 2rem",
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(480px, 1fr))",
-      gap: "3.5rem",
+      padding: "0 2rem 3rem",
+      position: "relative",
     }}
   >
-    {[
-      {
-  title: "Technical Workshops",
-  subtitle: "Tech Facilitator",
-  stats: "Trained 100+ Students • Led 5+ Hands-On Workshops",
-  color: "#ff00ff",
-  glow: "#ff00ff",
-  icon: "Users"
-},
-{
-  title: "Elite Certifications",
-  subtitle: "Certified Specialist",
-  stats: "8+ Advanced Certifications • AI • Cloud • DevOps • Full-Stack",
-  color: "#00ff88",
-  glow: "#00ff88",
-  icon: "Award"
-}
+    {/* Diagonal Glow Background */}
+    <div
+      style={{
+        position: "absolute",
+        inset: "-120px -40% auto -40%",
+        height: "260px",
+        background:
+          "linear-gradient(90deg, rgba(0,255,255,0.06), rgba(0,136,255,0.04))",
+        transform: "rotate(-6deg)",
+        filter: "blur(36px)",
+        borderRadius: "20px",
+        pointerEvents: "none",
+      }}
+    />
 
-    ].map((activity, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, y: 80, rotateX: -20 }}
-        animate={isExtracurricularInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-        transition={{ duration: 0.9, delay: i * 0.15, ease: "easeOut" }}
-        style={{
-          background: "rgba(8, 20, 48, 0.98)",
-          backdropFilter: "blur(40px)",
-          WebkitBackdropFilter: "blur(40px)",
-          border: `3px solid ${activity.color}60`,
-          borderRadius: "36px",
-          padding: "3rem 2.8rem",
-          position: "relative",
-          overflow: "hidden",
-          boxShadow: `
-            0 30px 90px rgba(0, 0, 0, 0.85),
-            0 0 120px ${activity.glow}50,
-            inset 0 0 80px ${activity.glow}20
-          `,
-          transformStyle: "preserve-3d",
-        }}
-        whileHover={{
-          borderColor: activity.color + "99",
-          boxShadow: `
-            0 35px 100px rgba(0, 0, 0, 0.9),
-            0 0 140px ${activity.glow}80,
-            inset 0 0 100px ${activity.glow}30
-          `,
-        }}
-      >
-        {/* Top Glow Line */}
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0,
-          height: "6px",
-          background: `linear-gradient(90deg, transparent, ${activity.color}, transparent)`,
-          filter: `drop-shadow(0 0 40px ${activity.glow})`,
-        }} />
+    {/* PREMIUM TILE GRID */}
+    <motion.div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(420px, 1fr))",
+        gap: "3.5rem",
+      }}
+    >
+      {[
+        {
+          title: "Technical Workshops",
+          subtitle: "Tech Facilitator",
+          stats: "Trained 100+ Students • Led 5+ Hands-On Workshops",
+          color: "#ff00ff",
+          glow: "#ff00ff",
+          icon: (
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="7" r="3" fill="#ff00ff" />
+              <path
+                d="M16 11C16 12.7 14.7 14 13 14H11C9.3 14 8 12.7 8 11"
+                stroke="#ff00ff"
+                strokeWidth="1.8"
+              />
+              <path
+                d="M4 20C4.5 16 7 14 12 14C17 14 19.5 16 20 20"
+                stroke="#ff00ff"
+                strokeWidth="1.8"
+              />
+            </svg>
+          ),
+        },
+        {
+          title: "Elite Certifications",
+          subtitle: "Certified Specialist",
+          stats: "8+ Advanced Certifications • AI • Cloud • DevOps • Full-Stack",
+          color: "#00ff88",
+          glow: "#00ff88",
+          icon: (
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2L14 8H20L15 12L17 18L12 14L7 18L9 12L4 8H10L12 2Z"
+                fill="#00ff88"
+              />
+            </svg>
+          ),
+        },
+      ].map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 80, rotateX: -16 }}
+          animate={
+            isExtracurricularInView
+              ? { opacity: 1, y: 0, rotateX: 0 }
+              : {}
+          }
+          transition={{ duration: 0.95, delay: i * 0.15 }}
+          whileHover={{ translateY: -10, rotateY: 4 }}
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(10,20,36,0.96), rgba(6,14,28,0.96))",
+            border: `2.6px solid ${item.color}50`,
+            borderRadius: "28px",
+            padding: "3.2rem 2.6rem",
+            position: "relative",
+            overflow: "hidden",
+            boxShadow: `
+              0 25px 90px rgba(0,0,0,0.85),
+              0 0 120px ${item.glow}40,
+              inset 0 0 70px ${item.glow}18
+            `,
+          }}
+        >
+          {/* CORNER SVG GLOW */}
+          <svg
+            width="160"
+            height="160"
+            viewBox="0 0 120 120"
+            style={{
+              position: "absolute",
+              top: -22,
+              right: -22,
+              opacity: 0.1,
+            }}
+          >
+            <defs>
+              <linearGradient id={`grad-${i}`} x1="0" x2="1">
+                <stop offset="0" stopColor={item.color} stopOpacity="0.7" />
+                <stop offset="1" stopColor="#fff" stopOpacity="0.06" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 60 C20 10, 100 10, 120 60 L120 120 L0 120 Z"
+              fill={`url(#grad-${i})`}
+            />
+          </svg>
 
-        {/* Header: Title + Badge */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-          <h3 style={{
-            fontSize: "2.1rem",
-            fontWeight: "900",
-            color: "#ffffff",
-            margin: 0,
-            textShadow: "0 0 30px rgba(255,255,255,0.6)",
-          }}>
-            {activity.title}
-          </h3>
-          <div style={{
-            background: activity.color,
-            color: "#000",
-            padding: "0.8rem 1.8rem",
-            borderRadius: "50px",
-            fontSize: "1.1rem",
-            fontWeight: "900",
-            boxShadow: `0 0 45px ${activity.glow}`,
-            textTransform: "uppercase",
-            letterSpacing: "1.2px",
-          }}>
-            {activity.subtitle}
+          {/* HEADER */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "2.2rem",
+              alignItems: "center",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "2rem",
+                color: "#fff",
+                fontWeight: "900",
+                margin: 0,
+                textShadow: "0 0 30px rgba(255,255,255,0.6)",
+              }}
+            >
+              {item.title}
+            </h3>
+
+            <div
+              style={{
+                background: item.color,
+                color: "#000",
+                padding: "0.7rem 1.7rem",
+                fontWeight: "900",
+                fontSize: "1rem",
+                borderRadius: "999px",
+                boxShadow: `0 0 45px ${item.glow}`,
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+              }}
+            >
+              {item.subtitle}
+            </div>
           </div>
-        </div>
 
-        {/* Main Highlight */}
-        <h4 style={{
-          fontSize: "1.9rem",
-          fontWeight: "900",
-          color: activity.color,
-          margin: "0 0 1rem 0",
-          textAlign: "center",
-          textShadow: `0 0 35px ${activity.glow}`,
-        }}>
-          {activity.stats.split(" • ")[0]}
-        </h4>
+          {/* MAIN HIGHLIGHT */}
+          <h4
+            style={{
+              textAlign: "center",
+              color: item.color,
+              fontSize: "1.85rem",
+              fontWeight: "900",
+              marginBottom: "1rem",
+              textShadow: `0 0 35px ${item.glow}`,
+            }}
+          >
+            {item.stats.split(" • ")[0]}
+          </h4>
 
-        {/* Supporting Stats */}
-        <p style={{
-          color: "#a0f0ff",
-          fontSize: "1.25rem",
-          textAlign: "center",
-          margin: "0 0 3.5rem 0",
-          fontWeight: "600",
-          lineHeight: "1.6",
-        }}>
-          {activity.stats.split(" • ").slice(1).join(" • ")}
-        </p>
+          {/* SUPPORTING INFO */}
+          <p
+            style={{
+              color: "#a0f8ff",
+              textAlign: "center",
+              fontSize: "1.2rem",
+              fontWeight: "600",
+              lineHeight: "1.6",
+              marginBottom: "3rem",
+            }}
+          >
+            {item.stats.split(" • ").slice(1).join(" • ")}
+          </p>
 
-        {/* Icon */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{
-            fontSize: "3.6rem",
-            color: activity.color,
-            filter: `drop-shadow(0 0 32px ${activity.glow})`,
-          }}>
-            {activity.icon}
+          {/* ICON BOX */}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              style={{
+                padding: "1.1rem",
+                borderRadius: "18px",
+                background: `${item.color}20`,
+                border: `1.4px solid ${item.color}60`,
+                boxShadow: `0 0 40px ${item.glow}60`,
+              }}
+            >
+              {item.icon}
+            </div>
           </div>
-        </div>
 
-        {/* Bottom Glow */}
-        <div style={{
-          position: "absolute",
-          bottom: 0, left: 0, right: 0,
-          height: "6px",
-          background: `linear-gradient(90deg, transparent, ${activity.color}, transparent)`,
-          filter: `drop-shadow(0 0 40px ${activity.glow})`,
-        }} />
-      </motion.div>
-    ))}
-  </motion.div>
+          {/* NEON BOTTOM LINE */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 10,
+              left: 14,
+              right: 14,
+              height: "6px",
+              background: `linear-gradient(90deg, transparent, ${item.color}, transparent)`,
+              filter: `drop-shadow(0 0 35px ${item.glow})`,
+              borderRadius: "6px",
+            }}
+          />
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</Section>
 </Section>
       <Section id="contact" ref={contactRef}>
   {/* Premium Title */}
@@ -5348,27 +5748,30 @@ const Home = () => {
       letterSpacing: "8px",
     }}
   >
-   My Resume
+    My Resume
   </SectionTitle>
 
-  <p style={{
-    color: "#a0d8f0",
-    fontSize: "1.5rem",
-    textAlign: "center",
-    margin: "0 auto 5.5rem",
-    maxWidth: "900px",
-    lineHeight: "1.8",
-    fontWeight: "500",
-    textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
-  }}>
+  <p
+    style={{
+      color: "#a0d8f0",
+      fontSize: "1.5rem",
+      textAlign: "center",
+      margin: "0 auto 5.5rem",
+      maxWidth: "900px",
+      lineHeight: "1.8",
+      fontWeight: "500",
+      textShadow: "0 0 16px rgba(100, 220, 255, 0.3)",
+    }}
+  >
     Full-Stack Developer • AI/ML Engineer • Cloud Engineer
-Designing and delivering scalable, high-performance software solutions.
+    <br />
+    Designing and delivering scalable, high-performance software solutions.
   </p>
 
-  {/* SINGLE DOMINANT, ULTRA-CLEAN CARD — SAME DESIGN LANGUAGE AS CODING PROFILES */}
+  {/* LARGER LANDSCAPE CARD WITH MORE HEIGHT */}
   <motion.div
     style={{
-      maxWidth: "1480px",
+      maxWidth: "1400px",
       margin: "0 auto",
       padding: "0 2rem",
       display: "grid",
@@ -5376,385 +5779,442 @@ Designing and delivering scalable, high-performance software solutions.
     }}
   >
     <motion.div
-      initial={{ opacity: 0, y: 80, rotateX: -20 }}
+      initial={{ opacity: 0, y: 80, rotateX: -12 }}
       animate={isResumeInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
       transition={{ duration: 0.9, ease: "easeOut" }}
       style={{
         background: "rgba(8, 20, 48, 0.98)",
         backdropFilter: "blur(40px)",
         WebkitBackdropFilter: "blur(40px)",
-        border: "3px solid rgba(100, 220, 255, 0.6)",
-        borderRadius: "40px",
-        padding: "4rem 3.5rem",
+        border: "2.8px solid rgba(100, 220, 255, 0.5)",
+        borderRadius: "32px",
+
+        /* >>> HEIGHT INCREASED <<< */
+        padding: "3rem 2.4rem",
+        minHeight: "360px",   // was 300px → now taller
+
         width: "100%",
-        maxWidth: "780px",
+        maxWidth: "1100px",
         position: "relative",
         overflow: "hidden",
         boxShadow: `
-          0 35px 100px rgba(0, 0, 0, 0.85),
-          0 0 130px rgba(100, 220, 255, 0.45),
-          inset 0 0 90px rgba(100, 220, 255, 0.15)
+          0 36px 110px rgba(0, 0, 0, 0.88),
+          0 0 140px rgba(100, 220, 255, 0.36),
+          inset 0 0 70px rgba(100, 220, 255, 0.08)
         `,
-        transformStyle: "preserve-3d",
-        willChange: "transform",
+        display: "flex",
+        gap: "1.8rem",
+        alignItems: "center",
       }}
       whileHover={{
-        borderColor: "rgba(100, 220, 255, 0.9)",
+        borderColor: "rgba(100, 220, 255, 0.95)",
         boxShadow: `
-          0 40px 110px rgba(0, 0, 0, 0.9),
-          0 0 160px rgba(100, 220, 255, 0.7),
-          inset 0 0 110px rgba(100, 220, 255, 0.25)
+          0 44px 130px rgba(0, 0, 0, 0.92),
+          0 0 180px rgba(100, 220, 255, 0.6),
+          inset 0 0 100px rgba(100, 220, 255, 0.18)
         `,
       }}
     >
-      {/* Top Glow Line */}
-      <div style={{
-        position: "absolute",
-        top: 0, left: 0, right: 0,
-        height: "6px",
-        background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-        filter: "drop-shadow(0 0 40px #64dcff)",
-      }} />
-
-      {/* Floating Badge */}
-      <div style={{
-        position: "absolute",
-        top: "-22px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        background: "#64dcff",
-        color: "#000",
-        padding: "0.8rem 2.2rem",
-        borderRadius: "50px",
-        fontSize: "1.1rem",
-        fontWeight: "900",
-        letterSpacing: "2px",
-        boxShadow: "0 0 50px #64dcff",
-        textTransform: "uppercase",
-        zIndex: 10,
-      }}>
-        Resume 2025
-      </div>
-
-      {/* Name */}
-      <h3 style={{
-        fontSize: "3.2rem",
-        fontWeight: "900",
-        background: "linear-gradient(90deg, #64dcff, #87CEEB, #40c4ff)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        margin: "2rem 0 0.5rem",
-        textAlign: "center",
-        letterSpacing: "1.5px",
-      }}>
-        Siva Satya Sai Bhagavan
-      </h3>
-
-      {/* Title */}
-      <p style={{
-        fontSize: "1.6rem",
-        color: "#87CEEB",
-        fontWeight: "700",
-        textAlign: "center",
-        marginBottom: "1.8rem",
-        letterSpacing: "1px",
-      }}>
-       Full-Stack Development • AI/ML Engineering • Cloud Engineering
-      </p>
-
-      {/* Core Stack */}
-      <p style={{
-        fontSize: "1.25rem",
-        color: "#c0e8ff",
-        textAlign: "center",
-        lineHeight: "1.8",
-        margin: "0 auto 2.5rem",
-        maxWidth: "600px",
-        fontWeight: "600",
-      }}>
-       MERN Stack · Next.js · React Native · AI/ML with Python · AWS · Docker · System Architecture
-      </p>
-
-      {/* Impact Badge */}
-      <div style={{
-        display: "inline-block",
-        padding: "1rem 3rem",
-        background: "rgba(100, 220, 255, 0.2)",
-        border: "2px solid #64dcff",
-        borderRadius: "50px",
-        color: "#64dcff",
-        fontSize: "1.2rem",
-        fontWeight: "800",
-        margin: "0 auto 3rem",
-        boxShadow: "0 0 50px rgba(100, 220, 255, 0.6)",
-        textAlign: "center",
-      }}>
-       Production-Grade • Performance-Optimized • Future-Ready Architecture
-      </div>
-
-      {/* Action Buttons */}
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-        flexWrap: "wrap",
-      }}>
-        <motion.button
-          onClick={openResumeModal}
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.96 }}
+      {/* Left column: identity */}
+      <div style={{ flex: "0 0 360px", padding: "0 0.8rem" }}>
+        <div
           style={{
-            padding: "1.2rem 3.2rem",
-            background: "linear-gradient(90deg, #64dcff, #40c4ff)",
-            color: "#000",
-            border: "none",
-            borderRadius: "50px",
-            fontSize: "1.25rem",
-            fontWeight: "900",
-            cursor: "pointer",
-            boxShadow: "0 15px 45px rgba(100, 220, 255, 0.6)",
+            background: "rgba(255,255,255,0.04)",
+            color: "#c0e8ff",
+            padding: "0.45rem 0.95rem",
+            borderRadius: 999,
+            fontSize: "0.92rem",
+            fontWeight: 700,
             letterSpacing: "1px",
+            display: "inline-block",
+            marginBottom: "0.9rem",
+            border: "1px solid rgba(100,220,255,0.06)",
           }}
         >
-        Open Resume
-        </motion.button>
+          Resume 2025
+        </div>
 
-        <motion.a
-          href={resumePdf}
-          download="Siva_Satya_Sai_Bhagavan_Resume_2025.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.96 }}
+        <h3
           style={{
-            padding: "1.2rem 3.2rem",
-            background: "transparent",
-            color: "#64dcff",
-            border: "2.8px solid #64dcff",
-            borderRadius: "50px",
-            fontSize: "1.25rem",
+            fontSize: "2.1rem",
             fontWeight: "900",
-            textDecoration: "none",
-            boxShadow: "0 15px 45px rgba(100, 220, 255, 0.4)",
-            letterSpacing: "1px",
+            margin: "0.6rem 0 0.35rem 0",
+            color: "#ffffff",
+            lineHeight: 1.02,
+            letterSpacing: "0.6px",
           }}
         >
-          Get PDF Version
-        </motion.a>
+          Siva Satya Sai Bhagavan
+        </h3>
+
+        <p style={{ margin: "0.5rem 0 0", color: "#87CEEB", fontWeight: 800, fontSize: "1rem" }}>
+          Full-Stack • AI/ML • Cloud
+        </p>
+
+        <p style={{ marginTop: "1rem", color: "#c0e8ff", fontSize: "0.98rem", lineHeight: 1.55 }}>
+          B.Tech (AI&DS) • MERN Stack enthusiast • Hands-on with production deployments and ML pipelines.
+        </p>
+
+        <div style={{ marginTop: "1.1rem", display: "flex", flexWrap: "wrap", gap: "0.55rem" }}>
+          {["MERN", "Next.js", "React Native", "TensorFlow", "AWS", "Docker"].map((t, idx) => (
+            <span
+              key={idx}
+              style={{
+                padding: "0.38rem 0.8rem",
+                background: "rgba(100,220,255,0.06)",
+                borderRadius: 14,
+                color: "#bff6ff",
+                fontSize: "0.86rem",
+                fontWeight: 800,
+                border: "1px solid rgba(100,220,255,0.06)",
+              }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
 
-      {/* Bottom Glow */}
-      <div style={{
-        position: "absolute",
-        bottom: 0, left: 0, right: 0,
-        height: "6px",
-        background: "linear-gradient(90deg, transparent, #64dcff, transparent)",
-        filter: "drop-shadow(0 0 40px #64dcff)",
-      }} />
+      {/* Separator */}
+      <div style={{ width: "1px", height: "80%", background: "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(100,220,255,0.06))" }} />
+
+      {/* Right side */}
+      <div style={{ flex: "1 1 auto", padding: "0 0.8rem", minWidth: 0 }}>
+        <p
+          style={{
+            color: "#c0e8ff",
+            fontSize: "1.08rem",
+            lineHeight: 1.7,
+            margin: "0 0 1.2rem 0",
+            fontWeight: 500,
+          }}
+        >
+          Production-ready full-stack developer with experience building scalable React frontends, secure Express/Node APIs, and deploying ML models as REST services. Focused on performance, clean architecture and maintainable code.
+        </p>
+
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.6rem" }}>
+          <div style={{ padding: "0.6rem 1rem", borderRadius: 20, background: "rgba(100,220,255,0.08)", color: "#bff8ff", fontWeight: 800, fontSize: "0.94rem", border: "1px solid rgba(100,220,255,0.06)" }}>
+            Production-Grade Apps
+          </div>
+          <div style={{ padding: "0.6rem 1rem", borderRadius: 20, background: "rgba(100,220,255,0.06)", color: "#bff8ff", fontWeight: 800, fontSize: "0.94rem", border: "1px solid rgba(100,220,255,0.06)" }}>
+            AI/ML Pipelines
+          </div>
+          <div style={{ padding: "0.6rem 1rem", borderRadius: 20, background: "rgba(100,220,255,0.06)", color: "#bff8ff", fontWeight: 800, fontSize: "0.94rem", border: "1px solid rgba(100,220,255,0.06)" }}>
+            Cloud & CI/CD
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+          <motion.button
+            onClick={openResumeModal}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              padding: "0.95rem 1.8rem",
+              background: "linear-gradient(90deg,#64dcff,#40c4ff)",
+              color: "#001",
+              border: "none",
+              borderRadius: 999,
+              fontSize: "0.98rem",
+              fontWeight: "900",
+              cursor: "pointer",
+              boxShadow: "0 12px 36px rgba(100,220,255,0.32)",
+            }}
+          >
+            Open Resume
+          </motion.button>
+
+          <motion.a
+            href={resumePdf}
+            download="Siva_Satya_Sai_Bhagavan_Resume_2025.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              padding: "0.9rem 1.6rem",
+              background: "transparent",
+              color: "#64dcff",
+              border: "2px solid rgba(100,220,255,0.6)",
+              borderRadius: 999,
+              fontSize: "0.98rem",
+              fontWeight: "900",
+              textDecoration: "none",
+              boxShadow: "0 10px 30px rgba(100,220,255,0.16)",
+            }}
+          >
+            Get PDF Version
+          </motion.a>
+
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.03 }}
+            style={{
+              padding: "0.6rem 0.95rem",
+              background: "rgba(255,255,255,0.02)",
+              color: "#bff8ff",
+              borderRadius: 12,
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              textDecoration: "none",
+              border: "1px solid rgba(100,220,255,0.04)",
+            }}
+          >
+            Let's Talk
+          </motion.a>
+        </div>
+
+        <div style={{ marginTop: "1.1rem", color: "#9fe6ff", fontSize: "0.88rem", fontWeight: 700 }}>
+          Production-Grade • Performance-Optimized • Future-Ready Architecture
+        </div>
+      </div>
+
+      <div style={{ position: "absolute", bottom: 10, left: 16, right: 16, height: "6px", background: "linear-gradient(90deg, transparent, #64dcff, transparent)", borderRadius: 12, opacity: 0.95 }} />
     </motion.div>
   </motion.div>
 </Section>
+
   <Footer>
+  {/* Cyberpunk Neon Grid Background */}
+  <div style={{
+    position: "absolute",
+    inset: 0,
+    background: `
+      linear-gradient(to right, rgba(100,220,255,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(100,220,255,0.05) 1px, transparent 1px)
+    `,
+    backgroundSize: "60px 60px",
+    opacity: 0.4,
+  }} />
+
   <FooterContent
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
+    viewport={{ once: true }}
     variants={staggerContainer}
     style={{
-      padding: "5rem 2rem 4rem",
+      padding: "7rem 2rem 5rem",
       textAlign: "center",
-      background: "rgba(8, 20, 48, 0.98)",
-      backdropFilter: "blur(40px)",
-      WebkitBackdropFilter: "blur(40px)",
-      borderTop: "2px solid rgba(100, 200, 255, 0.4)",
       position: "relative",
-      overflow: "hidden",
+      zIndex: 10,
     }}
   >
-    {/* Floating Holographic Name Card */}
+    {/* NAME CARD – NO HOVER, LESS BOTTOM SPACE */}
     <motion.div
       initial={{ y: 60, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
       style={{
         display: "inline-block",
-        padding: "2rem 3.5rem",
-        background: "rgba(100, 220, 255, 0.08)",
-        border: "2px solid rgba(100, 220, 255, 0.6)",
-        borderRadius: "32px",
-        backdropFilter: "blur(20px)",
-        boxShadow: `
-          0 20px 60px rgba(0, 0, 0, 0.6),
-          0 0 80px rgba(100, 220, 255, 0.4),
-          inset 0 0 60px rgba(100, 220, 255, 0.1)
-        `,
-        marginBottom: "3rem",
+        marginBottom: "2.5rem",  // Reduced from 4rem
       }}
     >
-      <motion.h2
-        style={{
-          fontSize: "clamp(2.4rem, 6vw, 3.8rem)",
+      <div style={{
+        padding: "2.8rem 5rem",
+        background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+        border: "2px solid #64dcff",
+        borderRadius: "32px",
+        boxShadow: `
+          0 0 60px rgba(100,220,255,0.6),
+          inset 0 0 40px rgba(100,220,255,0.1)
+        `,
+      }}>
+        <h1 style={{
+          fontSize: "clamp(3.5rem, 10vw, 6.5rem)",
           fontWeight: "900",
-          background: "linear-gradient(90deg, #64dcff, #40c4ff, #87CEEB)",
+          background: "linear-gradient(90deg, #64dcff, #00ffea, #64dcff)",
+          backgroundSize: "200%",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          letterSpacing: "8px",
+          animation: "flow 6s linear infinite",
+          textShadow: "0 0 60px #64dcff",
+          margin: 0,
+        }}>
+          BHAGAVAN
+        </h1>
+        <p style={{
+          fontSize: "1.6rem",
+          color: "#64dcff",
+          fontWeight: "700",
+          marginTop: "1rem",
+          letterSpacing: "4px",
+        }}>
+          FULL-STACK × AI ENGINEER
+        </p>
+      </div>
+    </motion.div>
+
+    {/* Electric Tagline */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, delay: 0.6 }}
+      style={{
+        margin: "4rem 0",  // Slightly reduced
+        padding: "2rem",
+        borderTop: "1px solid rgba(100,220,255,0.3)",
+        borderBottom: "1px solid rgba(100,220,255,0.3)",
+        position: "relative",
+      }}
+    >
+      <motion.p
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+        style={{
+          fontSize: "1.8rem",
+          fontWeight: "800",
+          background: "linear-gradient(90deg, #64dcff, #ff3366, #00ffea, #64dcff)",
+          backgroundSize: "300%",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           letterSpacing: "3px",
-          margin: "0 0 0.4rem 0",
-          textShadow: "0 0 30px rgba(100, 220, 255, 0.6)",
         }}
-        animate={{
-          textShadow: [
-            "0 0 30px rgba(100, 220, 255, 0.6)",
-            "0 0 50px rgba(100, 220, 255, 0.8)",
-            "0 0 30px rgba(100, 220, 255, 0.6)",
-          ],
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
       >
-        SIVA SATYA SAI BHAGAVAN
-      </motion.h2>
-      <p style={{
-        fontSize: "1.4rem",
-        color: "#a0f0ff",
-        fontWeight: "700",
-        margin: 0,
-        letterSpacing: "2px",
-      }}>
-       Full-Stack Engineering • AI/ML Development • Cloud Architecture
-      </p>
+        I BUILD WHAT'S NEXT.
+      </motion.p>
     </motion.div>
 
-    {/* Unique Tagline – Orbiting Glow */}
-    <motion.p
-      variants={fadeInUp}
-      style={{
-        fontSize: "1.25rem",
-        color: "#88d8ff",
-        fontWeight: "600",
-        letterSpacing: "1.5px",
-        margin: "2.5rem 0 3.5rem",
-        background: "linear-gradient(90deg, #64dcff, #40c4ff, #64dcff)",
-        backgroundSize: "200%",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        animation: "flow 8s linear infinite",
-      }}
-    >
-      © {new Date().getFullYear()} • Built with Next.js, Framer Motion & Vision
-    </motion.p>
-
-    {/* Navigation – Premium Glass Pills */}
-    <FooterLinks style={{ gap: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}>
-      {["Home", "About", "Projects", "Skills", "Resume", "Contact"].map((link, i) => (
-        <FooterLink
-          key={link}
-          href={`#${link.toLowerCase()}`}
+    {/* Navigation */}
+    <motion.div style={{ margin: "4rem 0", display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "1.8rem" }}>
+      {["HOME", "PROJECTS", "SKILLS", "INTERNSHIPS", "CONTACT"].map((item, i) => (
+        <motion.a
+          key={item}
+          href={`#${item.toLowerCase()}`}
           variants={fadeInUp}
           custom={i}
           whileHover={{
-            background: "rgba(100, 220, 255, 0.2)",
-            borderColor: "#64dcff",
-            boxShadow: "0 0 30px rgba(100, 220, 255, 0.5)",
+            scale: 1.15,
+            background: "#64dcff",
+            color: "#000",
+            boxShadow: "0 0 40px #64dcff",
           }}
           style={{
-            padding: "0.8rem 1.8rem",
-            background: "rgba(100, 220, 255, 0.08)",
-            border: "1.5px solid rgba(100, 220, 255, 0.3)",
+            padding: "1rem 2.4rem",
+            border: "2px solid #64dcff",
             borderRadius: "50px",
-            color: "#c0e8ff",
-            fontSize: "1.05rem",
-            fontWeight: "600",
+            color: "#64dcff",
+            fontSize: "1.1rem",
+            fontWeight: "800",
+            letterSpacing: "2px",
             textDecoration: "none",
             transition: "all 0.4s ease",
           }}
         >
-          {link}
-        </FooterLink>
-      ))}
-    </FooterLinks>
-
-    {/* Socials – Floating Orbit Ring */}
-    <motion.div
-      style={{
-        margin: "4rem 0",
-        position: "relative",
-        height: "100px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-      animate={{ rotate: 360 }}
-      transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-    >
-      <div style={{
-        position: "absolute",
-        width: "220px",
-        height: "220px",
-        border: "2px dashed rgba(100, 220, 255, 0.3)",
-        borderRadius: "50%",
-        filter: "drop-shadow(0 0 20px rgba(100, 220, 255, 0.4))",
-      }} />
-
-      {[
-        { icon: <FaEnvelope />, href: "mailto:g.sivasatyasaibhagavan@gmail.com", color: "#64dcff" },
-        { icon: <FaLinkedin />, href: "https://www.linkedin.com/in/siva-satya-sai-bhagavan-gopalajosyula-1624a027b/", color: "#0077b5" },
-        { icon: <FaGithub />, href: "https://github.com/bhagavan444", color: "#64dcff" },
-      ].map((social, i) => (
-        <SocialLink
-          key={i}
-          href={social.href}
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            position: "absolute",
-            top: `${50 + 40 * Math.sin(i * 2.094)}%`,
-            left: `${50 + 40 * Math.cos(i * 2.094)}%`,
-            transform: "translate(-50%, -50%)",
-            fontSize: "2rem",
-            color: "#a0f0ff",
-          }}
-          whileHover={{
-            scale: 1.4,
-            color: social.color,
-            filter: `drop-shadow(0 0 30px ${social.color})`,
-            zIndex: 10,
-          }}
-          whileTap={{ scale: 0.9 }}
-        >
-          {social.icon}
-        </SocialLink>
+          {item}
+        </motion.a>
       ))}
     </motion.div>
 
-    {/* Final Legendary Line */}
+    {/* Social Icons – Orbit Ring */}
+    <motion.div style={{ margin: "5rem 0" }}>
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        style={{
+          width: "280px",
+          height: "280px",
+          margin: "0 auto",
+          position: "relative",
+        }}
+      >
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 3, repeat: Infinity, delay: i * 0.4 }}
+            style={{
+              position: "absolute",
+              inset: 0,
+              border: `2px solid rgba(100,220,255,${0.3 - i * 0.1})`,
+              borderRadius: "50%",
+            }}
+          />
+        ))}
+
+        {[
+          { icon: "Email", href: "mailto:g.sivasatyasaibhagavan@gmail.com" },
+          { icon: "LinkedIn", href: "https://www.linkedin.com/in/siva-satya-sai-bhagavan-gopalajosyula-1624a027b/" },
+          { icon: "GitHub", href: "https://github.com/bhagavan444" },
+        ].map((social, i) => {
+          const angle = (i * 120) - 90;
+          const x = 140 + 100 * Math.cos(angle * Math.PI / 180);
+          const y = 140 + 100 * Math.sin(angle * Math.PI / 180);
+          return (
+            <motion.a
+              key={i}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                position: "absolute",
+                left: `${x}px`,
+                top: `${y}px`,
+                transform: "translate(-50%, -50%)",
+                width: "70px",
+                height: "70px",
+                background: "rgba(100,220,255,0.1)",
+                border: "2px solid #64dcff",
+                borderRadius: "50%",
+                display: "grid",
+                placeItems: "center",
+                fontSize: "2rem",
+                color: "#64dcff",
+                boxShadow: "0 0 40px rgba(100,220,255,0.5)",
+              }}
+              whileHover={{
+                scale: 1.3,
+                background: "#64dcff",
+                color: "#000",
+                boxShadow: "0 0 80px #64dcff",
+              }}
+            >
+              {social.icon}
+            </motion.a>
+          )
+        })}
+      </motion.div>
+    </motion.div>
+
+    {/* Final Line */}
     <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.8 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 1 }}
       style={{
-        fontSize: "1.15rem",
+        fontSize: "1.3rem",
         color: "#64dcff",
         fontWeight: "700",
-        letterSpacing: "2px",
-        textShadow: "0 0 20px rgba(100, 220, 255, 0.6)",
+        letterSpacing: "3px",
+        textShadow: "0 0 30px #64dcff",
       }}
     >
-     Focused on building reliable, scalable products. Open to conversations.
+      © {new Date().getFullYear()} • CRAFTED WITH PRECISION • ALWAYS BUILDING
     </motion.p>
   </FooterContent>
 
-  {/* Epic Closing Glow Line */}
+  {/* Final Neon Line */}
   <motion.div
-    initial={{ scaleX: 0 }}
-    whileInView={{ scaleX: 1 }}
-    transition={{ duration: 1.8, ease: "easeOut" }}
+    initial={{ width: 0 }}
+    whileInView={{ width: "100%" }}
+    transition={{ duration: 2, ease: "easeInOut" }}
     style={{
-      height: "5px",
-      background: "linear-gradient(90deg, transparent, #64dcff, #40c4ff, #64dcff, transparent)",
-      filter: "drop-shadow(0 0 30px #64dcff)",
-      transformOrigin: "center",
+      height: "4px",
+      background: "linear-gradient(90deg, #64dcff, #ff3366, #00ffea, #64dcff)",
+      backgroundSize: "300%",
+      animation: "flow 6s linear infinite",
+      filter: "blur(8px)",
     }}
   />
+
+  <style jsx global>{`
+    @keyframes flow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+  `}</style>
 </Footer>
 
 {/* Scroll to Top — Now a Glowing Orb */}
