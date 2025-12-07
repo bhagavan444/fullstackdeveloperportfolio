@@ -43,38 +43,79 @@ import resumePdf from "../assets/bhagavanresume.pdf";
 // Animations: Enhanced with scale pulses, light trails, and AI-like scanning effects
 // Unique Talent Showcase: Integrated AI-themed particles, holographic cards, and interactive glow on hover
 
-const Container = styled.div`
+export const Container = styled.div`
   position: relative;
   min-height: 100vh;
+  width: 100%;
   overflow-x: hidden;
+  overflow-y: visible;
+
   background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
   font-family: "Source Code Pro", monospace;
   color: #e0fbfc;
+
   transition: all 0.3s ease-out;
   isolation: isolate;
 
+  /* Prevent accidental horizontal zoom/shift on mobile */
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+
+  /* Improve rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+
+  /* Avoid layout jumps caused by mobile browser bar resizing */
+  min-height: 100dvh; /* mobile-safe viewport height */
+  
+  @media (max-width: 768px) {
+    padding: 0 0.75rem;
+
+    /* Prevent horizontal overflow caused by children */
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   @media (max-width: 480px) {
     padding: 0 0.5rem;
+
+    /* Stabilize container when address bar shows/hides */
+    min-height: 100dvh;
+
+    /* Reduce GPU load on small devices */
+    transition: none;
   }
 `;
 
+
+/* ===============  NAV  =============== */
 const Nav = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
   height: clamp(70px, 10vh, 90px);
-  background: linear-gradient(135deg, 
-    rgba(5, 15, 35, 0.98) 0%, 
-    rgba(10, 25, 55, 0.95) 50%, 
-    rgba(8, 20, 45, 0.98) 100%
+
+  background: linear-gradient(135deg,
+      rgba(5, 15, 35, 0.98) 0%,
+      rgba(10, 25, 55, 0.95) 50%,
+      rgba(8, 20, 45, 0.98) 100%
   );
+
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
+
   border-bottom: 1px solid rgba(0, 255, 255, 0.3);
-  box-shadow: 
+
+  isolation: isolate;            /* FIX FLICKER */
+  transform: translateZ(0);      /* GPU RENDER */
+  will-change: transform;
+
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
     0 0 40px rgba(0, 240, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
   z-index: 9999;
   padding: 0 clamp(2rem, 5vw, 4rem);
   display: flex;
@@ -82,48 +123,52 @@ const Nav = styled.nav`
   justify-content: space-between;
   overflow: hidden;
 
-  /* Dynamic neon glow line that breathes */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
+
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, 
-      #00f0ff 0%, 
-      #ff00ff 30%, 
-      #7928ff 50%, 
-      #ff00ff 70%, 
+
+    background: linear-gradient(
+      90deg,
+      #00f0ff 0%,
+      #ff00ff 30%,
+      #7928ff 50%,
+      #ff00ff 70%,
       #00f0ff 100%
     );
     background-size: 200% 100%;
     animation: neonFlow 8s linear infinite;
-    box-shadow: 0 0 20px #00f0ff, 0 0 40px #ff00ff;
-    opacity: 0.9;
+
+    transform: translateZ(0);
+    will-change: background-position;
   }
 
-  /* Subtle grid overlay for depth */
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
+
     background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 255, 255, 0.03) 2px,
-      rgba(0, 255, 255, 0.03) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 0, 255, 0.03) 2px,
-      rgba(255, 0, 255, 0.03) 4px
-    );
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 255, 0.03) 2px,
+        rgba(0, 255, 255, 0.03) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 0, 255, 0.03) 2px,
+        rgba(255, 0, 255, 0.03) 4px
+      );
+
+    opacity: 0.55;
     pointer-events: none;
-    opacity: 0.6;
   }
 
   @keyframes neonFlow {
@@ -132,18 +177,18 @@ const Nav = styled.nav`
   }
 `;
 
+/* ===============  NAV BRAND  =============== */
 const NavBrand = styled.a`
   font-family: 'Orbitron', 'Rajdhani', sans-serif;
   font-weight: 900;
   font-size: clamp(1rem, 4vw, 1.5rem);
+
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #e0fbfc;
-  text-decoration: none;
+
   position: relative;
   z-index: 2;
 
-  /* Holographic gradient text */
   background: linear-gradient(
     90deg,
     #00ffff 0%,
@@ -153,24 +198,28 @@ const NavBrand = styled.a`
     #00ffff 100%
   );
   background-size: 200% auto;
+
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
   animation: holographicShift 6s linear infinite;
 
-  /* Subtle floating glow */
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(0, 255, 255, 0.6),
     0 0 30px rgba(0, 255, 255, 0.3);
 
+  transform: translateZ(0);
+
   &::after {
-    content: '★';
+    content: "★";
     margin-left: 8px;
     color: #00f0ff;
-    font-size: 0.8em;
     opacity: 0;
+    font-size: 0.8em;
     animation: starPulse 3s infinite;
   }
+
   &:hover::after {
     opacity: 1;
   }
@@ -185,107 +234,121 @@ const NavBrand = styled.a`
   }
 `;
 
+/* ===============  NAV LINKS (SIDE MENU)  =============== */
 const NavLinks = styled.div`
   display: flex;
-  gap: clamp(0.6rem, 1.3vw, 1.6rem);        /* Super tight – exactly what you asked for */
   align-items: center;
-  margin-left: auto;
-  padding-right: clamp(2.2rem, 5vw, 6rem);
 
-  @media (max-width: 1024px) {
-    gap: clamp(0.5rem, 1.1vw, 1.4rem);
-    padding-right: clamp(1.6rem, 4vw, 4.8rem);
-  }
+  gap: clamp(0.6rem, 1.3vw, 1.6rem);
+  padding-right: clamp(2.2rem, 5vw, 6rem);
+  margin-left: auto;
+
+  transform: translateZ(0);
+  will-change: transform;
 
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
     right: 0;
-    height: 100dvh;
+
     width: 320px;
     max-width: 90vw;
-    background: rgba(5, 15, 35, 0.98);
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
+    height: 100dvh;
+
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1.8rem;
+
     gap: 5rem;
+    padding: 2rem 1.8rem;
+
+    background: rgba(5, 15, 35, 0.98);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+
     transform: translateX(110%);
-    transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+
+    z-index: 99999;
     box-shadow: -20px 0 90px rgba(0, 240, 255, 0.3);
-    z-index: 9999;
 
     &.active {
       transform: translateX(0);
     }
   }
-
-  @media (max-width: 480px) {
-    width: 300px;
-    max-width: 94vw;
-    padding: 2rem 1.4rem;
-    gap: 4.4rem;
-  }
 `;
 
+/* ===============  NAV LINK (ITEMS)  =============== */
 const NavLink = styled.a`
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
+
   font-size: clamp(0.92rem, 1.85vw, 1.1rem);
   text-transform: uppercase;
+
   letter-spacing: 2.8px;
   color: rgba(224, 251, 252, 0.94);
   text-decoration: none;
-  position: relative;
+
   padding: 0.7rem 1rem;
   border-radius: 10px;
+
+  position: relative;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
   transform: translateZ(0);
   will-change: transform;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
+
     border-radius: 10px;
-    background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.08));
+    background: linear-gradient(135deg,
+      rgba(0,255,255,0.1),
+      rgba(255,0,255,0.08)
+    );
     border: 1px solid rgba(0,255,255,0.25);
+
     backdrop-filter: blur(8px);
     opacity: 0;
     transform: scale(0.92);
+
     transition: all 0.6s ease;
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 7px;
     left: 50%;
+
     width: 0;
     height: 3px;
-    background: linear-gradient(90deg, #00f0ff, #ff00ff, #8b5cf6, #00f0ff);
+
+    background: linear-gradient(90deg,
+      #00f0ff,
+      #ff00ff,
+      #8b5cf6,
+      #00f0ff
+    );
     background-size: 300% 100%;
+
     border-radius: 3px;
     transform: translateX(-50%);
     transition: width 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 22px #00f0ff;
   }
 
   &:hover {
     color: #00ffff;
     transform: translateY(-9px) scale(1.1);
-    text-shadow: 
-      0 0 25px #00ffff,
-      0 0 50px #00ffff,
-      0 0 80px rgba(0,255,255,0.7);
   }
 
   &:hover::before {
     opacity: 1;
     transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(0,255,255,0.4);
   }
 
   &:hover::after {
@@ -295,124 +358,131 @@ const NavLink = styled.a`
 
   &.active {
     color: #00ffff;
-    text-shadow: 0 0 35px #00ffff;
-  }
-
-  &.active::before {
-    opacity: 0.35;
-    animation: pulseCard 4s ease-in-out infinite;
   }
 
   &.active::after {
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #00ffff, #8b5cf6, #ff2aff);
     animation: flowLine 2.5s linear infinite;
   }
 
   @keyframes flowLine {
-    0%   { background-position: 0% 0; }
+    0% { background-position: 0% 0; }
     100% { background-position: 300% 0; }
   }
-
-  @keyframes pulseCard {
-     0%, 100% { box-shadow: 0 0 20px rgba(0,255,255,0.4); }
-    50%      { box-shadow: 0 0 45px rgba(0,255,255,0.8); }
-  }
 `;
+
+/* ===============  MOBILE TOGGLE  =============== */
 const MobileToggle = styled.button`
   display: none;
+
   background: none;
   border: none;
+  cursor: pointer;
+
   color: #00f0ff;
   font-size: 2.3rem;
-  cursor: pointer;
   padding: 14px;
   border-radius: 16px;
-  position: relative;
-  z-index: 10000;
-  transition: all 0.4s ease;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 20px;
-    background: conic-gradient(from 90deg, #00f0ff, #ff00ff, #8b5cf6, #00f0ff);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  z-index: 100000;
 
-  &:hover::before {
-    opacity: 0.7;
-    animation: rotateRing 2.5s linear infinite;
-  }
-
-  &:active {
-    transform: scale(0.92);
-  }
+  transform: translateZ(0);
+  will-change: transform;
 
   @media (max-width: 768px) {
     display: block;
   }
-
-  @keyframes rotateRing {
-    100% { transform: rotate(360deg); }
-  }
 `;
+
 const HeroSection = styled.section`
-  min-height: 100vh;
+  position: relative;
+  min-height: 100dvh; /* mobile-safe viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(1rem, 5vw, 2rem) 0; /* Reduced top/bottom padding, kept sides */
-  position: relative;
   background: linear-gradient(135deg, #020c1b, #0a192f, #112240);
   overflow: hidden;
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
 
   &:before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(
-      circle at 30% 70%, rgba(0, 255, 255, 0.2), transparent 50%
-    ),
-    radial-gradient(circle at 70% 30%, rgba(127, 255, 212, 0.15), transparent 50%);
+    background:
+      radial-gradient(circle at 30% 70%, rgba(0, 255, 255, 0.2), transparent 50%),
+      radial-gradient(circle at 70% 30%, rgba(127, 255, 212, 0.15), transparent 50%);
     z-index: 0;
     animation: aiPulse 10s infinite ease-in-out;
+    pointer-events: none;
+    will-change: opacity, transform;
   }
 
   @keyframes aiPulse {
     0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.05); }
+    50%      { opacity: 0.8; transform: scale(1.05); }
   }
 
+  /* tablet */
   @media (max-width: 1024px) {
     padding: clamp(1rem, 2vw, 1.5rem) 0;
+
+    &:before {
+      /* reduce detail to lower paint cost */
+      background:
+        radial-gradient(circle at 40% 60%, rgba(0,255,255,0.12), transparent 55%),
+        radial-gradient(circle at 65% 35%, rgba(127,255,212,0.08), transparent 55%);
+      animation-duration: 18s;
+      filter: blur(10px);
+    }
   }
+
+  /* mobile */
   @media (max-width: 480px) {
     padding: clamp(0.5rem, 1.5vw, 1rem) 0;
+
+    /* stop heavy animation and reduce blur on tiny devices */
+    &:before {
+      animation-play-state: paused;
+      background:
+        radial-gradient(circle at 40% 60%, rgba(0,255,255,0.06), transparent 65%),
+        radial-gradient(circle at 65% 35%, rgba(127,255,212,0.04), transparent 65%);
+      opacity: 0.6;
+      filter: blur(8px);
+      will-change: opacity;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:before { animation: none !important; }
   }
 `;
+
+
 const HeroContent = styled(motion.div)`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: clamp(2rem, 4vw, 3rem);
-  max-width: 1400px;
+  max-width: min(1400px, 100%);
   width: 100%;
   padding: clamp(1.5rem, 3vw, 2rem);
   z-index: 1;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(17, 34, 64, 0.7));
   border-radius: 15px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 255, 255, 0.1);
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transform: translateZ(0);
+  will-change: transform; /* used sparingly */
 
   /* Subtle animated overlay for premium feel */
   &:before {
@@ -425,6 +495,8 @@ const HeroContent = styled(motion.div)`
     background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
     animation: orbit 15s linear infinite;
     z-index: -1;
+    pointer-events: none;
+    will-change: transform;
   }
 
   /* Parallax effect for inner content */
@@ -438,6 +510,11 @@ const HeroContent = styled(motion.div)`
     gap: 2rem;
     padding: 1.5rem;
     background: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(17, 34, 64, 0.85));
+
+    &:before {
+      animation-duration: 40s;
+      filter: blur(6px);
+    }
   }
 
   @media (max-width: 480px) {
@@ -445,11 +522,27 @@ const HeroContent = styled(motion.div)`
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25), 0 0 10px rgba(0, 255, 255, 0.08);
+
+    /* Stop orbit animation on tiny devices to avoid repaint/flicker */
+    &:before {
+      animation-play-state: paused;
+      opacity: 0.55;
+      transform: translateZ(0);
+    }
+
+    /* ensure children don't cause horizontal overflow */
+    min-width: 0;
+    & > * { min-width: 0; }
   }
 
   @keyframes orbit {
     0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
     100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:before { animation: none !important; }
+    transition: none !important;
   }
 `;
 
@@ -2656,10 +2749,12 @@ const Home = () => {
         <NavBrand href="#home">Bhagavan| Full-Stack| |AIML & DS|<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           
-          <NavLink href="#internships">Experience</NavLink>
-<NavLink href="#projects">Projects</NavLink>
+<NavLink href="#internships">Experience</NavLink>
+
 <NavLink href="#skills">Skills</NavLink>
 <NavLink href="#certifications">Certifications</NavLink>
+<NavLink href="#projects">Projects</NavLink>
+
 <NavLink href="#resume">Resume</NavLink>
 
         </NavLinks>
@@ -2690,7 +2785,7 @@ const Home = () => {
           </motion.div>
           <HeaderContainer>
             <Title variants={fadeInUp}> GopalaJosyula Siva Satya Sai Bhagavan </Title>
-            <TypingSubtitle text="AI/ML & Full-Stack Engineering | Building scalable MERN and Python systems | Cloud, DevOps, and data-powered architectures for modern product innovation." />
+            <TypingSubtitle text="AI/ML & Full-Stack Engineering | Architecting scalable MERN and Python systems | Cloud, DevOps, and data-driven solutions engineered for real-world impact." />
 
             <motion.div
               variants={fadeInUp}

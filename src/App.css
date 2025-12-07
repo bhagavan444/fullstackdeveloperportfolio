@@ -1,3 +1,4 @@
+/* ---------- PRESERVE / ORIGINAL STYLES ---------- */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -40,3 +41,150 @@
 .read-the-docs {
   color: #888;
 }
+
+/* ---------- GLOBAL FIXES & IMPROVEMENTS (ADD/REPLACE BELOW) ---------- */
+
+/* 1) Prevent layout surprises: consistent box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2) Root/app background and remove horizontal scroll */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevents horizontal scrolling/gutter on mobile */
+  -webkit-overflow-scrolling: touch;
+  background: linear-gradient(180deg, #051220 0%, #071826 100%); /* deep site background */
+  color: #e6fbff;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3) Ensure root container never causes overflow */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* 4) Make media elements responsive */
+img, picture, svg, iframe, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 5) Prevent absolute/overlay elements from causing overflow */
+.app-overlay, .site-overlay, .modal, .some-overlay {
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 6) Safer use of viewport units on mobile */
+:root {
+  /* Optionally you can update --vh via JS on mobile if needed */
+  --vh: 1vh;
+}
+
+/* 7) Scrollbar visual polish (optional but neat) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100,220,255,0.12);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 8) Mobile nav safe sizing (prevents off-canvas width overflow)
+   If your nav uses a class like .nav-links, keep this; if you used a styled-component,
+   ensure it outputs .nav-links class or adapt the classname accordingly. */
+.nav-links {
+  display: flex;
+  gap: clamp(0.6rem, 1.3vw, 1.6rem);
+  align-items: center;
+  margin-left: auto;
+  padding-right: clamp(2.2rem, 5vw, 6rem);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile / tablet safe styles */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: clamp(0.5rem, 1.1vw, 1.4rem);
+    padding-right: clamp(1.6rem, 4vw, 4.8rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;                  /* use 100vh for robust compatibility */
+    width: min(320px, 90vw);        /* cap at 90vw to avoid overflow on small screens */
+    max-width: 90vw;
+    background: rgba(5, 15, 35, 0.98);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.8rem;
+    gap: 4.4rem;
+    transform: translateX(110%);    /* off-screen default */
+    box-shadow: -20px 0 90px rgba(0, 240, 255, 0.3);
+    z-index: 9999;
+  }
+  .nav-links.active {
+    transform: translateX(0);
+  }
+}
+
+/* 9) Minor accessibility - focus outlines visible */
+:focus {
+  outline: 3px solid rgba(0, 255, 255, 0.18);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* 10) Prevent components with large padding from exceeding width on tiny devices */
+.container, .site-wrapper, .main-container {
+  width: 100%;
+  max-width: 100%;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 11) If you use modals or the resume iframe, ensure no overflow from them */
+.ResumeModal, .ModalContent, iframe {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 12) Helpful debug helper (uncomment while debugging overflow) */
+/*
+* {
+  outline: 1px dashed rgba(255,0,0,0.03);
+}
+*/
+
+/* ---------- End of app.css ---------- */
