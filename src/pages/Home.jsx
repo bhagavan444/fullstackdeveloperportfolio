@@ -4192,33 +4192,27 @@ const Home = () => {
     }}
   >
     {[
-      {
-        title: "AWS Certified Solutions Architect – Associate",
-        platform: "Amazon Web Services",
-        year: "2024",
-        type: "Cloud Certification",
-        link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
-        desc: "Validated design and deployment of highly available, fault-tolerant systems on AWS — hands-on with EC2, S3, VPC, IAM and CloudFormation."
-      },
+     
       {
         title: "AWS Certified Cloud Practitioner",
-        platform: "Amazon Web Services",
+        platform: "SimpliLearn",
         year: "2024",
         type: "Cloud Certification",
         link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
         desc: "Core AWS fundamentals including global infrastructure, billing, security basics, and well-architected principles — ideal for cloud-first engineering."
       },
       {
-        title: "IBM Full Stack Software Developer",
-        platform: "IBM",
+        title: "Mastering the art of promting",
+        platform: "IBM Skills Build",
         year: "2024",
-        type: "Full Stack Development",
+        type: "Certification in Prompt Engineering",
         link: "https://drive.google.com/file/d/1SwQGo_zGZIGcTzzlMApXZU0Wt5ScyWXx/view?usp=sharing",
-        desc: "End-to-end web application development: React frontends, Node/Express backends, and CI/CD workflows with emphasis on maintainability and testing."
+        desc: "Comprehensive training on effective prompt engineering techniques, including crafting structured prompts, optimizing outputs for AI models, and applying real-world prompting strategies for improved accuracy and productivity."
+
       },
       {
         title: "Machine Learning with Python",
-        platform: "Stanford Online • Coursera",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Machine Learning",
         link: "https://drive.google.com/file/d/1uaTJTnijSpjCsD_ZPHKwen9i3RDYwShK/view",
@@ -4226,7 +4220,7 @@ const Home = () => {
       },
       {
         title: "Large Language Models",
-        platform: "DeepLearning.AI",
+        platform: "IBM Skills Build",
         year: "2025",
         type: "AI / LLMs",
         link: "https://drive.google.com/file/d/1CyN6_Bm3c68R0NkQWWTOgNAXTv27In_s/view?usp=sharing",
@@ -4234,7 +4228,7 @@ const Home = () => {
       },
       {
         title: "React.js Professional",
-        platform: "Meta • Coursera",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Frontend Development",
         link: "https://drive.google.com/file/d/1yy4OpoVRAX2ZGVPUH9VmorLc2kiXalYf/view?usp=drive_link",
@@ -4242,15 +4236,15 @@ const Home = () => {
       },
       {
         title: "Python Mastery",
-        platform: "Udemy",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Programming",
         link: "https://drive.google.com/file/d/1z2DPeFW4YO2Ct3q2DYW3X_4qj_553FMz/view?usp=drive_link",
         desc: "Advanced Python concepts including OOP, modules, generators, decorators and writing production-ready Python code."
       },
       {
-        title: "JavaScript ES6+ Mastery",
-        platform: "Udemy",
+        title: "JavaScript",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Programming",
         link: "https://drive.google.com/file/d/1zrscfW3cyWq59mMYsK399CRjgEjA-zbd/view?usp=drive_link",
@@ -4258,7 +4252,7 @@ const Home = () => {
       },
       {
         title: "MLOps & Deployment",
-        platform: "DeepLearning.AI • Coursera",
+        platform: "Infosys Springboard",
         year: "2025",
         type: "MLOps / Deployment",
         link: "https://drive.google.com/file/d/1BmvjGknXs-K5wOfepFcl_CuU8DsFBApP/view?usp=drive_link",
@@ -4266,31 +4260,31 @@ const Home = () => {
       },
       {
         title: "CI/CD & DevOps",
-        platform: "Udemy",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "DevOps",
         link: "https://drive.google.com/file/d/1xccQv29hZCWCvr-JnM-nEfE8meESrWIr/view?usp=sharing",
         desc: "Practical CI/CD pipelines, automated testing, container orchestration and deployment using modern DevOps tooling."
       },
       {
-        title: "ServiceNow Certified Application Developer",
-        platform: "ServiceNow",
+        title: "ServiceNow",
+        platform: "InfoSys Springboard",
         year: "2024",
         type: "Enterprise Software",
         link: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view",
         desc: "Platform development for enterprise workflows, building scoped apps, scripting server/client logic and admin configuration."
       },
       {
-        title: "Django & DRF Professional",
-        platform: "Udemy",
+        title: "Django",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Backend Development",
         link: "https://drive.google.com/file/d/1QdiX2u-ARCZCEdEmlu4l3ChnQT-SmhKc/view",
         desc: "Robust backend APIs with Django and Django REST Framework, authentication, serialization and deployment-ready service design."
       },
       {
-        title: "Java Masterclass",
-        platform: "Udemy",
+        title: "Java Programming",
+        platform: "Infosys Springboard & Simplilearn",
         year: "2023",
         type: "Programming",
         link: "https://drive.google.com/file/d/1w8hmCAAaP7CFFGMk3GkXfC4IvTAIXuM2/view?usp=drive_link",
@@ -4298,7 +4292,7 @@ const Home = () => {
       },
       {
         title: "Advanced Python",
-        platform: "Udemy",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Programming",
         link: "https://drive.google.com/file/d/1k402Ba4Azvjj823xlxaridsmMy-jahVu/view?usp=drive_link",
@@ -4306,7 +4300,7 @@ const Home = () => {
       },
       {
         title: "HTML5 Mastery",
-        platform: "Udemy",
+        platform: "Infosys Springboard",
         year: "2023",
         type: "Frontend Development",
         link: "https://drive.google.com/file/d/1NYtaxfhQUfxaL4n6Vv6gJSEQMySy1gqr/view?usp=drive_link",
@@ -4314,7 +4308,7 @@ const Home = () => {
       },
       {
         title: "Advanced CSS & Animations",
-        platform: "Udemy",
+        platform: "Infosys Springboard",
         year: "2024",
         type: "Frontend Development",
         link: "https://drive.google.com/file/d/1iC65FGw0MSmjeKIivdnrZVm3GfXOKVvE/view?usp=drive_link",
@@ -5014,35 +5008,36 @@ const Home = () => {
     >
       {[
         {
-          platform: "LeetCode",
-          badge: "Good Rank",
-          title: "Global Ranking",
-          stats: "200+ Problems Solved • 100-Day Coding Streak",
-          color: "#FFA116",
-          glow: "#ff8c00",
-          link: "https://leetcode.com/u/AxZsDhEeto/",
-          progress: 82
-        },
+  platform: "LeetCode",
+  badge: "DSA Practitioner",
+  title: "Active Problem Solver",
+  stats: "180+ Problems Solved • Regular DSA Practice",
+  color: "#FFA116",
+  glow: "#ff8c00",
+  link: "https://leetcode.com/u/AxZsDhEeto/",
+  progress: 82
+},
         {
-          platform: "HackerRank",
-          badge: "Python & Problem Solving",
-          title: "Gold Badges in Python & Problem Solving",
-          stats: "Global Performance • Practice-focused",
-          color: "#00ff9d",
-          glow: "#00ff9d",
-          link: "https://www.hackerrank.com/profile/g_sivasatyasaib1",
-          progress: 76
-        },
-        {
-          platform: "CodeChef",
-          badge: "Competitive Programmer",
-          title: "20+ Official Coding Contests",
-          stats: "Consistent • Structured • Optimized Solutions",
-          color: "#ff4757",
-          glow: "#ff6b6b",
-          link: "https://www.codechef.com/users/bhagavan444",
-          progress: 70
-        }
+  platform: "HackerRank",
+  badge: "Python & Problem Solving",
+  title: "Gold Badge Achiever",
+  stats: "Skill-based challenges • Consistent learning",
+  color: "#00ff9d",
+  glow: "#00ff9d",
+  link: "https://www.hackerrank.com/profile/g_sivasatyasaib1",
+  progress: 76
+}
+,
+       {
+  platform: "CodeChef",
+  badge: "Competitive Programmer",
+  title: "Coding Contests",
+  stats: "Practical problem-solving • Steady participation",
+  color: "#ff4757",
+  glow: "#ff6b6b",
+  link: "https://www.codechef.com/users/bhagavan444",
+  progress: 70
+},
       ].map((profile, i) => (
         <motion.a
           key={i}
@@ -5227,44 +5222,48 @@ const Home = () => {
   >
     {[
       {
-        title: "Coding Challenges",
-        subtitle: "DSA Enthusiast",
-        stats: "500+ Problems Solved • LeetCode Rank Holder • Consistent Daily Practice",
-        color: "#ff00aa",
-        glow: "#ff00aa",
-        icon: (
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M8 7L16 12L8 17V7Z" fill="#ff00aa"/>
-          </svg>
-        )
-      },
+  title: "Coding Challenges",
+  subtitle: "DSA Enthusiast",
+  stats: "300+ Problems Solved • Regular LeetCode Practitioner",
+  color: "#ff00aa",
+  glow: "#ff00aa",
+  icon: (
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M8 7L16 12L8 17V7Z" fill="#ff00aa"/>
+    </svg>
+  )
+},
+
       {
-        title: "Tech & Research Reading",
-        subtitle: "Continuous Learner",
-        stats: "AI Papers • Tech Blogs • Industry Trends — Weekly synthesis notes",
-        color: "#8e44ad",
-        glow: "#9b59b6",
-        icon: (
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M3 6H21V8H3V6Z" fill="#9b59b6"/>
-            <path d="M3 10H21V12H3V10Z" fill="#9b59b6" opacity="0.85"/>
-            <path d="M3 14H21V16H3V14Z" fill="#9b59b6" opacity="0.65"/>
-          </svg>
-        )
-      },
+  title: "Tech & Research Reading",
+  subtitle: "Continuous Learner",
+  stats: "AI papers, tech blogs, and industry trends — weekly learning insights",
+  color: "#8e44ad",
+  glow: "#9b59b6",
+  icon: (
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M3 6H21V8H3V6Z" fill="#9b59b6"/>
+      <path d="M3 10H21V12H3V10Z" fill="#9b59b6" opacity="0.85"/>
+      <path d="M3 14H21V16H3V14Z" fill="#9b59b6" opacity="0.65"/>
+    </svg>
+  )
+}
+,
+
       {
-        title: "Machine Learning Research",
-        subtitle: "ML Explorer",
-        stats: "Experimenting with models, reproducible notebooks, and small research prototypes",
-        color: "#ffd700",
-        glow: "#ffdd00",
-        icon: (
-          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <circle cx="12" cy="12" r="8" fill="#ffd700"/>
-            <path d="M12 8V12L14.5 14" stroke="#111" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        )
-      }
+  title: "Machine Learning Research",
+  subtitle: "ML Explorer",
+  stats: "Building ML models, experimenting with datasets, and creating reproducible research notebooks",
+  color: "#ffd700",
+  glow: "#ffdd00",
+  icon: (
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="8" fill="#ffd700"/>
+      <path d="M12 8V12L14.5 14" stroke="#111" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
     ].map((hobby, i) => (
       <motion.div
         key={i}
@@ -5424,42 +5423,68 @@ const Home = () => {
     >
       {[
         {
-          title: "Technical Workshops",
-          subtitle: "Tech Facilitator",
-          stats: "Trained 100+ Students • Led 5+ Hands-On Workshops",
-          color: "#ff00ff",
-          glow: "#ff00ff",
-          icon: (
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="7" r="3" fill="#ff00ff" />
-              <path
-                d="M16 11C16 12.7 14.7 14 13 14H11C9.3 14 8 12.7 8 11"
-                stroke="#ff00ff"
-                strokeWidth="1.8"
-              />
-              <path
-                d="M4 20C4.5 16 7 14 12 14C17 14 19.5 16 20 20"
-                stroke="#ff00ff"
-                strokeWidth="1.8"
-              />
-            </svg>
-          ),
-        },
+  title: "Technical Workshops",
+  subtitle: "Tech Facilitator",
+  stats: "Facilitated hands-on sessions and guided students through practical tech concepts",
+  color: "#ff00ff",
+  glow: "#ff00ff",
+  icon: (
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="7" r="3" fill="#ff00ff" />
+      <path
+        d="M16 11C16 12.7 14.7 14 13 14H11C9.3 14 8 12.7 8 11"
+        stroke="#ff00ff"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M4 20C4.5 16 7 14 12 14C17 14 19.5 16 20 20"
+        stroke="#ff00ff"
+        strokeWidth="1.8"
+      />
+    </svg>
+  ),
+}
+,
+{
+  title: "Open-Source Contributions",
+  subtitle: "Community Developer",
+  stats: "Contributing to GitHub projects • Issue fixing • Feature enhancements",
+  color: "#1abc9c",
+  glow: "#16e0b1",
+  icon: (
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C6.5 2 2 6.5 2 12C2 16.4 4.9 20.1 8.9 21.4C9.4 21.5 9.6 21.2 9.6 20.9V18.8C7 19.4 6.4 17.8 6.4 17.8C5.9 16.7 5.2 16.4 5.2 16.4C4.2 15.8 5.3 15.8 5.3 15.8C6.4 15.9 7 16.9 7 16.9C8 18.6 9.6 18.1 10.2 17.8C10.3 17.1 10.6 16.6 10.9 16.3C8.5 16 6 15.1 6 11.4C6 10.4 6.4 9.6 7 9C7 8.7 6.7 7.7 7.1 6.4C7.1 6.4 8 6.1 9.6 7.3C10.5 7 11.5 6.9 12.5 6.9C13.5 6.9 14.5 7 15.4 7.3C17 6.1 17.9 6.4 17.9 6.4C18.3 7.7 18 8.7 18 9C18.6 9.6 19 10.4 19 11.4C19 15.2 16.5 16 14.1 16.3C14.5 16.7 14.9 17.4 14.9 18.5V20.9C14.9 21.2 15.1 21.5 15.6 21.4C19.6 20.1 22.5 16.4 22.5 12C22.5 6.5 18 2 12 2Z" fill="#1abc9c"/>
+    </svg>
+  )
+}
+,{
+  title: "Open-Source Exploration",
+  subtitle: "Code Reader",
+  stats: "Studying popular GitHub repositories to understand real-world designs",
+  color: "#e67e22",
+  glow: "#f39c12",
+  icon: (
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3L4 7V17L12 21L20 17V7L12 3Z" fill="#e67e22"/>
+    </svg>
+  )
+},
         {
-          title: "Elite Certifications",
-          subtitle: "Certified Specialist",
-          stats: "8+ Advanced Certifications • AI • Cloud • DevOps • Full-Stack",
-          color: "#00ff88",
-          glow: "#00ff88",
-          icon: (
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 2L14 8H20L15 12L17 18L12 14L7 18L9 12L4 8H10L12 2Z"
-                fill="#00ff88"
-              />
-            </svg>
-          ),
-        },
+  title: "Elite Certifications",
+  subtitle: "Certified Specialist",
+  stats: "Certified across AI, Cloud, DevOps, and Full-Stack technologies",
+  color: "#00ff88",
+  glow: "#00ff88",
+  icon: (
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 2L14 8H20L15 12L17 18L12 14L7 18L9 12L4 8H10L12 2Z"
+        fill="#00ff88"
+      />
+    </svg>
+  ),
+}
+,
       ].map((item, i) => (
         <motion.div
           key={i}
@@ -5984,7 +6009,7 @@ const Home = () => {
             fontWeight: 500,
           }}
         >
-          Production-ready full-stack developer with experience building scalable React frontends, secure Express/Node APIs, and deploying ML models as REST services. Focused on performance, clean architecture and maintainable code.
+          Full-stack developer skilled in building scalable React frontends, secure Node/Express APIs, and deploying machine learning models as REST services. Focused on performance, clean architecture, and writing maintainable, production-ready code.
         </p>
 
         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginBottom: "1.6rem" }}>
