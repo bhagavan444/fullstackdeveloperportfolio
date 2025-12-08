@@ -240,8 +240,9 @@ const NavLinks = styled.div`
   align-items: center;
 
   gap: clamp(0.6rem, 1.3vw, 1.6rem);
-  padding-right: clamp(2.2rem, 5vw, 6rem);
-  margin-left: auto;
+padding-right: clamp(2.2rem, 5vw, 6rem);
+margin-left: auto;
+
 
   transform: translateZ(0);
   will-change: transform;
@@ -871,130 +872,155 @@ const CTAButton = styled(motion.a)`
   overflow: hidden;
   cursor: pointer;
   isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
 
-  /* Multi-layered glass + neon core */
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.3), transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.25), transparent 60%),
-    linear-gradient(135deg, 
-      rgba(10, 25, 47, 0.95) 0%,
-      rgba(15, 35, 70, 0.9) 50%,
-      rgba(8, 20, 45, 0.98) 100%
+  /* Core glass base so the button reads like part of the card */
+  background:
+    radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.10), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.07), transparent 40%),
+    linear-gradient(135deg,
+      rgba(8, 18, 36, 0.88) 0%,
+      rgba(12, 26, 52, 0.86) 40%,
+      rgba(10, 20, 44, 0.90) 100%
     );
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  
-  /* Animated flowing neon border — matches your ProfileRing perfectly */
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  box-shadow: 
-    0 0 30px rgba(0, 255, 255, 0.4),
-    0 0 60px rgba(255, 0, 255, 0.2),
-    inset 0 0 40px rgba(0, 255, 255, 0.15),
-    0 8px 32px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
 
-  color: #e0fffe;
-  text-shadow: 
-    0 0 10px rgba(0, 255, 255, 0.8),
-    0 0 20px rgba(0, 255, 255, 0.5);
+  border: 1px solid rgba(100, 220, 255, 0.12);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 6px 30px rgba(64, 196, 255, 0.06),
+    inset 0 0 40px rgba(0, 255, 255, 0.06);
 
-  /* Conic glow ring — identical DNA to your ProfileRing */
+  color: #e6ffff;
+  text-shadow:
+    0 0 8px rgba(0, 255, 255, 0.65),
+    0 0 18px rgba(0, 200, 255, 0.22);
+
+  transition: transform 260ms cubic-bezier(.2,.9,.3,1), box-shadow 260ms ease, filter 260ms ease;
+  will-change: transform, box-shadow, filter;
+  z-index: 1;
+
+  /* Conic neon halo */
   &::before {
-    content: '';
+    content: "";
     position: absolute;
-    inset: -4px;
+    inset: -6px;
     border-radius: 20px;
     background: conic-gradient(
       from 0deg at 50% 50%,
       #00ffff, #00d4ff, #7f00ff, #ff00ff, #00ff9d, #00ffff
     );
     background-size: 200% 200%;
-    filter: blur(10px);
-    opacity: 0.7;
-    animation: conicFlow 12s linear infinite;
-    z-index: -1;
+    filter: blur(12px);
+    opacity: 0.6;
+    transform: scale(1);
+    transition: opacity 400ms ease, filter 400ms ease;
+    z-index: -2;
   }
 
-  /* Inner holographic shimmer + scan pulse */
+  /* Inner shimmer / holographic layer */
   &::after {
     content: '';
     position: absolute;
     inset: 2px;
-    border-radius: 14px;
+    border-radius: 12px;
     background: linear-gradient(45deg,
-      transparent 30%,
-      rgba(0, 255, 255, 0.15) 50%,
-      transparent 70%
+      rgba(255,255,255,0.00) 20%,
+      rgba(255,255,255,0.10) 45%,
+      rgba(255,255,255,0.00) 70%
     );
-    animation: shimmerScan 4s ease-in-out infinite;
-    z-index: 1;
+    mix-blend-mode: overlay;
+    opacity: 0.9;
+    z-index: 0;
+    transform: translateX(-120%);
+    transition: transform 900ms cubic-bezier(.2,.9,.3,1);
   }
 
-  /* Text glow pulse */
+  /* Button label uses gradient clipped text to match site neon */
   > span {
     position: relative;
     z-index: 2;
-    background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
+    display: inline-block;
+    background: linear-gradient(90deg, #00ffff 0%, #7f00ff 40%, #ff00ff 60%, #00f0ff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: textGlow 6s ease-in-out infinite;
+    text-shadow: none;
+    background-size: 200% 100%;
+    transition: background-position 3.6s ease;
   }
 
-  /* Hover: Activate reactor mode */
+  /* subtle hover/press */
   &:hover {
-    transform: translateY(-6px) scale(1.05);
-    box-shadow: 
-      0 0 80px rgba(0, 255, 255, 0.7),
-      0 0 120px rgba(255, 0, 255, 0.4),
-      inset 0 0 60px rgba(0, 255, 255, 0.25);
-    
-    &::before { 
-      animation-duration: 8s; 
-      filter: blur(14px);
-      opacity: 1;
-    }
-    &::after { 
-      animation-duration: 2s; 
-    }
+    transform: translateY(-6px) scale(1.03);
+    box-shadow:
+      0 30px 90px rgba(0, 0, 0, 0.7),
+      0 0 120px rgba(0, 240, 255, 0.28),
+      inset 0 0 60px rgba(0, 255, 255, 0.12);
+  }
+
+  &:hover::before {
+    filter: blur(16px);
+    opacity: 0.95;
+  }
+
+  &:hover::after {
+    transform: translateX(120%);
+    transition-duration: 900ms;
   }
 
   &:active {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px) scale(0.995);
+    box-shadow:
+      0 18px 50px rgba(0, 0, 0, 0.6),
+      inset 0 0 30px rgba(0, 200, 255, 0.06);
   }
 
-  /* Responsive */
+  /* focus-visible for keyboard users */
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 4px rgba(0, 240, 255, 0.08),
+      0 18px 60px rgba(0, 0, 0, 0.6),
+      0 0 80px rgba(0, 240, 255, 0.18);
+  }
+
+  /* responsive adjustments */
   @media (max-width: 768px) {
-    padding: clamp(0.9rem, 2.5vw, 1.2rem) clamp(1.8rem, 4vw, 2.5rem);
-    border-radius: 14px;
+    padding: clamp(0.9rem, 2.5vw, 1.2rem) clamp(1.6rem, 4vw, 2.2rem);
+    border-radius: 12px;
+
+    &::before { inset: -4px; filter: blur(10px); opacity: 0.55; }
+    &::after { inset: 1.5px; }
   }
 
   @media (max-width: 480px) {
-    padding: clamp(0.8rem, 2.2vw, 1rem) clamp(1.5rem, 3.5vw, 2rem);
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    padding: clamp(0.7rem, 2.2vw, 0.95rem) clamp(1.2rem, 3.5vw, 1.6rem);
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    border-radius: 10px;
   }
 
-  /* Shared keyframes with your ProfileRing & Header */
+  /* reduced-motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    &::before { animation: none; transform: none; filter: blur(8px); }
+    &::after { transition: none; transform: none; }
+    > span { transition: none; background-position: 0% 0%; }
+    &:hover { transform: none; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  }
+
+  /* keyframes (kept lightweight) */
   @keyframes conicFlow {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
   }
 
   @keyframes shimmerScan {
-    0%, 100% { transform: translateX(-150%); }
-    50% { transform: translateX(150%); }
-  }
-
-  @keyframes textGlow {
-    0%, 100% { 
-      background: linear-gradient(90deg, #00ffff, #ff00ff, #00ffff);
-      background-size: 200%;
-      background-position: 0%;
-    }
-    50% { 
-      background-position: 100%;
-    }
+    0% { transform: translateX(-120%); }
+    50% { transform: translateX(0%); }
+    100% { transform: translateX(120%); }
   }
 `;
 
@@ -2081,275 +2107,183 @@ const ScrollTop = styled(motion.button)`
 `;
 const ResumeModal = styled(motion.div)`
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(2, 12, 27, 0.95),
-    rgba(17, 34, 64, 0.9)
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 2000;
-  backdrop-filter: blur(8px);
-  animation: fadePulse 10s ease-in-out infinite;
-
-  /* Subtle background pulse */
-  @keyframes fadePulse {
-    0%, 100% {
-      background: linear-gradient(
-        135deg,
-        rgba(2, 12, 27, 0.95),
-        rgba(17, 34, 64, 0.9)
-      );
-    }
-    50% {
-      background: linear-gradient(
-        135deg,
-        rgba(2, 12, 27, 0.9),
-        rgba(17, 34, 64, 0.85)
-      );
-    }
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(0,  0, 240, 255, 0.22), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(255,   0, 255, 0.15), transparent 55%),
+    linear-gradient(135deg, rgba(2, 12, 27, 0.97), rgba(10, 25, 47, 0.94));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem;
+  box-sizing: border-box;
 `;
 
 const ModalContent = styled.div`
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(0, 240, 255, 0.1),
-    rgba(255, 0, 255, 0.1)
-  );
-  padding: clamp(2rem, 4vw, 2.5rem);
-  border-radius: 20px;
   position: relative;
-  width: 90%;
-  max-width: 850px;
-  max-height: 90vh;
+  width: 92%;
+  max-width: 880px;
+  max-height: 92vh;
+  padding: clamp(2rem, 5vw, 3rem);
+  border-radius: 24px;
   text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(0, 240, 255, 0.09) 50%,
+    rgba(255, 0, 255, 0.07) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1.8px solid transparent;
+  border-image: linear-gradient(45deg, #00f0ff, #ff00ff, #00f0ff) 1;
   box-shadow: 
     0 20px 60px rgba(0, 240, 255, 0.3),
-    0 0 30px rgba(255, 0, 255, 0.2);
-  backdrop-filter: blur(25px);
-  border: 2px solid transparent;
-  border-image: linear-gradient(45deg, #00f0ff, #ff00ff) 1;
+    0 0 40px rgba(255, 0, 255, 0.2),
+    inset 0 0 80px rgba(0, 240, 255, 0.08);
   overflow: hidden;
-  animation: glowBorder 4s ease-in-out infinite;
+  overflow-y: auto;
 
-  /* Pseudo-element for inner glow */
-  &:before {
+  &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: radial-gradient(
-      circle at 50% 50%,
-      rgba(0, 240, 255, 0.15),
+      circle at 50% 20%,
+      rgba(0, 240, 255, 0.25),
       transparent 70%
     );
+    pointer-events: none;
     z-index: -1;
-    opacity: 0.5;
-    animation: innerPulse 6s ease-in-out infinite;
-  }
-
-  /* Hover effect for subtle 3D lift */
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-      0 25px 70px rgba(0, 240, 255, 0.4),
-      0 0 40px rgba(255, 0, 255, 0.3);
-  }
-
-  @keyframes glowBorder {
-    0%, 100% {
-      border-image: linear-gradient(45deg, #00f0ff, #ff00ff) 1;
-    }
-    50% {
-      border-image: linear-gradient(45deg, #ff00ff, #00f0ff) 1;
-    }
-  }
-
-  @keyframes innerPulse {
-    0%, 100% {
-      opacity: 0.5;
-    }
-    50% {
-      opacity: 0.7;
-    }
   }
 
   @media (max-width: 768px) {
-    padding: clamp(1.5rem, 3vw, 2rem);
-    max-width: 95%;
-    max-height: 85vh;
-    box-shadow: 
-      0 15px 50px rgba(0, 240, 255, 0.25),
-      0 0 25px rgba(255, 0, 255, 0.15);
+    max-width: 96%;
+    max-height: 88vh;
+    padding: clamp(1.6rem, 4vw, 2.4rem);
+    border-radius: 20px;
   }
 
   @media (max-width: 480px) {
-    padding: clamp(1rem, 2vw, 1.5rem);
-    max-height: 80vh;
-    border-radius: 15px;
+    max-height: 85vh;
+    padding: clamp(1.4rem, 4vw, 2rem);
+    border-radius: 18px;
   }
 `;
 
 const CloseButton = styled(motion.button)`
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  font-size: clamp(2rem, 3.5vw, 2.2rem);
+  top: 1.4rem;
+  right: 1.4rem;
+  z-index: 10;
   background: none;
   border: none;
-  color: #a8d0e6;
+  font-size: clamp(2rem, 4vw, 2.4rem);
+  color: #c0e8ff;
   cursor: pointer;
-  transition: all 0.4s ease;
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-  z-index: 2;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  transition: all 0.3s ease;
 
-  /* Pseudo-element for hover glow */
-  &:before {
+  &::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(
-      circle,
-      rgba(0, 240, 255, 0.3),
-      transparent 70%
-    );
-    transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease;
-    z-index: -1;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.3), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   &:hover {
     color: #00f0ff;
-    transform: rotate(90deg) scale(1.1);
+    transform: rotate(90deg) scale(1.15);
     text-shadow: 
-      0 0 15px rgba(0, 240, 255, 0.7),
-      0 0 25px rgba(255, 0, 255, 0.5);
-    &:before {
-      width: 200%;
-      height: 200%;
+      0 0 20px rgba(0, 240, 255, 0.9),
+      0 0 30px rgba(255, 0, 255, 0.6);
+
+    &::before {
+      opacity: 1;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     top: 1rem;
     right: 1rem;
-    font-size: clamp(1.8rem, 3vw, 2rem);
-  }
-
-  @media (max-width: 480px) {
-    top: 0.8rem;
-    right: 0.8rem;
-    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
   }
 `;
 
 const ModalButton = styled(motion.button)`
-  padding: clamp(0.9rem, 2.5vw, 1.3rem) clamp(1.8rem, 3.5vw, 2.8rem);
-  border-radius: 10px;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
+  margin: 1rem;
+  padding: clamp(1rem, 3vw, 1.3rem) clamp(2rem, 5vw, 3rem);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #0a1428;
   background: linear-gradient(
     45deg,
     #00f0ff,
-    #ff00ff,
-    #00b4ff,
-    #7fffd4,
+    #ff00ff 30%,
+    #7fffd4 60%,
+    #00b4ff 85%,
     #00f0ff
   );
-  background-size: 300%;
-  color: #020c1b;
-  border: none;
-  cursor: pointer;
-  margin: 1rem;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  background-size: 300% 300%;
   box-shadow: 
-    0 4px 20px rgba(0, 240, 255, 0.4),
-    0 0 15px rgba(255, 0, 255, 0.3);
-  transition: all 0.4s ease;
+    0 8px 25px rgba(0, 240, 255, 0.5),
+    0 0 20px rgba(255, 0, 255, 0.3);
   position: relative;
   overflow: hidden;
-  animation: gradientShift 6s ease infinite;
+  transition: all 0.4s ease;
 
-  /* Shine effect */
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -150%;
-    width: 200%;
+    left: -100%;
+    width: 100%;
     height: 100%;
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.4),
       transparent
     );
     transition: left 0.6s ease;
   }
 
-  /* Ripple effect on click */
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.5s ease, height 0.5s ease;
-  }
-
   &:hover {
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-5px) scale(1.05);
+    background-position: 100% 0;
     box-shadow: 
-      0 8px 30px rgba(0, 240, 255, 0.6),
-      0 0 20px rgba(255, 0, 255, 0.5);
-    &:before {
+      0 12px 35px rgba(0, 240, 255, 0.65),
+      0 0 30px rgba(255, 0, 255, 0.5);
+
+    &::before {
       left: 100%;
     }
   }
 
-  &:active:after {
-    width: 200%;
-    height: 200%;
-  }
-
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  &:active {
+    transform: translateY(-2px) scale(1.02);
   }
 
   @media (max-width: 768px) {
-    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     margin: 0.8rem;
+    padding: clamp(0.9rem, 2.5vw, 1.1rem) clamp(1.8rem, 4vw, 2.6rem);
   }
 
   @media (max-width: 480px) {
-    padding: clamp(0.6rem, 1.8vw, 1rem) clamp(1.2rem, 2.5vw, 2rem);
-    font-size: clamp(0.8rem, 1.6vw, 1rem);
     margin: 0.6rem;
+    padding: clamp(0.8rem, 2.2vw, 1rem) clamp(1.5rem, 4vw, 2.2rem);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
   }
 `;
 const AboutText = styled(motion.p)`
@@ -2746,16 +2680,15 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan| Full-Stack| |AIML & DS|<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan|MERN|AIML| DS|<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
           
 <NavLink href="#internships">Experience</NavLink>
-
 <NavLink href="#skills">Skills</NavLink>
 <NavLink href="#certifications">Certifications</NavLink>
-<NavLink href="#projects">Projects</NavLink>
-
 <NavLink href="#resume">Resume</NavLink>
+
+
 
         </NavLinks>
       </Nav>
@@ -2855,7 +2788,7 @@ const Home = () => {
   <p
     style={{
       color: "#a0d8f0",
-      fontSize: "1.6rem",   // increased
+      fontSize: "1.6rem",
       textAlign: "center",
       margin: "0 auto 4.5rem",
       maxWidth: "900px",
@@ -2863,7 +2796,7 @@ const Home = () => {
       fontWeight: "500",
     }}
   >
-    Full-Stack × AI Engineer | Building the future, one line of code at a time.
+    Full-Stack × AI Engineer | Building reliable, scalable software and ML systems that solve real problems.
   </p>
 
   {/* LARGE RECTANGULAR CARD */}
@@ -2946,7 +2879,7 @@ const Home = () => {
             justifyContent: "center",
             color: "#c0e8ff",
             fontWeight: 900,
-            fontSize: "1.1rem",  // increased
+            fontSize: "1.1rem",
             boxShadow: "0 10px 30px rgba(100,220,255,0.06)",
           }}
         >
@@ -2956,7 +2889,7 @@ const Home = () => {
         <div style={{ textAlign: "center" }}>
           <div
             style={{
-              fontSize: "1.15rem",  // increased
+              fontSize: "1.15rem",
               color: "#bff8ff",
               fontWeight: 800,
               letterSpacing: "0.6px",
@@ -2966,7 +2899,7 @@ const Home = () => {
           </div>
           <div
             style={{
-              fontSize: "1.05rem",   // increased
+              fontSize: "1.05rem",
               color: "#9fe6ff",
               marginTop: "0.35rem",
               fontWeight: 700,
@@ -2993,27 +2926,25 @@ const Home = () => {
         <h3
           style={{
             margin: 0,
-            fontSize: "2.1rem",  // increased
+            fontSize: "2.1rem",
             fontWeight: "900",
             color: "#ffffff",
             lineHeight: 1.05,
           }}
         >
-          I'm Siva — Full-Stack & AI Engineer
+          I'm Bhagavan— Full-Stack & AI Engineer
         </h3>
 
         <p
           style={{
             marginTop: "0.8rem",
             color: "#c8fbff",
-            fontSize: "1.18rem",  // increased
+            fontSize: "1.18rem",
             lineHeight: 1.7,
             fontWeight: 500,
           }}
         >
-          Production-focused developer combining MERN expertise with applied AI/ML.
-          I build scalable frontends, secure backend APIs, and deploy ML models as
-          cloud-ready services with clean architecture and exceptional performance.
+          I build production-ready web apps and end-to-end ML systems — from user-facing React frontends to robust Node/Express backends and cloud-deployed inference services. I focus on reliability, performance and clean architecture.
         </p>
 
         {/* Highlight Tags */}
@@ -3032,7 +2963,7 @@ const Home = () => {
               background: "rgba(100,220,255,0.06)",
               color: "#bff8ff",
               fontWeight: 800,
-              fontSize: "1.05rem", // increased
+              fontSize: "1.05rem",
               border: "1px solid rgba(100,220,255,0.06)",
             }}
           >
@@ -3046,7 +2977,7 @@ const Home = () => {
               background: "rgba(100,220,255,0.06)",
               color: "#bff8ff",
               fontWeight: 800,
-              fontSize: "1.05rem", // increased
+              fontSize: "1.05rem",
               border: "1px solid rgba(100,220,255,0.06)",
             }}
           >
@@ -3060,7 +2991,7 @@ const Home = () => {
               background: "rgba(100,220,255,0.06)",
               color: "#bff8ff",
               fontWeight: 800,
-              fontSize: "1.05rem", // increased
+              fontSize: "1.05rem",
               border: "1px solid rgba(100,220,255,0.06)",
             }}
           >
@@ -3072,14 +3003,12 @@ const Home = () => {
           style={{
             marginTop: "1.3rem",
             color: "#9fe6ff",
-            fontSize: "1.12rem", // increased
+            fontSize: "1.12rem",
             lineHeight: 1.55,
             fontWeight: 700,
           }}
         >
-          Recent work: enterprise-grade AI chatbot (memory + streaming), ATS resume
-          builder, ML-powered disease detection system, and real-world deployments
-          across AWS/Docker.
+          Selected highlights: built an ATS Resume Builder (MERN + OAuth + MongoDB), designed an ML-powered disease detection pipeline (Transfer Learning → TF Serving), and shipped an enterprise AI chatbot with streaming memory. Deployed production services on AWS using Docker and CI/CD.
         </p>
 
         {/* Buttons */}
@@ -3110,7 +3039,7 @@ const Home = () => {
 
           <motion.a
             href={resumePdf}
-            download="Siva_Satya_Sai_Bhagavan_Resume_2025.pdf"
+            download="Bhagavan_Resume_2026.pdf"
             whileHover={{ scale: 1.04 }}
             style={{
               padding: "0.7rem 1.4rem",
@@ -3162,6 +3091,7 @@ const Home = () => {
     </motion.div>
   </motion.div>
 </Section>
+
 
 <Section id="education" ref={educationRef}>
   {/* Epic Gradient Title */}
@@ -3677,48 +3607,99 @@ const Home = () => {
   >
     {[
       {
-    title: "Programming Languages",
-    subtitle: "Core job-ready coding expertise",
-    skills: ["Python 95%", "JavaScript 90%", "SQL 88%", "Java 82%", "HTML/CSS 90%"],
-  },
+  title: "Programming Languages",
+  subtitle: "Job-ready coding fundamentals with strong problem-solving",
+  skills: [
+    "Python 95%",
+    "JavaScript 90%",
+    "C 88%",
+    "Java 82%",
+    "SQL 85%",
+    "HTML/CSS 92%"
+  ],
+},
+
   {
-    title: "Frontend Development",
-    subtitle: "Modern, production-grade UI engineering",
-    skills: ["React.js 92%", "Next.js 85%", "Tailwind CSS 94%", "Responsive UI 90%", "Framer Motion 85%"],
-  },
+  title: "Frontend Development",
+  subtitle: "Modern, scalable & visually rich UI engineering",
+  skills: [
+    "React.js 92%",
+    "Vite/React 90%",
+    "Next.js 82%",
+    "Tailwind CSS 94%",
+    "Responsive UI 90%",
+    "Framer Motion 85%"
+  ],
+},
+
   {
-    title: "Backend & API Engineering",
-    subtitle: "Secure, scalable server-side development",
-    skills: ["Node.js 90%", "Express.js 90%", "REST APIs 94%", "Authentication/JWT 88%", "Flask 85%"],
-  },
+  title: "Backend & API Engineering",
+  subtitle: "Scalable API design with secure and production-ready backend systems",
+  skills: [
+    "Node.js 90%",
+    "Express.js 90%",
+    "REST APIs 94%",
+    "Authentication/JWT 88%",
+    "MongoDB Integration 90%",
+    "Flask / Python APIs 84%"
+  ],
+},
+{
+  title: "AI, ML & Deep Learning",
+  subtitle: "Practical, deployment-focused machine learning expertise",
+  skills: [
+    "TensorFlow 90%",
+    "Keras 88%",
+    "Scikit-learn 92%",
+    "Computer Vision 88%",
+    "NLP / LLMs 86%",
+    "Feature Engineering 90%",
+    "Model Deployment 86%"
+  ],
+},
+
   {
-    title: "AI, ML & Deep Learning",
-    subtitle: "Industry-level applied machine learning",
-    skills: [
-      "TensorFlow 88%", 
-      "Keras 86%", 
-      "Scikit-learn 91%", 
-      "PyTorch 80%", 
-      "NLP 87%", 
-      "Feature Engineering 90%", 
-      "Model Deployment 84%"
-    ],
-  },
+  title: "Data Engineering & Analysis",
+  subtitle: "End-to-end data processing for ML pipelines and insights",
+  skills: [
+    "Pandas 92%",
+    "NumPy 90%",
+    "Data Preprocessing 94%",
+    "Model Evaluation 90%",
+    "Exploratory Analysis 88%",
+    "Data Visualization 85%"
+  ],
+},
+
+ {
+  title: "Databases & Cloud",
+  subtitle: "Cloud-first architecture with scalable data systems",
+  skills: [
+    "MongoDB / Atlas 92%",
+    "MySQL 85%",
+    "Azure Basics 78%",
+    "Firebase 88%",
+    "IBM Cloud 80%",
+    "PostgreSQL 80%",
+    "AWS (EC2 / S3) 82%",
+    "Docker 80%",
+    "Cloud Deployments 84%"
+  ],
+},
+
   {
-    title: "Data Engineering & Analysis",
-    subtitle: "Transforming data into usable insights",
-    skills: ["Pandas 92%", "NumPy 90%", "Data Preprocessing 92%", "Model Evaluation 88%", "Exploratory Analysis 85%"],
-  },
-  {
-    title: "Databases & Cloud",
-    subtitle: "Cloud infrastructure and secure data systems",
-    skills: ["MongoDB 90%", "PostgreSQL 85%", "Firebase 82%", "AWS (EC2/S3) 80%", "Docker 78%"],
-  },
-  {
-    title: "DevOps & Tools",
-    subtitle: "Engineering productivity & deployment workflows",
-    skills: ["Git & GitHub 96%", "Linux 85%", "CI/CD Pipelines 80%", "Postman 90%", "Agile SDLC 85%"],
-  },
+  title: "DevOps & Tools",
+  subtitle: "Productive engineering workflows & deployment automation",
+  skills: [
+    "Git & GitHub 96%",
+    "Linux 85%",
+    "CI/CD Pipelines 82%",
+    "Postman / API Testing 92%",
+    "Docker Workflow 80%",
+    "Agile SDLC 85%"
+  ],
+},
+
   {
     title: "Professional Skills",
     subtitle: "Skills companies expect from freshers",
@@ -5903,24 +5884,21 @@ const Home = () => {
       animate={isResumeInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
       transition={{ duration: 0.9, ease: "easeOut" }}
       style={{
-        background: "rgba(8, 20, 48, 0.98)",
-        backdropFilter: "blur(40px)",
-        WebkitBackdropFilter: "blur(40px)",
-        border: "2.8px solid rgba(100, 220, 255, 0.5)",
+        background: "linear-gradient(180deg, rgba(8,20,48,0.98), rgba(6,14,30,0.98))",
+        backdropFilter: "blur(36px)",
+        WebkitBackdropFilter: "blur(36px)",
+        border: "2.8px solid rgba(100, 220, 255, 0.45)",
         borderRadius: "32px",
-
-        /* >>> HEIGHT INCREASED <<< */
         padding: "3rem 2.4rem",
-        minHeight: "360px",   // was 300px → now taller
-
+        minHeight: "380px",
         width: "100%",
         maxWidth: "1100px",
         position: "relative",
         overflow: "hidden",
         boxShadow: `
           0 36px 110px rgba(0, 0, 0, 0.88),
-          0 0 140px rgba(100, 220, 255, 0.36),
-          inset 0 0 70px rgba(100, 220, 255, 0.08)
+          0 0 140px rgba(100, 220, 255, 0.32),
+          inset 0 0 70px rgba(100, 220, 255, 0.06)
         `,
         display: "flex",
         gap: "1.8rem",
@@ -5930,8 +5908,8 @@ const Home = () => {
         borderColor: "rgba(100, 220, 255, 0.95)",
         boxShadow: `
           0 44px 130px rgba(0, 0, 0, 0.92),
-          0 0 180px rgba(100, 220, 255, 0.6),
-          inset 0 0 100px rgba(100, 220, 255, 0.18)
+          0 0 200px rgba(100, 220, 255, 0.5),
+          inset 0 0 110px rgba(100, 220, 255, 0.18)
         `,
       }}
     >
@@ -5939,7 +5917,7 @@ const Home = () => {
       <div style={{ flex: "0 0 360px", padding: "0 0.8rem" }}>
         <div
           style={{
-            background: "rgba(255,255,255,0.04)",
+            background: "rgba(255,255,255,0.03)",
             color: "#c0e8ff",
             padding: "0.45rem 0.95rem",
             borderRadius: 999,
@@ -5993,6 +5971,74 @@ const Home = () => {
             </span>
           ))}
         </div>
+
+        {/* UNIQUE: Animated skill bars + counters (clean, HR-friendly) */}
+        <div style={{ marginTop: 18, display: "grid", gap: 12 }}>
+          {[
+            { name: "React / Frontend", pct: 92 },
+            { name: "Node / Backend", pct: 88 },
+            { name: "ML Deployment", pct: 82 },
+          ].map((s) => (
+            <div key={s.name} style={{ marginTop: 4 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                <div style={{ color: "#bff6ff", fontWeight: 800, fontSize: "0.95rem" }}>{s.name}</div>
+                {/* Animated numeric counter (simple, readable) */}
+                <motion.div
+                  initial={{ count: 0 }}
+                  animate={{ count: s.pct }}
+                  transition={{ duration: 0.9, ease: "easeOut" }}
+                  style={{ color: "#7fe7ff", fontWeight: 900, fontSize: "0.95rem" }}
+                >
+                  {/* framer-motion won't render the number automatically — render via children using a little trick */}
+                  {/** Using a function child to show animated number */}
+                  {({ count }) => Math.round(count) + "%"}
+                </motion.div>
+              </div>
+
+              <div
+                style={{
+                  height: 12,
+                  background: "rgba(255,255,255,0.03)",
+                  borderRadius: 999,
+                  overflow: "hidden",
+                  border: "1px solid rgba(100,220,255,0.03)",
+                }}
+              >
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${s.pct}%` }}
+                  transition={{ duration: 0.9, ease: "easeOut" }}
+                  style={{
+                    height: "100%",
+                    borderRadius: 999,
+                    background: "linear-gradient(90deg,#00f0ff,#7fffd4,#40c4ff)",
+                    boxShadow: "0 8px 24px rgba(64,196,255,0.12)",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  {/* Subtle moving gloss line to make it look premium */}
+                  <motion.div
+                    initial={{ x: "-120%" }}
+                    animate={{ x: "120%" }}
+                    transition={{ repeat: Infinity, duration: 2.6, ease: "linear" }}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      height: "100%",
+                      width: "30%",
+                      background:
+                        "linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.18), rgba(255,255,255,0.0))",
+                      mixBlendMode: "overlay",
+                      opacity: 0.9,
+                    }}
+                  />
+                </motion.div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Separator */}
@@ -6025,12 +6071,17 @@ const Home = () => {
         </div>
 
         <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
-          <motion.button
-            onClick={openResumeModal}
-            whileHover={{ scale: 1.04 }}
+          {/* Primary action: download (no modal) */}
+          <motion.a
+            href={resumePdf}
+            download="Siva_Satya_Sai_Bhagavan_Resume_2025.pdf"
+            whileHover={{ scale: 1.04, translateY: -3 }}
             whileTap={{ scale: 0.98 }}
             style={{
-              padding: "0.95rem 1.8rem",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "0.95rem 1.9rem",
               background: "linear-gradient(90deg,#64dcff,#40c4ff)",
               color: "#001",
               border: "none",
@@ -6038,18 +6089,19 @@ const Home = () => {
               fontSize: "0.98rem",
               fontWeight: "900",
               cursor: "pointer",
-              boxShadow: "0 12px 36px rgba(100,220,255,0.32)",
+              boxShadow: "0 14px 36px rgba(100,220,255,0.28)",
+              textDecoration: "none",
             }}
           >
-            Open Resume
-          </motion.button>
+            Download Resume
+          </motion.a>
 
+          {/* Secondary: view in new tab */}
           <motion.a
             href={resumePdf}
-            download="Siva_Satya_Sai_Bhagavan_Resume_2025.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.04 }}
+            whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             style={{
               padding: "0.9rem 1.6rem",
@@ -6060,10 +6112,10 @@ const Home = () => {
               fontSize: "0.98rem",
               fontWeight: "900",
               textDecoration: "none",
-              boxShadow: "0 10px 30px rgba(100,220,255,0.16)",
+              boxShadow: "0 10px 30px rgba(100,220,255,0.12)",
             }}
           >
-            Get PDF Version
+            View in Browser
           </motion.a>
 
           <motion.a
@@ -6093,6 +6145,7 @@ const Home = () => {
     </motion.div>
   </motion.div>
 </Section>
+
 
   <Footer>
   {/* Cyberpunk Neon Grid Background */}
