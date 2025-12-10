@@ -3368,11 +3368,11 @@ const Home = () => {
         badge: "Most Advanced"
       },
       {
-        title: "Resume Builder Pro",
+        title: "Resume Builder Web App",
         desc: "ATS-optimized resume generator with AI scoring, real-time editing, PDF export, and Google OAuth login.",
         tags: ["MERN", "OAuth", "AI Scoring", "PDF Export", "Redis"],
         link: "https://github.com/bhagavan444/Resumebuilderwebapp",
-        demo: "https://drive.google.com/file/d/1Ml9hSjYsHldIIDQQtHvr0gpIn1RTvBhk/view",
+        demo: "https://drive.google.com/file/d/1gjihVRS_EkRRAe7Y8Q7L1vOq2gjvNnqr/view?usp=sharing",
         impact: "500+ users • 70% faster • 100% ATS pass",
         badge: "Most Used"
       },
@@ -3380,8 +3380,8 @@ const Home = () => {
         title: "Heart Disease Predictor",
         desc: "Deep learning system using TensorFlow with Flask API and interactive UI for real-time risk assessment.",
         tags: ["TensorFlow", "Flask", "ML", "Healthcare AI", "Python"],
-        link: "https://github.com/bhagavan444/Heartdiseasewebapp",
-        demo: "https://drive.google.com/file/d/1UYQasrq1EMuDOcBZiAHF19JyR6F5T7g4/view",
+        link: "https://github.com/bhagavan444/Heart-Disease-Web-",
+        demo: "https://drive.google.com/file/d/12kMZDfum_A0hI4q9n5OXn_Vw_8Y-D-vv/view?usp=sharing",
         impact: "92% accuracy • Live deployed",
         badge: "Best ML Project"
       },
@@ -3389,8 +3389,8 @@ const Home = () => {
   title: "Career Path Recommendation System",
   desc: "ML-based system that recommends personalized career and course paths using user skills and preference analysis.",
   tags: ["Python", "Machine Learning", "Recommendation Systems", "Streamlit"],
-  link: "",
-  demo: "",
+  link: "https://github.com/bhagavan444/carrer-path-web-",
+  demo: "https://drive.google.com/file/d/1xsbs3GiVB5CX47Q4QwO3E7fz97MQhD-X/view?usp=sharing",
   impact: "Personalized career predictions with explainable insights",
   badge: "Research"
 },
@@ -3398,8 +3398,8 @@ const Home = () => {
   title: "Fake News Detector",
   desc: "NLP-powered classifier that detects fake news using TF–IDF and supervised learning, served via a Flask API with a React UI.",
   tags: ["NLP", "Flask", "React", "Scikit-learn", "TF-IDF"],
-  link: "",
-  demo: "",
+  link: "https://github.com/bhagavan444/News-detector",
+  demo: "https://drive.google.com/file/d/13u-LhTagEOXvKX5mYSNTtsIUEOzC0xWv/view?usp=sharing",
   impact: "High-accuracy text classification with confidence scoring",
   badge: "NLP"
 },
