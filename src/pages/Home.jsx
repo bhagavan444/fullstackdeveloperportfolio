@@ -4183,6 +4183,63 @@ const Home = () => {
         desc: "Core AWS fundamentals including global infrastructure, billing, security basics, and well-architected principles — ideal for cloud-first engineering."
       },
       {
+  title: "Introduction to Data Science",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "Data Science Certification",
+  link: "https://drive.google.com/file/d/1qrntD2KWqWTVOPGwRgDxj5Vs8gAcMobs/view?usp=sharing", 
+  desc: "Foundational concepts of data science including data preprocessing, analytics workflow, and introductory insights into real-world applications." // :contentReference[oaicite:0]{index=0}
+},
+{
+  title: "Data Science",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "Advanced Data Science Certification",
+  link: "https://drive.google.com/file/d/1JENKEIpZkc1Mvro1mmRVyQr5u8fdUXqv/view?usp=sharing",
+  desc: "Comprehensive data science training covering advanced analytical methods, statistical modeling, and practical end-to-end data workflows — strengthening expertise in applied data science." // :contentReference[oaicite:0]{index=0}
+}
+,
+{
+  title: "Explore Machine Learning using Python",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "Machine Learning Certification",
+  link: "https://drive.google.com/file/d/19vV6Nyq8A418eDvQ2ezrek4pqyUBb6X6/view?usp=sharing",
+  desc: "Hands-on ML foundations using Python—covering model building, feature handling, evaluation techniques, and practical ML workflows." // :contentReference[oaicite:1]{index=1}
+},
+{
+  title: "ServiceNow – Intermediate to Advanced Level",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "ServiceNow Platform Certification",
+  link: "https://drive.google.com/file/d/198qFgXi1RZUkzcl5mLjdQpaLEi7MBSH-/view?usp=sharing",
+  desc: "Intermediate-to-advanced ServiceNow concepts including workflow automation, platform configuration, scripting, and enterprise ITSM tools." // :contentReference[oaicite:2]{index=2}
+},
+{
+  title: "Cloud Computing and MLOps: ML Pipelines",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "Cloud & MLOps Certification",
+  link: "https://drive.google.com/file/d/13gTq6yHm8jCOvqHKRjPpGw4hU4p7kovX/view?usp=sharing",
+  desc: "Core cloud computing fundamentals paired with MLOps practices, focusing on ML pipelines, automation, deployment strategies, and scaling workflows." // :contentReference[oaicite:3]{index=3}
+},
+{
+  title: "Mastering R Programming",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "Programming Certification",
+  link: "https://drive.google.com/file/d/1vFclrkOAe3GaA8brE3c5Sjd0k5RMXwr-/view?usp=sharing",
+  desc: "Comprehensive training in R programming covering data manipulation, statistical computing, visualization, and analytical workflows." // :contentReference[oaicite:4]{index=4}
+},
+{
+  title: "Python for Data Science",
+  platform: "Infosys Springboard",
+  year: "2025",
+  type: "Python Certification",
+  link: "https://drive.google.com/file/d/1_Egm0KQfoFq4XQQuDaHGyLmdEJ6azVR_/view?usp=sharing",
+  desc: "Essential Python skills for data science, including Pandas, NumPy, data cleaning, exploratory analysis, and scripting best practices." // :contentReference[oaicite:5]{index=5}
+},
+      {
         title: "Mastering the art of promting",
         platform: "IBM Skills Build",
         year: "2024",
