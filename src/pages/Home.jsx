@@ -4182,13 +4182,13 @@ const Home = () => {
         link: "https://drive.google.com/file/d/17vu2Vd5QnxAHe4iEYv21ADC-Pfs-90U9/view",
         desc: "Core AWS fundamentals including global infrastructure, billing, security basics, and well-architected principles — ideal for cloud-first engineering."
       },
-      {
-  title: "Introduction to Data Science",
+  {
+  title: "Microsoft Azure Fundamentals: Azure RBAC & Azure Policy",
   platform: "Infosys Springboard",
   year: "2025",
-  type: "Data Science Certification",
-  link: "https://drive.google.com/file/d/1qrntD2KWqWTVOPGwRgDxj5Vs8gAcMobs/view?usp=sharing", 
-  desc: "Foundational concepts of data science including data preprocessing, analytics workflow, and introductory insights into real-world applications." // :contentReference[oaicite:0]{index=0}
+  type: "Cloud Fundamentals",
+  link: "https://drive.google.com/file/d/1ygiQILNjBAfcZse27n_px1_tgupajlWM/view?usp=sharing",
+  desc: "Foundational Azure concepts focusing on Role-Based Access Control (RBAC), governance, resource permissions, and Azure Policy for secure cloud management." // :contentReference[oaicite:1]{index=1}
 },
 {
   title: "Data Science",
@@ -4273,7 +4273,7 @@ const Home = () => {
         desc: "Component-driven development, hooks, performance optimization, and building accessible, responsive user interfaces with React."
       },
       {
-        title: "Python Mastery",
+        title: "Python Programming",
         platform: "Infosys Springboard",
         year: "2024",
         type: "Programming",
@@ -4305,14 +4305,6 @@ const Home = () => {
         desc: "Practical CI/CD pipelines, automated testing, container orchestration and deployment using modern DevOps tooling."
       },
       {
-        title: "ServiceNow",
-        platform: "InfoSys Springboard",
-        year: "2024",
-        type: "Enterprise Software",
-        link: "https://drive.google.com/file/d/1DPfQez89EoRKV7zhXhMKevkglMqvRjqI/view",
-        desc: "Platform development for enterprise workflows, building scoped apps, scripting server/client logic and admin configuration."
-      },
-      {
         title: "Django",
         platform: "Infosys Springboard",
         year: "2024",
@@ -4329,7 +4321,7 @@ const Home = () => {
         desc: "Core Java principles, OOP design patterns, and building stable server-side components using Java."
       },
       {
-        title: "Advanced Python",
+        title: "Mastering Python",
         platform: "Infosys Springboard",
         year: "2024",
         type: "Programming",
