@@ -3363,7 +3363,7 @@ const Home = () => {
         desc: "Enterprise-grade intelligent chatbot with real-time streaming, memory retention, analytics dashboard, and secure OAuth backend.",
         tags: ["React", "Node.js", "OpenAI", "Socket.io", "MongoDB", "Tailwind"],
         link: "https://github.com/bhagavan444/chatbotwebapp",
-        demo: "https://drive.google.com/file/d/1pOfpAUaFigPo9w-YB7s4MuIEE3-bdTr0/view",
+        demo: "https://drive.google.com/file/d/1DZEIiZNFf9WO2ITFdtuOS5SEQATFLJTq/view?usp=sharing",
         impact: "10K+ queries • 95% accuracy • 40% faster",
         badge: "Most Advanced"
       },
@@ -3381,7 +3381,7 @@ const Home = () => {
         desc: "Deep learning system using TensorFlow with Flask API and interactive UI for real-time risk assessment.",
         tags: ["TensorFlow", "Flask", "ML", "Healthcare AI", "Python"],
         link: "https://github.com/bhagavan444/Heart-Disease-Web-",
-        demo: "https://drive.google.com/file/d/12kMZDfum_A0hI4q9n5OXn_Vw_8Y-D-vv/view?usp=sharing",
+        demo: "https://drive.google.com/file/d/1LR19YiKA90IftyVwWG5z2pC5rs4eHXGv/view?usp=sharing",
         impact: "92% accuracy • Live deployed",
         badge: "Best ML Project"
       },
@@ -3390,7 +3390,7 @@ const Home = () => {
   desc: "ML-based system that recommends personalized career and course paths using user skills and preference analysis.",
   tags: ["Python", "Machine Learning", "Recommendation Systems", "Streamlit"],
   link: "https://github.com/bhagavan444/carrer-path-web-",
-  demo: "https://drive.google.com/file/d/1xsbs3GiVB5CX47Q4QwO3E7fz97MQhD-X/view?usp=sharing",
+  demo: "https://drive.google.com/file/d/1C2BLJ6rUq9XmBKp5pi0H9_wWSXtm-zxe/view?usp=sharing",
   impact: "Personalized career predictions with explainable insights",
   badge: "Research"
 },
@@ -3399,7 +3399,7 @@ const Home = () => {
   desc: "NLP-powered classifier that detects fake news using TF–IDF and supervised learning, served via a Flask API with a React UI.",
   tags: ["NLP", "Flask", "React", "Scikit-learn", "TF-IDF"],
   link: "https://github.com/bhagavan444/News-detector",
-  demo: "https://drive.google.com/file/d/13u-LhTagEOXvKX5mYSNTtsIUEOzC0xWv/view?usp=sharing",
+  demo: "https://drive.google.com/file/d/1hhF6N5mtYlmQpDdgCId69l3pMiFKSHlX/view?usp=sharing",
   impact: "High-accuracy text classification with confidence scoring",
   badge: "NLP"
 },
