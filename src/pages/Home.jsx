@@ -2680,12 +2680,16 @@ const Home = () => {
       <BackgroundAnimation />
 
       <Nav>
-        <NavBrand href="#home">Bhagavan|MERN|AIML| DS|<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
+        <NavBrand href="#home">Bhagavan<FaStar style={{ fontSize: '1rem', marginLeft: '0.2rem' }} /></NavBrand>
         <NavLinks>
+                    
+<NavLink href="#home">Home</NavLink>
           
+<NavLink href="#about">About me</NavLink>
+<NavLink href="#projects">Projects</NavLink>          
 <NavLink href="#internships">Experience</NavLink>
 <NavLink href="#skills">Skills</NavLink>
-<NavLink href="#certifications">Certifications</NavLink>
+<NavLink href="#certifications">Verified</NavLink>
 <NavLink href="#resume">Resume</NavLink>
 
 
